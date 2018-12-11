@@ -1,5 +1,7 @@
-﻿using Abp.AutoMapper;
+﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,17 +26,19 @@ namespace ZOGLAB.MMMS.MenuTree
 
         }
 
-        public List<MenuTreeUnitDto> GetMenuTreeUnits()
+        public ListResultDto<MenuTreeUnitDto> GetMenuTreeUnits()
         {
-            var treeItems = _treeUnitRepository.GetAll().ToList();
-            //AutoMapper.Mapper.Map<List<DestinationClass>>(sourceList);
-            //treeItems.MapTo<ListResultDto<MenuTreeUnitDto>>()
-            return AutoMapper.Mapper.Map<List<MenuTreeUnitDto>>(treeItems); ;
+            var query = _treeUnitRepository.GetAll().ToList();
+            //Exp: AutoMapper.Map 实战一: List--> ListResultDto
+            return new ListResultDto<MenuTreeUnitDto>
+            {
+                Items = Mapper.Map<List<SD_MenuTreeUnit>, List<MenuTreeUnitDto>>(query)
+            };
         }
 
         public async Task<MenuTreeUnitDto> CreateOrganizationUnit(CreateTreeUnitInput input)
         {
-            var menuTreeUnit = new SD_MenuTreeUnit(input.DisplayName, input.Url, input.Icon,input.ParentId);
+            var menuTreeUnit = new SD_MenuTreeUnit(input.DisplayName, input.Url, input.Icon, input.ParentId);
 
             await _treeUnitManager.CreateAsync(menuTreeUnit);
             await CurrentUnitOfWork.SaveChangesAsync();

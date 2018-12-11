@@ -176,6 +176,13 @@ appModule.config([
             });
         }
 
+        //SD routes
+
+        $stateProvider.state('menuTree', {
+            url: '/menuTree',
+            templateUrl: '~/App/common/views/menuTree/index.cshtml'
+        });
+
         //$qProvider settings
         $qProvider.errorOnUnhandledRejections(false);
     }

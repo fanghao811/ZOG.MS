@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 
@@ -8,7 +7,7 @@ namespace ZOGLAB.MMMS.MenuTree
 {
     public interface IMenuTreeUnitAppService : IApplicationService
     {
-        List<MenuTreeUnitDto> GetMenuTreeUnits();
+        ListResultDto<MenuTreeUnitDto> GetMenuTreeUnits();
 
         //Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitUsers(GetOrganizationUnitUsersInput input);
 

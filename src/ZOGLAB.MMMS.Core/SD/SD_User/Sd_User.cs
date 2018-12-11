@@ -24,7 +24,6 @@ namespace ZOGLAB.MMMS.SD
         [ForeignKey("UserId")]
         public User User { get; set; }
         public virtual long? UserId { get; set; }
-        //TODO: 外键实现
         //角色ID
 
         [ForeignKey("Role_ID")]

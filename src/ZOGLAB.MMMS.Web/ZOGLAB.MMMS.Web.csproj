@@ -27,6 +27,7 @@
     <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -480,6 +481,10 @@
     <Content Include="App\common\views\layout\sidebar.min.css">
       <DependentUpon>sidebar.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\menuTree\createOrEditUnitModal.js" />
+    <Content Include="App\common\views\menuTree\index.css" />
+    <Content Include="App\common\views\menuTree\index.js" />
+    <Content Include="App\common\views\menuTree\index.min.css" />
     <Content Include="App\common\views\notifications\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>
@@ -495,6 +500,7 @@
     <Content Include="App\common\views\organizationUnits\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\menuTree\todoMenu.js" />
     <Content Include="App\common\views\profile\changePicture.css">
       <DependentUpon>changePicture.less</DependentUpon>
     </Content>
@@ -2289,6 +2295,10 @@
     <Content Include="libs\jquery-jtable\jTable.jquery.json" />
     <Content Include="libs\jquery-jtable\package.json" />
     <Content Include="libs\jquery-jtable\README.md" />
+    <Content Include="App\common\views\menuTree\index.cshtml" />
+    <Content Include="App\common\views\menuTree\index.css.map" />
+    <Content Include="App\common\views\menuTree\index.less" />
+    <Content Include="App\common\views\menuTree\createOrEditUnitModal.cshtml" />
     <None Include="Properties\PublishProfiles\aspnetzero - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
