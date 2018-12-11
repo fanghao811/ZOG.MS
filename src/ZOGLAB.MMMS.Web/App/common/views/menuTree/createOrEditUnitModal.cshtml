@@ -1,4 +1,4 @@
-﻿@using Abp.Organizations
+﻿@using ZOGLAB.MMMS.SD
 <div>
     <form name="exampleForm" role="form" novalidate class="form-validation">
         <div class="modal-header">
@@ -7,10 +7,56 @@
                 <span ng-if="!vm.menuTreeUnit.id">新的菜单项</span>
             </h4>
         </div>
-        <div class="modal-body">
-            <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                <input auto-focus class="form-control" type="text" name="DisplayName" ng-class="{'edited':vm.menuTreeUnit.displayName}" ng-model="vm.menuTreeUnit.displayName" required maxlength="@OrganizationUnit.MaxDisplayNameLength">
-                <label>@L("Name")</label>
+        <div class="modal-body ">
+            @*TODO: 2018/12/11 18:05*@
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                            <div class="input-icon">
+                                <input auto-focus class="form-control" type="text" name="DisplayName" 
+                                       ng-class="{'edited':vm.menuTreeUnit.displayName}"
+                                       ng-model="vm.menuTreeUnit.displayName"
+                                       maxlength="@SD_MenuTreeUnit.MaxDisplayNameLength"
+                                       ng-required="true">
+                                <label for="Name">菜单名称</label>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success form-md-floating-label">
+                            <div class="input-icon">
+                                <input ng-click="open($event, 'opened')" type="text" class="form-control"
+                                       id="BirthDate" name="BirthDate" ng-model="vm.person.birthDate"
+                                       uib-datepicker-popup="yyyy/MM/dd" show-weeks="false"
+                                       is-open="opened" min-date="1930/01/01" datepicker-options="dateOptions"
+                                       ng-required="true" close-text="关闭" />
+                                <label for="BirthDate">出生日期</label>
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group form-md-line-input has-success form-md-floating-label">
+                    <div class="input-icon">
+                        <input type="text" class="form-control"
+                               id="NationalIDNumber"
+                               ng-model="vm.person.nationalIDNumber"
+                               ng-required="true" minlength=10>
+                        <label for="NationalIDNumber">身份证号码</label>
+                        <i class="fa fa-bell-o"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions noborder">
+                <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+                <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")"
+                        class="btn btn-primary blue" ng-click="vm.save()"
+                        ng-disabled="personCreateOrEditForm.$invalid">
+                    <i class="fa fa-save"></i> <span>@L("Save")</span>
+                </button>
             </div>
         </div>
         <div class="modal-footer">

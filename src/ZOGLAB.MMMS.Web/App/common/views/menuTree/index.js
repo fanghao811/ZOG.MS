@@ -1,13 +1,17 @@
 ﻿(function () {
     appModule.controller('common.views.menuTree.index', [
-        '$scope', '$q', 'uiGridConstants', '$state', 'abp.services.app.menuTreeUnit',
-        function ($scope, $q, uiGridConstants, $state, menuTreeUnitService, ) {
+        '$scope', '$q', '$uibModal', '$state', 'abp.services.app.menuTreeUnit',
+        function ($scope, $q, $uibModal, $state, menuTreeUnitService, ) {
             var vm = this;
 
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
             });
             //1.辅助变量
+            vm.permissions = {
+                manageOrganizationTree: true,
+                manageMembers: true
+            };
 
             //2.2 jsTree 的构造
             vm.menuTree = {
@@ -15,16 +19,6 @@
                 $tree: null,
 
                 unitCount: 0,
-
-                setUnitCount: function (unitCount) {
-                    $scope.safeApply(function () {
-                        vm.menuTree.unitCount = unitCount;
-                    });
-                },  //done 2.2.1
-
-                refreshUnitCount: function () {
-                    vm.menuTree.setUnitCount(vm.menuTree.$tree.jstree('get_json').length);
-                },  //done
 
                 selectedOu: {       
                     id: null,
@@ -41,8 +35,6 @@
                             vm.menuTree.selectedOu.displayName = ouInTree.original.displayName;
                             vm.menuTree.selectedOu.code = ouInTree.original.code;
                         }
-
-                        vm.members.load();
                     }
                 },      //done 2.2.6    被选节点    selectedOu
 
@@ -50,8 +42,8 @@
 
                     var items = {
                         editUnit: {
-                            label: app.localize('Edit'),
-                            _disabled: !vm.permissions.manageOrganizationTree,
+                            label: "编辑",
+                            _disabled: false,
                             action: function (data) {
                                 var instance = $.jstree.reference(data.reference);
 
@@ -66,24 +58,16 @@
                         },
 
                         addSubUnit: {
-                            label: app.localize('AddSubUnit'),
-                            _disabled: !vm.permissions.manageOrganizationTree,
+                            label: "增加子菜单",
+                            _disabled: false,
                             action: function () {
                                 vm.menuTree.addUnit(node.id);
                             }
                         },
 
-                        addMember: {
-                            label: app.localize('AddMember'),
-                            _disabled: !vm.permissions.manageMembers,
-                            action: function () {
-                                vm.members.openAddModal();
-                            }
-                        },
-
-                        'delete': {
-                            label: app.localize("Delete"),
-                            _disabled: !vm.permissions.manageOrganizationTree,
+                        delete: {       //TODO: 2.2.7.1  --> 'delete'
+                            label: "删除选中",
+                            _disabled: false,
                             action: function (data) {
                                 var instance = $.jstree.reference(data.reference);
 
@@ -96,7 +80,6 @@
                                             }).then(function () {
                                                 abp.notify.success(app.localize('SuccessfullyDeleted'));
                                                 instance.delete_node(node);
-                                                vm.menuTree.refreshUnitCount();
                                             });
                                         }
                                     }
@@ -125,12 +108,10 @@
                                     opened: true
                                 }
                             });
-
-                        vm.menuTree.refreshUnitCount();
                     });
                 },
 
-                openCreateOrEditUnitModal: function (organizationUnit, closeCallback) {
+                openCreateOrEditUnitModal: function (menuTreeUnit, closeCallback) {
                     var modalInstance = $uibModal.open({
                         templateUrl: '~/App/common/views/menuTree/createOrEditUnitModal.cshtml',
                         controller: 'common.views.menuTree.createOrEditUnitModal as vm',
@@ -177,7 +158,6 @@
 
                 init: function () {
                     vm.menuTree.getTreeDataFromServer(function (treeData) {
-                        vm.menuTree.setUnitCount(treeData.length);      //use 2.2.1
 
                         vm.menuTree.$tree = $('#MenuUnitEditTree');     //done 2.2.4.1 changName
 
@@ -278,7 +258,6 @@
 
                 reload: function () {         
                     vm.menuTree.getTreeDataFromServer(function (treeData) {
-                        vm.menuTree.setUnitCount(treeData.length);
                         vm.menuTree.$tree.jstree(true).settings.core.data = treeData;       //Exp: jsTree 核心模块 -- 数据源 -- 加载数据
                         vm.menuTree.$tree.jstree('refresh');
                     });

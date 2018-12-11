@@ -11,7 +11,7 @@ namespace ZOGLAB.MMMS.MenuTree
 
         //Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitUsers(GetOrganizationUnitUsersInput input);
 
-        Task<MenuTreeUnitDto> CreateOrganizationUnit(CreateTreeUnitInput input);
+        Task<MenuTreeUnitDto> CreateMenuTreeUnit(CreateTreeUnitInput input);
 
         //Task<OrganizationUnitDto> UpdateOrganizationUnit(UpdateOrganizationUnitInput input);
 

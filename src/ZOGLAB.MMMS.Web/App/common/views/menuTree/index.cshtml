@@ -22,13 +22,13 @@
                     </div>
                     <div class="actions">
                         <a @*ng-if="vm.permissions.managemenuTree"*@ ng-click="vm.menuTree.addUnit(null)" class="btn btn-circle btn-default">
-                            <i class="fa fa-plus"></i> @L("AddRootUnit")
+                            <i class="fa fa-plus"></i> 增加主菜单
                         </a>
                     </div>
                 </div>
                 <div class="portlet-body">
                     <div id="MenuUnitEditTree"></div> @*<--菜单树flag*@
-                    <div ng-if="!vm.menuTree.unitCount" class="text-muted">
+                    <div ng-if="!vm.menuTree" class="text-muted">
                         @L("NoOrganizationUnitDefinedYet")
                     </div>
                 </div>
@@ -45,11 +45,9 @@
                     </div>
                     <div class="actions" ng-if="vm.menuTree.selectedOu.id">
                         <a  data-ui-sref="productEdited" class="btn btn-circle btn-default">
+                            编辑菜单项
                             <i class="fa fa-plus"></i> 
                         </a>
-                        @*<a ng-click="vm.getProduct(4)" class="btn btn-circle btn-default">
-                            <i class="fa fa-plus"></i> 
-                        </a>*@
                     </div>
                 </div>
                 <div class="portlet-body">

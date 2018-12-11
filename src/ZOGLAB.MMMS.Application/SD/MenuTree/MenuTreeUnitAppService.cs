@@ -36,7 +36,7 @@ namespace ZOGLAB.MMMS.MenuTree
             };
         }
 
-        public async Task<MenuTreeUnitDto> CreateOrganizationUnit(CreateTreeUnitInput input)
+        public async Task<MenuTreeUnitDto> CreateMenuTreeUnit(CreateTreeUnitInput input)
         {
             var menuTreeUnit = new SD_MenuTreeUnit(input.DisplayName, input.Url, input.Icon, input.ParentId);
 
