@@ -25046,12 +25046,13 @@ Page Header
   .page-header.navbar .menu-toggler {
     display: block;
     cursor: pointer;
-    opacity: 0.6;
+    /* opacity: 0.6; */
     filter: alpha(opacity=60);
     width: 20px;
     height: 14px;
     background-repeat: no-repeat;
-    background-position: center center; }
+    background-position: center center;
+    }
     .page-header.navbar .menu-toggler:hover {
       filter: alpha(opacity=100);
       opacity: 1; }
@@ -26981,9 +26982,11 @@ Page Loading
     Body bg color
     ***********/
 body {
-  background: #e9ecf3; }
+  background: #e9ecf3;
+  }
   body.page-md {
-    background: #f3f5f9; }
+    background: #f3f5f9;
+    }
 
 /*********** 
     Page Header
@@ -27104,7 +27107,8 @@ body {
       .page-header.navbar .search-form .input-group .input-group-btn .btn.submit > i {
         color: #ced6de; }
   .page-header.navbar .menu-toggler {
-    background-image: url(/metronic/assets/admin/layout4/img/sidebar-toggle-light.png); }
+    /* background-image: url(/metronic/assets/admin/layout4/img/sidebar-toggle-light.png); */
+    }
   .page-header.navbar .page-actions .btn-group .btn-sm.btn-transparent {
     background: none;
     border: 1px solid white;

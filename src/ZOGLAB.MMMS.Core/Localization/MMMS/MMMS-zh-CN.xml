@@ -26,12 +26,12 @@
     <text name="CreateNewRole" value="添加角色" />
     <text name="RoleProperties" value="角色属性" />
     <text name="Permissions" value="权限" />
-    <text name="Save" value="保存" />
-    <text name="Cancel" value="取消" />
+    <text name="Save" value="保 存" />
+    <text name="Cancel" value="取 消" />
     <text name="RolesHeaderInfo" value="使用角色进行权限分组." />
     <text name="Static" value="系统" />
-    <text name="Actions" value="操作" />
-    <text name="Delete" value="删除" />
+    <text name="Actions" value="操 作" />
+    <text name="Delete" value="删 除" />
     <text name="SavedSuccessfully" value="保存成功." />
     <text name="AreYouSure" value="您确定吗?" />
     <text name="YesDelete" value="是, 执行删除!" />
@@ -282,6 +282,61 @@
     <text name="ThisLanguageAlreadyExists" value="这种语言已经存在!" />
     <!--2018/12/02-->
     <text name="OrganizationUnits" value="组织机构" />
+    <!--3MS_menu_SiderBar  2018/12/13-->
+    <text name="RealtimeMonitoring">实时监控</text>
+    <text name="AreaMonitoring">区域监控</text>
+    <text name="SiteManagement">站点管理</text>
+    <text name="InstrumentSR">仪器收发</text>
+    <text name="InspectionRegistration">送检登记</text>
+    <text name="InstrumentHandover">仪器交接</text>
+    <text name="InstrumentBack">仪器返样</text>
+    <text name="Calibration">检定校准</text>
+    <text name="InstrumentSelection">仪器挑选</text>
+    <text name="DataRegistration">数据登记</text>
+    <text name="DataChanges">数据变更</text>
+    <text name="DataReview">数据审核</text>
+    <text name="Audit">审核</text>
+    <text name="CertificateOfApproval">证书批准</text>
+    <text name="Approval">批准</text>
+    <text name="CertificateOfPrint">证书打印</text>
+    <text name="TheCertificateChange">证书修改</text>
+    <text name="TheOriginalRecord">原始记录</text>
+    <text name="QueryStatistics">查询统计</text>
+    <text name="CertificateOfStatistics">证书统计</text>
+    <text name="VerificationRateStatistics">检定率统计</text>
+    <text name="TrafficStatistics">业务量统计</text>
+    <text name="StandardQuery">标准器查询</text>
+    <text name="InstrumentStatusQuery">仪器状态查询</text>
+    <text name="ToCheckWarning">到检预警</text>
+    <text name="SiteEarlyWarning">站点预警</text>
+    <text name="StandardAlarm">标准器预警</text>
+    <text name="MetrologicalServiceWarning">计量业务预警</text>
+    <text name="QualityManagement">质量管理</text>
+    <text name="TemplateManagement">模板管理</text>
+    <text name="ProcessManagement">流程管理</text>
+    <text name="DocumentRemind">文档提醒</text>
+    <text name="QualityControlDocuments">质控文件</text>
+    <text name="MeasuringMechanism">计量机构</text>
+    <text name="InstrumentManagement">仪器管理</text>
+    <text name="InspectionUnit">送检单位</text>
+    <text name="StandardManager">标准器管理</text>
+    <text name="MeteringDeviceManagement">计量装置管理</text>
+    <text name="DisciplineManagement">规程管理</text>
+    <text name="BasicInfoMeteringMechanism">计量机构基本信息</text>
+    <text name="AgencyAuthorizationInfo">机构授权信息</text>
+    <text name="PersonnelSurveyInformation">人员调查信息</text>
+    <text name="VerificationServiceIncome">检定服务收入</text>
+    <text name="AnnualExpenditureAndExpenditure">年度经费收支</text>
+    <text name="ReferenceInformation">标准器信息</text>
+    <text name="LaboratoryEquipment">实验室专用设备</text>
+    <text name="LaboratoryCapacity">实验室能力</text>
+    <text name="TaskVolumeInformation">工作任务量信息</text>
+    <text name="SystemManagement">系统管理</text>
+    <text name="ElectronicSignature">电子签名</text>
+    <text name="USBKey">USB Key</text>
     
+    <!--page_login_in-->
+    <text name="SystemName">气象计量检定系统</text>
+
   </texts>
 </localizationDictionary>

@@ -71,15 +71,14 @@ namespace ZOGLAB.MMMS.Web.App.Startup
 
             AddAppMetronicCss(bundles, isRTL: false);
             AddAppMetronicCss(bundles, isRTL: true);
-
             bundles.Add(
-              new ScriptBundle("~/Bundles/App/metronic/js")
-                  .Include(
-                      "~/metronic/assets/global/scripts/app.js",
-                      "~/metronic/assets/admin/layout4/scripts/layout.js",
-                      "~/metronic/assets/layouts/global/scripts/quick-sidebar.js"
-                  ).ForceOrdered()
-              );
+                new ScriptBundle("~/Bundles/App/metronic/js")
+                    .Include(
+                        "~/metronic/assets/global/scripts/app.js",
+                        "~/metronic/assets/admin/layout4/scripts/layout.js",
+                        "~/metronic/assets/layouts/global/scripts/quick-sidebar.js"
+                    ).ForceOrdered()
+                );
 
             //APPLICATION
 

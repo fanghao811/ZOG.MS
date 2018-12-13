@@ -39,246 +39,246 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     )
                 ).AddItem(new MenuItemDefinition(       //2018/12/12  新增加11个主菜单
                     PageNames.App.Tenant.Dashboard,
-                    L("实时监控"),
+                    L("RealtimeMonitoring"),
                      icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("区域监控"),
+                        L("AreaMonitoring"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("站点管理"),
-                        icon: "icon-ban"
-                        )
-                    )
-                ).AddItem(new MenuItemDefinition(
-                    PageNames.App.Tenant.Dashboard,
-                    L("仪器收发"),
-                    icon: "icon-ban"
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
-                        L("送检登记"),
-                        icon: "icon-ban"
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
-                        L("仪器交接"),
-                        icon: "icon-ban"
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
-                        L("仪器返样"),
+                        L("SiteManagement"),
                         icon: "icon-ban"
                         )
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("检定校准"),
+                    L("InstrumentSR"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("仪器挑选"),
+                        L("InspectionRegistration"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("数据登记"),
+                        L("InstrumentHandover"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("数据变更"),
+                        L("InstrumentBack"),
                         icon: "icon-ban"
                         )
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("数据审核"),
+                    L("Calibration"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("审核"),
+                        L("InstrumentSelection"),
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.OrganizationUnits,
+                        L("DataRegistration"),
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.OrganizationUnits,
+                        L("DataChanges"),
                         icon: "icon-ban"
                         )
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("证书批准"),
+                    L("DataReview"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("批准"),
+                        L("Audit"),
                         icon: "icon-ban"
                         )
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("证书打印"),
+                    L("CertificateOfApproval"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("证书打印"),
-                        icon: "icon-ban"
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
-                        L("证书修改"),
-                        icon: "icon-ban"
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
-                        L("原始记录"),
+                        L("Approval"),
                         icon: "icon-ban"
                         )
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("查询统计"),
+                    L("CertificateOfPrint"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("证书统计"),
+                        L("CertificateOfPrint"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("鉴定率统计"),
+                        L("TheCertificateChange"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("业务量统计"),
-                        icon: "icon-ban"
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
-                        L("标准器查询"),
-                        icon: "icon-ban"
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
-                        L("仪器状态查询"),
+                        L("TheOriginalRecord"),
                         icon: "icon-ban"
                         )
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("到检预警"),                   
+                    L("QueryStatistics"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("站点预警"),
+                        L("CertificateOfStatistics"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("标准器预警"),
+                        L("VerificationRateStatistics"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("计量业务预警"),
+                        L("TrafficStatistics"),
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.OrganizationUnits,
+                        L("StandardQuery"),
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.OrganizationUnits,
+                        L("InstrumentStatusQuery"),
+                        icon: "icon-ban"
+                        )
+                    )
+                ).AddItem(new MenuItemDefinition(
+                    PageNames.App.Tenant.Dashboard,
+                    L("ToCheckWarning"),                   
+                    icon: "icon-ban"
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.OrganizationUnits,
+                        L("SiteEarlyWarning"),
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.OrganizationUnits,
+                        L("StandardAlarm"),
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.OrganizationUnits,
+                        L("MetrologicalServiceWarning"),
                         icon: "icon-ban"
                         )
                     )//     TODO: 继续增加子菜单 12:05
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("质量管理"),
+                    L("QualityManagement"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("模板管理"),
+                        L("TemplateManagement"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("流程管理"),
+                        L("ProcessManagement"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("文档提醒"),
+                        L("DocumentRemind"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("质控文件"),
+                        L("QualityControlDocuments"),
                         icon: "icon-ban"
                         )
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("计量机构"),                    
+                    L("MeasuringMechanism"),                    
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("仪器管理"),
+                        L("InstrumentManagement"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("送检单位"),
+                        L("InspectionUnit"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("标准器管理"),
+                        L("StandardManager"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("计量装置管理"),
+                        L("MeteringDeviceManagement"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("规程管理"),
+                        L("DisciplineManagement"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("计量机构基本信息"),
+                        L("BasicInfoMeteringMechanism"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("机构授权信息"),
+                        L("AgencyAuthorizationInfo"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("人员调查信息"),
+                        L("PersonnelSurveyInformation"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("检定服务收入"),
+                        L("VerificationServiceIncome"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("年度经费收支"),
+                        L("AnnualExpenditureAndExpenditure"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("标准器信息"),
+                        L("ReferenceInformation"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("实验室专用设备"),
+                        L("LaboratoryEquipment"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("实验室能力"),
+                        L("LaboratoryCapacity"),
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("工作任务量信息"),
+                        L("TaskVolumeInformation"),
                         icon: "icon-ban"
                         )
                     )
@@ -315,7 +315,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.Users,
-                        L("电子签名"),
+                        L("ElectronicSignature"),
                         url: "",
                         icon: "icon-ban"
                         )

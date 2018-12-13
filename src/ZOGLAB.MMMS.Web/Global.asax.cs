@@ -37,6 +37,8 @@ namespace ZOGLAB.MMMS.Web
         private void RestoreUserLanguage()
         {
             var settingManager = AbpBootstrapper.IocManager.Resolve<ISettingManager>();
+            //Exp:  修改ABP 初始化-默认语言
+            //var defaultLanguage = settingManager.GetSettingValue(LocalizationSettingNames.DefaultLanguage);
             var defaultLanguage = settingManager.GetSettingValue(LocalizationSettingNames.DefaultLanguage);
 
             if (defaultLanguage.IsNullOrEmpty())
@@ -48,6 +50,8 @@ namespace ZOGLAB.MMMS.Web
             {
                 CultureInfo.GetCultureInfo(defaultLanguage);
                 Response.Cookies.Add(new HttpCookie("Abp.Localization.CultureName", defaultLanguage) { Expires = Clock.Now.AddYears(2) });
+                //Exp: Response.Cookies.Add() 用法
+                //Response.Cookies.Add(new HttpCookie("Abp.Localization.CultureName", defaultLanguage) { Expires = Clock.Now.AddYears(2) });
             }
             catch (CultureNotFoundException exception)
             {

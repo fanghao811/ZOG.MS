@@ -40,8 +40,8 @@ appModule.factory('settings', ['$rootScope', function ($rootScope) {
             pageBodySolid: false, // solid body color state
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
         },
-        layoutImgPath: App.getAssetsPath() + 'admin/layout4/img/',
-        layoutCssPath: App.getAssetsPath() + 'admin/layout4/css/',
+        layoutImgPath: App.getAssetsPath() + 'admin/layout/img/',
+        layoutCssPath: App.getAssetsPath() + 'admin/layout/css/',
         assetsPath: abp.appPath + 'metronic/assets',
         globalPath: abp.appPath + 'metronic/assets/global',
         layoutPath: abp.appPath + 'metronic/assets/layouts/layout4'
