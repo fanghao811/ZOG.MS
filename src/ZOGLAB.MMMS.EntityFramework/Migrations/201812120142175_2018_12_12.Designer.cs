@@ -7,13 +7,13 @@ namespace ZOGLAB.MMMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class added_12_entities : IMigrationMetadata
+    public sealed partial class _2018_12_12 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(added_12_entities));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_2018_12_12));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812110215338_added_12_entities"; }
+            get { return "201812120142175_2018_12_12"; }
         }
         
         string IMigrationMetadata.Source

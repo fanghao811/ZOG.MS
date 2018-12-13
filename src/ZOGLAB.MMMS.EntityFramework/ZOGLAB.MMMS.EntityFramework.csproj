@@ -388,9 +388,9 @@
     <Compile Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.Designer.cs">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812110215338_added_12_entities.cs" />
-    <Compile Include="Migrations\201812110215338_added_12_entities.Designer.cs">
-      <DependentUpon>201812110215338_added_12_entities.cs</DependentUpon>
+    <Compile Include="Migrations\201812120142175_2018_12_12.cs" />
+    <Compile Include="Migrations\201812120142175_2018_12_12.Designer.cs">
+      <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MMMSDataModule.cs" />
@@ -588,8 +588,8 @@
     <EmbeddedResource Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.resx">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812110215338_added_12_entities.resx">
-      <DependentUpon>201812110215338_added_12_entities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812120142175_2018_12_12.resx">
+      <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

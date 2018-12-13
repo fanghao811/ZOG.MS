@@ -39,29 +39,9 @@
     @Styles.Render("~/Bundles/Common/css")
     @Html.IncludeStyle("~/Views/Account/_Layout" + (CultureHelper.IsRtl ? "-rtl" : "") + ".css")
     @RenderSection("Styles", false)
-    <style type="text/css">
-        .right-login {
-            width: 460px;
-            height: 520px;
-            margin-top: 170px;
-            background: rgba(175,183,206,0.35);
-            /*opacity:0.39;*/
-            border-radius: 4px;
-        }
-        .login-img {
-            width: 285px;
-            height: 146px;
-            margin: 57px 81px 64px;
-        }
-        .form-control {
-            width: 366px;
-            height: 45px;
-            border: 2px solid rgba(185,211,237,1);
-            border-radius: 4px;
-            margin:0 40px;
-        }
-    </style>
+
     @Html.Action("TenantCustomCss", "Account", new { area = "" })
+
     <script type="text/javascript">
         @* This is used to get the application's root path from javascript.
         It's useful if you're running application in a virtual directory under IIS. *@
@@ -71,18 +51,17 @@
 <body class="page-md login">
     <div class="menu-toggler sidebar-toggler">
     </div>
-    @*<div class="logo">
-            <a href="~/">
-                @Html.Action("AppLogo", "Account", new { area = "", appPath = ApplicationPath, width = 149, height = 35 })
-            </a>
-        </div>*@
-    @*<div class="content">*@
+    <div class="logo">
+        <a href="~/">
+            @Html.Action("AppLogo", "Account", new { area = "", appPath = ApplicationPath, width = 149, height = 35 })
+        </a>
+    </div>
     <div class="content">
         @RenderBody()
     </div>
     @Html.Action("Languages", "Account")
     <div class="copyright">
-        @Clock.Now.Year © METEOROLOGICAL METROLOGY BUSINESS SYSTEM  Ver:3.0.0
+        @Clock.Now.Year © MMMS.
     </div>
     <!--[if lt IE 9]>
         <script src="~/libs/respond/respond.min.js"></script>
@@ -127,6 +106,5 @@
             }
         });
     </script>
-
 </body>
 </html>

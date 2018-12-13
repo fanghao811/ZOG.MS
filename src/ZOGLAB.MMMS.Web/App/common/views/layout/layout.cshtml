@@ -67,10 +67,10 @@
     <div class="clearfix">
     </div>
 
-    <div class="page-container">
+    <div class="page-container " style="height:660px">
         <div data-ng-include="'~/App/common/views/layout/sidebar.cshtml'" data-ng-controller="common.views.layout.sidebar as vm" class="page-sidebar-wrapper"></div>
         <div class="page-content-wrapper">
-            <div class="page-content">
+            <div class="page-content" style="height:660px">
                 <div ui-view class="fade-in-up">
                 </div>
             </div>
@@ -81,9 +81,9 @@
             </div>
         }
     </div>
-
-    <div data-ng-include="'~/App/common/views/layout/footer.cshtml'" data-ng-controller="common.views.layout.footer as vm" class="page-footer">
-    </div>
+    @*2018/12/12 注释了页脚*@
+    @*<div data-ng-include="'~/App/common/views/layout/footer.cshtml'" data-ng-controller="common.views.layout.footer as vm" class="page-footer">
+    </div>*@
     <!--[if lt IE 9]>
         <script src="~/libs/respond/respond.min.js"></script>
         <script src="~/libs/html5shiv/html5shiv.js"></script>

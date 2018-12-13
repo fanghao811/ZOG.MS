@@ -3,7 +3,7 @@
   <texts>
     <text name="HomePage" value="主页" />
     <text name="AboutUs" value="关于我们" />
-    <text name="Administration" value="管理" />
+    <text name="Administration" value="系统管理" />
     <text name="Roles" value="角色" />
     <text name="Users" value="用户" />
     <text name="InvalidFormMessage" value="部分输入信息不符合要求，请检查并改正." />
@@ -151,7 +151,7 @@
     <text name="ProfilePicture_Change_Error" value="头像修改错误." />
     <text name="ProfilePicture_Warn_SizeLimit" value="只能选择1mb内的JPG/JPEG图片，请重新选择头像文件." />
     <text name="ProfilePicture_Warn_FileType" value="只能选择1mb内的JPG/JPEG图片，请重新选择头像文件." />
-    <text name="Dashboard" value="工作台" />
+    <text name="Dashboard" value="我的工作" />
     <text name="DashboardHeaderInfo" value="分析与报告" />
     <text name="GoToApplication" value="登录系统" />
     <text name="TenantInformations" value="租户信息" />
@@ -280,5 +280,8 @@
     <text name="LookingForMpaVersion" value="查找多页面应用版本号" />
     <text name="LookingForSpaVersion" value="查找单页面应用版本号" />
     <text name="ThisLanguageAlreadyExists" value="这种语言已经存在!" />
+    <!--2018/12/02-->
+    <text name="OrganizationUnits" value="组织机构" />
+    
   </texts>
 </localizationDictionary>

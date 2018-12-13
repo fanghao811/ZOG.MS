@@ -1,9 +1,11 @@
 namespace ZOGLAB.MMMS.Migrations
 {
+    using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
-
-    public partial class added_12_entities : DbMigration
+    
+    public partial class _2018_12_12 : DbMigration
     {
         public override void Up()
         {

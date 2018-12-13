@@ -687,7 +687,10 @@ Page sidebar
     box-shadow: none; }
     .page-md .page-sidebar.navbar-collapse, .page-md
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover.navbar-collapse {
-      box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.03); }
+      width: 240px;
+      background:rgba(40,58,98,1);
+      box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.03);
+      }
   .page-sidebar .page-sidebar-menu,
   .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {
     -webkit-border-radius: 4px;
@@ -705,7 +708,8 @@ Page sidebar
       display: block;
       margin: 0;
       padding: 0;
-      border: 0px; }
+      border: 0px;   
+      }
       .page-sidebar .page-sidebar-menu > li.heading,
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading {
         height: 50px;
@@ -726,9 +730,7 @@ Page sidebar
         padding: 12px 15px;
         text-decoration: none; }
         .page-sidebar .page-sidebar-menu > li > a > .title,
-        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .title {
-          font-size: 14px;
-          font-weight: 400; }
+        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .title {width:72px;height:17px;font-size:18px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(254,254,254,1);padding-left: 8px;}
         .page-sidebar .page-sidebar-menu > li > a > i,
         .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i {
           font-size: 18px;
@@ -788,7 +790,7 @@ Page sidebar
       margin: 8px 0px 8px 0px; }
       .page-sidebar .page-sidebar-menu .sub-menu li,
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li {
-        background: none;
+        background: none;/*todo 1*/
         margin: 0px;
         padding: 0px;
         margin-top: 1px !important;
@@ -799,9 +801,13 @@ Page sidebar
           margin: 0;
           padding: 9px 14px 9px 30px;
           text-decoration: none;
-          font-size: 14px;
+          font-size: 15px;
           font-weight: 400;
-          background: none; }
+          background: #283a62;
+          }
+          .page-sidebar .page-sidebar-menu .sub-menu li > a >span{
+            padding-left: 8px;
+          }
           .page-sidebar .page-sidebar-menu .sub-menu li > a > i,
           .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a > i {
             font-size: 16px;

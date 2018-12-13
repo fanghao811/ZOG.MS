@@ -94,7 +94,8 @@
                 addUnit: function (parentId) {
                     var instance = $.jstree.reference(vm.menuTree.$tree);
                     vm.menuTree.openCreateOrEditUnitModal({
-                        parentId: parentId
+                        //parentId: parentId        TODO:先默认传入0, 等update方法...
+                        parentIds:0
                     }, function (newOu) {
                         instance.create_node(
                             parentId ? instance.get_node(parentId) : '#',
