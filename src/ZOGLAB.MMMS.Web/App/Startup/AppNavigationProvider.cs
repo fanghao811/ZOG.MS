@@ -308,6 +308,18 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         requiredPermissionName: AppPermissions.Pages_Administration_Users
                         )
                     ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.Users,
+                        L("USBKey"),
+                        url: "",
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.Users,
+                        L("电子签名"),
+                        url: "",
+                        icon: "icon-ban"
+                        )
+                    ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.Languages,
                         L("Languages"),
                         url: "languages",

@@ -556,6 +556,8 @@
     <Content Include="Common\Images\app-logo-small.png" />
     <Content Include="Common\Images\bg-login-on.png" />
     <Content Include="Common\Images\Icons\检定计划.png" />
+    <Content Include="Common\Images\logos\3MS-logo-1.png" />
+    <Content Include="Common\Images\logos\3MS-logo-2.png" />
     <Content Include="Common\Images\zoglab-logo-on-light.png" />
     <Content Include="Common\Scripts\jquery-validation-custom.js" />
     <Content Include="Areas\Mpa\Views\Layout\_ChatBar.css">

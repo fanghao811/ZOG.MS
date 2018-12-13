@@ -15,16 +15,18 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>MMMS</title>
+    <title>气象计量检定系统</title>@*网页抬头*@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     @* Fill these meta tags upon your project specification *@
-    <meta content="MMMS" name="description" />
-    <meta content="MMMS" name="keywords">
-    <meta content="MMMS" name="author" />
-    <link rel="shortcut icon" href="~/favicon.ico" />
+    <meta content="ZOGLAB.3MS" name="description" />
+    <meta content="ZOGLAB.3MS" name="keywords">
+    <meta content="ZOGLAB.3MS" name="author" />
+    @*<link rel="shortcut icon" href="~/favicon.ico" />*@
+    <link rel="shortcut icon" href="~/Common/Images/logos/3MS-logo-1.png" />
     <link href="~/Content/fonts-open-sans.css" rel="stylesheet" type="text/css" />
+    @*TODO：将CSS与JS文件，打包成一个MIN文件，加快页面加载速度！*@
     @Html.IncludeStyle(StylePaths.FontAwesome)
     @Html.IncludeStyle(StylePaths.Simple_Line_Icons)
     @Html.IncludeStyle(CultureHelper.IsRtl ? StylePaths.BootstrapRTL : StylePaths.Bootstrap)
@@ -48,17 +50,19 @@
             /*opacity:0.39;*/
             border-radius: 4px;
         }
+
         .login-img {
             width: 285px;
             height: 146px;
             margin: 57px 81px 64px;
         }
+
         .form-control {
             width: 366px;
             height: 45px;
             border: 2px solid rgba(185,211,237,1);
             border-radius: 4px;
-            margin:0 40px;
+            margin: 0 40px;
         }
     </style>
     @Html.Action("TenantCustomCss", "Account", new { area = "" })
@@ -82,7 +86,7 @@
     </div>
     @Html.Action("Languages", "Account")
     <div class="copyright">
-        @Clock.Now.Year © METEOROLOGICAL METROLOGY BUSINESS SYSTEM  Ver:3.0.0
+        Powered by ZOGLAB Ver:3.0.0
     </div>
     <!--[if lt IE 9]>
         <script src="~/libs/respond/respond.min.js"></script>

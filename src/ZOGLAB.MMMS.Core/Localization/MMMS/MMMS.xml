@@ -487,5 +487,57 @@
     <text name="MaximumUserCount_Error_Message">Reached to maximum allowed user count!</text>
     <text name="MaximumUserCount_Error_Detail">This tenant is allowed to have a maximum of {0} users.</text>
     <text name="UnlockedTenandAdmin">Unlocked admin user for {0}</text>
+    
+    <!--3MS_menu_SiderBar  2018/12/13--> 
+    <text name="RealtimeMonitoring">Browse</text>
+    <text name="">Area monitoring</text>
+    <text name="">Site management</text>
+    <text name="">The instrument to send and receive</text>
+    <text name="">Inspection registration</text>
+    <text name="">Instrument handover</text>
+    <text name="">Instrument back</text>
+    <text name="">calibration</text>
+    <text name="">Instrument selection</text>
+    <text name="">Data registration</text>
+    <text name="">Data changes</text>
+    <text name="">Data review</text>
+    <text name="">audit</text>
+    <text name="">Certificate of approval</text>
+    <text name="">approval</text>
+    <text name="">Certificate of print</text>
+    <text name="">Certificate of print</text>
+    <text name="">The certificate change</text>
+    <text name="">The original record</text>
+    <text name="">Query statistics</text>
+    <text name="">Certificate of statistics</text>
+    <text name="">Verification rate statistics</text>
+    <text name="">Traffic statistics</text>
+    <text name="">To check warning</text>
+    <text name="">Site early warning</text>
+    <text name="">Standard alarm</text>
+    <text name="">Metrological service warning</text>
+    <text name="">Quality management</text>
+    <text name="">Template management</text>
+    <text name="">Process management</text>
+    <text name="">Document remind</text>
+    <text name="">Quality control documents</text>
+    <text name="">Measuring mechanism</text>
+    <text name="">Instrument management</text>
+    <text name="">Inspection unit</text>
+    <text name="">Standard manager</text>
+    <text name="">Metering device management</text>
+    <text name="">Discipline management</text>
+    <text name="">Basic information of metering mechanism</text>
+    <text name="">Agency authorization information</text>
+    <text name="">Personnel survey information</text>
+    <text name="">Verification service income</text>
+    <text name="">Annual expenditure and expenditure</text>
+    <text name="">Reference information</text>
+    <text name="">Laboratory equipment</text>
+    <text name="">Laboratory capacity</text>
+    <text name="">Task volume information</text>
+    <text name="">System management</text>
+    <text name="">The electronic signature</text>
+    <text name="">USB Key</text>
   </texts>
 </localizationDictionary>

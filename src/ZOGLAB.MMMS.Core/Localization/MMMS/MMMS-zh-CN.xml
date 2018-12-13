@@ -16,7 +16,7 @@
     <text name="UserNameOrEmail" value="用户名或邮箱地址" />
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
-    <text name="LogIn" value="登录" />
+    <text name="LogIn" value="登  录" />
     <text name="ForgotPassword" value="不记得密码了?" />
     <text name="DontYouHaveAnAccount" value="还不是系统用户?" />
     <text name="CreateAnAccount" value="注册" />
