@@ -337,6 +337,13 @@
     
     <!--page_login_in-->
     <text name="SystemName">气象计量检定系统</text>
-
+    
+    <!--organizations-->
+    <text name="Members" value="员工列表" />
+    <text name="ManagingOrganizationTree" value="组织机构树" />
+    <text name="AddMember" value="新增员工" />
+    <text name="AddRootUnit" value="新增根节点" />
+    <text name="OrganizationUnitsHeaderInfo" value="组织机构与员工信息" />
+    ORGANIZATION TREE
   </texts>
 </localizationDictionary>
