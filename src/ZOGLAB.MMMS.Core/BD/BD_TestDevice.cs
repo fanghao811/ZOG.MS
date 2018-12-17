@@ -1,0 +1,108 @@
+﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ZOGLAB.MMMS.BD
+{
+    /// <summary>
+    /// 6,设备检测项目从表（BD_DeviceItem）
+    /// </summary>
+    [Table("BD_TestDevice")]
+    public class BD_TestDevice : Entity<long>
+    {
+        public const int MaxLength_50 = 50;
+        public const int MaxLength_20 = 20;
+
+        //1.检定单ID
+        [ForeignKey("TestId")]
+        public BD_Test Test { get; set; }
+        public long TestId { get; set; }
+
+        //2.设备检测项目从表ID   
+        [ForeignKey("DeviceItem_ID")]
+        public BD_DeviceItem DeviceItem { get; set; }
+        public long DeviceItem_ID { get; set; }
+
+        //3.被检仪器基本信息表ID
+        [ForeignKey("Instrument_ID")]
+        public BD_Instrument Instrument { get; set; }
+        public long Instrument_ID { get; set; }
+
+        //4.仪器交接状态
+        [MaxLength(MaxLength_50)]
+        public string Check_User { get; set; }
+
+        //5.检测时间
+        public DateTime Check_DateTime { get; set; }
+
+        //6.检测结果
+        [MaxLength(MaxLength_50)]
+        public string Check_Result { get; set; }
+
+        //7.检测不合格原因
+        [MaxLength(MaxLength_50)]
+        public string Check_NGMark { get; set; }
+
+        //8.外观检查
+        [MaxLength(MaxLength_20)]
+        public string Appearance { get; set; }
+
+        //9.环境温度
+        [MaxLength(MaxLength_20)]
+        public string EnvirTemp { get; set; }
+
+        //10.环境湿度
+        [MaxLength(MaxLength_20)]
+        public string EnvirHumidity { get; set; }
+
+        //11.环境气压
+        [MaxLength(MaxLength_20)]
+        public string EnvirPressure { get; set; }
+
+        //12.审核状态
+        public bool ForCheck { get; set; }
+
+        //13.审核日期
+        public DateTime ForCheck_DateTime { get; set; }
+
+        //14.审核者
+        [MaxLength(MaxLength_20)]
+        public string ForCheck_User { get; set; }
+
+        //15.审核结果
+        [MaxLength(MaxLength_20)]
+        public string ForCheck_Result { get; set; }
+
+        //16.审核不合格原因
+        [MaxLength(MaxLength_50)]
+        public string ForCheck_NGMark { get; set; }
+
+        //17.批准状态
+        public bool ForApprove { get; set; }
+
+        //18.批准者
+        [MaxLength(MaxLength_20)]
+        public string ForApprove_User { get; set; }
+
+        //19.批准日期
+        public DateTime ForApprove_DateTime { get; set; }
+
+        //20.批准结果
+        [MaxLength(MaxLength_20)]
+        public string ForApprove_Result { get; set; }
+
+        //21.批准不合格原因
+        [MaxLength(MaxLength_20)]
+        public string ForApprove_NGMark { get; set; }
+
+        //22.证书号
+        [MaxLength(MaxLength_50)]
+        public string CertificateId { get; set; }
+
+        //23.原始记录号
+        [MaxLength(MaxLength_50)]
+        public string RawRecordsetId { get; set; }
+    }
+}

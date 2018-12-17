@@ -37,13 +37,7 @@ namespace ZOGLAB.MMMS.BD
         public string ExpressDelivery { get; set; }
 
         //7.返样方式
-        public BackModel Model { get; set; }
+        public bool BackModel  { get; set; }
 
-
-        public enum BackModel
-        {
-            邮寄 = 0,
-            上门 = 1
-        }
     }
 }

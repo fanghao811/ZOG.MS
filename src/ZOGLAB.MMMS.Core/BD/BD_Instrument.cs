@@ -55,7 +55,7 @@ namespace ZOGLAB.MMMS.BD
         public string Mark { get; set; }
 
         //12.是否使用
-        public int isUsing { get; set; }
+        public int IsUsing { get; set; }
 
         //构造函数
         public BD_Instrument()

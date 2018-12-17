@@ -396,9 +396,9 @@
     <Compile Include="Migrations\201812170318135_added_properties_user.Designer.cs">
       <DependentUpon>201812170318135_added_properties_user.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812170535382_added_BD_5_entities.cs" />
-    <Compile Include="Migrations\201812170535382_added_BD_5_entities.Designer.cs">
-      <DependentUpon>201812170535382_added_BD_5_entities.cs</DependentUpon>
+    <Compile Include="Migrations\201812170819002_added_partII_BD_entities.cs" />
+    <Compile Include="Migrations\201812170819002_added_partII_BD_entities.Designer.cs">
+      <DependentUpon>201812170819002_added_partII_BD_entities.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MMMSDataModule.cs" />
@@ -602,8 +602,8 @@
     <EmbeddedResource Include="Migrations\201812170318135_added_properties_user.resx">
       <DependentUpon>201812170318135_added_properties_user.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812170535382_added_BD_5_entities.resx">
-      <DependentUpon>201812170535382_added_BD_5_entities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812170819002_added_partII_BD_entities.resx">
+      <DependentUpon>201812170819002_added_partII_BD_entities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

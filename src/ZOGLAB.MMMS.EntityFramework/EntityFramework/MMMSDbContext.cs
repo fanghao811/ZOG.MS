@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.Zero.EntityFramework;
 using ZOGLAB.MMMS.Authorization.Roles;
 using ZOGLAB.MMMS.Authorization.Users;
@@ -52,7 +53,19 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<BD_Receive> BD_Receives { get; set; }
         public virtual IDbSet<BD_Back> BD_Backs { get; set; }
         public virtual IDbSet<BD_ReceiveDevice> BD_ReceiveDevices { get; set; }
+        /* PartII */
+        public virtual IDbSet<BD_DeviceItem> BD_DeviceItems { get; set; }
+        public virtual IDbSet<BD_Unit> BD_Units { get; set; }
+        public virtual IDbSet<BD_TestDevice> BD_TestDevices { get; set; }
+        public virtual IDbSet<BD_Test> BD_Tests { get; set; }
+        public virtual IDbSet<BD_Rules> BD_Rules { get; set; }
+        public virtual IDbSet<BD_Installatio> BD_Installatios { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+        }
 
         public MMMSDbContext()
             : base("Default")

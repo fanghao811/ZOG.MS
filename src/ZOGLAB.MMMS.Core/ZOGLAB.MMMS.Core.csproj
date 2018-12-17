@@ -127,6 +127,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD\BD_Installatio.cs" />
+    <Compile Include="BD\BD_Rules.cs" />
+    <Compile Include="BD\BD_Unit.cs" />
+    <Compile Include="BD\BD_TestDevice.cs" />
+    <Compile Include="BD\BD_Test.cs" />
+    <Compile Include="BD\BD_DeviceItem.cs" />
     <Compile Include="BD\BD_Back.cs" />
     <Compile Include="BD\BD_ReceiveDevice.cs" />
     <Compile Include="BD\BD_Receive.cs" />
