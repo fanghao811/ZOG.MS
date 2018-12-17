@@ -1,6 +1,5 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,14 +9,14 @@ namespace ZOGLAB.MMMS.BD
     /// 5，收发设备从表（BD_ReceiveDevice）
     /// </summary>
     [Table("BD_ReceiveDevice")]
-    public class BD_ReceiveDevice : Entity<long>,ISoftDelete
+    public class BD_ReceiveDevice : CreationAuditedEntity<long>,ISoftDelete
     {
         public const int MaxLength_50 = 50;
 
         //1.收发单号ID   foreignKey
-        [ForeignKey("BD_Receive_ID")]
+        [ForeignKey("Receive_ID")]
         public BD_Receive BD_Receive { get; set; }
-        public long BD_Receive_ID { get; set; }
+        public long Receive_ID { get; set; }
 
         //2.被检仪器ID   foreignKey
         [ForeignKey("Instrument_ID")]

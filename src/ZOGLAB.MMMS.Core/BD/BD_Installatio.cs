@@ -7,10 +7,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ZOGLAB.MMMS.BD
 {
     /// <summary>
-    /// 9，送检单位信息表（BD_Unit）
+    /// 11，计量装置信息表（BD_Installation）
     /// </summary>
-    [Table("BD_Installatio")]
-    public class BD_Installatio : Entity<long>,ICreationAudited,ISoftDelete
+    [Table("BD_Installation")]
+    public class BD_Installation : CreationAuditedEntity<long>,ISoftDelete
     {
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
@@ -49,9 +49,6 @@ namespace ZOGLAB.MMMS.BD
         //9.备注
         [MaxLength(MaxLength_50)]
         public string Mark { get; set; }
-
-        public long? CreatorUserId { get; set; }
-        public DateTime CreationTime { get; set; }
 
         public bool IsDeleted { get; set; }
     }

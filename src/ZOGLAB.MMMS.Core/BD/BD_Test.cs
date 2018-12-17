@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ZOGLAB.MMMS.BD
 {
     /// <summary>
-    /// 4,返样信息表（BD_Back）
+    /// 7，检测单信息主表(BD_Test)
     /// </summary>
     [Table("BD_Test")]
     public class BD_Test : AuditedEntity<long>
@@ -14,9 +14,9 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_50 = 50;
 
         //1.收发单号ID
-        [ForeignKey("BD_Receive_ID")]
+        [ForeignKey("Receive_ID")]
         public BD_Receive BD_Receive { get; set; }
-        public long BD_Receive_ID { get; set; }
+        public long Receive_ID { get; set; }
 
         //2.检测单号
         [MaxLength(MaxLength_50)]

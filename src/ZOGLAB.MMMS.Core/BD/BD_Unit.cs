@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,7 +9,7 @@ namespace ZOGLAB.MMMS.BD
     /// 9，送检单位信息表（BD_Unit）
     /// </summary>
     [Table("BD_Unit")]
-    public class BD_Unit : Entity<long>,ISoftDelete
+    public class BD_Unit : CreationAuditedEntity<long>,ISoftDelete
     {
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;

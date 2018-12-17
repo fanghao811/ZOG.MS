@@ -11,14 +11,14 @@ namespace ZOGLAB.MMMS.BD
     /// 6,设备检测项目从表（BD_DeviceItem）
     /// </summary>
     [Table("BD_DeviceItem")]
-    public class BD_DeviceItem : Entity<long>,ISoftDelete
+    public class BD_DeviceItem : CreationAuditedEntity<long>,ISoftDelete
     {
         public const int MaxLength_50 = 50;
 
         //1.收发单主表ID   foreignKey
-        [ForeignKey("BD_ReceiveDeviceId")]
+        [ForeignKey("ReceiveDeviceId")]
         public BD_ReceiveDevice BD_ReceiveDevice { get; set; }
-        public long BD_ReceiveDeviceId { get; set; }
+        public long ReceiveDeviceId { get; set; }
 
         //2.检测单表ID
         [ForeignKey("Test_ID")]

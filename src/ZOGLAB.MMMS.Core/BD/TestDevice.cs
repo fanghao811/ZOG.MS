@@ -7,18 +7,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ZOGLAB.MMMS.BD
 {
     /// <summary>
-    /// 6,设备检测项目从表（BD_DeviceItem）
+    /// 12，标准器信息表（BD_Standard）
     /// </summary>
     [Table("BD_TestDevice")]
-    public class BD_TestDevice : Entity<long>
+    public class BD_TestDevice : CreationAuditedEntity<long>,ISoftDelete
     {
         public const int MaxLength_50 = 50;
         public const int MaxLength_20 = 20;
 
         //1.检定单ID
-        [ForeignKey("TestId")]
+        [ForeignKey("Test_ID")]
         public BD_Test Test { get; set; }
-        public long TestId { get; set; }
+        public long Test_ID { get; set; }
 
         //2.设备检测项目从表ID   
         [ForeignKey("DeviceItem_ID")]
@@ -104,5 +104,7 @@ namespace ZOGLAB.MMMS.BD
         //23.原始记录号
         [MaxLength(MaxLength_50)]
         public string RawRecordsetId { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
