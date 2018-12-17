@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Abp.Authorization.Users;
 using Abp.Extensions;
 using Microsoft.AspNet.Identity;
@@ -14,11 +15,23 @@ namespace ZOGLAB.MMMS.Authorization.Users
 
         public const int MaxPhoneNumberLength = 24;
 
+        public const int MaxLength_20 = 20;
+        public const int MaxLength_100 = 100;
         public virtual Guid? ProfilePictureId { get; set; }
 
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
 
         //Can add application specific user properties here
+
+        //TODO: 12/17 User 新字段
+        [MaxLength(MaxLength_20)]
+        public virtual string Sex { get; set; }
+
+        public virtual bool IsLeader { get; set; }
+
+        //10.备注信息
+        [MaxLength(MaxLength_100)]
+        public string Memo { get; set; }
 
         public User()
         {

@@ -127,6 +127,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD\BD_Back.cs" />
+    <Compile Include="BD\BD_ReceiveDevice.cs" />
+    <Compile Include="BD\BD_Receive.cs" />
+    <Compile Include="BD\BD_EssentialFactor.cs" />
+    <Compile Include="BD\BD_Instrument.cs" />
     <Compile Include="MMMSConsts.cs" />
     <Compile Include="MMMSCoreModule.cs" />
     <Compile Include="MMMSDomainServiceBase.cs" />

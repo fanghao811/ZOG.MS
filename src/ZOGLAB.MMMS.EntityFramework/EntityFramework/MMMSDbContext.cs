@@ -3,6 +3,7 @@ using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using ZOGLAB.MMMS.Authorization.Roles;
 using ZOGLAB.MMMS.Authorization.Users;
+using ZOGLAB.MMMS.BD;
 using ZOGLAB.MMMS.Chat;
 using ZOGLAB.MMMS.Friendships;
 using ZOGLAB.MMMS.MultiTenancy;
@@ -29,7 +30,7 @@ namespace ZOGLAB.MMMS.EntityFramework
 
         public virtual IDbSet<ChatMessage> ChatMessages { get; set; }
 
-        /* 新增三个系统实体 2018/12/06  */
+        /* 新增SD系统实体 2018/12/06  */
         public virtual IDbSet<SD_Organization> SD_Organizations { get; set; }
         public virtual IDbSet<SD_User> SD_Users { get; set; }
         public virtual IDbSet<SD_Role> SD_Roles { get; set; }
@@ -44,6 +45,14 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<SD_System> SD_System { get; set; }
         public virtual IDbSet<TreeUnit> TreeUnits { get; set; }
         public virtual IDbSet<SD_MenuTreeUnit> SD_MenuTreeUnits { get; set; }
+
+        /* 新增BD系统实体 2018/12/17  */
+        public virtual IDbSet<BD_Instrument> BD_Instruments { get; set; }
+        public virtual IDbSet<BD_EssentialFactor> BD_EssentialFactors { get; set; }
+        public virtual IDbSet<BD_Receive> BD_Receives { get; set; }
+        public virtual IDbSet<BD_Back> BD_Backs { get; set; }
+        public virtual IDbSet<BD_ReceiveDevice> BD_ReceiveDevices { get; set; }
+
 
         public MMMSDbContext()
             : base("Default")
