@@ -22546,10 +22546,10 @@ Bootstrap Datepaginator
   right: 4px !important; }
 
 .datepaginator .fa-angle-right:before {
-  content: "ï„…"/*rtl:"ï„„"*/; }
+  content: ""/*rtl:""*/; }
 
 .datepaginator .fa-angle-left:before {
-  content: "ï„„"/*rtl:"ï„…"*/; }
+  content: ""/*rtl:""*/; }
 
 /***
 Bootstrap Datepicker
@@ -22594,10 +22594,10 @@ Bootstrap Datepicker
   border: 1px solid #efefef; }
 
 .datepicker .fa-angle-left:before {
-  content: "ï„„"/*rtl:"ï„…"*/; }
+  content: ""/*rtl:""*/; }
 
 .datepicker .fa-angle-right:before {
-  content: "ï„…"/*rtl:"ï„„"*/; }
+  content: ""/*rtl:""*/; }
 
 /***
 Bootstrap Daterangepicker
@@ -22660,10 +22660,10 @@ Bootstrap Daterangepicker
   margin-bottom: 0 !important; }
 
 .daterangepicker .fa-angle-right:before {
-  content: "ï„…"/*rtl:"ï„„"*/; }
+  content: ""/*rtl:""*/; }
 
 .daterangepicker .fa-angle-left:before {
-  content: "ï„„"/*rtl:"ï„…"*/; }
+  content: ""/*rtl:""*/; }
 
 /***
 Bootstrap  Datetimepicker
@@ -22691,10 +22691,10 @@ Bootstrap  Datetimepicker
   filter: none !important; }
 
 .datetimepicker .fa-angle-left:before {
-  content: "ï„„"/*rtl:"ï„…"*/; }
+  content: ""/*rtl:""*/; }
 
 .datetimepicker .fa-angle-right:before {
-  content: "ï„…"/*rtl:"ï„„"*/; }
+  content: ""/*rtl:""*/; }
 
 /* change z-index when opened in modal */
 .modal-open .datetimepicker {
@@ -24904,7 +24904,7 @@ pre[class*="language-"] {
   content: "^"; }
 
 .socicon-smugmug:before {
-  content: "Â¨"; }
+  content: "¨"; }
 
 .socicon-swarm:before {
   content: "$"; }
@@ -25303,9 +25303,9 @@ Page Header
           color: #c0cddc;
           font-size: 16px; }
           .page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i:before {
-            content: "î¥"/*rtl:"î¦"*/; }
+            content: ""/*rtl:""*/; }
           .page-quick-sidebar-open .page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i:before {
-            content: "î¦"/*rtl:"î¥"*/; }
+            content: ""/*rtl:""*/; }
           .page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i:hover {
             color: #a4b4bb; }
       .page-header.navbar .top-menu .navbar-nav > li.dropdown-language {
@@ -25551,7 +25551,7 @@ Page container
 ***/
 .page-container {
   margin: 0px;
-  padding: 20px 20px 0 0;
+  padding: 20px 20px 0 20px;
   position: relative;
   /* Fixed header */
   /* Fixed footer for mobile */ }
@@ -25561,8 +25561,7 @@ Page container
   .page-container:after {
     clear: both; }
   .page-header-fixed .page-container {
-    margin-top: 55px;
-    }
+    margin-top: 75px; }
   .page-footer-fixed.page-footer-fixed-mobile .page-container {
     margin-bottom: 20px !important; }
 
@@ -25636,11 +25635,10 @@ Page sidebar
     -o-border-radius: 4px;
     border-radius: 4px;
     list-style: none;
-    margin: 15px 0 0 0;
+    margin: 10px 0 0 0;
     padding: 0;
     /* 1st level links */
-    /* all links */
-    }
+    /* all links */ }
     .page-sidebar .page-sidebar-menu > li,
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li {
       display: block;
@@ -26399,7 +26397,7 @@ Theme Panel
     .page-quick-sidebar-toggler > i:hover {
       color: #fff !important; }
     .page-quick-sidebar-open .page-quick-sidebar-toggler > i:before {
-      content: "î¦"/*rtl:"î¥"*/; }
+      content: ""/*rtl:""*/; }
 
 /* Quick sidebar wrapper */
 .page-quick-sidebar-wrapper {
