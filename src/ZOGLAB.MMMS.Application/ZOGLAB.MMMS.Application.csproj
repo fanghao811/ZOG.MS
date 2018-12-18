@@ -144,6 +144,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD\Standards\Dto\CreateOrUpdateStandardInput.cs" />
+    <Compile Include="BD\Standards\Dto\GetStandardForEditOutput.cs" />
+    <Compile Include="BD\Standards\Dto\GetStandardsInput.cs" />
+    <Compile Include="BD\Standards\Dto\StandardEditDto.cs" />
+    <Compile Include="BD\Standards\Dto\StandardListDto.cs" />
+    <Compile Include="BD\Standards\IStandardAppService.cs" />
+    <Compile Include="BD\Standards\StandardAppService.cs" />
     <Compile Include="SD\MenuTree\Dto\CreateTreeUnitInput.cs" />
     <Compile Include="SD\MenuTree\Dto\MenuTreeUnitDto.cs" />
     <Compile Include="SD\MenuTree\Dto\MoveMenuTreeUnitInput.cs" />

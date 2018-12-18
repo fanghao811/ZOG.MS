@@ -135,7 +135,7 @@
     <Compile Include="BD\BD_CheckType.cs" />
     <Compile Include="BD\BD_DeviceItem.cs" />
     <Compile Include="BD\BD_EssentialFactor.cs" />
-    <Compile Include="BD\BD_Installatio.cs" />
+    <Compile Include="BD\BD_Installation.cs" />
     <Compile Include="BD\BD_Instrument.cs" />
     <Compile Include="BD\BD_Rainfall.cs" />
     <Compile Include="BD\BD_Randiation.cs" />
@@ -151,6 +151,8 @@
     <Compile Include="BD\BD_Visibility.cs" />
     <Compile Include="BD\BD_Wind.cs" />
     <Compile Include="BD\BD_WindDirection.cs" />
+    <Compile Include="BD\IRepository\IInstallationRepository.cs" />
+    <Compile Include="BD\IRepository\IStandardRepository.cs" />
     <Compile Include="MMMSConsts.cs" />
     <Compile Include="MMMSCoreModule.cs" />
     <Compile Include="MMMSDomainServiceBase.cs" />

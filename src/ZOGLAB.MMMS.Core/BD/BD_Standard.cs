@@ -20,9 +20,7 @@ namespace ZOGLAB.MMMS.BD
         public string FactoryNum { get; set; }
 
         //2.标准器名称   
-        [MaxLength(MaxLength_50)]
-        public BD_DeviceItem DeviceItem { get; set; }
-        public string SstrName { get; set; }
+        public string StrName { get; set; }
 
         //3.标准器型号
         [MaxLength(MaxLength_20)]
@@ -51,7 +49,7 @@ namespace ZOGLAB.MMMS.BD
         //9.所属计量装置ID
         [ForeignKey("Installation_ID")]
         public BD_Installation BD_Installation { get; set; }
-        public long Installation_ID { get; set; }
+        public long? Installation_ID { get; set; }
 
         //10.责任人
         [MaxLength(MaxLength_20)]

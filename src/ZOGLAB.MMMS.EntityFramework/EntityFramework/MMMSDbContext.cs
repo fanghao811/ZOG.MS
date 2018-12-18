@@ -60,7 +60,7 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<BD_TestDevice> BD_TestDevices { get; set; }
         public virtual IDbSet<BD_Test> BD_Tests { get; set; }
         public virtual IDbSet<BD_Rules> BD_Rules { get; set; }
-        public virtual IDbSet<BD_Installation> BD_Installatios { get; set; }
+        public virtual IDbSet<BD_Installation> BD_Installations { get; set; }
         public virtual IDbSet<BD_Standard> BD_Standards { get; set; }
         public virtual IDbSet<BD_CalibrationResult> BD_CalibrationResults { get; set; }
 
