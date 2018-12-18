@@ -127,6 +127,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD\BD_Appendix.cs" />
+    <Compile Include="BD\BD_ASeed.cs" />
+    <Compile Include="BD\BD_Back.cs" />
+    <Compile Include="BD\BD_CalibrationResult.cs" />
+    <Compile Include="BD\BD_CalibrationType.cs" />
+    <Compile Include="BD\BD_CheckType.cs" />
+    <Compile Include="BD\BD_DeviceItem.cs" />
+    <Compile Include="BD\BD_EssentialFactor.cs" />
+    <Compile Include="BD\BD_Installatio.cs" />
+    <Compile Include="BD\BD_Instrument.cs" />
+    <Compile Include="BD\BD_Rainfall.cs" />
+    <Compile Include="BD\BD_Randiation.cs" />
+    <Compile Include="BD\BD_Receive.cs" />
+    <Compile Include="BD\BD_ReceiveDevice.cs" />
+    <Compile Include="BD\BD_Remission.cs" />
+    <Compile Include="BD\BD_Rules.cs" />
+    <Compile Include="BD\BD_Site.cs" />
+    <Compile Include="BD\BD_Standard.cs" />
+    <Compile Include="BD\BD_Test.cs" />
+    <Compile Include="BD\BD_TestDevice.cs" />
+    <Compile Include="BD\BD_Unit.cs" />
+    <Compile Include="BD\BD_Visibility.cs" />
+    <Compile Include="BD\BD_Wind.cs" />
+    <Compile Include="BD\BD_WindDirection.cs" />
     <Compile Include="MMMSConsts.cs" />
     <Compile Include="MMMSCoreModule.cs" />
     <Compile Include="MMMSDomainServiceBase.cs" />

@@ -1,8 +1,10 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.Zero.EntityFramework;
 using ZOGLAB.MMMS.Authorization.Roles;
 using ZOGLAB.MMMS.Authorization.Users;
+using ZOGLAB.MMMS.BD;
 using ZOGLAB.MMMS.Chat;
 using ZOGLAB.MMMS.Friendships;
 using ZOGLAB.MMMS.MultiTenancy;
@@ -29,7 +31,7 @@ namespace ZOGLAB.MMMS.EntityFramework
 
         public virtual IDbSet<ChatMessage> ChatMessages { get; set; }
 
-        /* 新增三个系统实体 2018/12/06  */
+        /* 新增SD系统实体 2018/12/06  */
         public virtual IDbSet<SD_Organization> SD_Organizations { get; set; }
         public virtual IDbSet<SD_User> SD_Users { get; set; }
         public virtual IDbSet<SD_Role> SD_Roles { get; set; }
@@ -44,6 +46,45 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<SD_System> SD_System { get; set; }
         public virtual IDbSet<TreeUnit> TreeUnits { get; set; }
         public virtual IDbSet<SD_MenuTreeUnit> SD_MenuTreeUnits { get; set; }
+
+        /* 新增BD系统实体 2018/12/17  */
+        public virtual IDbSet<BD_Instrument> BD_Instruments { get; set; }
+        public virtual IDbSet<BD_EssentialFactor> BD_EssentialFactors { get; set; }
+        public virtual IDbSet<BD_Receive> BD_Receives { get; set; }
+        public virtual IDbSet<BD_Back> BD_Backs { get; set; }
+        public virtual IDbSet<BD_ReceiveDevice> BD_ReceiveDevices { get; set; }
+
+        /* PartII */
+        public virtual IDbSet<BD_DeviceItem> BD_DeviceItems { get; set; }
+        public virtual IDbSet<BD_Unit> BD_Units { get; set; }
+        public virtual IDbSet<BD_TestDevice> BD_TestDevices { get; set; }
+        public virtual IDbSet<BD_Test> BD_Tests { get; set; }
+        public virtual IDbSet<BD_Rules> BD_Rules { get; set; }
+        public virtual IDbSet<BD_Installation> BD_Installatios { get; set; }
+        public virtual IDbSet<BD_Standard> BD_Standards { get; set; }
+        public virtual IDbSet<BD_CalibrationResult> BD_CalibrationResults { get; set; }
+
+        /* 14- 22 */
+        public virtual IDbSet<BD_Wind> BD_Wind { get; set; }
+        public virtual IDbSet<BD_WindDirection> BD_WindDirection { get; set; }
+        public virtual IDbSet<BD_Rainfall> BD_Rainfall { get; set; }
+        public virtual IDbSet<BD_Randiation> BD_Randiation { get; set; }
+        public virtual IDbSet<BD_Visibility> BD_Visibility { get; set; }
+
+        public virtual IDbSet<BD_Appendix> BD_Appendix { get; set; }
+        public virtual IDbSet<BD_Site> BD_Site { get; set; }
+        public virtual IDbSet<BD_Remission> BD_Remission { get; set; }
+        public virtual IDbSet<BD_CalibrationType> BD_CalibrationType { get; set; }
+        public virtual IDbSet<BD_CheckType> BD_CheckType { get; set; }
+
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        //    //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+        //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_Test>(r => r.BD_Test).WithMany().WillCascadeOnDelete(false);
+        //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_ReceiveDevice>(r=>r.BD_ReceiveDevice).WithMany().WillCascadeOnDelete(false);
+        //}
 
         public MMMSDbContext()
             : base("Default")

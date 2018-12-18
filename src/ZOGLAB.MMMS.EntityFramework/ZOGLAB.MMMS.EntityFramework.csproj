@@ -392,6 +392,14 @@
     <Compile Include="Migrations\201812120142175_2018_12_12.Designer.cs">
       <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812180725117_initialBD.cs" />
+    <Compile Include="Migrations\201812180725117_initialBD.Designer.cs">
+      <DependentUpon>201812180725117_initialBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812180728399_initialBD02.cs" />
+    <Compile Include="Migrations\201812180728399_initialBD02.Designer.cs">
+      <DependentUpon>201812180728399_initialBD02.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MMMSDataModule.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultEditionCreator.cs" />
@@ -590,6 +598,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812120142175_2018_12_12.resx">
       <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812180725117_initialBD.resx">
+      <DependentUpon>201812180725117_initialBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812180728399_initialBD02.resx">
+      <DependentUpon>201812180728399_initialBD02.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
