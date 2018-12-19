@@ -56,6 +56,14 @@ namespace ZOGLAB.MMMS.Authorization
             organizationUnits.CreateChildPermission(AppPermissions.Pages_Administration_OrganizationUnits_ManageOrganizationTree, L("ManagingOrganizationTree"));
             organizationUnits.CreateChildPermission(AppPermissions.Pages_Administration_OrganizationUnits_ManageMembers, L("ManagingMembers"));
 
+            //SD业务相关权限 PERMISSIONS
+            var sd= pages.CreateChildPermission(AppPermissions.Pages_BD, L("SD"));
+
+            var standards = sd.CreateChildPermission(AppPermissions.Pages_BD_Standard, L("Standards"));
+            standards.CreateChildPermission(AppPermissions.Pages_BD_Standard_Create, L("CreatingNewStandard"));
+            standards.CreateChildPermission(AppPermissions.Pages_BD_Standard_Edit, L("EditingNewStandard"));
+            standards.CreateChildPermission(AppPermissions.Pages_BD_Standard_Delete, L("DeletingNewStandard"));
+
             //TENANT-SPECIFIC PERMISSIONS
 
             pages.CreateChildPermission(AppPermissions.Pages_Tenant_Dashboard, L("Dashboard"), multiTenancySides: MultiTenancySides.Tenant);

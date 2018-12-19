@@ -58,6 +58,5 @@ namespace ZOGLAB.MMMS.BD
         //17.备注
         public string Mark { get; set; }
 
-
     }
 }

@@ -8,10 +8,10 @@ namespace ZOGLAB.MMMS.BD
     {
         Task<PagedResultDto<StandardListDto>> GetStandards(GetStandardsInput input);
 
-        //Task<GetStandardForEditOutput> GetStandardForEdit(NullableIdDto input);
+        StandardEditDto GetStandardForEdit(NullableIdDto<long> input);
 
-        //Task CreateOrUpdateStandard(CreateOrUpdateStandardInput input);
+        Task CreateOrUpdateStandard(StandardEditDto input);
 
-        //Task DeleteStandard(EntityDto input);
+        void DeleteStandard(EntityDto<long> input);
     }
 }

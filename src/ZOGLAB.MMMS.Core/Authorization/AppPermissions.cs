@@ -38,6 +38,15 @@
 
         public const string Pages_Administration_HangfireDashboard = "Pages.Administration.HangfireDashboard";
 
+        //BD 业务相关 12/19
+
+        public const string Pages_BD = "Pages.BD";
+
+        public const string Pages_BD_Standard = "Pages.BD.Standard";
+        public const string Pages_BD_Standard_Create = "Pages.BD.Standard.Create";
+        public const string Pages_BD_Standard_Edit = "Pages.BD.Standard.Edit";
+        public const string Pages_BD_Standard_Delete = "Pages.BD.Standard.Delete";
+
         //TENANT-SPECIFIC PERMISSIONS
 
         public const string Pages_Tenant_Dashboard = "Pages.Tenant.Dashboard";
