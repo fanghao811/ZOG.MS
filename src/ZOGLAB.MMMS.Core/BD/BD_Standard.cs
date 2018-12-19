@@ -61,7 +61,8 @@ namespace ZOGLAB.MMMS.BD
         public DateTime ValidateDate { get; set; }
 
         //12.测量范围
-        public bool TestRange { get; set; }
+        [MaxLength(MaxLength_50)]
+        public string TestRange { get; set; }
 
         //13.准确度
         public DateTime Accurate { get; set; }
