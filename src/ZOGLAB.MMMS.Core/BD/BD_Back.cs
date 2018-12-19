@@ -16,7 +16,7 @@ namespace ZOGLAB.MMMS.BD
 
         //1.收发单号ID   foreignKey
         [ForeignKey("Receive_ID")]
-        public BD_ReceiveDevice Receive { get; set; }
+        public BD_Receive Receive { get; set; }
         public long Receive_ID { get; set; }
 
         //2.返样数量

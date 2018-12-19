@@ -15,7 +15,7 @@ namespace ZOGLAB.MMMS.BD
 
         //1.收发单号ID   foreignKey
         [ForeignKey("Receive_ID")]
-        public BD_Receive BD_Receive { get; set; }
+        public BD_Receive Receive { get; set; }
         public long Receive_ID { get; set; }
 
         //2.被检仪器ID   foreignKey
@@ -28,7 +28,7 @@ namespace ZOGLAB.MMMS.BD
         public string UnitMark { get; set; }
 
         //4.返样单ID
-        public int Back_ID { get; set; }
+        public long Back_ID { get; set; }
 
         //5.备注
         [MaxLength(MaxLength_50)]

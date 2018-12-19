@@ -16,14 +16,12 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_50 = 50;
 
         //1.收发单主表ID   foreignKey
-        [ForeignKey("ReceiveDeviceId")]
-        public BD_ReceiveDevice BD_ReceiveDevice { get; set; }
-        public long ReceiveDeviceId { get; set; }
+        public BD_ReceiveDevice ReceiveDevice { get; set; }
 
         //2.检测单表ID
         [ForeignKey("Test_ID")]
-        public BD_Test BD_Test { get; set; }
-        public long Test_ID { get; set; }
+        public BD_Test Test { get; set; }
+        public long? Test_ID { get; set; }
 
         //3.仪器交接状态
         public bool IntHandover { get; set; }

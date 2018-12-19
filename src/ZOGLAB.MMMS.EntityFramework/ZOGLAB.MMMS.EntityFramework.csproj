@@ -392,17 +392,9 @@
     <Compile Include="Migrations\201812120142175_2018_12_12.Designer.cs">
       <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812180725117_initialBD.cs" />
-    <Compile Include="Migrations\201812180725117_initialBD.Designer.cs">
-      <DependentUpon>201812180725117_initialBD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812180728399_initialBD02.cs" />
-    <Compile Include="Migrations\201812180728399_initialBD02.Designer.cs">
-      <DependentUpon>201812180728399_initialBD02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812190340371_12_19_seed_installationAndStandard.cs" />
-    <Compile Include="Migrations\201812190340371_12_19_seed_installationAndStandard.Designer.cs">
-      <DependentUpon>201812190340371_12_19_seed_installationAndStandard.cs</DependentUpon>
+    <Compile Include="Migrations\201812190452332_12_19_seed_installationAndStandard.cs" />
+    <Compile Include="Migrations\201812190452332_12_19_seed_installationAndStandard.Designer.cs">
+      <DependentUpon>201812190452332_12_19_seed_installationAndStandard.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\InstallationAndStandardCreator.cs" />
@@ -605,14 +597,8 @@
     <EmbeddedResource Include="Migrations\201812120142175_2018_12_12.resx">
       <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812180725117_initialBD.resx">
-      <DependentUpon>201812180725117_initialBD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812180728399_initialBD02.resx">
-      <DependentUpon>201812180728399_initialBD02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812190340371_12_19_seed_installationAndStandard.resx">
-      <DependentUpon>201812190340371_12_19_seed_installationAndStandard.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812190452332_12_19_seed_installationAndStandard.resx">
+      <DependentUpon>201812190452332_12_19_seed_installationAndStandard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

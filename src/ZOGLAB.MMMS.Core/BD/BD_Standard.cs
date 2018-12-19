@@ -22,7 +22,7 @@ namespace ZOGLAB.MMMS.BD
         //2.标准器名称   
         [MaxLength(MaxLength_50)]
         public BD_DeviceItem DeviceItem { get; set; }
-        public string SstrName { get; set; }
+        public string StrName { get; set; }
 
         //3.标准器型号
         [MaxLength(MaxLength_20)]
@@ -50,8 +50,8 @@ namespace ZOGLAB.MMMS.BD
 
         //9.所属计量装置ID
         [ForeignKey("Installation_ID")]
-        public BD_Installation BD_Installation { get; set; }
-        public long Installation_ID { get; set; }
+        public BD_Installation Installation { get; set; }
+        public long? Installation_ID { get; set; }
 
         //10.责任人
         [MaxLength(MaxLength_20)]
@@ -65,7 +65,8 @@ namespace ZOGLAB.MMMS.BD
         public string TestRange { get; set; }
 
         //13.准确度
-        public DateTime Accurate { get; set; }
+        [MaxLength(MaxLength_20)]
+        public string Accurate { get; set; }
 
         //14.校准系数
         [MaxLength(MaxLength_20)]
@@ -79,7 +80,8 @@ namespace ZOGLAB.MMMS.BD
         public bool StrType { get; set; }
 
         //17.备注
-        public bool ForApprove { get; set; }
+        [MaxLength(MaxLength_50)]
+        public string Mark { get; set; }
 
         public bool IsDeleted { get; set; }
     }

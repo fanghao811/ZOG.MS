@@ -1,6 +1,5 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.Zero.EntityFramework;
 using ZOGLAB.MMMS.Authorization.Roles;
 using ZOGLAB.MMMS.Authorization.Users;

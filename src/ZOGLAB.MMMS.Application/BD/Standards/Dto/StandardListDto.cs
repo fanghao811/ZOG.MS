@@ -41,7 +41,7 @@ namespace ZOGLAB.MMMS.BD
         public DateTime ValidateDate { get; set; }
 
         //12.测量范围
-        public bool TestRange { get; set; }
+        public string TestRange { get; set; }
 
         //13.准确度
         public string Accurate { get; set; }
@@ -56,7 +56,7 @@ namespace ZOGLAB.MMMS.BD
         public bool StrType { get; set; }
 
         //17.备注
-        public bool ForApprove { get; set; }
+        public string Mark { get; set; }
 
 
     }
