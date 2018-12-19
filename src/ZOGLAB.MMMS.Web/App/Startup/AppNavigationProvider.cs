@@ -152,9 +152,10 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.OrganizationUnits,
+                        PageNames.App.BD.Standard,
                         L("StandardQuery"),
-                        icon: "icon-ban"
+                        url:"standard",
+                        icon: "icon-check"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
@@ -224,6 +225,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
                         L("StandardManager"),
+                        url: "standard",
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(

@@ -176,6 +176,12 @@ appModule.config([
             });
         }
 
+        //BD routes
+        $stateProvider.state('standard', {
+            url: '/standard',
+            templateUrl: '~/App/common/views/BD/standard/index.cshtml'
+        });
+
         //SD routes
 
         $stateProvider.state('menuTree', {

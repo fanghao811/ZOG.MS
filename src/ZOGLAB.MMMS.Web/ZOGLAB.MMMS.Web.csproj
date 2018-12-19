@@ -459,6 +459,8 @@
     <Content Include="App\common\views\auditLogs\detailModal.min.css">
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\BD\standard\createOrEditModal.js" />
+    <Content Include="App\common\views\BD\standard\index.js" />
     <Content Include="App\common\views\common\lookupModal.js" />
     <Content Include="App\common\views\languages\editTextModal.js" />
     <Content Include="App\common\views\languages\createOrEditModal.js" />
@@ -2327,6 +2329,8 @@
     <Content Include="App\common\views\menuTree\index.css.map" />
     <Content Include="App\common\views\menuTree\index.less" />
     <Content Include="App\common\views\menuTree\createOrEditUnitModal.cshtml" />
+    <Content Include="App\common\views\BD\standard\index.cshtml" />
+    <Content Include="App\common\views\BD\standard\createOrEditModal.cshtml" />
     <None Include="Properties\PublishProfiles\aspnetzero - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
