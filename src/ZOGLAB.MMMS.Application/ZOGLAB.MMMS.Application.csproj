@@ -144,12 +144,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD\Installation\Dto\GetInstallationsInput.cs" />
+    <Compile Include="BD\Installation\IInstallationAppService.cs" />
+    <Compile Include="BD\Installation\InstallationAppService.cs" />
     <Compile Include="BD\Standards\Dto\CreateOrUpdateStandardInput.cs" />
     <Compile Include="BD\Standards\Dto\GetStandardForEditOutput.cs" />
     <Compile Include="BD\Standards\Dto\GetStandardsInput.cs" />
     <Compile Include="BD\Standards\Dto\StandardEditDto.cs" />
     <Compile Include="BD\Standards\Dto\StandardListDto.cs" />
     <Compile Include="BD\Standards\IStandardAppService.cs" />
+    <Compile Include="BD\Standards\Dto\StandardAndInstallation.cs" />
     <Compile Include="BD\Standards\StandardAppService.cs" />
     <Compile Include="SD\MenuTree\Dto\CreateTreeUnitInput.cs" />
     <Compile Include="SD\MenuTree\Dto\MenuTreeUnitDto.cs" />

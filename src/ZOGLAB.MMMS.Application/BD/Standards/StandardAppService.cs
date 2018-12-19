@@ -1,9 +1,10 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.AutoMapper;
+using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -20,12 +21,17 @@ namespace ZOGLAB.MMMS.BD
     public class StandardAppService : MMMSAppServiceBase, IStandardAppService
     {
         private readonly IRepository<BD_Standard, long> _standardRepository;
-        
+
         public StandardAppService(IRepository<BD_Standard, long> standardRepository)
         {
             _standardRepository = standardRepository;
-        }
 
+        }
+        /// <summary>
+        /// 过滤，排序，分页 获取标准器列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task<PagedResultDto<StandardListDto>> GetStandards(GetStandardsInput input)
         {
             var query = CreateStandardsQuery(input);    //Step 01
@@ -38,7 +44,7 @@ namespace ZOGLAB.MMMS.BD
                 .PageBy(input)
                 .ToListAsync();
 
-            var standardListDtos = ConvertToStandardListDtos(results);  //Step 03
+            var standardListDtos = results.MapTo<List<StandardListDto>>(); //Step 03
 
             return new PagedResultDto<StandardListDto>(resultCount, standardListDtos);  //Step 04
 
@@ -46,24 +52,17 @@ namespace ZOGLAB.MMMS.BD
 
         private IQueryable<BD_Standard> CreateStandardsQuery(GetStandardsInput input)
         {
-            var query = from standard in _standardRepository.GetAll()
-                        //join installation in _standardRepository.GetAll() on installation. equals user.Id into userJoin
-                        where standard.ValidateDate >= input.ValidateDate & standard.StrType == input.StrType
-                        select standard;        //有效日期  & 标准器类型
+            var query = _standardRepository.GetAll()
+                .Include(s => s.Installation)
+                .Where(s => s.ValidateDate >= input.ValidateDate && s.StrType == input.StrType);
 
             query = query
+                    .WhereIf(input.Installation_ID > 0, item => item.Installation_ID == input.Installation_ID)  //所属计量装置ID -->精确查询
                     .WhereIf(!input.FactoryNum.IsNullOrWhiteSpace(), item => item.FactoryNum.Contains(input.FactoryNum)) //出厂编号 -->模糊查询
                     .WhereIf(!input.StrName.IsNullOrWhiteSpace(), item => item.StrName.Contains(input.StrName)) //标准器名称
-                    .WhereIf(!input.StrSpec.IsNullOrWhiteSpace(), item => item.StrSpec.Contains(input.StrSpec)) //标准器型号                                                                                                               
-                    .WhereIf(input.Installation_ID > 0, item => item.Installation_ID == input.Installation_ID); //所属计量装置ID -->精确查询
+                    .WhereIf(!input.StrSpec.IsNullOrWhiteSpace(), item => item.StrSpec.Contains(input.StrSpec)); //标准器型号                                                                                                               
 
             return query;
         }
-
-        private List<StandardListDto> ConvertToStandardListDtos(object results)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

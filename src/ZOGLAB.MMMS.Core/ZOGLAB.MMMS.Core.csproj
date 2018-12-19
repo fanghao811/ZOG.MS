@@ -223,10 +223,17 @@
     <Compile Include="Notifications\AppNotifier.cs" />
     <Compile Include="Notifications\IAppNotifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SD\CD_System.cs" />
+    <Compile Include="SD\SD_CheckData.cs" />
+    <Compile Include="SD\SD_DirectiveRules.cs" />
+    <Compile Include="SD\SD_Docimasy.cs" />
     <Compile Include="SD\SD_Function\SD_Function.cs" />
+    <Compile Include="SD\SD_Information.cs" />
+    <Compile Include="SD\SD_Instrument.cs" />
     <Compile Include="SD\SD_MenuTreeUnit\SD_MenuTreeUnit.cs" />
     <Compile Include="SD\SD_Organization\SD_Organization.cs" />
     <Compile Include="SD\SD_Parameter\SD_Parameter.cs" />
+    <Compile Include="SD\SD_Producer.cs" />
     <Compile Include="SD\SD_Report\SD_Report.cs" />
     <Compile Include="SD\SD_RoleFunction\SD_RoleFunction.cs" />
     <Compile Include="SD\SD_Role\SD_Role.cs" />

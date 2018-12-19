@@ -4,6 +4,7 @@ using Abp.Events.Bus.Entities;
 using Abp.MultiTenancy;
 using Abp.Zero.EntityFramework;
 using EntityFramework.DynamicFilters;
+using ZOGLAB.MMMS.Migrations.Seed.BD;
 using ZOGLAB.MMMS.Migrations.Seed.Host;
 using ZOGLAB.MMMS.Migrations.Seed.Tenants;
 
@@ -15,7 +16,7 @@ namespace ZOGLAB.MMMS.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "MMMS";
         }
 
@@ -34,6 +35,9 @@ namespace ZOGLAB.MMMS.Migrations
                 //Default tenant seed (in host database).
                 new DefaultTenantBuilder(context).Create();
                 new TenantRoleAndUserBuilder(context, 1).Create();
+
+                //Default BD业务 seed
+                new InitialBDBuilder(context).Create();
             }
             else
             {

@@ -40,7 +40,8 @@ namespace ZOGLAB.MMMS.BD
         public string CertificateId { get; set; }
 
         //7.有效日期
-        public DateTime ValidateDate { get; set; }
+        [MaxLength(MaxLength_20)]
+        public string ValidateDate { get; set; }
 
         //8.发证机构
         [MaxLength(MaxLength_50)]

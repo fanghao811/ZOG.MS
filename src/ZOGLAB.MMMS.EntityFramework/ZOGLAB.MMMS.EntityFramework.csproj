@@ -400,7 +400,13 @@
     <Compile Include="Migrations\201812180728399_initialBD02.Designer.cs">
       <DependentUpon>201812180728399_initialBD02.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812190340371_12_19_seed_installationAndStandard.cs" />
+    <Compile Include="Migrations\201812190340371_12_19_seed_installationAndStandard.Designer.cs">
+      <DependentUpon>201812190340371_12_19_seed_installationAndStandard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Seed\BD\InstallationAndStandardCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\InitialBDBuilder.cs" />
     <Compile Include="MMMSDataModule.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultEditionCreator.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultLanguagesCreator.cs" />
@@ -604,6 +610,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812180728399_initialBD02.resx">
       <DependentUpon>201812180728399_initialBD02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812190340371_12_19_seed_installationAndStandard.resx">
+      <DependentUpon>201812190340371_12_19_seed_installationAndStandard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
