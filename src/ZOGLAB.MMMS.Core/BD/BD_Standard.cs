@@ -20,7 +20,9 @@ namespace ZOGLAB.MMMS.BD
         public string FactoryNum { get; set; }
 
         //2.标准器名称   
-        public string StrName { get; set; }
+        [MaxLength(MaxLength_50)]
+        public BD_DeviceItem DeviceItem { get; set; }
+        public string SstrName { get; set; }
 
         //3.标准器型号
         [MaxLength(MaxLength_20)]
@@ -46,12 +48,10 @@ namespace ZOGLAB.MMMS.BD
         [MaxLength(MaxLength_20)]
         public string CaliFactoryTel { get; set; }
 
-        /// <summary>
-        /// 9.所属计量装置ID
-        /// </summary>
+        //9.所属计量装置ID
         [ForeignKey("Installation_ID")]
-        public BD_Installation Installation { get; set; }
-        public long? Installation_ID { get; set; }
+        public BD_Installation BD_Installation { get; set; }
+        public long Installation_ID { get; set; }
 
         //10.责任人
         [MaxLength(MaxLength_20)]
@@ -61,20 +61,16 @@ namespace ZOGLAB.MMMS.BD
         public DateTime ValidateDate { get; set; }
 
         //12.测量范围
-        [MaxLength(MaxLength_50)]
-        public string TestRange { get; set; }
+        public bool TestRange { get; set; }
 
         //13.准确度
-        [MaxLength(MaxLength_20)]
-        public string Accurate { get; set; }
+        public DateTime Accurate { get; set; }
 
         //14.校准系数
         [MaxLength(MaxLength_20)]
         public string StrK { get; set; }
 
-        /// <summary>
-        /// 15.证书号
-        /// </summary>
+        //15.证书号
         [MaxLength(MaxLength_50)]
         public string CertNum { get; set; }
 
@@ -82,8 +78,7 @@ namespace ZOGLAB.MMMS.BD
         public bool StrType { get; set; }
 
         //17.备注
-        [MaxLength(MaxLength_50)]
-        public string Mark { get; set; }
+        public bool ForApprove { get; set; }
 
         public bool IsDeleted { get; set; }
     }

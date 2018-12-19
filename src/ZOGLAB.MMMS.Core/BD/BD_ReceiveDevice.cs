@@ -14,9 +14,9 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_50 = 50;
 
         //1.收发单号ID   foreignKey
-        [ForeignKey("ReceiveDevice_ID")]
-        public BD_ReceiveDevice ReceiveDevice { get; set; }
-        public long ReceiveDevice_ID { get; set; }
+        [ForeignKey("Receive_ID")]
+        public BD_Receive BD_Receive { get; set; }
+        public long Receive_ID { get; set; }
 
         //2.被检仪器ID   foreignKey
         [ForeignKey("Instrument_ID")]

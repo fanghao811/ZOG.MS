@@ -14,9 +14,9 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_50 = 50;
 
         //1.收发单号ID
-        [ForeignKey("Installation_ID")]
-        public BD_Installation Installation { get; set; }
-        public long Installation_ID { get; set; }
+        [ForeignKey("Receive_ID")]
+        public BD_Receive BD_Receive { get; set; }
+        public long Receive_ID { get; set; }
 
         //2.检测单号
         [MaxLength(MaxLength_50)]
