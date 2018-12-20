@@ -1,4 +1,4 @@
-/**
+﻿/**
 Core script to handle the entire theme and core functions
 **/
 var App = function() {
@@ -434,7 +434,7 @@ var App = function() {
     // Handle textarea autosize 
     var handleTextareaAutosize = function() {
         if (typeof(autosize) == "function") {
-            autosize(document.querySelectorAll('textarea.autosizeme'));
+            autosize(document.querySelector('textarea.autosizeme'));
         }
     }
 

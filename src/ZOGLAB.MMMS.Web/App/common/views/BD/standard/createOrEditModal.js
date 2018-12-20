@@ -10,7 +10,7 @@
             vm.save = function () {
 
                 vm.saving = true;
-                standardService.createOrUpdateUser(vm.standar)
+                standardService.createOrUpdateStandard(vm.standar)
                     .then(function () {
                     abp.notify.info(app.localize('SavedSuccessfully'));
                     $uibModalInstance.close();
@@ -26,9 +26,9 @@
             function init() {
                 standardService.getStandardForEdit({
                     id: standardId
-                })
-                    .then(function (result) {
+                }).then(function (result) {
                     vm.standard = result.data;
+                    vm.loading = false;
                 });
             }
 

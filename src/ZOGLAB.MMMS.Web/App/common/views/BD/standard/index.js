@@ -11,6 +11,12 @@
             vm.loading = false;
             vm.advancedFiltersAreShown = false;
 
+            vm.permissions = {
+                create: abp.auth.hasPermission('Pages.BD.Standard.Create'),
+                edit: abp.auth.hasPermission('Pages.BD.Standard.Edit'),
+                'delete': abp.auth.hasPermission('Pages.BD.Standard.Delete')
+            };
+
             vm.requestParams = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
                 validateDate: '2000-12-02',
                 strType: true,
@@ -45,7 +51,7 @@
                         headerCellTemplate: '<span></span>',
                         cellTemplate:
                             '<div class=\"ui-grid-cell-contents text-center\">' +
-                                '  <button class="btn btn-default btn-xs" ng-click="grid.appScope.showDetails(row.entity)"><i class="fa fa-search"></i></button>' +
+                                '  <button class="btn btn-default btn-xs" ng-click="grid.appScope.editStandard(row.entity)"><i class="fa fa-search"></i></button>' +
                                 '</div>'
                     },
                     {
@@ -69,34 +75,34 @@
                         enableCellEdit: true,
                         minWidth: 200
                     },
-                    {
-                        name: '厂家电话',
-                        field: 'manufactorTel'
-                    },
+                    //{
+                    //    name: '厂家电话',
+                    //    field: 'manufactorTel'
+                    //},
                     {
                         name: '检定单位',
                         field: 'caliFactory',
                         minWidth: 60
                     },
-                    {
-                        name: '检定单位联系人',
-                        field: 'caliFactoryMan'
-                    },
-                    {
-                        name: '检定单位电话',
-                        field: 'caliFactoryTel',
-                        minWidth: 30
-                    },
+                    //{
+                    //    name: '检定单位联系人',
+                    //    field: 'caliFactoryMan'
+                    //},
+                    //{
+                    //    name: '检定单位电话',
+                    //    field: 'caliFactoryTel',
+                    //    minWidth: 30
+                    //},
                     {
                         name: '所属计量装置',
                         field: 'installation',
                         minWidth: 30
                     },
-                    {
-                        name: '责任人',
-                        field: 'responsibleMan',
-                        minWidth: 30
-                    },
+                    //{
+                    //    name: '责任人',
+                    //    field: 'responsibleMan',
+                    //    minWidth: 30
+                    //},
                     {
                         name: '有效日期',
                         field: 'validateDate',
@@ -108,25 +114,35 @@
                         field: 'testRange',
                         minWidth: 50
                     },
-                    {
-                        name: '准确度',
-                        field: 'accurate',
-                        minWidth: 30
-                    },
-                    {
-                        name: '校准系数',
-                        field: 'strK'
-                    },
-                    {
-                        name: '证书号',
-                        field: 'certNum',
-                        minWidth: 30
-                    },
+                    //{
+                    //    name: '准确度',
+                    //    field: 'accurate',
+                    //    minWidth: 30
+                    //},
+                    //{
+                    //    name: '校准系数',
+                    //    field: 'strK'
+                    //},
                     {
                         name: '标准器类型',
                         field: 'strType',
-                        cellTemplate: '<div ng-class="{red: row.getProperty(col.field)}"><div class="ngCellText">{{row.getProperty(col.field)?"标准器":"辅助器"}}</div></div>'
+                        cellTemplate: '<div class="ngCellText">{{row.getProperty(col.field)?"标准器":"辅助器"}}</div>'
                     },
+                    {
+                        name: '管理',
+                        enableSorting: false,
+                        minWidth: 80,
+                        //headerCellTemplate: '<span></span>',
+                        cellTemplate:
+                            '<div class=\"ui-grid-cell-contents text-center\">' +
+                            '  <button class="btn btn-default green btn-xs" ng-click="grid.appScope.editStandard(row.entity)"><i class="fa fa-check"></i></button>' +
+                            '  <button class="btn btn-default  red btn-xs" ng-click="grid.appScope.deleteStandard(row.entity)"><i class="fa fa-trash"></i></button>' +
+                            '</div>'
+                            //'< div class=\"ui-grid-cell-contents btn-group btn-group text-center\">' +
+                            //'    <button class="btn btn-outline green btn-sm"ng-click="grid.appScope.editStandard(row.entity)">编辑</button>' +
+                            //'    <button class="btn btn-outline red btn-sm" ng-click="grid.appScope.deleteStandard(row.entity)">删除</button>' +
+                            //'</div>'
+                    }
                     //{
                     //    name: '标准器类型', field: 'strType', editableCellTemplate: 'ui-grid/dropdownEditor', 
                     //    cellFilter: 'mapGender', editDropdownValueLabel: 'strType', editDropdownOptionsArray: [
@@ -175,17 +191,46 @@
             //        });
             //};
 
-            vm.showDetails = function (standard) {        //TODO:     ShowDetails
-                $uibModal.open({
-                    templateUrl: '~/App/common/views/standard/detailModal.cshtml',
-                    controller: 'common.views.standard.detailModal as vm',
+            vm.editStandard = function (standard) {
+                openCreateOrEditModal(standard.id);
+            };
+
+            vm.createStandard = function () {
+                openCreateOrEditModal(null);
+            };
+
+            function openCreateOrEditModal(id) {
+                var modalInstance = $uibModal.open({
+                    templateUrl: '~/App/common/views/BD/standard/createOrEditModal.cshtml',
+                    controller: 'common.views.standard.createOrEditModal as vm',
                     backdrop: 'static',
                     resolve: {
-                        standard: function () {
-                            return standard;
+                        standardId: function () {
+                            return id;
                         }
                     }
                 });
+
+                modalInstance.result.then(function (result) {
+                    vm.getStandards();
+                });
+            }
+
+
+            vm.deleteStandard = function (standard) {
+                abp.message.confirm(
+                    app.localize('UserDeleteWarningMessage', standard.strName),
+                    function (isConfirmed) {
+                        if (isConfirmed) {
+                            standardService.deleteStandard({
+                                id: standard.id
+                            }).then(function () {
+                                vm.getStandards();
+                                abp.notify.success(app.localize('SuccessfullyDeleted'));
+                            });
+                        }
+                    }
+                );
             };
 
             vm.getStandards();

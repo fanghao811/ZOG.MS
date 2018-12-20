@@ -67,7 +67,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     ).ForceOrdered()
                 );
 
-            //METRONIC
+            //METRONIC      2018/12/20 切换 Metronic 4.X
 
             AddAppMetronicCss(bundles, isRTL: false);
             AddAppMetronicCss(bundles, isRTL: true);
@@ -75,7 +75,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                 new ScriptBundle("~/Bundles/App/metronic/js")
                     .Include(
                         "~/metronic/assets/global/scripts/app.js",
-                        "~/metronic/assets/admin/layout4/scripts/layout.js",
+                        "~/metronic/assets/admin/layout/scripts/layout.js",        //"~/metronic/assets/admin/layout4/scripts/layout.js",
                         "~/metronic/assets/layouts/global/scripts/quick-sidebar.js"
                     ).ForceOrdered()
                 );
@@ -97,12 +97,12 @@ namespace ZOGLAB.MMMS.Web.App.Startup
 
         private static void AddAppCssLibs(BundleCollection bundles, bool isRTL)
         {
-            bundles.Add(
+            bundles.Add(        //12/20 切换 Metronic 4.X
                 new StyleBundle("~/Bundles/App/libs/css" + (isRTL ? "RTL" : ""))
-                    .Include(StylePaths.FontAwesome, new CssRewriteUrlWithVirtualDirectoryTransform())
-                    .Include(StylePaths.Simple_Line_Icons, new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include(StylePaths.FontAwesome, new CssRewriteUrlWithVirtualDirectoryTransform())      //1
+                    .Include(StylePaths.Simple_Line_Icons, new CssRewriteUrlWithVirtualDirectoryTransform())        //2
                     .Include(StylePaths.FamFamFamFlags, new CssRewriteUrlWithVirtualDirectoryTransform())
-                    .Include(isRTL ? StylePaths.BootstrapRTL : StylePaths.Bootstrap, new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include(isRTL ? StylePaths.BootstrapRTL : StylePaths.Bootstrap, new CssRewriteUrlWithVirtualDirectoryTransform())      //3
                     .Include(StylePaths.JQuery_Uniform, new CssRewriteUrlWithVirtualDirectoryTransform())
                     .Include(StylePaths.Morris)
                     .Include(StylePaths.JsTree, new CssRewriteUrlWithVirtualDirectoryTransform())
@@ -111,7 +111,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     .Include(StylePaths.Angular_Ui_Grid, new CssRewriteUrlWithVirtualDirectoryTransform())
                     .Include(StylePaths.Bootstrap_DateRangePicker)
                     .Include(StylePaths.Bootstrap_Select)
-                    .Include(StylePaths.Bootstrap_Switch)
+                    .Include(StylePaths.Bootstrap_Switch)       //4
                     .Include(StylePaths.JQuery_Jcrop)
                     .ForceOrdered()
                 );
@@ -119,14 +119,26 @@ namespace ZOGLAB.MMMS.Web.App.Startup
 
         private static void AddAppMetronicCss(BundleCollection bundles, bool isRTL)
         {
-            bundles.Add(
+            isRTL = false;
+
+            bundles.Add(        //12/20 切换 Metronic 4.X
                 new StyleBundle("~/Bundles/App/metronic/css" + (isRTL ? "RTL" : ""))
-                    .Include("~/metronic/assets/global/css/components-md" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
-                    .Include("~/metronic/assets/global/css/plugins-md" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
-                    .Include("~/metronic/assets/admin/layout4/css/layout" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
-                    .Include("~/metronic/assets/admin/layout4/css/themes/light" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include("~/metronic/assets/global/css/components.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include("~/metronic/assets/global/css/plugins.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include("~/metronic/assets/admin/layout/css/layout.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include("~/metronic/assets/admin/layout/css/themes/darkblue.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include("~/metronic/assets/admin/layout/css/custom.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
                     .ForceOrdered()
                 );
+
+            //bundles.Add(
+            //    new StyleBundle("~/Bundles/App/metronic/css" + (isRTL ? "RTL" : ""))
+            //        .Include("~/metronic/assets/global/css/components-md" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+            //        .Include("~/metronic/assets/global/css/plugins-md" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+            //        .Include("~/metronic/assets/admin/layout4/css/layout" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+            //        .Include("~/metronic/assets/admin/layout4/css/themes/light" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+            //        .ForceOrdered()
+            //    );
         }
     }
 }

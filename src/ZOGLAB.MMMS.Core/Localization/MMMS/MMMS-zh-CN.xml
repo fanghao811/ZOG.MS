@@ -344,6 +344,9 @@
     <text name="AddMember" value="新增员工" />
     <text name="AddRootUnit" value="新增根节点" />
     <text name="OrganizationUnitsHeaderInfo" value="组织机构与员工信息" />
-    ORGANIZATION TREE
+    <!--ORGANIZATION TREE-->
+    
+    <text name="Search">查询</text>
+    
   </texts>
 </localizationDictionary>

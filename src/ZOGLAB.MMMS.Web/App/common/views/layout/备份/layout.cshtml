@@ -15,10 +15,10 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js" data-ng-app="app"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js" data-ng-app="app"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="zh-cn" data-ng-app="app" dir=@(CultureHelper.IsRtl ? "rtl" : "")>
+<html lang="en" data-ng-app="app" dir=@(CultureHelper.IsRtl ? "rtl" : "")>
 <!--<![endif]-->
 <head>
-    <title>气象计量管理系统</title>
+    <title>气象计量检定系统</title>
     <meta charset="utf-8" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,15 +29,10 @@
     <link rel="shortcut icon" href="~/Common/Images/logos/3MS-logo-1.png" />
 
     <link href="~/Content/fonts-open-sans.css" rel="stylesheet" type="text/css" />
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
     @Styles.Render("~/Bundles/App/libs/css" + (CultureHelper.IsRtl ? "RTL" : ""))
-    <!-- END GLOBAL MANDATORY STYLES -->
-    <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
     <link id="ng_load_plugins_before" />
-    <!-- END DYMANICLY LOADED CSS FILES -->
-    <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
     @Styles.Render("~/Bundles/App/metronic/css" + (CultureHelper.IsRtl ? "RTL" : ""))
-    <!-- END THEME STYLES -->
     @Styles.Render("~/Bundles/Common/css")
     @Styles.Render("~/Bundles/App/css")
 
@@ -68,21 +63,15 @@
 
     <div data-ng-include="'~/App/common/views/layout/header.cshtml'"
          data-ng-controller="common.views.layout.header as vm"
-         class="page-header navbar navbar-fixed-top"
-         style="background: #ffffff">
+         class="page-header navbar navbar-fixed-top md-shadow-zero-light"
+         style="background: #283a62">
     </div>
 
     <div class="clearfix">
     </div>
 
-    <div class="page-container " style="height:660px;">
-        <!-- BEGIN SIDEBAR -->
-        <div data-ng-include="'~/App/common/views/layout/sidebar.cshtml'"
-             data-ng-controller="common.views.layout.sidebar as vm"
-             class="page-sidebar-wrapper">
-        </div>
-        <!-- END SIDEBAR -->
-
+    <div class="page-container " style="height:660px">
+        <div data-ng-include="'~/App/common/views/layout/sidebar.cshtml'" data-ng-controller="common.views.layout.sidebar as vm" class="page-sidebar-wrapper"></div>
         <div class="page-content-wrapper">
             <div class="page-content" style="height:660px">
                 <div ui-view class="fade-in-up">

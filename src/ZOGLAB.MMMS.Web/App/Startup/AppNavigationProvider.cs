@@ -225,7 +225,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
                         L("StandardManager"),
-                        url: "standard",
+                        url: "home",
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(

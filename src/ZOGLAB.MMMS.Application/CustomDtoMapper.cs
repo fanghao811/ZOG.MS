@@ -36,7 +36,11 @@ namespace ZOGLAB.MMMS
                 .ForMember(dto => dto.Installation, opt => opt.MapFrom(src => src.Installation.Equipment_Name))
                 .ReverseMap()
                 .ForMember(standard => standard.Installation, options => options.Ignore());
-            ;
+
+            mapper.CreateMap<BD_Standard, StandardEditDto>()
+                .ForMember(dto => dto.Installation, opt => opt.MapFrom(src => src.Installation.Equipment_Name))
+                .ReverseMap()
+                .ForMember(standard => standard.Installation, options => options.Ignore());
         }
     }
 }

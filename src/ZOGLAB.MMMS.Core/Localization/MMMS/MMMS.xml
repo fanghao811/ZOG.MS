@@ -543,5 +543,6 @@
     
     <!--page_login_in-->
     <text name="SystemName">3MS</text>
+    <text name="Search">Search</text>
   </texts>
 </localizationDictionary>
