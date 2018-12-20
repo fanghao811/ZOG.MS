@@ -388,13 +388,9 @@
     <Compile Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.Designer.cs">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812120142175_2018_12_12.cs" />
-    <Compile Include="Migrations\201812120142175_2018_12_12.Designer.cs">
-      <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812190452332_12_19_seed_installationAndStandard.cs" />
-    <Compile Include="Migrations\201812190452332_12_19_seed_installationAndStandard.Designer.cs">
-      <DependentUpon>201812190452332_12_19_seed_installationAndStandard.cs</DependentUpon>
+    <Compile Include="Migrations\201812201437543_new_day_pushu.cs" />
+    <Compile Include="Migrations\201812201437543_new_day_pushu.Designer.cs">
+      <DependentUpon>201812201437543_new_day_pushu.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\InstallationAndStandardCreator.cs" />
@@ -594,11 +590,8 @@
     <EmbeddedResource Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.resx">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812120142175_2018_12_12.resx">
-      <DependentUpon>201812120142175_2018_12_12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812190452332_12_19_seed_installationAndStandard.resx">
-      <DependentUpon>201812190452332_12_19_seed_installationAndStandard.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812201437543_new_day_pushu.resx">
+      <DependentUpon>201812201437543_new_day_pushu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

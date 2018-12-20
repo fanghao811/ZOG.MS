@@ -8,6 +8,7 @@ var appModule = angular.module("app", [
     'ui.grid.pagination',
     "oc.lazyLoad",
     "ngSanitize",
+    'ncy-angular-breadcrumb',
     'angularFileUpload',
     'daterangepicker',
     'angularMoment',
@@ -27,6 +28,13 @@ appModule.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
         debug: false,
         events: true,
         modules: []
+    });
+}]);
+appModule.config(['$breadcrumbProvider', function ($breadcrumbProvider) {
+    $breadcrumbProvider.setOptions({
+        prefixStateName: 'tenant',
+        template: 'bootstrap3',
+        includeAbstract: true
     });
 }]);
 
@@ -54,17 +62,18 @@ appModule.factory('settings', ['$rootScope', function ($rootScope) {
 
 /* ROUTE DEFINITIONS */
 
-appModule.config([
-    '$stateProvider', '$urlRouterProvider', '$qProvider',
+appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider', 
     function ($stateProvider, $urlRouterProvider, $qProvider) {
-
         // Default route (overrided below if user has permission)
         $urlRouterProvider.otherwise("/welcome");
 
         //Welcome page
         $stateProvider.state('welcome', {
             url: '/welcome',
-            templateUrl: '~/App/common/views/welcome/index.cshtml'
+            templateUrl: '~/App/common/views/welcome/index.cshtml',
+            ncyBreadcrumb: {
+                label: '首页'
+            }
         });
 
         //COMMON routes
@@ -72,27 +81,39 @@ appModule.config([
         if (abp.auth.hasPermission('Pages.Administration.Roles')) {
             $stateProvider.state('roles', {
                 url: '/roles',
-                templateUrl: '~/App/common/views/roles/index.cshtml'
+                templateUrl: '~/App/common/views/roles/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '角色'
+                }
             });
         }
 
         if (abp.auth.hasPermission('Pages.Administration.Users')) {
             $stateProvider.state('users', {
                 url: '/users?filterText',
-                templateUrl: '~/App/common/views/users/index.cshtml'
+                templateUrl: '~/App/common/views/users/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '用户'
+                }
             });
         }
 
         if (abp.auth.hasPermission('Pages.Administration.Languages')) {
             $stateProvider.state('languages', {
                 url: '/languages',
-                templateUrl: '~/App/common/views/languages/index.cshtml'
+                templateUrl: '~/App/common/views/languages/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '语言管理'
+                }
             });
 
             if (abp.auth.hasPermission('Pages.Administration.Languages.ChangeTexts')) {
                 $stateProvider.state('languageTexts', {
                     url: '/languages/texts/:languageName?sourceName&baseLanguageName&targetValueFilter&filterText',
-                    templateUrl: '~/App/common/views/languages/texts.cshtml'
+                    templateUrl: '~/App/common/views/languages/texts.cshtml',
+                    ncyBreadcrumb: {
+                        label: '语言文本'
+                    }
                 });
             }
         }
@@ -100,20 +121,29 @@ appModule.config([
         if (abp.auth.hasPermission('Pages.Administration.AuditLogs')) {
             $stateProvider.state('auditLogs', {
                 url: '/auditLogs',
-                templateUrl: '~/App/common/views/auditLogs/index.cshtml'
+                templateUrl: '~/App/common/views/auditLogs/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '日志管理'
+                }
             });
         }
 
         if (abp.auth.hasPermission('Pages.Administration.OrganizationUnits')) {
             $stateProvider.state('organizationUnits', {
                 url: '/organizationUnits',
-                templateUrl: '~/App/common/views/organizationUnits/index.cshtml'
+                templateUrl: '~/App/common/views/organizationUnits/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '组织管理'
+                }
             });
         }
 
         $stateProvider.state('notifications', {
             url: '/notifications',
-            templateUrl: '~/App/common/views/notifications/index.cshtml'
+            templateUrl: '~/App/common/views/notifications/index.cshtml',
+            ncyBreadcrumb: {
+                label: '消息通知'
+            }
         });
 
         //HOST routes
@@ -121,35 +151,50 @@ appModule.config([
         $stateProvider.state('host', {
             'abstract': true,
             url: '/host',
-            template: '<div ui-view class="fade-in-up"></div>'
+            template: '<div ui-view class="fade-in-up"></div>',
+            ncyBreadcrumb: {
+                label: '租主'
+            }
         });
 
         if (abp.auth.hasPermission('Pages.Tenants')) {
             $urlRouterProvider.otherwise("/host/tenants"); //Entrance page for the host
             $stateProvider.state('host.tenants', {
                 url: '/tenants?filterText',
-                templateUrl: '~/App/host/views/tenants/index.cshtml'
+                templateUrl: '~/App/host/views/tenants/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '租户管理'
+                }
             });
         }
 
         if (abp.auth.hasPermission('Pages.Editions')) {
             $stateProvider.state('host.editions', {
                 url: '/editions',
-                templateUrl: '~/App/host/views/editions/index.cshtml'
+                templateUrl: '~/App/host/views/editions/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '版本管理'
+                }
             });
         }
 
         if (abp.auth.hasPermission('Pages.Administration.Host.Maintenance')) {
             $stateProvider.state('host.maintenance', {
                 url: '/maintenance',
-                templateUrl: '~/App/host/views/maintenance/index.cshtml'
+                templateUrl: '~/App/host/views/maintenance/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '维护'
+                }
             });
         }
 
         if (abp.auth.hasPermission('Pages.Administration.Host.Settings')) {
             $stateProvider.state('host.settings', {
                 url: '/settings',
-                templateUrl: '~/App/host/views/settings/index.cshtml'
+                templateUrl: '~/App/host/views/settings/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '全局设置'
+                }
             });
         }
 
@@ -158,14 +203,20 @@ appModule.config([
         $stateProvider.state('tenant', {
             'abstract': true,
             url: '/tenant',
-            template: '<div ui-view class="fade-in-up"></div>'
+            template: '<div ui-view class="fade-in-up"></div>',
+            ncyBreadcrumb: {
+                label: '首页'
+            }
         });
 
         if (abp.auth.hasPermission('Pages.Tenant.Dashboard')) {
             $urlRouterProvider.otherwise("/tenant/dashboard"); //Entrance page for a tenant
             $stateProvider.state('tenant.dashboard', {
                 url: '/dashboard',
-                templateUrl: '~/App/tenant/views/dashboard/index.cshtml'
+                templateUrl: '~/App/tenant/views/dashboard/index.cshtml',
+                ncyBreadcrumb: {
+                    label: '我的工作'
+                }
             });
         }
 
@@ -177,13 +228,25 @@ appModule.config([
         }
 
         //BD routes
-        $stateProvider.state('standard', {
+        //query statistics
+        $stateProvider.state('qs', {
+            'abstract': true,
+            url: '/qs',
+            template: '<div ui-view class="fade-in-up"></div>',
+            ncyBreadcrumb: {
+                label: '查询统计'
+            }
+        });
+
+        $stateProvider.state('qs.standard', {
             url: '/standard',
-            templateUrl: '~/App/common/views/BD/standard/index.cshtml'
+            templateUrl: '~/App/common/views/BD/standard/index.cshtml',
+            ncyBreadcrumb: {
+                label: '标准器查询'
+            }
         });
 
         //SD routes
-
         $stateProvider.state('menuTree', {
             url: '/menuTree',
             templateUrl: '~/App/common/views/menuTree/index.cshtml'

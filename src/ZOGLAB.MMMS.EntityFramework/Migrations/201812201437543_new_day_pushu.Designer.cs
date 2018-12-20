@@ -7,18 +7,18 @@ namespace ZOGLAB.MMMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _12_19_seed_installationAndStandard : IMigrationMetadata
+    public sealed partial class new_day_pushu : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_12_19_seed_installationAndStandard));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(new_day_pushu));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812190452332_12_19_seed_installationAndStandard"; }
+            get { return "201812201437543_new_day_pushu"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target
