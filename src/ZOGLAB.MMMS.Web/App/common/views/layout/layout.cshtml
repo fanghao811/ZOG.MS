@@ -49,54 +49,101 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
-<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
-<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
-<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
-<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
-<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
-<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body ng-controller="common.views.layout as vm" class="page-md page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo page-on-load" ng-class="{'page-sidebar-closed': settings.layout.pageSidebarClosed}">
-
-    <div ng-spinner-bar class="page-spinner-bar">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
-    </div>
-
-    <div data-ng-include="'~/App/common/views/layout/header.cshtml'"
-         data-ng-controller="common.views.layout.header as vm"
-         class="page-header navbar navbar-fixed-top"
-         style="background: #ffffff">
-    </div>
-
-    <div class="clearfix">
-    </div>
-
-    <div class="page-container " style="height:660px;">
-        <!-- BEGIN SIDEBAR -->
-        <div data-ng-include="'~/App/common/views/layout/sidebar.cshtml'"
-             data-ng-controller="common.views.layout.sidebar as vm"
-             class="page-sidebar-wrapper">
+<body ng-controller="common.views.layout as vm" class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-sidebar-fixed page-on-load" ng-class="{'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        <div ng-spinner-bar class="page-spinner-bar">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
         </div>
-        <!-- END SIDEBAR -->
 
-        <div class="page-content-wrapper">
-            <div class="page-content" style="height:660px">
-                <div ui-view class="fade-in-up">
+        <div data-ng-include="'~/App/common/views/layout/header.cshtml'"
+             data-ng-controller="common.views.layout.header as vm"
+             class="page-header navbar navbar-fixed-top"
+             style="background: #ffffff">
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"></div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container ">
+            <!-- BEGIN SIDEBAR -->
+            <div data-ng-include="'~/App/common/views/layout/sidebar.cshtml'"
+                 data-ng-controller="common.views.layout.sidebar as vm"
+                 class="page-sidebar-wrapper">
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <div class="full-height-content full-height-content-scrollable">
+                        <!-- BEGIN PAGE HEADER-->
+                        <!-- BEGIN PAGE BAR -->
+                        <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <span>Custom Layouts</span>
+                                </li>
+                            </ul>
+                            <div class="page-toolbar">
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-bell"></i> Action
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-shield"></i> Another action
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-user"></i> Something else here
+                                            </a>
+                                        </li>
+                                        <li class="divider"> </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-bag"></i> Separated link
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PAGE BAR -->
+                        <!-- END PAGE HEADER-->
+                        <div class=" ui-view full-height-content-body fade-in-up">
+
+                        </div>
+                    </div>
                 </div>
+                <!-- END CONTENT BODY -->
             </div>
+            <!-- END CONTENT -->
+            @if (AbpSession.MultiTenancySide == MultiTenancySides.Host || IsFeatureEnabled(AppFeatures.ChatFeature))
+            {
+                <div data-ng-include="'~/App/common/views/layout/chatbar.cshtml'" data-ng-controller="common.views.layout.chatbar as vm">
+                </div>
+            }
         </div>
-        @if (AbpSession.MultiTenancySide == MultiTenancySides.Host || IsFeatureEnabled(AppFeatures.ChatFeature))
-        {
-            <div data-ng-include="'~/App/common/views/layout/chatbar.cshtml'" data-ng-controller="common.views.layout.chatbar as vm">
-            </div>
-        }
-    </div>
-    @*2018/12/12 注释了页脚*@
-    <div data-ng-include="'~/App/common/views/layout/footer.cshtml'" data-ng-controller="common.views.layout.footer as vm" class="page-footer">
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        @*<div data-ng-include="'~/App/common/views/layout/footer.cshtml'" data-ng-controller="common.views.layout.footer as vm" class="page-footer"></div>*@
+        <!-- END FOOTER -->
     </div>
     <!--[if lt IE 9]>
         <script src="~/libs/respond/respond.min.js"></script>
