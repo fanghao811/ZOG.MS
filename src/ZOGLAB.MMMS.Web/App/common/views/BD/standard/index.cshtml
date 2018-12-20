@@ -11,7 +11,6 @@
             </div>
         </div>
         <div class="col-xs-6 text-right">
-
         </div>
     </div>
     <div class="portlet light margin-bottom-0">
@@ -61,7 +60,8 @@
                             <span class="clickable-item text-muted" ng-if="vm.advancedFiltersAreShown" ng-click="vm.advancedFiltersAreShown=!vm.advancedFiltersAreShown"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
                         </div>
                         <div class="col-sm-6 text-right">
-                            @*<button class="btn btn-default" ng-click="vm.exportToExcel()"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>*@
+                            <button class="btn btn-default" ng-if="vm.permissions.edit" g-click="vm.exportToExcel()"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>
+                            <button class="btn green" ng-if="!vm.permissions.create" ng-click="vm.getStandards()"><i class="icon-settings"></i> @L("Edit")</button>
                             <button class="btn blue" ng-click="vm.getStandards()"><i class="fa fa-refresh"></i> @L("Search")</button>
                         </div>
                     </div>

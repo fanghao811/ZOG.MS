@@ -45,19 +45,9 @@
                 appScopeProvider: vm,
                 columnDefs: [       //TODO: 4.1  设置列参数 done
                     {
-                        name: 'Actions',
-                        enableSorting: false,
-                        width: 50,
-                        headerCellTemplate: '<span></span>',
-                        cellTemplate:
-                            '<div class=\"ui-grid-cell-contents text-center\">' +
-                                '  <button class="btn btn-default btn-xs" ng-click="grid.appScope.editStandard(row.entity)"><i class="fa fa-search"></i></button>' +
-                                '</div>'
-                    },
-                    {
                         name: '出厂编号',
                         field: 'factoryNum',
-                        minWidth: 30
+                        Width: 20
                     },
                     {
                         name: '标准器名称',
@@ -82,7 +72,8 @@
                     {
                         name: '检定单位',
                         field: 'caliFactory',
-                        minWidth: 60
+                        enableSorting: false,
+                        minWidth: 200
                     },
                     //{
                     //    name: '检定单位联系人',
@@ -96,6 +87,7 @@
                     {
                         name: '所属计量装置',
                         field: 'installation',
+                        enableSorting: false,
                         minWidth: 30
                     },
                     //{
@@ -126,22 +118,19 @@
                     {
                         name: '标准器类型',
                         field: 'strType',
-                        cellTemplate: '<div class="ngCellText">{{row.getProperty(col.field)?"标准器":"辅助器"}}</div>'
+                        cellTemplate: '<div class="ui-grid-cell-contents text-center">{{row.getProperty(col.field)?"标准器":"辅助器"}}</div>'
                     },
                     {
-                        name: '管理',
+                        name: '修改',
                         enableSorting: false,
                         minWidth: 80,
                         //headerCellTemplate: '<span></span>',
                         cellTemplate:
                             '<div class=\"ui-grid-cell-contents text-center\">' +
-                            '  <button class="btn btn-default green btn-xs" ng-click="grid.appScope.editStandard(row.entity)"><i class="fa fa-check"></i></button>' +
-                            '  <button class="btn btn-default  red btn-xs" ng-click="grid.appScope.deleteStandard(row.entity)"><i class="fa fa-trash"></i></button>' +
+                            '  <button class="btn btn-default btn-xs" ng-click="grid.appScope.editStandard(row.entity)"><i class="fa fa-search"></i></button>' +
+                            '  <button class="btn btn-default green btn-xs" ng-if="!vm.permissions.edit" ng-click="grid.appScope.editStandard(row.entity)"><i class="icon-settings"></i></button>' +
+                            '  <button class="btn btn-default  red btn-xs " ng-click="grid.appScope.deleteStandard(row.entity)"><i class="fa fa-trash"></i></button>' +
                             '</div>'
-                            //'< div class=\"ui-grid-cell-contents btn-group btn-group text-center\">' +
-                            //'    <button class="btn btn-outline green btn-sm"ng-click="grid.appScope.editStandard(row.entity)">编辑</button>' +
-                            //'    <button class="btn btn-outline red btn-sm" ng-click="grid.appScope.deleteStandard(row.entity)">删除</button>' +
-                            //'</div>'
                     }
                     //{
                     //    name: '标准器类型', field: 'strType', editableCellTemplate: 'ui-grid/dropdownEditor', 
@@ -150,7 +139,6 @@
                     //        { id: 2, strType: false }
                     //    ]
                     //}
-  
                 ],
                 onRegisterApi: function (gridApi) {     //TODO:  4.2 注册表格API
                     $scope.gridApi = gridApi;
@@ -184,12 +172,12 @@
                     });
             };
 
-            //vm.exportToExcel = function () {      //TODO:     Excel 导出功能
-            //    auditLogService.getAuditLogsToExcel($.extend({}, vm.requestParams, vm.dateRangeModel))
-            //        .then(function (result) {
-            //            app.downloadTempFile(result.data);
-            //        });
-            //};
+            vm.exportToExcel = function () {      //TODO:     Excel 导出功能
+                standardService.getStandardsToExcel(vm.requestParams)
+                    .then(function (result) {
+                        app.downloadTempFile(result.data.items);
+                    });
+            };
 
             vm.editStandard = function (standard) {
                 openCreateOrEditModal(standard.id);

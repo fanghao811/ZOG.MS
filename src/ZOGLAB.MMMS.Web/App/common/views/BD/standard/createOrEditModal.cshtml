@@ -2,7 +2,7 @@
     <form name="strandardCreateOrEditForm" role="form" novalidate class="form-validation">
         <div class="modal-header">
             <h4 class="modal-title">
-                <span ng-if="vm.standard.id">编辑标准器: {{vm.standard.StrName}}</span>
+                <span ng-if="vm.standard.id">编辑标准器 {{vm.standard.StrName}}</span>
                 <span ng-if="!vm.standard.id">新增标准器</span>
             </h4>
         </div>
@@ -17,38 +17,52 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                                <input class="form-control" type="text" name="Name" ng-class="{'edited':vm.standard.name}" ng-model="vm.standard.name" required maxlength="@ZOGLAB.MMMS.Authorization.Users.standard.MaxNameLength">
-                                <label>@L("Name")</label>
+                                <input class="form-control" type="text" name="factoryNum" ng-class="{'edited':vm.standard.factoryNum}" ng-model="vm.standard.factoryNum" required>
+                                <label>出厂编号</label>
                             </div>
 
                             <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                                <input type="text" name="Surname" class="form-control" ng-class="{'edited':vm.standard.surname}" ng-model="vm.standard.surname" required maxlength="@ZOGLAB.MMMS.Authorization.Users.standard.MaxSurnameLength">
-                                <label>@L("Surname")</label>
+                                <input type="text" name="strName" class="form-control" ng-class="{'edited':vm.standard.strName}" ng-model="vm.standard.strName" required>
+                                <label>标准器名称</label>
                             </div>
+
                         </div>
                     </div>
 
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                        <input type="email" name="EmailAddress" class="form-control" ng-class="{'edited':vm.standard.emailAddress}" ng-model="vm.standard.emailAddress" required maxlength="@AbpUserBase.MaxEmailAddressLength">
-                        <label>@L("EmailAddress")</label>
+                        <input type="text" name="strSpec" class="form-control" ng-class="{'edited':vm.standard.strSpec}" ng-model="vm.standard.strSpec">
+                        <label>标准器型号</label>
                     </div>
-
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                        <input type="text" name="PhoneNumber" class="form-control" ng-class="{'edited':vm.standard.phoneNumber}" ng-model="vm.standard.phoneNumber">
-                        <label>@L("PhoneNumber")</label>
+                        <input type="text" name="testRange" class="form-control" ng-class="{'edited':vm.standard.testRange}" ng-model="vm.standard.testRange">
+                        <label>测量范围</label>
                     </div>
 
-                    <div class="form-group form-md-line-input form-md-floating-label">
-                        <input type="text" ng-disabled="!vm.canChangeUserName" ng-class="{'edited':vm.standard.userName}" name="UserName" class="form-control input-ltr" ng-model="vm.standard.userName">
-                        <label>@L("UserName")</label>
-                        <span class="help-block" ng-show="!vm.canChangeUserName">@L("CanNotChangeAdminUserName")</span>
-                    </div>
                 </uib-tab>
                 <uib-tab heading="厂家信息">
                     <uib-tab-heading>
                         <b class="badge badge-primary"></b>
                     </uib-tab-heading>
-
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input type="text" name="manufactor" class="form-control" ng-class="{'edited':vm.standard.manufactor}" ng-model="vm.standard.manufactor">
+                        <label>制造商</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input type="text" name="manufactorTel" class="form-control" ng-class="{'edited':vm.standard.manufactorTel}" ng-model="vm.standard.manufactorTel">
+                        <label>厂家电话</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input type="text" name="caliFactory" class="form-control" ng-class="{'edited':vm.standard.caliFactory}" ng-model="vm.standard.caliFactory">
+                        <label>检定单位</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input type="text" name="caliFactoryMan" class="form-control" ng-class="{'edited':vm.standard.caliFactoryMan}" ng-model="vm.standard.caliFactoryMan">
+                        <label>检定单位联系人</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input type="text" name="caliFactoryTel" class="form-control" ng-class="{'edited':vm.standard.caliFactoryTel}" ng-model="vm.standard.caliFactoryTel">
+                        <label>检定单位电话</label>
+                    </div>
                 </uib-tab>
             </uib-tabset>
         </div>
