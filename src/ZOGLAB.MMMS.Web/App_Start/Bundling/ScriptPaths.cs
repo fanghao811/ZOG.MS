@@ -54,7 +54,6 @@ namespace ZOGLAB.MMMS.Web.Bundling
 
         public const string MustacheJs = "~/libs/mustachejs/mustache.min.js";
         public const string Tether = "~/libs/tether/js/tether.min.js"; 
-
         public const string Angular = "~/Scripts/angular.min.js";//SPA!
         public const string Angular_Sanitize = "~/Scripts/angular-sanitize.min.js";//SPA!
         public const string Angular_Touch = "~/Scripts/angular-touch.min.js";//SPA!
@@ -63,6 +62,7 @@ namespace ZOGLAB.MMMS.Web.Bundling
         public const string Angular_Ui_Bootstrap_Tpls = "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js";//SPA!
         public const string Angular_Ui_Grid = "~/libs/angular-ui-grid/ui-grid.min.js";//SPA!
         public const string Angular_OcLazyLoad = "~/libs/angular-ocLazyLoad/ocLazyLoad.min.js";//SPA!
+        public const string Angular_BreadCrumb = "~/libs/angular-breadcrumb/angular-breadcrumb.min.js";//SPA!
         public const string Angular_File_Upload = "~/libs/angular-file-upload/angular-file-upload.min.js";//SPA!
         public const string Angular_DateRangePicker = "~/libs/angular-daterangepicker/angular-daterangepicker.min.js";//SPA!
         public const string Angular_Moment = "~/libs/angular-moment/angular-moment.min.js";//SPA!

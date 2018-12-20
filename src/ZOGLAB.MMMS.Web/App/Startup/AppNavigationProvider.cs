@@ -154,7 +154,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.BD.Standard,
                         L("StandardQuery"),
-                        url:"standard",
+                        url: "qs.standard",
                         icon: "icon-check"
                         )
                     ).AddItem(new MenuItemDefinition(
@@ -165,7 +165,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("ToCheckWarning"),                   
+                    L("ToCheckWarning"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
@@ -210,7 +210,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("MeasuringMechanism"),                    
+                    L("MeasuringMechanism"),
                     icon: "icon-ban"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,

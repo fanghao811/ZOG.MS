@@ -52,6 +52,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         ScriptPaths.Angular_Ui_Bootstrap_Tpls,
                         ScriptPaths.Angular_Ui_Grid,
                         ScriptPaths.Angular_OcLazyLoad,
+                        ScriptPaths.Angular_BreadCrumb,
                         ScriptPaths.Angular_File_Upload,
                         ScriptPaths.Angular_DateRangePicker,
                         ScriptPaths.Angular_Moment,
