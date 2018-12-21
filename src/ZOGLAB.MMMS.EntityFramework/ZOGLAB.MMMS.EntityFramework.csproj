@@ -388,11 +388,17 @@
     <Compile Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.Designer.cs">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812201437543_new_day_pushu.cs" />
-    <Compile Include="Migrations\201812201437543_new_day_pushu.Designer.cs">
-      <DependentUpon>201812201437543_new_day_pushu.cs</DependentUpon>
+    <Compile Include="Migrations\201812210644168_check_tpye.cs" />
+    <Compile Include="Migrations\201812210644168_check_tpye.Designer.cs">
+      <DependentUpon>201812210644168_check_tpye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812210817330_add_seed_checkType.cs" />
+    <Compile Include="Migrations\201812210817330_add_seed_checkType.Designer.cs">
+      <DependentUpon>201812210817330_add_seed_checkType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Seed\BD\UnitsCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\CheckTypeCreator.cs" />
     <Compile Include="Migrations\Seed\BD\InstallationAndStandardCreator.cs" />
     <Compile Include="Migrations\Seed\BD\InitialBDBuilder.cs" />
     <Compile Include="MMMSDataModule.cs" />
@@ -590,8 +596,11 @@
     <EmbeddedResource Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.resx">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812201437543_new_day_pushu.resx">
-      <DependentUpon>201812201437543_new_day_pushu.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812210644168_check_tpye.resx">
+      <DependentUpon>201812210644168_check_tpye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812210817330_add_seed_checkType.resx">
+      <DependentUpon>201812210817330_add_seed_checkType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

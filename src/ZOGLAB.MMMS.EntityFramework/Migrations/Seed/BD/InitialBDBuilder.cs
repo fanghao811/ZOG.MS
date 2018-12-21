@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZOGLAB.MMMS.EntityFramework;
+﻿using ZOGLAB.MMMS.EntityFramework;
 
 namespace ZOGLAB.MMMS.Migrations.Seed.BD
 {
@@ -19,6 +14,8 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
         public void Create()
         {
             new InstallationAndStandardCreator(_context).Create();
+            new CheckTypeCreator(_context).Create();
+            new UnitsCreator(_context).Create();
             _context.SaveChanges();
         }
     }

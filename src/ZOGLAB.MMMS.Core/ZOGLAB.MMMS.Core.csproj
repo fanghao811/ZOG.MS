@@ -131,7 +131,7 @@
     <Compile Include="BD\BD_ASeed.cs" />
     <Compile Include="BD\BD_Back.cs" />
     <Compile Include="BD\BD_CalibrationResult.cs" />
-    <Compile Include="BD\BD_CalibrationType.cs" />
+    <Compile Include="BD\BD_MeteorType.cs" />
     <Compile Include="BD\BD_CheckType.cs" />
     <Compile Include="BD\BD_DeviceItem.cs" />
     <Compile Include="BD\BD_EssentialFactor.cs" />
@@ -152,6 +152,7 @@
     <Compile Include="BD\BD_Wind.cs" />
     <Compile Include="BD\BD_WindDirection.cs" />
     <Compile Include="BD\IRepository\IInstallationRepository.cs" />
+    <Compile Include="BD\IRepository\IUnitRepository.cs" />
     <Compile Include="BD\IRepository\IStandardRepository.cs" />
     <Compile Include="MMMSConsts.cs" />
     <Compile Include="MMMSCoreModule.cs" />

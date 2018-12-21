@@ -7,18 +7,18 @@ namespace ZOGLAB.MMMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class new_day_pushu : IMigrationMetadata
+    public sealed partial class check_tpye : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(new_day_pushu));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(check_tpye));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812201437543_new_day_pushu"; }
+            get { return "201812210644168_check_tpye"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

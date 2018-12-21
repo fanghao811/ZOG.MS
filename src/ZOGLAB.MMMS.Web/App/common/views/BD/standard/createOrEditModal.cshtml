@@ -9,40 +9,37 @@
         <div class="modal-body">
             <uib-tabset class="tab-container tabbable-line">
                 <uib-tab heading="基本信息">
-
                     <div class="row">
-                        <div class="col-sm-4 text-center">
-                            <img ng-if="vm.profilePictureId" ng-src="@Url.Action("GetProfilePictureById", "Profile")?id={{vm.profilePictureId}}" width="128" height="128" class="img-thumbnail img-rounded standard-edit-dialog-profile-image" />
-                            <img ng-if="!vm.profilePictureId" src="@Url.Content("~/Common/Images/default-profile-picture.png")" width="128" height="128" class="img-thumbnail img-rounded standard-edit-dialog-profile-image" />
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                                <input class="form-control" type="text" name="factoryNum" ng-class="{'edited':vm.standard.factoryNum}" ng-model="vm.standard.factoryNum" required>
-                                <label>出厂编号</label>
-                            </div>
-
+                        <div class="col-sm-6 ">
                             <div class="form-group form-md-line-input form-md-floating-label no-hint">
                                 <input type="text" name="strName" class="form-control" ng-class="{'edited':vm.standard.strName}" ng-model="vm.standard.strName" required>
                                 <label>标准器名称</label>
                             </div>
-
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input class="form-control" type="text" name="factoryNum" ng-class="{'edited':vm.standard.factoryNum}" ng-model="vm.standard.factoryNum" required>
+                                <label>出厂编号</label>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                        <input type="text" name="strSpec" class="form-control" ng-class="{'edited':vm.standard.strSpec}" ng-model="vm.standard.strSpec">
-                        <label>标准器型号</label>
+                    <div class="row">
+                        <div class="col-sm-6 ">
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="strName" class="form-control" ng-class="{'edited':vm.standard.strSpec}" ng-model="vm.standard.strSpec" required>
+                                <label>标准器型号</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input class="form-control" type="text" name="factoryNum" ng-class="{'edited':vm.standard.testRange}" ng-model="vm.standard.testRange" required>
+                                <label>测量范围</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                        <input type="text" name="testRange" class="form-control" ng-class="{'edited':vm.standard.testRange}" ng-model="vm.standard.testRange">
-                        <label>测量范围</label>
-                    </div>
-
                 </uib-tab>
                 <uib-tab heading="厂家信息">
-                    <uib-tab-heading>
-                        <b class="badge badge-primary"></b>
-                    </uib-tab-heading>
+                    <b class="badge badge-primary"></b>
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <input type="text" name="manufactor" class="form-control" ng-class="{'edited':vm.standard.manufactor}" ng-model="vm.standard.manufactor">
                         <label>制造商</label>

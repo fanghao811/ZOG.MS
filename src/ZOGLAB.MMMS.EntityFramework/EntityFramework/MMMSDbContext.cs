@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.Zero.EntityFramework;
 using ZOGLAB.MMMS.Authorization.Roles;
 using ZOGLAB.MMMS.Authorization.Users;
@@ -73,22 +74,22 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<BD_Appendix> BD_Appendix { get; set; }
         public virtual IDbSet<BD_Site> BD_Site { get; set; }
         public virtual IDbSet<BD_Remission> BD_Remission { get; set; }
-        public virtual IDbSet<BD_CalibrationType> BD_CalibrationType { get; set; }
+        public virtual IDbSet<BD_MeteorType> BD_MeteorType { get; set; }
         public virtual IDbSet<BD_CheckType> BD_CheckType { get; set; }
-
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
-        //    //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-        //    //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-        //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_Test>(r => r.BD_Test).WithMany().WillCascadeOnDelete(false);
-        //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_ReceiveDevice>(r=>r.BD_ReceiveDevice).WithMany().WillCascadeOnDelete(false);
+        //    modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        //    modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+        //    //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_Test>(r => r.BD_Test).WithMany().WillCascadeOnDelete(false);
+        //    //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_ReceiveDevice>(r => r.BD_ReceiveDevice).WithMany().WillCascadeOnDelete(false);
         //}
+
 
         public MMMSDbContext()
             : base("Default")
         {
-            
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<MMMSDbContext>());
         }
 
         public MMMSDbContext(string nameOrConnectionString)

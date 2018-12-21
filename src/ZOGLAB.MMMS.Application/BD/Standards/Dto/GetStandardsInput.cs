@@ -6,7 +6,7 @@ using ZOGLAB.MMMS.Dto;
 
 namespace ZOGLAB.MMMS.BD
 {
-    public class GetStandardsInput: PagedAndSortedInputDto, IShouldNormalize
+    public class GetStandardsInput: PagedAndSortedInputDto,IShouldNormalize
     {
         public const int MaxLength_50 = 50;
         public const int MaxLength_20 = 20;

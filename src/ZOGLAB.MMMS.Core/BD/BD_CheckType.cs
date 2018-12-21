@@ -15,12 +15,14 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
-        //2	Calibration_ID 检测类型ID  INT 外
-        [ForeignKey("CalibrationType_ID")]
-        public BD_CalibrationType CalibrationTyp { get; set; }
-        public long CalibrationType_ID { get; set; }
+        //2	MeteorType_ID 气象要素 INT 外
+        [ForeignKey("MeteorType_ID")]
+        public BD_MeteorType MeteorType { get; set; }
+        public long? MeteorType_ID { get; set; }
 
-        //3	CheckName 检测项目    VARCHAR(20)
+        public Calibration_Type CalibrationType { get; set; }
+
+        //3	CheckName 检测项目   VARCHAR(20)
         [MaxLength(MaxLength_20)]
         public string CheckName { get; set; }
 
@@ -29,16 +31,27 @@ namespace ZOGLAB.MMMS.BD
         public string Mark { get; set; }
 
         //5	UserName 操作者 VARCHAR(20)
-        [MaxLength(MaxLength_50)]
+        [MaxLength(MaxLength_20)]
         public string UserName { get; set; }
 
         //6	strDateTime 操作日期    VARCHAR(20)
-        public DateTime StrDateTime { get; set; }
+        public DateTime? StrDateTime { get; set; }
 
         //7	strFlag 是否自动检测  INT
         public bool StrFlag { get; set; }
 
         public bool IsDeleted { get; set; }
-    }
 
+        public BD_CheckType() {
+            StrFlag = false;
+            StrDateTime = DateTime.Now;
+        }
+
+        public enum Calibration_Type
+        {
+            检定 = 1,
+            校准 = 2,
+            核查 = 3
+        }
+    }
 }
