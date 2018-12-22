@@ -1,11 +1,19 @@
 ﻿@using ZOGLAB.MMMS.Localization
 <div ng-controller="common.views.BD.standard.index as vm">
-    <!-- BEGIN PAGE TITLE-->
-    <h1 class="page-title">
-        <span ncy-breadcrumb-last></span>
-        <small>layout with full height content</small>
-    </h1>
-    <!-- END PAGE TITLE-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        @*<div ncy-breadcrumb></div>*@
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <span>标准器查询</span>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE BAR -->
     <div class="portlet light margin-bottom-0">
         <div class="portlet-body">
             <div class="form">

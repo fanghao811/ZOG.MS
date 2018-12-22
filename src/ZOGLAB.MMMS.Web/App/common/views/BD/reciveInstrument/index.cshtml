@@ -1,0 +1,1368 @@
+﻿@using ZOGLAB.MMMS.Localization
+<div ng-controller="common.views.rs.regist.index as vm">
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        @*<div ncy-breadcrumb></div>*@
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <span>Dashboard</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="pull-right tooltips btn btn-fit-height green"
+                 data-placement="top"
+                 data-original-title="收发单日期范围">
+                <i class="icon-calendar"></i>&nbsp;
+                <span class="thin uppercase hidden-xs" ng-model="vm.dateRangeModel"></span>&nbsp;
+                <i class="fa fa-angle-down"></i>
+            </div>
+
+            @*<input date-range-picker type="text"
+                options="vm.dateRangeOptions"
+                min="vm.dateRangeOptions.min"
+                max="vm.dateRangeOptions.max"
+                class="form-control date-picker"
+                ng-model="vm.dateRangeModel" />*@
+        </div>
+    </div>
+    <!-- END PAGE BAR -->
+    <!-- BEGIN 接收单 总览 -->
+    <div class="row widget-row">
+        <div class="col-md-3">
+            <!-- BEGIN WIDGET THUMB -->
+            <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                <h4 class="widget-thumb-heading">待接收</h4>
+                <div class="widget-thumb-wrap">
+                    <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                    <div class="widget-thumb-body row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <span class="widget-thumb-subtitle">件</span>
+                            <span class="widget-thumb-body-stat">7,644</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div id="sparkline_bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END WIDGET THUMB -->
+        </div>
+        <div class="col-md-3">
+            <!-- BEGIN WIDGET THUMB -->
+            <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                <h4 class="widget-thumb-heading">检测中</h4>
+                <div class="widget-thumb-wrap">
+                    <i class="widget-thumb-icon bg-red icon-layers"></i>
+                    <div class="widget-thumb-body row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <span class="widget-thumb-subtitle">件</span>
+                            <span class="widget-thumb-body-stat">2,139</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div id="sparkline_bar2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END WIDGET THUMB -->
+        </div>
+        <div class="col-md-3">
+            <!-- BEGIN WIDGET THUMB -->
+            <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                <h4 class="widget-thumb-heading">已完成</h4>
+                <div class="widget-thumb-wrap">
+                    <i class="widget-thumb-icon bg-purple icon-screen-desktop"></i>
+                    <div class="widget-thumb-body row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <span class="widget-thumb-subtitle">件</span>
+                            <span class="widget-thumb-body-stat">1,293</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div id="sparkline_bar5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END WIDGET THUMB -->
+        </div>
+        <div class="col-md-3">
+            <!-- BEGIN WIDGET THUMB -->
+            <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                <h4 class="widget-thumb-heading">已返样</h4>
+                <div class="widget-thumb-wrap">
+                    <i class="widget-thumb-icon bg-blue icon-bar-chart"></i>
+                    <div class="widget-thumb-body row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <span class="widget-thumb-subtitle">件</span>
+                            <span class="widget-thumb-body-stat">293</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div id="sparkline_bar6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END WIDGET THUMB -->
+        </div>
+    </div>
+    <!-- END   接收单 总览 -->
+    <!-- BEGIN 生成 送检单 -->
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-globe font-dark hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">送检单 Order</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn btn-transparent green  btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">新建送检单
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form action="#">
+                        <div class="input-group input-group-lg c-square">
+                            <input type="text" class="form-control c-square" placeholder="例：ZOGLAB" />
+                            <span class="input-group-btn">
+                                <button class="btn uppercase" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+                    <div class="alert alert-success alert-dismissable">
+                        <button class="close" aria-hidden="true" type="button" data-dismiss="alert"></button>
+                        <strong>友情提示：</strong> 可根据 单位名称、联系人、手机号码 模糊查询       查无结果-->
+                        <a class="alert-link" href=""> 新建单位信息 </a>
+                    </div>
+                    <div class="table-scrollable table-scrollable-borderless">
+                        <table class="table table-hover table-light">
+                            <thead>
+                                <tr class="uppercase">
+                                    <th>
+                                        单位
+                                    </th>
+                                    <th>
+                                        待接收
+                                    </th>
+                                    <th>
+                                        检测中
+                                    </th>
+                                    <th>
+                                        已完成
+                                    </th>
+                                    <th>
+                                        联系电话
+                                    </th>
+                                    <th>
+                                        登记日期
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">ZOGLAB</a>
+                                </td>
+                                <td>
+                                    100
+                                </td>
+                                <td>
+                                    55
+                                </td>
+                                <td>
+                                    811
+                                </td>
+                                <td>
+                                    13505790001
+                                </td>
+                                <td>
+                                    <span class="bold font-green-haze">12/22/2018</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">杭州气象局</a>
+                                </td>
+                                <td>101</td>
+                                <td>56</td>
+                                <td>800</td>
+                                <td>13505790001</td>
+                                <td>
+                                    <span class="bold font-green-haze">12/23/2018</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">浙江气象局</a>
+                                </td>
+                                <td>
+                                    1,345
+                                </td>
+                                <td>
+                                    450
+                                </td>
+                                <td>
+                                    46
+                                </td>
+                                <td>
+                                    13505790001
+                                </td>
+                                <td>
+                                    <span class="bold font-green-haze">12/23/2018</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">金华气象局</a>
+                                </td>
+                                <td>
+                                    645
+                                </td>
+                                <td>
+                                    50
+                                </td>
+                                <td>
+                                    89
+                                </td>
+                                <td>
+                                    13505790001
+                                </td>
+                                <td>
+                                    <span class="bold font-green-haze">12/23/2018</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">武义气象局</a>
+                                </td>
+                                <td>101</td>
+                                <td>56</td>
+                                <td>800</td>
+                                <td>13505790001</td>
+                                <td>
+                                    <span class="bold font-green-haze">12/23/2018</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+        <div class="col-lg-6 col-xs-12 col-sm-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-share font-dark hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">仪器列表 ORDER DETIAL</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group">
+                            <a class="btn btn-sm blue btn-outline btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                Filter By
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> Finance
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" checked="" /> Membership
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> Customer Support
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" checked="" /> HR
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> System
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                        <ul class="feeds">
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc">
+                                                You have 4 pending tasks.
+                                                <span class="label label-sm label-warning ">
+                                                    Take action
+                                                    <i class="fa fa-share"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> Just now </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-success">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> Finance Report for year 2013 has been released. </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-danger">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc">
+                                                New order received with
+                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 30 mins </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-success">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-default">
+                                                <i class="fa fa-bell-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc">
+                                                Web server hardware needs to be upgraded.
+                                                <span class="label label-sm label-default "> Overdue </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 2 hours </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-default">
+                                                    <i class="fa fa-briefcase"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> IPO Report for year 2013 has been released. </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc">
+                                                You have 4 pending tasks.
+                                                <span class="label label-sm label-warning ">
+                                                    Take action
+                                                    <i class="fa fa-share"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> Just now </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-danger">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> Finance Report for year 2013 has been released. </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-default">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc">
+                                                New order received with
+                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 30 mins </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-success">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-warning">
+                                                <i class="fa fa-bell-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc">
+                                                Web server hardware needs to be upgraded.
+                                                <span class="label label-sm label-default "> Overdue </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 2 hours </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-info">
+                                                    <i class="fa fa-briefcase"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> IPO Report for year 2013 has been released. </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="scroller-footer">
+                        <div class="btn-arrow-link pull-right">
+                            <a href="javascript:;">See All Records</a>
+                            <i class="icon-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-xs-12 col-sm-12">
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-directions font-green hide"></i>
+                        <span class="caption-subject bold font-dark uppercase"> Events</span>
+                        <span class="caption-helper">Horizontal Timeline</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn green btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">Actions
+                            </label>
+                            <label class="btn  green btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Tools
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="cd-horizontal-timeline mt-timeline-horizontal" data-spacing="60">
+                        <div class="timeline mt-timeline-square">
+                            <div class="events-wrapper">
+                                <div class="events">
+                                    <ol>
+                                        <li>
+                                            <a href="#0" data-date="16/01/2014" class="border-after-blue bg-after-blue selected">Expo 2016</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="28/02/2014" class="border-after-blue bg-after-blue">New Promo</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="20/04/2014" class="border-after-blue bg-after-blue">Meeting</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="20/05/2014" class="border-after-blue bg-after-blue">Launch</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="09/07/2014" class="border-after-blue bg-after-blue">Party</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="30/08/2014" class="border-after-blue bg-after-blue">Reports</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="15/09/2014" class="border-after-blue bg-after-blue">HR</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="01/11/2014" class="border-after-blue bg-after-blue">IPO</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="10/12/2014" class="border-after-blue bg-after-blue">Board</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="19/01/2015" class="border-after-blue bg-after-blue">Revenue</a>
+                                        </li>
+                                        <li>
+                                            <a href="#0" data-date="03/03/2015" class="border-after-blue bg-after-blue">Dinner</a>
+                                        </li>
+                                    </ol>
+                                    <span class="filling-line bg-blue" aria-hidden="true"></span>
+                                </div>
+                                <!-- .events -->
+                            </div>
+                            <!-- .events-wrapper -->
+                            <ul class="cd-timeline-navigation mt-ht-nav-icon">
+                                <li>
+                                    <a href="#0" class="prev inactive btn blue md-skip">
+                                        <i class="fa fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#0" class="next btn blue md-skip">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- .cd-timeline-navigation -->
+                        </div>
+                        <!-- .timeline -->
+                        <div class="events-content">
+                            <ol>
+                                <li class="selected" data-date="16/01/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Expo 2016 Launch</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_2.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Lisa Bold</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">23 February 2014</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod mi felis, aliquam at iaculis eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis mi felis, aliquam
+                                            at iaculis eu, onsectetur adipiscing elit finibus eu ex. Integer efficitur leo eget dolor tincidunt, et dignissim risus lacinia. Nam in egestas onsectetur adipiscing elit nunc. Suspendisse
+                                            potenti
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle dark btn-outline">Read More</a>
+                                        <a href="javascript:;" class="btn btn-circle btn-icon-only green pull-right">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li data-date="28/02/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Sending Shipment</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_3.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Hugh Grant</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">28 February 2014 : 10:15 AM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis eu, finibus eu ex. Integer efficitur leo eget
+                                            dolor tincidunt, et dignissim risus lacinia. Nam in egestas nunc. Suspendisse potenti. Cras ullamcorper tincidunt malesuada. Sed sit amet molestie elit, vel placerat ipsum. Ut consectetur
+                                            odio non est rhoncus volutpat. Nullam interdum, neque quis vehicula ornare, lacus elit dignissim purus, quis ultrices erat tortor eget felis. Cras commodo id massa at condimentum. Praesent
+                                            dignissim luctus risus sed sodales.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle btn-outline green-jungle">Download Shipment List</a>
+                                        <div class="btn-group dropup pull-right">
+                                            <button class="btn btn-circle blue-steel dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                                                Actions
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <a href="javascript:;">Action </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">Another action </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">Something else here </a>
+                                                </li>
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a href="javascript:;">Separated link </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-date="20/04/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Blue Chambray</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_1.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue">Rory Matthew</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">20 April 2014 : 10:45 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis eu, finibus eu ex. Integer efficitur leo eget
+                                            dolor tincidunt, et dignissim risus lacinia. Nam in egestas nunc. Suspendisse potenti. Cras ullamcorper tincidunt malesuada. Sed sit amet molestie elit, vel placerat ipsum. Ut consectetur
+                                            odio non est rhoncus volutpat. Nullam interdum, neque quis vehicula ornare, lacus elit dignissim purus, quis ultrices erat tortor eget felis. Cras commodo id massa at condimentum. Praesent
+                                            dignissim luctus risus sed sodales.
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis
+                                            qui ut. laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle red">Read More</a>
+                                    </div>
+                                </li>
+                                <li data-date="20/05/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Timeline Received</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_2.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Andres Iniesta</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">20 May 2014 : 12:20 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis eu, finibus eu ex. Integer efficitur leo eget
+                                            dolor tincidunt, et dignissim risus lacinia. Nam in egestas nunc. Suspendisse potenti. Cras ullamcorper tincidunt malesuada. Sed sit amet molestie elit, vel placerat ipsum. Ut consectetur
+                                            odio non est rhoncus volutpat. Nullam interdum, neque quis vehicula ornare, lacus elit dignissim purus, quis ultrices erat tortor eget felis. Cras commodo id massa at condimentum. Praesent
+                                            dignissim luctus risus sed sodales.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle green-turquoise">Read More</a>
+                                    </div>
+                                </li>
+                                <li data-date="09/07/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Event Success</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_1.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Matt Goldman</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">9 July 2014 : 8:15 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde.</p>
+                                        <a href="javascript:;"
+                                           class="btn btn-circle btn-outline purple-medium">View Summary</a>
+                                        <div class="btn-group dropup pull-right">
+                                            <button class="btn btn-circle green dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                                                Actions
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <a href="javascript:;">Action </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">Another action </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">Something else here </a>
+                                                </li>
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a href="javascript:;">Separated link </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-date="30/08/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Conference Call</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_1.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Rory Matthew</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">30 August 2014 : 5:45 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <img class="timeline-body-img pull-left" src="../assets/pages/media/blog/5.jpg" alt="">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis
+                                            qui ut. laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis
+                                            qui ut. laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis
+                                            qui ut. laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle red">Read More</a>
+                                    </div>
+                                </li>
+                                <li data-date="15/09/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Conference Decision</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_5.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Jessica Wolf</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">15 September 2014 : 8:30 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <img class="timeline-body-img pull-right" src="../assets/pages/media/blog/6.jpg" alt="">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis
+                                            qui ut.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle green-sharp">Read More</a>
+                                    </div>
+                                </li>
+                                <li data-date="01/11/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Timeline Received</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_2.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Andres Iniesta</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">1 November 2014 : 12:20 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis eu, finibus eu ex. Integer efficitur leo eget
+                                            dolor tincidunt, et dignissim risus lacinia. Nam in egestas nunc. Suspendisse potenti. Cras ullamcorper tincidunt malesuada. Sed sit amet molestie elit, vel placerat ipsum. Ut consectetur
+                                            odio non est rhoncus volutpat. Nullam interdum, neque quis vehicula ornare, lacus elit dignissim purus, quis ultrices erat tortor eget felis. Cras commodo id massa at condimentum. Praesent
+                                            dignissim luctus risus sed sodales.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle green-turquoise">Read More</a>
+                                    </div>
+                                </li>
+                                <li data-date="10/12/2014">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Timeline Received</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_2.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Andres Iniesta</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">10 December 2014 : 12:20 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis eu, finibus eu ex. Integer efficitur leo eget
+                                            dolor tincidunt, et dignissim risus lacinia. Nam in egestas nunc. Suspendisse potenti. Cras ullamcorper tincidunt malesuada. Sed sit amet molestie elit, vel placerat ipsum. Ut consectetur
+                                            odio non est rhoncus volutpat. Nullam interdum, neque quis vehicula ornare, lacus elit dignissim purus, quis ultrices erat tortor eget felis. Cras commodo id massa at condimentum. Praesent
+                                            dignissim luctus risus sed sodales.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle green-turquoise">Read More</a>
+                                    </div>
+                                </li>
+                                <li data-date="19/01/2015">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Timeline Received</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_2.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Andres Iniesta</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">19 January 2015 : 12:20 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis eu, finibus eu ex. Integer efficitur leo eget
+                                            dolor tincidunt, et dignissim risus lacinia. Nam in egestas nunc. Suspendisse potenti. Cras ullamcorper tincidunt malesuada. Sed sit amet molestie elit, vel placerat ipsum. Ut consectetur
+                                            odio non est rhoncus volutpat. Nullam interdum, neque quis vehicula ornare, lacus elit dignissim purus, quis ultrices erat tortor eget felis. Cras commodo id massa at condimentum. Praesent
+                                            dignissim luctus risus sed sodales.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle green-turquoise">Read More</a>
+                                    </div>
+                                </li>
+                                <li data-date="03/03/2015">
+                                    <div class="mt-title">
+                                        <h2 class="mt-content-title">Timeline Received</h2>
+                                    </div>
+                                    <div class="mt-author">
+                                        <div class="mt-avatar">
+                                            <img src="../assets/pages/media/users/avatar80_2.jpg" />
+                                        </div>
+                                        <div class="mt-author-name">
+                                            <a href="javascript:;" class="font-blue-madison">Andres Iniesta</a>
+                                        </div>
+                                        <div class="mt-author-datetime font-grey-mint">3 March 2015 : 12:20 PM</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis eu, finibus eu ex. Integer efficitur leo eget
+                                            dolor tincidunt, et dignissim risus lacinia. Nam in egestas nunc. Suspendisse potenti. Cras ullamcorper tincidunt malesuada. Sed sit amet molestie elit, vel placerat ipsum. Ut consectetur
+                                            odio non est rhoncus volutpat. Nullam interdum, neque quis vehicula ornare, lacus elit dignissim purus, quis ultrices erat tortor eget felis. Cras commodo id massa at condimentum. Praesent
+                                            dignissim luctus risus sed sodales.
+                                        </p>
+                                        <a href="javascript:;" class="btn btn-circle green-turquoise">Read More</a>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <!-- .events-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-12 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light tasks-widget bordered">
+                <div class="portlet-title tabbable-line">
+                    <div class="caption">
+                        <i class="icon-globe font-dark hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">仪器列表 Order Detial</span>
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab_1_a" class="active" data-toggle="tab"> 检测中 </a>
+                        </li>
+                        <li>
+                            <a href="#tab_1_b" data-toggle="tab"> 已完成 </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="portlet-body">
+                    <div class="task-content">
+                        <div class="scroller" style="height: 312px;" data-always-visible="1" data-rail-visible1="1">
+                            <!-- START TASK LIST -->
+                            <ul class="task-list">
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> Present 2013 Year IPO Statistics at Board Meeting </span>
+                                        <span class="label label-sm label-success">Company</span>
+                                        <span class="task-bell">
+                                            <i class="fa fa-bell-o"></i>
+                                        </span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> Hold An Interview for Marketing Manager Position </span>
+                                        <span class="label label-sm label-danger">Marketing</span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> AirAsia Intranet System Project Internal Meeting </span>
+                                        <span class="label label-sm label-success">AirAsia</span>
+                                        <span class="task-bell">
+                                            <i class="fa fa-bell-o"></i>
+                                        </span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> Technical Management Meeting </span>
+                                        <span class="label label-sm label-warning">Company</span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> Kick-off Company CRM Mobile App Development </span>
+                                        <span class="label label-sm label-info">Internal Products</span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> Prepare Commercial Offer For SmartVision Website Rewamp </span>
+                                        <span class="label label-sm label-danger">SmartVision</span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> Sign-Off The Comercial Agreement With AutoSmart </span>
+                                        <span class="label label-sm label-default">AutoSmart</span>
+                                        <span class="task-bell">
+                                            <i class="fa fa-bell-o"></i>
+                                        </span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group dropup">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> Company Staff Meeting </span>
+                                        <span class="label label-sm label-success">Cruise</span>
+                                        <span class="task-bell">
+                                            <i class="fa fa-bell-o"></i>
+                                        </span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group dropup">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="last-line">
+                                    <div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="task-title">
+                                        <span class="task-title-sp"> KeenThemes Investment Discussion </span>
+                                        <span class="label label-sm label-warning">KeenThemes </span>
+                                    </div>
+                                    <div class="task-config">
+                                        <div class="task-config-btn btn-group dropup">
+                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-check"></i> Complete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Cancel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- END START TASK LIST -->
+                        </div>
+                    </div>
+                    <div class="task-footer">
+                        <div class="btn-arrow-link pull-right">
+                            <a href="javascript:;">See All Records</a>
+                            <i class="icon-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+    </div>
+    <!-- END   生成 送检单 -->
+</div>

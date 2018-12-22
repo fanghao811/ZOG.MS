@@ -59,6 +59,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
                         L("InspectionRegistration"),
+                        url: "rs.regist",
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(

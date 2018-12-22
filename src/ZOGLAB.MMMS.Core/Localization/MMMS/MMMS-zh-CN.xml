@@ -336,7 +336,7 @@
     <text name="USBKey">USB Key</text>
     
     <!--page_login_in-->
-    <text name="SystemName">气象计量检定系统</text>
+    <text name="SystemName">气象计量管理系统</text>
     
     <!--organizations-->
     <text name="Members" value="员工列表" />

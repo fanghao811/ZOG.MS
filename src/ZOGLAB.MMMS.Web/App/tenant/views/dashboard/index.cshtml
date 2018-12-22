@@ -1,32 +1,26 @@
 ﻿<div ng-controller="tenant.views.dashboard.index as vm">
-    <div class="row margin-bottom-5">
-        <div class="col-xs-6">
-            <div class="page-head">
-                <div class="page-title">
-                    <h1>
-                        <span>@L("Dashboard")</span> <small>@L("DashboardHeaderInfo")</small>
-                    </h1>
-                </div>
+
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        @*<div ncy-breadcrumb></div>*@
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <span>Dashboard</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height green" data-placement="top" data-original-title="Change dashboard date range">
+                <i class="icon-calendar"></i>&nbsp;
+                <span class="thin uppercase hidden-xs"></span>&nbsp;
+                <i class="fa fa-angle-down"></i>
             </div>
         </div>
-        <div class="col-xs-6 text-right">
-
-        </div>
     </div>
-
-    @*<div class="note note-info note-bordered">
-        <h3>@L("DashboardDemo_Note_Title")<span class="close" data-close="note"></span></h3>
-        <p>
-            @L("DashboardDemo_Note_Info")
-        </p>
-        <br />
-        <h4>@L("LookingForMpaVersion")</h4>
-        <p>
-            <a href="@Url.Action("Index", "Home", new {area = "Mpa"})">
-                @Html.Raw(L("DashboardNoteForMpaVersion"))
-            </a>
-        </p>
-    </div>*@
+    <!-- END PAGE BAR -->
 
     <div class="row margin-top-10">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

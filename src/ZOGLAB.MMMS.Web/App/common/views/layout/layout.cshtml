@@ -49,7 +49,7 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body ng-controller="common.views.layout as vm" class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-sidebar-fixed page-on-load" ng-class="{'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+<body ng-controller="common.views.layout as vm" class="page-header-fixed page-sidebar-closed-hide-logo" ng-class="{'page-sidebar-closed': settings.layout.pageSidebarClosed}">
     <div class="page-wrapper">
         <!-- BEGIN HEADER -->
         <div ng-spinner-bar class="page-spinner-bar">
@@ -61,7 +61,7 @@
         <div data-ng-include="'~/App/common/views/layout/header.cshtml'"
              data-ng-controller="common.views.layout.header as vm"
              class="page-header navbar navbar-fixed-top"
-             style="background: #ffffff">
+             @*style="background: #ffffff"*@>
         </div>
         <!-- END HEADER -->
         <!-- BEGIN HEADER & CONTENT DIVIDER -->
@@ -79,20 +79,21 @@
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
-                    <div class="full-height-content full-height-content-scrollable">
-                        <!-- BEGIN PAGE HEADER-->
-                        <!-- BEGIN PAGE BAR -->
-                        <div class="page-bar">
-                            <div ncy-breadcrumb></div>
-                        </div>
+                    <!-- BEGIN PAGE HEADER-->
+                    <!-- BEGIN PAGE TITLE-->
+                    <h1 class="page-title">
+                        <span ncy-breadcrumb-last></span>
+                        <small>注释内容</small>
+                    </h1>
+                    <!-- END PAGE TITLE-->
 
-                        <!-- END PAGE BAR -->
-                        <!-- END PAGE HEADER-->
-                        <div class=" ui-view full-height-content-body fade-in-up">
+                    <!-- END PAGE HEADER-->
 
-                        </div>
+                    <div class=" ui-view fade-in-up">
+
                     </div>
                 </div>
+
                 <!-- END CONTENT BODY -->
             </div>
             <!-- END CONTENT -->

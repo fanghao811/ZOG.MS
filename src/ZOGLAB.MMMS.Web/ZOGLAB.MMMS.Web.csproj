@@ -459,6 +459,8 @@
     <Content Include="App\common\views\auditLogs\detailModal.min.css">
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\BD\reciveInstrument\index.js" />
+    <Content Include="App\common\views\BD\reciveInstrument\profile.min.css" />
     <Content Include="App\common\views\BD\standard\createOrEditModal.js" />
     <Content Include="App\common\views\BD\standard\index.js" />
     <Content Include="App\common\views\common\lookupModal.js" />
@@ -1591,7 +1593,6 @@
     <Content Include="metronic\assets\admin\layout4\scripts\demo.min.js" />
     <Content Include="metronic\assets\admin\layout4\scripts\layout.js" />
     <Content Include="metronic\assets\admin\layout4\scripts\layout.min.js" />
-    <Content Include="metronic\assets\admin\layout\css\layout.css" />
     <Content Include="metronic\assets\admin\layout\css\themes\blue-rtl.css" />
     <Content Include="metronic\assets\admin\layout\css\themes\blue.css" />
     <Content Include="metronic\assets\admin\layout\css\themes\darkblue-rtl.css" />
@@ -2333,6 +2334,7 @@
     <Content Include="App\common\views\BD\standard\index.cshtml" />
     <Content Include="App\common\views\BD\standard\createOrEditModal.cshtml" />
     <Content Include="App\common\views\layout\备份\layout.cshtml" />
+    <Content Include="App\common\views\BD\reciveInstrument\index.cshtml" />
     <None Include="Properties\PublishProfiles\aspnetzero - Web Deploy.pubxml" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

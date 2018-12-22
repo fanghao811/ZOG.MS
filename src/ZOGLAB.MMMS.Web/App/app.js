@@ -44,7 +44,7 @@ appModule.factory('settings', ['$rootScope', function ($rootScope) {
     var settings = {
         layout: {
             pageSidebarClosed: false, // sidebar menu state
-            pageContentWhite: true, // set page content layout
+            pageContentWhite: false, // set page content layout
             pageBodySolid: false, // solid body color state
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
         },
@@ -52,7 +52,7 @@ appModule.factory('settings', ['$rootScope', function ($rootScope) {
         layoutCssPath: App.getAssetsPath() + 'admin/layout/css/',
         assetsPath: abp.appPath + 'metronic/assets',
         globalPath: abp.appPath + 'metronic/assets/global',
-        layoutPath: abp.appPath + 'metronic/assets/layouts/layout4'
+        layoutPath: abp.appPath + 'metronic/assets/layouts/layout'
     };
 
     $rootScope.settings = settings;
@@ -228,6 +228,24 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
         }
 
         //BD routes
+        //recive
+        $stateProvider.state('rs', {
+            'abstract': true,
+            url: '/rs',
+            template: '<div ui-view class="fade-in-up"></div>',
+            ncyBreadcrumb: {
+                label: '仪器收发'
+            }
+        });
+
+        $stateProvider.state('rs.regist', {
+            url: '/regist',
+            templateUrl: '~/App/common/views/BD/reciveInstrument/index.cshtml',
+            ncyBreadcrumb: {
+                label: '送检登记'
+            }
+        });
+
         //query statistics
         $stateProvider.state('qs', {
             'abstract': true,
