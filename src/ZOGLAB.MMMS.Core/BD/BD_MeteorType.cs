@@ -16,23 +16,26 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
+        [Column("MeteorTypeId")]
+        public override long Id { get; set; }
         /// <summary>
         /// Name 要素名称:温度气压、湿度
         /// </summary>
-        [MaxLength(MaxLength_20)]
+        [MaxLength(MaxLength_50)]
         public string Name { get; set; }
 
         //3	Mark 备注  VARCHAR(50)
         [MaxLength(MaxLength_50)]
         public string Mark { get; set; }
- 
+
         public bool IsDeleted { get; set; }
 
         /*多对多关系 12/24/2018 */
         /// <summary>
         /// 要素类型集合：温，湿，气压等
         /// </summary>
-        public virtual ICollection<BD_Instrument> Instruments { get; set; }
+        //[ForeignKey("InstrumentId")]
+        //public virtual ICollection<BD_Instrument> Instruments { get; set; }
     }
 
 }

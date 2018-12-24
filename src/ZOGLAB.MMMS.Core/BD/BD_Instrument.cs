@@ -2,6 +2,7 @@
 using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,6 +16,8 @@ namespace ZOGLAB.MMMS.BD
     {
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
+        [Column("InstrumentId")]
+        public override long Id { get; set; }
 
         //1.站点信息ID   foreignKey site
         public long Site_ID { get; set; }
@@ -24,7 +27,7 @@ namespace ZOGLAB.MMMS.BD
         public string SN { get; set; }
 
         //3.仪器名称
-        [MaxLength(MaxLength_50)]
+        [MaxLength(MaxLength_20)]
         public string Name { get; set; }
 
         //4.仪器型号

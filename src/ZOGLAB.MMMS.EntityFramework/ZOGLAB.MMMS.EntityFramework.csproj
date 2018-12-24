@@ -393,10 +393,6 @@
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201812240746333_12\24.cs" />
-    <Compile Include="Migrations\201812241106511_mTomDelete.cs" />
-    <Compile Include="Migrations\201812241106511_mTomDelete.Designer.cs">
-      <DependentUpon>201812241106511_mTomDelete.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\CheckTypeCreator.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\InstrumentCreator.cs" />
@@ -606,9 +602,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.resx">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812241106511_mTomDelete.resx">
-      <DependentUpon>201812241106511_mTomDelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

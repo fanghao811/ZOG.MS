@@ -16,10 +16,13 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
+        [Column("CheckTypeId")]
+        public override long Id { get; set; }
+
         //2	MeteorType_ID 气象要素 INT 外
-        [ForeignKey("MeteorType_ID")]
-        public BD_MeteorType MeteorType { get; set; }
-        public long? MeteorType_ID { get; set; }
+        [ForeignKey("MeteorTypeId")]
+        public virtual BD_MeteorType MeteorType { get; set; }
+        public long? MeteorTypeId { get; set; }
 
         public Calibration_Type CalibrationType { get; set; }
 

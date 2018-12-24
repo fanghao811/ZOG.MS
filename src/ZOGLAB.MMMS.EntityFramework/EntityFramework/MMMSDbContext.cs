@@ -117,9 +117,9 @@ namespace ZOGLAB.MMMS.EntityFramework
             modelBuilder.Filter(AbpDataFilters.MayHaveTenant,
                 (IMayHaveTenant t, int? tenantId) => t.TenantId == tenantId, 0);
 
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();//移除多对多级联删除关系
+            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();//移除多对多级联删除关系
 
-            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.MeteorTypes).WithMany(d => d.Instruments)
+            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.MeteorTypes).WithMany()
                 .Map(m =>
                 {
                     m.MapLeftKey("InstrumentId");
@@ -127,7 +127,7 @@ namespace ZOGLAB.MMMS.EntityFramework
                     m.ToTable("InstrumentMeteorType");
                 });
 
-            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.CheckTypes).WithMany(d=> d.Instruments)
+            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.CheckTypes).WithMany()
                 .Map(m =>
                 {
                     m.MapLeftKey("InstrumentId");

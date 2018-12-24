@@ -16,7 +16,7 @@ namespace ZOGLAB.MMMS.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "MMMS";
         }
 
