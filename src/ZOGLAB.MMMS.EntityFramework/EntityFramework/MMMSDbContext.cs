@@ -119,7 +119,7 @@ namespace ZOGLAB.MMMS.EntityFramework
 
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();//移除多对多级联删除关系
 
-            modelBuilder.Entity<BD_Instrument>().HasMany(p => p.MeteorTypes).WithMany(s => s.Instruments)
+            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.MeteorTypes).WithMany(d => d.Instruments)
                 .Map(m =>
                 {
                     m.MapLeftKey("InstrumentId");
@@ -127,7 +127,7 @@ namespace ZOGLAB.MMMS.EntityFramework
                     m.ToTable("InstrumentMeteorType");
                 });
 
-            modelBuilder.Entity<BD_Instrument>().HasMany(p => p.CheckTypes).WithMany()
+            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.CheckTypes).WithMany(d=> d.Instruments)
                 .Map(m =>
                 {
                     m.MapLeftKey("InstrumentId");
