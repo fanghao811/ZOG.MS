@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -36,6 +37,12 @@ namespace ZOGLAB.MMMS.BD
 
         //6	strDateTime 操作日期    VARCHAR(20)
         public DateTime? StrDateTime { get; set; }
+
+        /*多对多关系 12/24/2018 */
+        /// <summary>
+        /// 检测项目集合：温度检定，温湿度校准，气压核查等
+        /// </summary>
+        public virtual ICollection<BD_Instrument> Instruments { get; set; }
 
         //7	strFlag 是否自动检测  INT
         public bool StrFlag { get; set; }

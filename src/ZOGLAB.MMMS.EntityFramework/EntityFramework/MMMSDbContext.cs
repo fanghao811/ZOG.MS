@@ -1,7 +1,10 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Abp.Domain.Entities;
+using Abp.Domain.Uow;
 using Abp.Zero.EntityFramework;
+using EntityFramework.DynamicFilters;
 using ZOGLAB.MMMS.Authorization.Roles;
 using ZOGLAB.MMMS.Authorization.Users;
 using ZOGLAB.MMMS.BD;
@@ -49,7 +52,6 @@ namespace ZOGLAB.MMMS.EntityFramework
 
         /* 新增BD系统实体 2018/12/17  */
         public virtual IDbSet<BD_Instrument> BD_Instruments { get; set; }
-        public virtual IDbSet<BD_EssentialFactor> BD_EssentialFactors { get; set; }
         public virtual IDbSet<BD_Receive> BD_Receives { get; set; }
         public virtual IDbSet<BD_Back> BD_Backs { get; set; }
         public virtual IDbSet<BD_ReceiveDevice> BD_ReceiveDevices { get; set; }
@@ -70,21 +72,11 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<BD_Rainfall> BD_Rainfall { get; set; }
         public virtual IDbSet<BD_Randiation> BD_Randiation { get; set; }
         public virtual IDbSet<BD_Visibility> BD_Visibility { get; set; }
-
         public virtual IDbSet<BD_Appendix> BD_Appendix { get; set; }
         public virtual IDbSet<BD_Site> BD_Site { get; set; }
         public virtual IDbSet<BD_Remission> BD_Remission { get; set; }
         public virtual IDbSet<BD_MeteorType> BD_MeteorType { get; set; }
         public virtual IDbSet<BD_CheckType> BD_CheckType { get; set; }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-        //    modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-        //    //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_Test>(r => r.BD_Test).WithMany().WillCascadeOnDelete(false);
-        //    //    modelBuilder.Entity<BD_DeviceItem>().HasOptional<BD_ReceiveDevice>(r => r.BD_ReceiveDevice).WithMany().WillCascadeOnDelete(false);
-        //}
-
 
         public MMMSDbContext()
             : base("Default")
@@ -108,6 +100,40 @@ namespace ZOGLAB.MMMS.EntityFramework
             : base(existingConnection, contextOwnsConnection)
         {
 
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            ConfigureFilters(modelBuilder);
+        }
+
+        protected virtual void ConfigureFilters(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Filter(AbpDataFilters.SoftDelete, (ISoftDelete d) => d.IsDeleted, false);
+            modelBuilder.Filter(AbpDataFilters.MustHaveTenant,
+                (IMustHaveTenant t, int tenantId) => t.TenantId == tenantId || (int?)t.TenantId == null,
+                0); //While "(int?)t.TenantId == null" seems wrong, it's needed. See https://github.com/jcachat/EntityFramework.DynamicFilters/issues/62#issuecomment-208198058
+            modelBuilder.Filter(AbpDataFilters.MayHaveTenant,
+                (IMayHaveTenant t, int? tenantId) => t.TenantId == tenantId, 0);
+
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();//移除多对多级联删除关系
+
+            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.MeteorTypes).WithMany(d => d.Instruments)
+                .Map(m =>
+                {
+                    m.MapLeftKey("InstrumentId");
+                    m.MapRightKey("MeteorTypeId");
+                    m.ToTable("InstrumentMeteorType");
+                });
+
+            modelBuilder.Entity<BD_Instrument>().HasMany(s => s.CheckTypes).WithMany(d=> d.Instruments)
+                .Map(m =>
+                {
+                    m.MapLeftKey("InstrumentId");
+                    m.MapRightKey("CheckTypeId");
+                    m.ToTable("InstrumentCheckType");
+                });
         }
     }
 }

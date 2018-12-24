@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,6 +27,12 @@ namespace ZOGLAB.MMMS.BD
         public string Mark { get; set; }
  
         public bool IsDeleted { get; set; }
+
+        /*多对多关系 12/24/2018 */
+        /// <summary>
+        /// 要素类型集合：温，湿，气压等
+        /// </summary>
+        public virtual ICollection<BD_Instrument> Instruments { get; set; }
     }
 
 }

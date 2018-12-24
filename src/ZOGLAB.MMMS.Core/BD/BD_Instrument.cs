@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -46,16 +47,21 @@ namespace ZOGLAB.MMMS.BD
         [MaxLength(MaxLength_50)]
         public string Manufacturer { get; set; }
 
-        //TODO:外键
-        //9.检测项目ID       
-        public int CheckType_ID { get; set; }
-
         //11.备注信息
         [MaxLength(MaxLength_50)]
         public string Mark { get; set; }
 
-        //12.是否使用
-        public bool IsUsing { get; set; }
+        /*多对多关系 12/24/2018 */
+        /// <summary>
+        /// 检测项目集合：温度检定，温湿度校准，气压核查等
+        /// </summary>
+        public virtual ICollection<BD_CheckType> CheckTypes { get; set; }
+
+        /*多对多关系 12/24/2018 */
+        /// <summary>
+        /// 要素类型集合：温，湿，气压等
+        /// </summary>
+        public virtual ICollection<BD_MeteorType>  MeteorTypes { get; set; }
 
         //构造函数
         public BD_Instrument()

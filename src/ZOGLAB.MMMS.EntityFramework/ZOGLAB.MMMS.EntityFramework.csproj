@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201506141245516_AuditLog_Made_MayHaveTenant.Designer.cs">
       <DependentUpon>201506141245516_AuditLog_Made_MayHaveTenant.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509071631523_UpgradeToModuleZero_0_6_9.cs" />
+    <Compile Include="Migrations\201509071631523_UpgradeToModuleZero_0_6_9.Designer.cs">
+      <DependentUpon>201509071631523_UpgradeToModuleZero_0_6_9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201509080740102_ModuleZeroUpgrade_0_6_9.cs" />
     <Compile Include="Migrations\201509080740102_ModuleZeroUpgrade_0_6_9.Designer.cs">
       <DependentUpon>201509080740102_ModuleZeroUpgrade_0_6_9.cs</DependentUpon>
@@ -268,6 +272,10 @@
     <Compile Include="Migrations\201601071533139_Upgraded_To_Module_Zero_0_7_7.Designer.cs">
       <DependentUpon>201601071533139_Upgraded_To_Module_Zero_0_7_7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602020753064_Added_LinkUserId_To_AbpUser.cs" />
+    <Compile Include="Migrations\201602020753064_Added_LinkUserId_To_AbpUser.Designer.cs">
+      <DependentUpon>201602020753064_Added_LinkUserId_To_AbpUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201602021344016_Added_BackgroundJobs_And_Notifications.cs" />
     <Compile Include="Migrations\201602021344016_Added_BackgroundJobs_And_Notifications.Designer.cs">
       <DependentUpon>201602021344016_Added_BackgroundJobs_And_Notifications.cs</DependentUpon>
@@ -279,10 +287,6 @@
     <Compile Include="Migrations\201602051543169_ABP_Notification_Revisions.cs" />
     <Compile Include="Migrations\201602051543169_ABP_Notification_Revisions.Designer.cs">
       <DependentUpon>201602051543169_ABP_Notification_Revisions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602020753064_Added_LinkUserId_To_AbpUser.cs" />
-    <Compile Include="Migrations\201602020753064_Added_LinkUserId_To_AbpUser.Designer.cs">
-      <DependentUpon>201602020753064_Added_LinkUserId_To_AbpUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201602091328369_AccountLink_Notifcation_Merge.cs" />
     <Compile Include="Migrations\201602091328369_AccountLink_Notifcation_Merge.Designer.cs">
@@ -388,28 +392,36 @@
     <Compile Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.Designer.cs">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812231233521_order.cs" />
-    <Compile Include="Migrations\201812231233521_order.Designer.cs">
-      <DependentUpon>201812231233521_order.cs</DependentUpon>
+    <Compile Include="Migrations\201812240746333_12\24.cs" />
+    <Compile Include="Migrations\201812241106511_mTomDelete.cs" />
+    <Compile Include="Migrations\201812241106511_mTomDelete.Designer.cs">
+      <DependentUpon>201812241106511_mTomDelete.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\Seed\BD\UnitsCreator.cs" />
-    <Compile Include="Migrations\Seed\BD\CheckTypeCreator.cs" />
-    <Compile Include="Migrations\Seed\BD\InstallationAndStandardCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\CheckTypeCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\InstrumentCreator.cs" />
     <Compile Include="Migrations\Seed\BD\InitialBDBuilder.cs" />
-    <Compile Include="MMMSDataModule.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\InstallationAndStandardCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\UnitsCreator.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultEditionCreator.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultLanguagesCreator.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultSettingsCreator.cs" />
-    <Compile Include="Migrations\Seed\Tenants\TenantRoleAndUserBuilder.cs" />
-    <Compile Include="Migrations\Seed\Tenants\DefaultTenantBuilder.cs" />
     <Compile Include="Migrations\Seed\Host\HostRoleAndUserCreator.cs" />
     <Compile Include="Migrations\Seed\Host\InitialHostDbBuilder.cs" />
+    <Compile Include="Migrations\Seed\Tenants\DefaultTenantBuilder.cs" />
+    <Compile Include="Migrations\Seed\Tenants\TenantRoleAndUserBuilder.cs" />
+    <Compile Include="MMMSDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZOGLAB.MMMS.Core\ZOGLAB.MMMS.Core.csproj">
+      <Project>{17298EA0-AF73-4F30-B6F1-2066100D7D74}</Project>
+      <Name>ZOGLAB.MMMS.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201501041229232_InitialCreate.resx">
@@ -466,6 +478,9 @@
     <EmbeddedResource Include="Migrations\201506141245516_AuditLog_Made_MayHaveTenant.resx">
       <DependentUpon>201506141245516_AuditLog_Made_MayHaveTenant.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509071631523_UpgradeToModuleZero_0_6_9.resx">
+      <DependentUpon>201509071631523_UpgradeToModuleZero_0_6_9.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509080740102_ModuleZeroUpgrade_0_6_9.resx">
       <DependentUpon>201509080740102_ModuleZeroUpgrade_0_6_9.cs</DependentUpon>
     </EmbeddedResource>
@@ -502,6 +517,9 @@
     <EmbeddedResource Include="Migrations\201601071533139_Upgraded_To_Module_Zero_0_7_7.resx">
       <DependentUpon>201601071533139_Upgraded_To_Module_Zero_0_7_7.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602020753064_Added_LinkUserId_To_AbpUser.resx">
+      <DependentUpon>201602020753064_Added_LinkUserId_To_AbpUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602021344016_Added_BackgroundJobs_And_Notifications.resx">
       <DependentUpon>201602021344016_Added_BackgroundJobs_And_Notifications.cs</DependentUpon>
     </EmbeddedResource>
@@ -510,9 +528,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602051543169_ABP_Notification_Revisions.resx">
       <DependentUpon>201602051543169_ABP_Notification_Revisions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602020753064_Added_LinkUserId_To_AbpUser.resx">
-      <DependentUpon>201602020753064_Added_LinkUserId_To_AbpUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602091328369_AccountLink_Notifcation_Merge.resx">
       <DependentUpon>201602091328369_AccountLink_Notifcation_Merge.cs</DependentUpon>
@@ -592,17 +607,10 @@
     <EmbeddedResource Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.resx">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812231233521_order.resx">
-      <DependentUpon>201812231233521_order.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812241106511_mTomDelete.resx">
+      <DependentUpon>201812241106511_mTomDelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ZOGLAB.MMMS.Core\ZOGLAB.MMMS.Core.csproj">
-      <Project>{17298EA0-AF73-4F30-B6F1-2066100D7D74}</Project>
-      <Name>ZOGLAB.MMMS.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
