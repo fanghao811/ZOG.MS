@@ -388,13 +388,9 @@
     <Compile Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.Designer.cs">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812210644168_check_tpye.cs" />
-    <Compile Include="Migrations\201812210644168_check_tpye.Designer.cs">
-      <DependentUpon>201812210644168_check_tpye.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812210817330_add_seed_checkType.cs" />
-    <Compile Include="Migrations\201812210817330_add_seed_checkType.Designer.cs">
-      <DependentUpon>201812210817330_add_seed_checkType.cs</DependentUpon>
+    <Compile Include="Migrations\201812231233521_order.cs" />
+    <Compile Include="Migrations\201812231233521_order.Designer.cs">
+      <DependentUpon>201812231233521_order.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\UnitsCreator.cs" />
@@ -596,11 +592,8 @@
     <EmbeddedResource Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.resx">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812210644168_check_tpye.resx">
-      <DependentUpon>201812210644168_check_tpye.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812210817330_add_seed_checkType.resx">
-      <DependentUpon>201812210817330_add_seed_checkType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812231233521_order.resx">
+      <DependentUpon>201812231233521_order.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

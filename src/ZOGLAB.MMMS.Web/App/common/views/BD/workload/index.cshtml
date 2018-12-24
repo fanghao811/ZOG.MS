@@ -1,5 +1,5 @@
 ﻿@using ZOGLAB.MMMS.Localization
-<div ng-controller="common.views.rs.regist.index as vm">
+<div ng-controller="common.views.qs.workload.index as vm">
     <!-- BEGIN PAGE BAR -->
     <div class="page-bar">
         @*<div ncy-breadcrumb></div>*@
@@ -37,7 +37,7 @@
             <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                 <h4 class="widget-thumb-heading">待接收</h4>
                 <div class="widget-thumb-wrap">
-                    <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                    <i class="widget-thumb-icon label-danger icon-bulb"></i>
                     <div class="widget-thumb-body row">
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <span class="widget-thumb-subtitle">件</span>
@@ -56,7 +56,7 @@
             <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                 <h4 class="widget-thumb-heading">检测中</h4>
                 <div class="widget-thumb-wrap">
-                    <i class="widget-thumb-icon bg-red icon-layers"></i>
+                    <i class="widget-thumb-icon icon-layers label-success"></i>
                     <div class="widget-thumb-body row">
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <span class="widget-thumb-subtitle">件</span>
@@ -75,7 +75,7 @@
             <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                 <h4 class="widget-thumb-heading">已完成</h4>
                 <div class="widget-thumb-wrap">
-                    <i class="widget-thumb-icon bg-purple icon-screen-desktop"></i>
+                    <i class="widget-thumb-icon bg-blue icon-screen-desktop"></i>
                     <div class="widget-thumb-body row">
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <span class="widget-thumb-subtitle">件</span>
@@ -94,7 +94,7 @@
             <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                 <h4 class="widget-thumb-heading">已返样</h4>
                 <div class="widget-thumb-wrap">
-                    <i class="widget-thumb-icon bg-blue icon-bar-chart"></i>
+                    <i class="widget-thumb-icon bg-purple icon-bar-chart"></i>
                     <div class="widget-thumb-body row">
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <span class="widget-thumb-subtitle">件</span>
@@ -114,7 +114,7 @@
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <!-- BEGIN PORTLET-->
-            <div class="portlet light bordered">
+            <div class="portlet light bordered" style="min-height:438px">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-globe font-dark hide"></i>
@@ -122,9 +122,9 @@
                     </div>
                     <div class="actions">
                         <div class="btn-group btn-group-devided" data-toggle="buttons">
-                            <label class="btn btn-transparent green  btn-sm active">
-                                <input type="radio" name="options" class="toggle" id="option1">新建送检单
-                            </label>
+                            <button class="btn btn-transparent btn-success  btn-sm">
+                                新建送检单
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                     </form>
                     <div class="alert alert-success alert-dismissable">
                         <button class="close" aria-hidden="true" type="button" data-dismiss="alert"></button>
-                        <strong>友情提示：</strong> 可根据 单位名称、联系人、手机号码 模糊查询       查无结果-->
+                        <strong>友情提示：</strong> 可根据 单位名称、主表编号 模糊查询       查无结果-->
                         <a class="alert-link" href=""> 新建单位信息 </a>
                     </div>
                     <div class="table-scrollable table-scrollable-borderless">
@@ -153,13 +153,16 @@
                                         待接收
                                     </th>
                                     <th>
+                                        移交中
+                                    </th>
+                                    <th>
                                         检测中
                                     </th>
                                     <th>
                                         已完成
                                     </th>
                                     <th>
-                                        联系电话
+                                        送检单编号
                                     </th>
                                     <th>
                                         登记日期
@@ -173,6 +176,9 @@
                                 <td>
                                     100
                                 </td>
+                                <td class="font-red bold">
+                                    10
+                                </td>
                                 <td>
                                     55
                                 </td>
@@ -180,7 +186,7 @@
                                     811
                                 </td>
                                 <td>
-                                    13505790001
+                                    <a href="javascript:;" class="primary-link">ZL181223001</a>
                                 </td>
                                 <td>
                                     <span class="bold font-green-haze">12/22/2018</span>
@@ -191,9 +197,12 @@
                                     <a href="javascript:;" class="primary-link">杭州气象局</a>
                                 </td>
                                 <td>101</td>
+                                <td class="font-red bold">
+                                    11
+                                </td>
                                 <td>56</td>
                                 <td>800</td>
-                                <td>13505790001</td>
+                                <td><a href="javascript:;" class="primary-link">ZL181223002</a></td>
                                 <td>
                                     <span class="bold font-green-haze">12/23/2018</span>
                                 </td>
@@ -205,6 +214,9 @@
                                 <td>
                                     1,345
                                 </td>
+                                <td class="font-red bold">
+                                    12
+                                </td>
                                 <td>
                                     450
                                 </td>
@@ -212,7 +224,7 @@
                                     46
                                 </td>
                                 <td>
-                                    13505790001
+                                    <a href="javascript:;" class="primary-link">ZL181223003</a>
                                 </td>
                                 <td>
                                     <span class="bold font-green-haze">12/23/2018</span>
@@ -225,6 +237,9 @@
                                 <td>
                                     645
                                 </td>
+                                <td class="font-red bold">
+                                    13
+                                </td>
                                 <td>
                                     50
                                 </td>
@@ -232,7 +247,7 @@
                                     89
                                 </td>
                                 <td>
-                                    13505790001
+                                    <a href="javascript:;" class="primary-link">ZL181223004</a>
                                 </td>
                                 <td>
                                     <span class="bold font-green-haze">12/23/2018</span>
@@ -243,9 +258,12 @@
                                     <a href="javascript:;" class="primary-link">武义气象局</a>
                                 </td>
                                 <td>101</td>
+                                <td class="font-red bold">
+                                    10
+                                </td>
                                 <td>56</td>
                                 <td>800</td>
-                                <td>13505790001</td>
+                                <td><a href="javascript:;" class="primary-link">ZL181223005</a></td>
                                 <td>
                                     <span class="bold font-green-haze">12/23/2018</span>
                                 </td>
@@ -256,8 +274,8 @@
             </div>
             <!-- END PORTLET-->
         </div>
-        <div class="col-lg-6 col-xs-12 col-sm-12">
-            <div class="portlet light bordered">
+        <div class="col-md-6 col-sm-12">
+            <div class="portlet light bordered" style="min-height:438px">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-share font-dark hide"></i>
@@ -265,29 +283,94 @@
                     </div>
                     <div class="actions">
                         <div class="btn-group">
-                            <a class="btn btn-sm blue btn-outline btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                Filter By
+                            <button type="button" class="btn btn-success">增加设备</button>
+                            <button type="button"
+                                    class="btn btn-success"
+                                    data-toggle="dropdown"
+                                    data-hover="dropdown"
+                                    drop-delay="1000"                                   
+                                    data-close-others="true">
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right hold-on-click" role="menu">
+                                <li>
+                                    <a href="javascript:;"> 按状态排序 </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> 按要素 </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> 按时间 </a>
+                                </li>
+                                <li class="divider"> </li>
+                                <li>
+                                    <a href="javascript:;"> 跟踪标记 </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-sm blue btn-outline" href="javascript:;" 
+                               data-toggle="dropdown" 
+                               data-hover="dropdown" 
+                               data-close-others="true">
+                                按要素
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
                                 <label class="mt-checkbox mt-checkbox-outline">
-                                    <input type="checkbox" /> Finance
+                                    <input type="checkbox" /> 全部
                                     <span></span>
                                 </label>
                                 <label class="mt-checkbox mt-checkbox-outline">
-                                    <input type="checkbox" checked="" /> Membership
+                                    <input type="checkbox" /> 温度
                                     <span></span>
                                 </label>
                                 <label class="mt-checkbox mt-checkbox-outline">
-                                    <input type="checkbox" /> Customer Support
+                                    <input type="checkbox" checked="" /> 湿度
                                     <span></span>
                                 </label>
                                 <label class="mt-checkbox mt-checkbox-outline">
-                                    <input type="checkbox" checked="" /> HR
+                                    <input type="checkbox" /> 温湿度
                                     <span></span>
                                 </label>
                                 <label class="mt-checkbox mt-checkbox-outline">
-                                    <input type="checkbox" /> System
+                                    <input type="checkbox" checked="" /> 气压
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 雨量
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-sm blue btn-outline" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                按状态
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 全部
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 待接收
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" checked="" /> 移交中
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 检测中
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 已完成
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 异常结束
                                     <span></span>
                                 </label>
                             </div>
@@ -301,7 +384,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-info">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-check"></i>
                                             </div>
                                         </div>
@@ -325,7 +408,26 @@
                                     <div class="col1">
                                         <div class="cont">
                                             <div class="cont-col1">
-                                                <div class="label label-sm label-success">
+                                                <div class="label label-sm bg-blue">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> Finance Report for year 2013 has been released. </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm bg-blue">
                                                     <i class="fa fa-bar-chart-o"></i>
                                                 </div>
                                             </div>
@@ -344,7 +446,7 @@
                                     <div class="cont">
                                         <div class="cont-col1">
                                             <div class="label label-sm label-danger">
-                                                <i class="fa fa-user"></i>
+                                                <i class="icon-ban"></i>
                                             </div>
                                         </div>
                                         <div class="cont-col2">
@@ -360,7 +462,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-info">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </div>
                                         </div>
@@ -380,7 +482,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-success">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-user"></i>
                                             </div>
                                         </div>
@@ -397,7 +499,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-default">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-bell-o"></i>
                                             </div>
                                         </div>
@@ -436,7 +538,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-info">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-check"></i>
                                             </div>
                                         </div>
@@ -461,7 +563,7 @@
                                         <div class="cont">
                                             <div class="cont-col1">
                                                 <div class="label label-sm label-danger">
-                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <i class="icon-check"></i>
                                                 </div>
                                             </div>
                                             <div class="cont-col2">
@@ -478,7 +580,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-default">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-user"></i>
                                             </div>
                                         </div>
@@ -495,7 +597,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-info">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </div>
                                         </div>
@@ -515,7 +617,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-success">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-user"></i>
                                             </div>
                                         </div>
@@ -532,7 +634,7 @@
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div class="label label-sm label-warning">
+                                            <div class="label label-sm bg-blue">
                                                 <i class="fa fa-bell-o"></i>
                                             </div>
                                         </div>
@@ -553,7 +655,7 @@
                                     <div class="col1">
                                         <div class="cont">
                                             <div class="cont-col1">
-                                                <div class="label label-sm label-info">
+                                                <div class="label label-sm bg-blue">
                                                     <i class="fa fa-briefcase"></i>
                                                 </div>
                                             </div>
@@ -571,7 +673,7 @@
                     </div>
                     <div class="scroller-footer">
                         <div class="btn-arrow-link pull-right">
-                            <a href="javascript:;">See All Records</a>
+                            <a href="javascript:;">查看全部--仪器管理</a>
                             <i class="icon-arrow-right"></i>
                         </div>
                     </div>
@@ -580,25 +682,38 @@
         </div>        
     </div>
     <div class="row">
+        <!-- BEGIN 项目时间线 -->
         <div class="col-lg-6 col-xs-12 col-sm-12">
             <div class="portlet light portlet-fit bordered">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase"> Events</span>
-                        <span class="caption-helper">Horizontal Timeline</span>
+                        <span class="caption-subject bold font-dark uppercase"> 项目时间线</span>
+                        <span class="caption-helper">CheckItem Timeline</span>
                     </div>
-                    <div class="actions">
-                        <div class="btn-group btn-group-devided" data-toggle="buttons">
-                            <label class="btn green btn-outline btn-circle btn-sm active">
-                                <input type="radio" name="options" class="toggle" id="option1">Actions
-                            </label>
-                            <label class="btn  green btn-outline btn-circle btn-sm">
-                                <input type="radio" name="options" class="toggle" id="option2">Tools
-                            </label>
+                    <div class="actions">                        
+                        <div class="btn-group">
+                            <a class="btn btn-sm blue btn-outline" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                流程节点
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" />  登记移交
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" />  接收检验
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" checked="" /> 完成返样
+                                    <span></span>
+                                </label>    
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>                
                 <div class="portlet-body">
                     <div class="cd-horizontal-timeline mt-timeline-horizontal" data-spacing="60">
                         <div class="timeline mt-timeline-square">
@@ -982,22 +1097,111 @@
                 </div>
             </div>
         </div>
+        <!-- END   项目时间线 -->
+        <!-- END   检测项目 -->
         <div class="col-lg-6 col-xs-12 col-sm-12">
             <!-- BEGIN PORTLET-->
-            <div class="portlet light tasks-widget bordered">
-                <div class="portlet-title tabbable-line">
+            <div class="portlet light tasks-widget bordered" style="min-height:474px">
+                <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-globe font-dark hide"></i>
-                        <span class="caption-subject font-dark bold uppercase">仪器列表 Order Detial</span>
+                        <i class="icon-share font-dark hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">检测项目 CHECK LIST</span>
                     </div>
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#tab_1_a" class="active" data-toggle="tab"> 检测中 </a>
-                        </li>
-                        <li>
-                            <a href="#tab_1_b" data-toggle="tab"> 已完成 </a>
-                        </li>
-                    </ul>
+                    <div class="actions">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success">增加项目</button>
+                            <button type="button"
+                                    class="btn btn-success"
+                                    data-toggle="dropdown"
+                                    data-hover="dropdown"
+                                    drop-delay="1000"
+                                    data-close-others="true">
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right hold-on-click" role="menu">
+                                <li>
+                                    <a href="javascript:;"> 按状态排序 </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> 按要素 </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> 按时间 </a>
+                                </li>
+                                <li class="divider"> </li>
+                                <li>
+                                    <a href="javascript:;"> 跟踪标记 </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-sm blue btn-outline" href="javascript:;"
+                               data-toggle="dropdown"
+                               data-hover="dropdown"
+                               data-close-others="true">
+                                按要素
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 全部
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 温度
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" checked="" /> 湿度
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 温湿度
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" checked="" /> 气压
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 雨量
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-sm blue btn-outline" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                按状态
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 全部
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 待接收
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" checked="" /> 移交中
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 检测中
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 已完成
+                                    <span></span>
+                                </label>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" /> 异常结束
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="portlet-body">
                     <div class="task-content">
@@ -1353,9 +1557,9 @@
                             <!-- END START TASK LIST -->
                         </div>
                     </div>
-                    <div class="task-footer">
+                    <div class="scroller-footer">
                         <div class="btn-arrow-link pull-right">
-                            <a href="javascript:;">See All Records</a>
+                            <a href="javascript:;">查看全部--检测项目管理</a>
                             <i class="icon-arrow-right"></i>
                         </div>
                     </div>
@@ -1363,6 +1567,7 @@
             </div>
             <!-- END PORTLET-->
         </div>
+        <!-- END   检测项目 -->
     </div>
     <!-- END   生成 送检单 -->
 </div>

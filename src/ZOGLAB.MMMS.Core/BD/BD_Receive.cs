@@ -12,6 +12,7 @@ namespace ZOGLAB.MMMS.BD
     [Table("BD_Receive")]
     public class BD_Receive : CreationAuditedEntity<long>,ISoftDelete
     {
+        public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
         //1.送检单位ID   foreignKey site
@@ -22,14 +23,19 @@ namespace ZOGLAB.MMMS.BD
         public string Number { get; set; }
 
         //3.设备数量
-        public int Device_Num { get; set; }
+        public int? Device_Num { get; set; }
 
-        //4.登记时间
-        public DateTime RegisterDate { get; set; }
-
-        //5.登记者
+        //2.客户地址
         [MaxLength(MaxLength_50)]
-        public string FoundUser { get; set; }
+        public string address { get; set; }
+
+        //2.联系人
+        [MaxLength(MaxLength_50)]
+        public string contact { get; set; }
+
+        //2.联系方式
+        [MaxLength(MaxLength_20)]
+        public string contactTel { get; set; }
 
         //6.送检快递单号
         [MaxLength(MaxLength_50)]

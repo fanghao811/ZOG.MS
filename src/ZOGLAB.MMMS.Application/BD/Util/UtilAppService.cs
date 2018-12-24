@@ -24,6 +24,13 @@ namespace ZOGLAB.MMMS.BD
             _unitRepository = unitRepository;
 
         }
+
+        public async Task<List<BD_Unit>> GetAll()
+        {
+            var query = await _unitRepository.GetAll().ToListAsync();
+            return query;
+        }
+
         /// <summary>
         /// 过滤，排序，分页 获取标准器列表
         /// </summary>

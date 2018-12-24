@@ -1,5 +1,5 @@
 ﻿(function () {
-    appModule.controller('common.views.rs.regist.index', [
+    appModule.controller('common.views.qs.workload.index', [
         '$scope',
         function ($scope) {
             var vm = this;

@@ -67,6 +67,7 @@ namespace ZOGLAB.MMMS.Web.Bundling
         public const string Angular_DateRangePicker = "~/libs/angular-daterangepicker/angular-daterangepicker.min.js";//SPA!
         public const string Angular_Moment = "~/libs/angular-moment/angular-moment.min.js";//SPA!
         public const string Angular_Bootstrap_Switch = "~/libs/angular-bootstrap-switch/angular-bootstrap-switch.min.js";//SPA!
+        public const string Angular_NgSelect= "~/Scripts/ngSelect.min.js";//SPA!
 
         public const string Abp = "~/Abp/Framework/scripts/abp.js";
         public const string Abp_JQuery = "~/Abp/Framework/scripts/libs/abp.jquery.js";

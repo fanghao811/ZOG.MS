@@ -459,8 +459,8 @@
     <Content Include="App\common\views\auditLogs\detailModal.min.css">
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
-    <Content Include="App\common\views\BD\reciveInstrument\index.js" />
-    <Content Include="App\common\views\BD\reciveInstrument\profile.min.css" />
+    <Content Include="App\common\views\BD\reciveOrder\index.js" />
+    <Content Include="App\common\views\BD\workload\index.js" />
     <Content Include="App\common\views\BD\standard\createOrEditModal.js" />
     <Content Include="App\common\views\BD\standard\index.js" />
     <Content Include="App\common\views\common\lookupModal.js" />
@@ -775,6 +775,9 @@
     <Content Include="Content\fonts-open-sans.css" />
     <Content Include="Content\fonts-ptsans-narrow.css" />
     <Content Include="Content\fonts-sourcesans-pro.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\ngSelect.css" />
+    <Content Include="Content\ngSelect.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="libs\angular-bootstrap-switch\angular-bootstrap-switch.js" />
@@ -1356,6 +1359,7 @@
     <Content Include="libs\push-js\push.js" />
     <Content Include="libs\push-js\push.min.js" />
     <Content Include="libs\push-js\serviceWorker.js" />
+    <Content Include="libs\select2\ngSelect.min.css" />
     <Content Include="libs\slider-revolution-slider\css\extralayers.css" />
     <Content Include="libs\slider-revolution-slider\css\navstylechange.css" />
     <Content Include="libs\slider-revolution-slider\css\noneed.css" />
@@ -2317,6 +2321,8 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\ngSelect.js" />
+    <Content Include="Scripts\ngSelect.min.js" />
     <Content Include="Views\Layout\_TenantCustomCss.cshtml" />
     <Content Include="Abp\Framework\styles\abp.mixings.less" />
     <Content Include="Abp\Framework\styles\abp.mixings.css.map" />
@@ -2334,7 +2340,12 @@
     <Content Include="App\common\views\BD\standard\index.cshtml" />
     <Content Include="App\common\views\BD\standard\createOrEditModal.cshtml" />
     <Content Include="App\common\views\layout\备份\layout.cshtml" />
-    <Content Include="App\common\views\BD\reciveInstrument\index.cshtml" />
+    <Content Include="App\common\views\BD\workload\index.cshtml" />
+    <Content Include="App\common\views\BD\reciveOrder\index.cshtml" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\aspnetzero - Web Deploy.pubxml" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

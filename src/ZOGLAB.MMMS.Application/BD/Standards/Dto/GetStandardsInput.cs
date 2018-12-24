@@ -15,7 +15,7 @@ namespace ZOGLAB.MMMS.BD
         public DateTime? ValidateDate { get; set; }
 
         //1.2   标准器类型 -->类型过滤
-        public bool StrType { get; set; }
+        public bool? StrType { get; set; }
 
         //2.1   所属计量装置ID -->精确查询
         public long? Installation_ID { get; set; }

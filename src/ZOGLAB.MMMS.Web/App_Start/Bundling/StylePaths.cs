@@ -14,6 +14,7 @@
         public const string Morris = "~/libs/morris/morris.css";
         public const string JsTree = "~/libs/jstree/themes/default/style.css";
         public const string Angular_Ui_Grid = "~/libs/angular-ui-grid/ui-grid.min.css";//SPA!
+        public const string Angular_Select2 = "~/libs/select2/ngSelect.min.css";//SPA!
         public const string Bootstrap_DateRangePicker = "~/libs/bootstrap-daterangepicker/daterangepicker.css";
         public const string Bootstrap_Select = "~/libs/bootstrap-select/bootstrap-select.min.css";
         public const string Bootstrap_Switch = "~/libs/bootstrap-switch/css/bootstrap-switch.min.css";

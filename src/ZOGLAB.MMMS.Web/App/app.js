@@ -8,6 +8,7 @@ var appModule = angular.module("app", [
     'ui.grid.pagination',
     "oc.lazyLoad",
     "ngSanitize",
+    "ngSelect",
     'ncy-angular-breadcrumb',
     'angularFileUpload',
     'daterangepicker',
@@ -228,23 +229,24 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
         }
 
         //BD routes
-        //recive
-        $stateProvider.state('rs', {
+        //reciveOrder
+        $stateProvider.state('reOrder', {
             'abstract': true,
-            url: '/rs',
+            url: '/reOrder',
             template: '<div ui-view class="fade-in-up"></div>',
             ncyBreadcrumb: {
                 label: '仪器收发'
             }
         });
 
-        $stateProvider.state('rs.regist', {
+        $stateProvider.state('reOrder.regist', {
             url: '/regist',
-            templateUrl: '~/App/common/views/BD/reciveInstrument/index.cshtml',
+            templateUrl: '~/App/common/views/BD/reciveOrder/index.cshtml',
             ncyBreadcrumb: {
                 label: '送检登记'
             }
         });
+
 
         //query statistics
         $stateProvider.state('qs', {
@@ -261,6 +263,14 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             templateUrl: '~/App/common/views/BD/standard/index.cshtml',
             ncyBreadcrumb: {
                 label: '标准器查询'
+            }
+        });
+
+        $stateProvider.state('qs.workload', {
+            url: '/workload',
+            templateUrl: '~/App/common/views/BD/workload/index.cshtml',
+            ncyBreadcrumb: {
+                label: '业务量统计'
             }
         });
 
@@ -287,7 +297,7 @@ appModule.run(["$rootScope", "settings", "$state", 'i18nService', '$uibModalStac
     if (i18nService.get(abp.localization.currentCulture.name)) {
         i18nService.setCurrentLang(abp.localization.currentCulture.name);
     } else {
-        i18nService.setCurrentLang("en");
+        i18nService.setCurrentLang("zh-CN");
     }
 
     $rootScope.safeApply = function (fn) {
