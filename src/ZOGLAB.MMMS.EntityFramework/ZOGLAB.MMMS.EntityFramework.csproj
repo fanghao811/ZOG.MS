@@ -392,15 +392,13 @@
     <Compile Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.Designer.cs">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812240139093_units.cs" />
-    <Compile Include="Migrations\201812240139093_units.Designer.cs">
-      <DependentUpon>201812240139093_units.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\201812240746333_12\24.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\Seed\BD\CheckTypeCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\CheckTypeCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\InstrumentCreator.cs" />
     <Compile Include="Migrations\Seed\BD\InitialBDBuilder.cs" />
-    <Compile Include="Migrations\Seed\BD\InstallationAndStandardCreator.cs" />
-    <Compile Include="Migrations\Seed\BD\UnitsCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\InstallationAndStandardCreator.cs" />
+    <Compile Include="Migrations\Seed\BD\Creater\UnitsCreator.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultEditionCreator.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultLanguagesCreator.cs" />
     <Compile Include="Migrations\Seed\Host\DefaultSettingsCreator.cs" />
@@ -604,9 +602,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702191840505_Added_Tenant_UI_Customization_Properties.resx">
       <DependentUpon>201702191840505_Added_Tenant_UI_Customization_Properties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812240139093_units.resx">
-      <DependentUpon>201812240139093_units.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

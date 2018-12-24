@@ -134,7 +134,6 @@
     <Compile Include="BD\BD_MeteorType.cs" />
     <Compile Include="BD\BD_CheckType.cs" />
     <Compile Include="BD\BD_DeviceItem.cs" />
-    <Compile Include="BD\BD_EssentialFactor.cs" />
     <Compile Include="BD\BD_Installation.cs" />
     <Compile Include="BD\BD_Instrument.cs" />
     <Compile Include="BD\BD_Rainfall.cs" />

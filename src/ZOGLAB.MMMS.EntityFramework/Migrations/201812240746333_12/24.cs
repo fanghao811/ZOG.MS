@@ -3,7 +3,7 @@ namespace ZOGLAB.MMMS.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class units : DbMigration
+    public partial class _1224 : DbMigration
     {
         public override void Up()
         {
