@@ -147,6 +147,14 @@
     <Compile Include="BD\Installation\Dto\GetInstallationsInput.cs" />
     <Compile Include="BD\Installation\IInstallationAppService.cs" />
     <Compile Include="BD\Installation\InstallationAppService.cs" />
+    <Compile Include="BD\Instrument\Dto\InstrumentEditDto.cs" />
+    <Compile Include="BD\Instrument\Dto\InstrumentListDto.cs" />
+    <Compile Include="BD\Instrument\IInstrumentAppService.cs" />
+    <Compile Include="BD\Instrument\InstrumentAppService.cs" />
+    <Compile Include="BD\ReceiveInstrument\Dto\ReceiveInstrumentEditDto.cs" />
+    <Compile Include="BD\ReceiveInstrument\Dto\ReceiveInstrumentListDto.cs" />
+    <Compile Include="BD\ReceiveInstrument\IReceiveInstrumentAppService.cs" />
+    <Compile Include="BD\ReceiveInstrument\ReceiveInstrumentAppService.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveEditDto.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveListDto.cs" />
     <Compile Include="BD\Rreceive\IReceiveAppService.cs" />
@@ -343,9 +351,7 @@
       <Name>ZOGLAB.MMMS.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BD\ReceiveInstrument\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -52,6 +52,11 @@ namespace ZOGLAB.MMMS.BD
 
         //9.是否有效
         public bool IsDeleted { get; set; }
+        //public class BD_Receive{
+
+
+        //}
+
 
         public enum ReceiveModel
         {

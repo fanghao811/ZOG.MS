@@ -10,6 +10,8 @@ namespace ZOGLAB.MMMS.BD
         //Task<PagedResultDto<UnitListDto>> GetUnits(GetUnitsInput input);
         Task<List<BD_Receive>> GetAll();
         Task CreateOrUpdateReveice(ReceiveEditDto input);
-        void DeleteDeceive(EntityDto<long> input);
+        void DeleteItem(EntityDto<long> input);
+        Task AddInstrumentToReceive(long instrumentId, long receiveId);
+        Task RemoveInstrumentFromReceive(long instrumentId, long receiveId);
     }
 }

@@ -19,10 +19,15 @@ namespace ZOGLAB.MMMS.BD
     public class ReceiveAppService : MMMSAppServiceBase, IReceiveAppService
     {
         private readonly IRepository<BD_Receive, long> _receiveRepository;
+        private readonly IInstrumentManager _instrumentManager;
 
-        public ReceiveAppService(IRepository<BD_Receive, long> receiveRepository)
+
+        public ReceiveAppService(
+            IRepository<BD_Receive, long> receiveRepository, 
+            IInstrumentManager instrumentManager)
         {
             _receiveRepository = receiveRepository;
+            _instrumentManager = instrumentManager;
         }
 
         public async Task<List<BD_Receive>> GetAll()
@@ -37,6 +42,16 @@ namespace ZOGLAB.MMMS.BD
             await _receiveRepository.InsertOrUpdateAsync(item);
         }
 
+        public async Task AddInstrumentToReceive(long instrumentId, long receiveId)
+        {
+            await _instrumentManager.AddToReceiveAsync(instrumentId, receiveId);
+        }
+
+        public async Task RemoveInstrumentFromReceive(long instrumentId, long receiveId)
+        {
+            await _instrumentManager.RemoveFromReceiveAsync(instrumentId, receiveId);
+        }
+
         //public async Task<long> CreateReveice(ReceiveEditDto input)
         //{
         //    //We can use Logger, it's defined in ApplicationService class.
@@ -47,7 +62,7 @@ namespace ZOGLAB.MMMS.BD
         //    return await _receiveRepository.InsertAndGetIdAsync(reveice);
         //}
 
- 
+
         /// <summary>
         /// 过滤，排序，分页 获取标准器列表
         /// </summary>
@@ -81,13 +96,13 @@ namespace ZOGLAB.MMMS.BD
         //}
 
 
-        public void DeleteDeceive(EntityDto<long> input)
+        public void DeleteItem(EntityDto<long> input)
         {
             var receiveToDel = _receiveRepository.Get(input.Id);
 
             if (receiveToDel == null)
             {
-                throw new Exception("没有找到对应的手法单，无法删除！");
+                throw new Exception("没有找到对应的收发单，无法删除！");
             }
 
             _receiveRepository.Delete(receiveToDel);

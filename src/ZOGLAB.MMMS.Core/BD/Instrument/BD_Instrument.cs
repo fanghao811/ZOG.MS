@@ -20,7 +20,7 @@ namespace ZOGLAB.MMMS.BD
         public override long Id { get; set; }
 
         //1.站点信息ID   foreignKey site
-        public long Site_ID { get; set; }
+        public long? Site_ID { get; set; }
 
         //2.仪器出厂编号
         [MaxLength(MaxLength_50)]

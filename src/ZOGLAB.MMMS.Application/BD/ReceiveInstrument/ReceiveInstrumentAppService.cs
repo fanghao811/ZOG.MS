@@ -18,7 +18,7 @@ namespace ZOGLAB.MMMS.BD
     /// </summary>
     public class ReceiveInstrumentAppService : MMMSAppServiceBase, IReceiveInstrumentAppService
     {
-        private readonly IRepository<BD_ReceiveInstrument> _receiveInstrumentRepository;
+        private readonly IRepository<BD_ReceiveInstrument,long> _receiveInstrumentRepository;
 
         public ReceiveInstrumentAppService(IRepository<BD_ReceiveInstrument, long> receiveInstrumentRepository)
         {
@@ -28,6 +28,12 @@ namespace ZOGLAB.MMMS.BD
         public async Task<List<BD_ReceiveInstrument>> GetAll()
         {
             var query = await _receiveInstrumentRepository.GetAll().ToListAsync();
+            return query;
+        }
+
+        public async Task<List<BD_ReceiveInstrument>> GetByReceiveId(EntityDto<long> input)
+        {
+            var query = await _receiveInstrumentRepository.GetAll().Where(r=>r.Receive_ID==input.Id).ToListAsync();
             return query;
         }
 
@@ -81,13 +87,13 @@ namespace ZOGLAB.MMMS.BD
         //}
 
 
-        public void DeleteDeceive(EntityDto<long> input)
+        public void DeleteItem(EntityDto<long> input)
         {
             var receiveInstrumentToDel = _receiveInstrumentRepository.Get(input.Id);
 
             if (receiveInstrumentToDel == null)
             {
-                throw new Exception("没有找到对应的手法单，无法删除！");
+                throw new Exception("没有找到对应的收发从表，无法删除！");
             }
 
             _receiveInstrumentRepository.Delete(receiveInstrumentToDel);
