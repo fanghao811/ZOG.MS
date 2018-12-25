@@ -247,6 +247,51 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             }
         });
 
+        $stateProvider.state('reOrder.regist.order', {
+            url: '/order',
+            views: {
+                '': {
+                    templateUrl: '~/App/common/views/BD/reciveOrder/order.cshtml'
+                }               
+            },
+            ncyBreadcrumb: {
+                label: '送检登记'
+            }
+        });
+
+        $stateProvider.state('reOrder.regist.ordItems', {
+            url: '/ordItems',
+            views: {
+                '': {
+                    templateUrl: '~/App/common/views/BD/reciveOrder/ordItems.cshtml'
+                }
+            },
+            ncyBreadcrumb: {
+                label: '送检登记'
+            }
+        });
+        $stateProvider.state('reOrder.regist.checkItems', {
+            url: '/checkItems',
+            views: {
+                '': {
+                    templateUrl: '~/App/common/views/BD/reciveOrder/checkItems.cshtml'
+                }
+            },
+            ncyBreadcrumb: {
+                label: '送检登记'
+            }
+        });
+        $stateProvider.state('reOrder.regist.print', {
+            url: '/print',
+            views: {
+                '': {
+                    templateUrl: '~/App/common/views/BD/reciveOrder/print.cshtml'
+                }
+            },
+            ncyBreadcrumb: {
+                label: '送检登记'
+            }
+        });
 
         //query statistics
         $stateProvider.state('qs', {
