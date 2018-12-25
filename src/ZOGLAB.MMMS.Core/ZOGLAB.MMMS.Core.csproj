@@ -139,7 +139,7 @@
     <Compile Include="BD\BD_Rainfall.cs" />
     <Compile Include="BD\BD_Randiation.cs" />
     <Compile Include="BD\BD_Receive.cs" />
-    <Compile Include="BD\BD_ReceiveDevice.cs" />
+    <Compile Include="BD\BD_ReceiveInstrument.cs" />
     <Compile Include="BD\BD_Remission.cs" />
     <Compile Include="BD\BD_Rules.cs" />
     <Compile Include="BD\BD_Site.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="BD\BD_Wind.cs" />
     <Compile Include="BD\BD_WindDirection.cs" />
     <Compile Include="BD\IRepository\IInstallationRepository.cs" />
+    <Compile Include="BD\IRepository\IReceiveRepository.cs" />
     <Compile Include="BD\IRepository\IUnitRepository.cs" />
     <Compile Include="BD\IRepository\IStandardRepository.cs" />
     <Compile Include="MMMSConsts.cs" />

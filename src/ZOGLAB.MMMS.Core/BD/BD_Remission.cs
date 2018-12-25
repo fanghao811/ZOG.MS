@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ZOGLAB.MMMS.BD
 {
     /// <summary>
-    /// 18，检定/校准/核查/原始数据附件信息表（BD_Appendix）
+    /// 20，仪器返样信息表（BD_Remission）
     /// </summary>
     [Table("BD_Remission")]
     public class BD_Remission : CreationAuditedEntity<long>, ISoftDelete
@@ -15,9 +15,9 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
-        //2	CertificateId_ID 收发登记ID  VARCHAR(20)
+        //2.BD_Receive.ID收发登记表ID关联
         [ForeignKey("Receive_ID")]
-        public BD_ReceiveDevice Receive { get; set; }
+        public BD_Receive Receive { get; set; }
         public long Receive_ID { get; set; }
 
         //3	UserName 返样者 VARCHAR(20)

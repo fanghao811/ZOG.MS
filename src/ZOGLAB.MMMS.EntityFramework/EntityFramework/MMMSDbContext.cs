@@ -54,7 +54,7 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<BD_Instrument> BD_Instruments { get; set; }
         public virtual IDbSet<BD_Receive> BD_Receives { get; set; }
         public virtual IDbSet<BD_Back> BD_Backs { get; set; }
-        public virtual IDbSet<BD_ReceiveDevice> BD_ReceiveDevices { get; set; }
+        public virtual IDbSet<BD_ReceiveInstrument> BD_ReceiveInstrument { get; set; }
 
         /* PartII */
         public virtual IDbSet<BD_DeviceItem> BD_DeviceItems { get; set; }
@@ -117,7 +117,10 @@ namespace ZOGLAB.MMMS.EntityFramework
             modelBuilder.Filter(AbpDataFilters.MayHaveTenant,
                 (IMayHaveTenant t, int? tenantId) => t.TenantId == tenantId, 0);
 
-            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();//移除多对多级联删除关系
+            modelBuilder.Conventions.Remove<OneToOneConstraintIntroductionConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();//移除多对多级联删除关系
+
 
             modelBuilder.Entity<BD_Instrument>().HasMany(s => s.MeteorTypes).WithMany()
                 .Map(m =>
