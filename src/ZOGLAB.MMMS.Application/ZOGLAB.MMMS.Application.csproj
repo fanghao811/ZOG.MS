@@ -137,6 +137,7 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -148,7 +149,7 @@
     <Compile Include="BD\Installation\IInstallationAppService.cs" />
     <Compile Include="BD\Installation\InstallationAppService.cs" />
     <Compile Include="BD\Instrument\Dto\InstrumentEditDto.cs" />
-    <Compile Include="BD\Instrument\Dto\InstrumentListDto.cs" />
+    <Compile Include="BD\Instrument\Dto\InstrumentFReadDto.cs" />
     <Compile Include="BD\Instrument\IInstrumentAppService.cs" />
     <Compile Include="BD\Instrument\InstrumentAppService.cs" />
     <Compile Include="BD\ReceiveInstrument\Dto\ReceiveInstrumentEditDto.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="BD\Rreceive\Dto\ReceiveListDto.cs" />
     <Compile Include="BD\Rreceive\IReceiveAppService.cs" />
     <Compile Include="BD\Rreceive\ReceiveAppService.cs" />
+    <Compile Include="BD\Rreceive\Dto\ReceiveWithItemsDto.cs" />
     <Compile Include="BD\Standards\Dto\StandardEditDto.cs" />
     <Compile Include="BD\Standards\Dto\GetStandardForEditOutput.cs" />
     <Compile Include="BD\Standards\Dto\GetStandardsInput.cs" />

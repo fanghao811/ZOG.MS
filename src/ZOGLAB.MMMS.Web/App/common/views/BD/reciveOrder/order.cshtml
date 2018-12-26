@@ -1,60 +1,80 @@
-﻿<form>
-<h3 class="block">填写单位信息</h3>
-<div class="form-group">
-    <label class="control-label col-md-3">
-        单位名称
-        <span class="required"> * </span>
-    </label>
-    <div class="col-md-4">
-        <ng-select ng-model="vm.selectedUnit"
-                   set-by-id="true"
-                   show-as="unitName"
-                   search-not-found="没有对应单位信息"
-                   searchable="true"
-                   options="units">
-        </ng-select>
+﻿<form  ng-controller="common.views.BD.reciveOrder.order as vm"
+      novailated 
+      name="orderForm" 
+      role="form" 
+      novalidate class="form-validation">
+    <h3 class="block">填写单位信息--{{vm.world }}</h3>
+    <div class="form-group">
+        <label class="control-label col-md-3">
+            单位名称
+            <span class="required"> * </span>
+        </label>
+        <div class="col-md-4">
+            <ng-select ng-model="vm.selectedUnit"
+                       set-by-id="true"
+                       show-as="unitName"
+                       search-not-found="没有对应单位信息"
+                       searchable="true"
+                       options="units">
+            </ng-select>
+        </div>
     </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-md-3">
-        单位地址
-    </label>
-    <div class="col-md-4">
-        <input type="text" class="form-control" name="address" readonly
-               ng-model="vm.selectedUnit.address" />
-        <span class="help-block">  </span>
+    <div class="form-group">
+        <label class="control-label col-md-3">
+            单位地址
+        </label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="address" readonly
+                   ng-model="vm.selectedUnit.address" />
+            <span class="help-block">  </span>
+        </div>
     </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-md-3">
-        联系人
-        <span class="required"> * </span>
-    </label>
-    <div class="col-md-4">
-        <input type="text" class="form-control" name="contact" required
-               ng-model="vm.selectedUnit.contact" />
-        <span class="help-block">  </span>
+    <div class="form-group">
+        <label class="control-label col-md-3">
+            联系人
+            <span class="required"> * </span>
+        </label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="contact" required
+                   ng-model="vm.selectedUnit.contact" />
+            <span class="help-block">  </span>
+        </div>
     </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-md-3">
-        电话
-        <span class="required"> * </span>
-    </label>
-    <div class="col-md-4">
-        <input type="tel" class="form-control" name="tel"
-               ng-model="vm.selectedUnit.contactTel" />
-        <span class="help-block">  </span>
+    <div class="form-group">
+        <label class="control-label col-md-3">
+            电话
+            <span class="required"> * </span>
+        </label>
+        <div class="col-md-4">
+            <input type="tel" class="form-control" name="contactTel" reqquired
+                   ng-model="vm.selectedUnit.contactTel" />
+            <span class="help-block">  </span>
+        </div>
     </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-md-3">
-        送检快递单号
-        <span class="required"> </span>
-    </label>
-    <div class="col-md-4">
-        <input type="text" class="form-control" name="mark" />
-        <span class="help-block">  </span>
+    <div class="form-group">
+        <label class="control-label col-md-3">
+            送检快递单号
+            <span class="required"> </span>
+        </label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="expressDelivery" 
+                   ng-model="vm.order.expressDelivery"/>
+            <span class="help-block">  </span>
+        </div>
     </div>
-</div>
+    <pre>$stateParams.orderId:{{vm.world}}</pre>
+    <pre>vm.selectedUnit:{{vm.selectedUnit}}</pre>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.goPrint()">
+                                <i class="fa fa-ban"></i> <span>@L("Cancel")</span>
+                            </button>
+                <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" 
+                        class="btn btn-primary green" ng-click="vm.save()" 
+                        ng-disabled="orderForm.$invalid">
+                <i class="fa fa-save"></i> <span>@L("Save")</span></button>
+            </div>
+        </div>
+    </div>
 </form>

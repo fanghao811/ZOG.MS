@@ -56,7 +56,7 @@ namespace ZOGLAB.MMMS.BD
         public  StandardEditDto GetStandardForEdit(NullableIdDto<long> input)
         {
             //Standard   standard
-            StandardEditDto standardEditDto;
+            var standardEditDto=new StandardEditDto();
 
             if (input.Id.HasValue) //Editing existing role?
             {
@@ -65,10 +65,7 @@ namespace ZOGLAB.MMMS.BD
 
                 standardEditDto = standard.MapTo<StandardEditDto>();
             }
-            else
-            {
-                standardEditDto = new StandardEditDto();
-            }
+
             return standardEditDto;
         }
 

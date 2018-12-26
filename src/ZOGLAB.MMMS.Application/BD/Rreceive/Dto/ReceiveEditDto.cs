@@ -28,7 +28,7 @@ namespace ZOGLAB.MMMS.BD
 
         //2.联系人
         [MaxLength(MaxLength_50)]
-        public string Conntact { get; set; }
+        public string Contact { get; set; }
 
         //2.联系方式
         [MaxLength(MaxLength_20)]

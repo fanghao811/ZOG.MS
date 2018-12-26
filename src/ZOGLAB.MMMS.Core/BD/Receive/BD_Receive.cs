@@ -18,8 +18,8 @@ namespace ZOGLAB.MMMS.BD
 
         //1.送检单位ID   foreignKey site
         [ForeignKey("Unit_ID ")]
-        public BD_Unit Unit { get; set; }
-        public long? Unit_ID { get; set; }
+        public virtual BD_Unit Unit { get; set; }
+        public virtual long? Unit_ID { get; set; }
 
         //2.收发单号
         [MaxLength(MaxLength_50)]
@@ -48,7 +48,7 @@ namespace ZOGLAB.MMMS.BD
         public ReceiveModel Model { get; set; }
 
         //8.收发从表
-        public ICollection<BD_ReceiveInstrument> ReceiveInstruments { get; set; }
+        public virtual ICollection<BD_ReceiveInstrument> ReceiveInstruments { get; set; }
 
         //9.是否有效
         public bool IsDeleted { get; set; }

@@ -1,187 +1,123 @@
 ﻿<h3 class="block">仪器登记列表</h3>
-<div class="row">
-    <div class="col-md-6 col-sm-12">
-        <form>
-            <div class="form-group">
-                <label class="control-label col-md-3">
-                    选择仪器类型
-                </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="fullname" />
-                </div>
+<form class="row">
+    <div class="col-md-7 col-sm-12">
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                仪器出厂编号
+                <span class="required"> * </span>
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="fullname" />
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-3">
-                    填写仪器编号
-                    <span class="required"> * </span>
-                </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="phone" />
-                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                仪器名称
+                <span class="required"> * </span>
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="phone" />
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-3">
-                    精确度
-                </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="address" />
-                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                仪器型号
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="address" />
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-3">
-                    测量范围
-                </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="city" />
-                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                准确度等级
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="city" />
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-3">检测要素</label>
-                <div class="col-md-4">
-                    <select name="country" id="country_list" class="form-control">
-                        <option value=""></option>
-                        <option value="AF">湿</option>
-                        <option value="AL">温</option>
-                        <option value="DZ">温湿</option>
-                        <option value="AS">气压</option>
-                        <option value="AD">辐射</option>
-                    </select>
-                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                测量范围
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-3">检测类型</label>
-                <div class="col-md-4">
-                    <select name="country" id="country_list" class="form-control">
-                        <option value=""></option>
-                        <option value="AF">湿度检定</option>
-                        <option value="AL">温度检测</option>
-                        <option value="DZ">温湿校验</option>
-                        <option value="AS">气压检定</option>
-                        <option value="AD">辐射检测</option>
-                    </select>
-                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                分辨力
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
             </div>
-            <!--<div class="form-group">
-
-            </div>-->
-            <div class="form-group">
-                <label class="control-label col-md-3">
-                    返样单号
-                </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="city" />
-                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">检测要素</label>
+            <div class="col-md-7">
+                <select name="country" id="country_list" class="form-control">
+                    <option value=""></option>
+                    <option value="AF">湿</option>
+                    <option value="AL">温</option>
+                    <option value="DZ">温湿</option>
+                    <option value="AS">气压</option>
+                    <option value="AD">辐射</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-3">备注</label>
-                <div class="col-md-4">
-                    <textarea class="form-control" rows="3" name="remarks"></textarea>
-                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">检测类型</label>
+            <div class="col-md-7">
+                <select name="country" id="country_list" class="form-control">
+                    <option value=""></option>
+                    <option value="AF">湿度检定</option>
+                    <option value="AL">温度检测</option>
+                    <option value="DZ">温湿校验</option>
+                    <option value="AS">气压检定</option>
+                    <option value="AD">辐射检测</option>
+                </select>
             </div>
-        </form>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                制造商
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                制造商
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                返样单号
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                站点信息
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 col-sm-12">
+    <div class="col-md-5 col-sm-12">
         <div class="portlet light bordered" style="min-height:438px">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-share font-dark hide"></i>
                     <span class="caption-subject font-dark bold uppercase">接收单号：123456</span>
                 </div>
-                <div class="actions">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-success">增加设备</button>
-                        <button type="button"
-                                class="btn btn-success"
-                                data-toggle="dropdown"
-                                data-hover="dropdown"
-                                drop-delay="1000"
-                                data-close-others="true">
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right hold-on-click" role="menu">
-                            <li>
-                                <a href="javascript:;"> 按状态排序 </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"> 按要素 </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"> 按时间 </a>
-                            </li>
-                            <li class="divider"> </li>
-                            <li>
-                                <a href="javascript:;"> 跟踪标记 </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <a class="btn btn-sm blue btn-outline" href="javascript:;"
-                           data-toggle="dropdown"
-                           data-hover="dropdown"
-                           data-close-others="true">
-                            按要素
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 全部
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 温度
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" checked="" /> 湿度
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 温湿度
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" checked="" /> 气压
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 雨量
-                                <span></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <a class="btn btn-sm blue btn-outline" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            按状态
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 全部
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 待接收
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" checked="" /> 移交中
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 检测中
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 已完成
-                                <span></span>
-                            </label>
-                            <label class="mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox" /> 异常结束
-                                <span></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="portlet-body">
                 <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
@@ -486,7 +422,24 @@
             </div>
         </div>
     </div>
+</form>
+
+<div class="form-actions">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+            <a href="#" class="btn default button-previous">
+                <i class="fa fa-angle-left"></i> 上一步
+            </a>
+            <a href="javascript:;" class="btn btn-outline green button-next">
+                下一步
+                <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="javascript:;" class="btn green button-submit">
+                提交
+                <i class="fa fa-check"></i>
+            </a>
+        </div>
+    </div>
+
 </div>
-
-
 

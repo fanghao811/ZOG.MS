@@ -7,6 +7,7 @@ using Abp.Linq.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Threading.Tasks;
@@ -21,25 +22,76 @@ namespace ZOGLAB.MMMS.BD
         private readonly IRepository<BD_Receive, long> _receiveRepository;
         private readonly IInstrumentManager _instrumentManager;
 
-
+        #region 服务注入
         public ReceiveAppService(
-            IRepository<BD_Receive, long> receiveRepository, 
-            IInstrumentManager instrumentManager)
+               IRepository<BD_Receive, long> receiveRepository,
+               IInstrumentManager instrumentManager)
         {
             _receiveRepository = receiveRepository;
             _instrumentManager = instrumentManager;
         }
+        #endregion       
 
-        public async Task<List<BD_Receive>> GetAll()
+        #region 登记单 OrderHeader
+
+        //1.获取所有登记单
+        public async Task<List<ReceiveEditDto>> GetAll()
         {
             var query = await _receiveRepository.GetAll().ToListAsync();
-            return query;
+            return query.MapTo<List<ReceiveEditDto>>();
         }
 
-        public async Task CreateOrUpdateReveice(ReceiveEditDto input)
+        public ReceiveEditDto GetReceiveById(NullableIdDto<long> input)
+        {
+            var receiveEditDto = new ReceiveEditDto();
+
+            if (input.Id.HasValue) //Editing existing role?
+            {
+                Debug.Assert(input.Id != null, "编辑时，ID不得为空！");
+                var currentReceive = _receiveRepository.Get(input.Id.Value);
+
+                receiveEditDto = currentReceive.MapTo<ReceiveEditDto>();
+            }
+
+            return receiveEditDto;
+        }
+
+        public async Task<long> CreateOrUpdateReveice(ReceiveEditDto input)
         {
             BD_Receive item = input.MapTo<BD_Receive>();
-            await _receiveRepository.InsertOrUpdateAsync(item);
+            return await _receiveRepository.InsertOrUpdateAndGetIdAsync(item);
+        }
+
+        public void DeleteItem(EntityDto<long> input)
+        {
+            var receiveToDel = _receiveRepository.Get(input.Id);
+
+            if (receiveToDel == null)
+            {
+                throw new Exception("没有找到对应的收发单，无法删除！");
+            }
+            _receiveRepository.Delete(receiveToDel);
+        }
+        #endregion
+
+        #region 仪器列表 OrderDetail
+        //1.获取已经登记的仪器列表
+        public async Task<ReceiveWithItemsDto> GetReceiveWithItems(NullableIdDto<long> input)
+        {
+            Debug.Assert(input.Id != null, "此查询送检单ID不得为空！");
+
+            ReceiveWithItemsDto receiveWithItemsDto = new ReceiveWithItemsDto { };
+
+            var receive = await _receiveRepository.GetAsync(input.Id.Value);
+
+            receiveWithItemsDto.ReceiveId = receive.Id;
+            receiveWithItemsDto.UnitName = receive.Unit.UnitName;
+            receiveWithItemsDto.Number = receive.Number;
+
+            receiveWithItemsDto.RegistedInstruments =
+                 _instrumentManager.GetRegistedInstrumentsAsync(receive).MapTo<List<InstrumentFReadDto>>();
+
+            return receiveWithItemsDto;
         }
 
         public async Task AddInstrumentToReceive(long instrumentId, long receiveId)
@@ -52,60 +104,6 @@ namespace ZOGLAB.MMMS.BD
             await _instrumentManager.RemoveFromReceiveAsync(instrumentId, receiveId);
         }
 
-        //public async Task<long> CreateReveice(ReceiveEditDto input)
-        //{
-        //    //We can use Logger, it's defined in ApplicationService class.
-        //    Logger.Info("Creating a reveice for input: " + input);
-
-        //    BD_Receive reveice = input.MapTo<BD_Receive>();
-
-        //    return await _receiveRepository.InsertAndGetIdAsync(reveice);
-        //}
-
-
-        /// <summary>
-        /// 过滤，排序，分页 获取标准器列表
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        //public async Task<PagedResultDto<UnitListDto>> GetUnits(GetUnitsInput input)
-        //{
-        //    var query = CreateStandardsQuery(input);    //Step 01
-
-        //    var resultCount = await query.CountAsync(); //Step 02
-
-        //    var results = await query
-        //        .AsNoTracking()
-        //        .OrderBy(input.Sorting) /*Exp: using System.Linq.Dynamic;*/
-        //        .PageBy(input)
-        //        .ToListAsync();
-        //    var unitListDtos = results.MapTo<List<UnitListDto>>(); //Step 03
-
-        //    return new PagedResultDto<UnitListDto>(resultCount, unitListDtos);  //Step 04
-        //}
-
-        //private IQueryable<BD_Unit> CreateStandardsQuery(GetUnitsInput input)
-        //{
-        //    var query = _unitRepository.GetAll()
-        //                .WhereIf(!input.UnitName.IsNullOrWhiteSpace(), item => item.UnitName.Contains(input.UnitName)) //公司名
-        //                .WhereIf(!input.Address.IsNullOrWhiteSpace(), item => item.Address.Contains(input.Address)) //地址
-        //                .WhereIf(!input.Email.IsNullOrWhiteSpace(), item => item.Email.Contains(input.Email))
-        //                .WhereIf(!input.Contact.IsNullOrWhiteSpace(), item => item.Contact.Contains(input.Contact))//联系人
-        //                .WhereIf(!input.ContactTel.IsNullOrWhiteSpace(), item => item.ContactTel.Contains(input.ContactTel)); //联系人电话                                                                                                             
-        //    return query;
-        //}
-
-
-        public void DeleteItem(EntityDto<long> input)
-        {
-            var receiveToDel = _receiveRepository.Get(input.Id);
-
-            if (receiveToDel == null)
-            {
-                throw new Exception("没有找到对应的收发单，无法删除！");
-            }
-
-            _receiveRepository.Delete(receiveToDel);
-        }
+        #endregion
     }
 }

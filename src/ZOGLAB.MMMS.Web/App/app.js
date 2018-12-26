@@ -248,24 +248,27 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
         });
 
         $stateProvider.state('reOrder.regist.order', {
-            url: '/order',
+            url: '/order/:orderId',
             views: {
                 '': {
                     templateUrl: '~/App/common/views/BD/reciveOrder/order.cshtml'
                 }               
             },
+            cache: false,
+            params: { orderId: null },
             ncyBreadcrumb: {
                 label: '送检登记'
             }
         });
 
         $stateProvider.state('reOrder.regist.ordItems', {
-            url: '/ordItems',
+            url: '/ordItems/:orderId',
             views: {
                 '': {
                     templateUrl: '~/App/common/views/BD/reciveOrder/ordItems.cshtml'
                 }
             },
+            params: { orderId: null },
             ncyBreadcrumb: {
                 label: '送检登记'
             }

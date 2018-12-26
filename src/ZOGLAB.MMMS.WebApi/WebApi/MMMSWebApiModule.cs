@@ -22,6 +22,7 @@ namespace ZOGLAB.MMMS.WebApi
             //Automatically creates Web API controllers for all application services of the application
             Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
                 .ForAll<IApplicationService>(typeof(MMMSApplicationModule).Assembly, "app")
+                .WithConventionalVerbs()
                 .Build();
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));

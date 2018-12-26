@@ -1,5 +1,4 @@
-﻿<div>
-    <form name="strandardCreateOrEditForm" role="form" novalidate class="form-validation">
+﻿<form name="strandardCreateOrEditForm" role="form" novalidate class="form-validation">
         <div class="modal-header">
             <h4 class="modal-title">
                 <span ng-if="vm.standard.id">编辑标准器 {{vm.standard.StrName}}</span>
@@ -68,4 +67,3 @@
             <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="strandardCreateOrEditForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
         </div>
     </form>
-</div>

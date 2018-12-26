@@ -8,10 +8,14 @@ namespace ZOGLAB.MMMS.BD
     public interface IReceiveAppService : IApplicationService
     {
         //Task<PagedResultDto<UnitListDto>> GetUnits(GetUnitsInput input);
-        Task<List<BD_Receive>> GetAll();
-        Task CreateOrUpdateReveice(ReceiveEditDto input);
+        Task<List<ReceiveEditDto>> GetAll();
+        Task<ReceiveWithItemsDto> GetReceiveWithItems(NullableIdDto<long> input);
+        ReceiveEditDto GetReceiveById(NullableIdDto<long> input);
+        Task<long> CreateOrUpdateReveice(ReceiveEditDto input);
         void DeleteItem(EntityDto<long> input);
+
         Task AddInstrumentToReceive(long instrumentId, long receiveId);
         Task RemoveInstrumentFromReceive(long instrumentId, long receiveId);
+
     }
 }

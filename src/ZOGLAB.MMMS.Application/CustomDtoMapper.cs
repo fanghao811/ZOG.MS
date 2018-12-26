@@ -43,13 +43,18 @@ namespace ZOGLAB.MMMS
                 .ForMember(standard => standard.Installation, options => options.Ignore());
 
             mapper.CreateMap<BD_Receive, ReceiveListDto>()
-                .ForMember(dto => dto.UnitName, opt => opt.MapFrom(src => src.Unit.UnitName))
-                .ReverseMap();
+                .ForMember(dto => dto.UnitName, opt => opt.MapFrom(src => src.Unit.UnitName));
+                //.ReverseMap();
 
             mapper.CreateMap<BD_Receive, ReceiveEditDto>()
                 .ForMember(dto => dto.UnitName, opt => opt.MapFrom(src => src.Unit.UnitName))
                 .ReverseMap()
                 .ForMember(src => src.Unit, options => options.Ignore());
+
+            mapper.CreateMap<BD_Instrument, InstrumentFReadDto>()
+                .ReverseMap()
+                .ForMember(instrument => instrument.CheckTypes, options => options.Ignore())
+                .ForMember(instrument => instrument.MeteorTypes, options => options.Ignore());
         }
     }
 }

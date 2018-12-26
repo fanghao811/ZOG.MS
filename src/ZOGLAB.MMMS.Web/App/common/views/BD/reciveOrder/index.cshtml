@@ -21,7 +21,7 @@
                         <i class=" icon-layers font-red"></i>
                         <span class="caption-subject font-red bold uppercase">
                             仪器送检单 -
-                            <span class="step-title"> Step 1 of 4 </span>
+                            <span class="step-title">STEP 1 FOR 4  orderId:{{vm.orderId}}</span>
                         </span>
                     </div>
                     <div class="actions">
@@ -40,7 +40,7 @@
                     <div class="form-horizontal">
                         <ul class="nav nav-pills nav-justified steps">
                             <li>
-                                <a ui-sref-active="active" ui-sref=".order" class="step">
+                                <a ui-sref-active="active" ui-sref=".order({orderId:5})" class="step">
                                     <span class="number"> 1 </span>
                                     <span class="desc">
                                         <i class="fa fa-check"></i> 单位信息
@@ -48,7 +48,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a ui-sref-active="active" ui-sref=".ordItems"  class="step">
+                                <a ui-sref-active="active" ui-sref=".ordItems({orderId:2})"  class="step">
                                     <span class="number"> 2 </span>
                                     <span class="desc">
                                         <i class="fa fa-check"></i> 仪器登记
@@ -78,27 +78,8 @@
                         <!--开始导航-->
                         <ui-view></ui-view>
                     </div>  <!--结束导航-->
-                </div>
-                <div class="form-actions">
-                    <div class="row">
-                        <div class="col-md-offset-3 col-md-9">
-                            <a href="#" class="btn default button-previous">
-                                <i class="fa fa-angle-left"></i> 上一步
-                            </a>
-                            <a href="javascript:;" class="btn btn-outline green button-next">
-                                下一步
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                            <a href="javascript:;" class="btn green button-submit">
-                                提交
-                                <i class="fa fa-check"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+                </div>              
             </div>
-
         </div>
     </div>
 </div>

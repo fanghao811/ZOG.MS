@@ -83,6 +83,17 @@ namespace ZOGLAB.MMMS.BD
             return Task.FromResult(query.ToList());
         }
 
+        [UnitOfWork]
+        public Task<List<BD_Instrument>> GetRegistedInstrumentsAsync(BD_Receive receive)
+        {
+            var query = from rein in _receiveInstrumentRepository.GetAll()
+                        join instrument in _instrumentRepository.GetAll() on rein.Instrument_ID equals instrument.Id
+                        where rein.Receive_ID == receive.Id
+                        select instrument;
+
+            return Task.FromResult(query.ToList());
+        }
+
         /// <summary>
         /// Gets a instrument by given id.
         /// Throws exception if no instrument found with given id.

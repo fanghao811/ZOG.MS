@@ -459,6 +459,7 @@
     <Content Include="App\common\views\auditLogs\detailModal.min.css">
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\BD\reciveOrder\order.js" />
     <Content Include="App\common\views\BD\reciveOrder\print.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\ordItems.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\checkItems.cshtml" />
