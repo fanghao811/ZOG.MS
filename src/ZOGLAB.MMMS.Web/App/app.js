@@ -4,11 +4,12 @@ var appModule = angular.module("app", [
     "ui.bootstrap",
     'ui.utils',
     "ui.jq",
+    'ui.select',
     'ui.grid',
     'ui.grid.pagination',
     "oc.lazyLoad",
     "ngSanitize",
-    "ngSelect",
+    //"ngSelect",
     'ncy-angular-breadcrumb',
     'angularFileUpload',
     'daterangepicker',
@@ -254,7 +255,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                     templateUrl: '~/App/common/views/BD/reciveOrder/order.cshtml'
                 }               
             },
-            cache: false,
+            //cache: false,
             params: { orderId: null },
             ncyBreadcrumb: {
                 label: '送检登记'
@@ -268,6 +269,8 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                     templateUrl: '~/App/common/views/BD/reciveOrder/ordItems.cshtml'
                 }
             },
+            //cache: false,
+            redirectTo: '/order/:orderId',
             params: { orderId: null },
             ncyBreadcrumb: {
                 label: '送检登记'

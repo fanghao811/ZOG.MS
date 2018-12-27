@@ -1,417 +1,143 @@
-﻿<h3 class="block">仪器登记列表</h3>
-<form class="row">
-    <div class="col-md-7 col-sm-12">
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                仪器出厂编号
-                <span class="required"> * </span>
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="fullname" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                仪器名称
-                <span class="required"> * </span>
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="phone" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                仪器型号
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="address" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                准确度等级
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                测量范围
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                分辨力
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">检测要素</label>
-            <div class="col-md-7">
-                <select name="country" id="country_list" class="form-control">
-                    <option value=""></option>
-                    <option value="AF">湿</option>
-                    <option value="AL">温</option>
-                    <option value="DZ">温湿</option>
-                    <option value="AS">气压</option>
-                    <option value="AD">辐射</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">检测类型</label>
-            <div class="col-md-7">
-                <select name="country" id="country_list" class="form-control">
-                    <option value=""></option>
-                    <option value="AF">湿度检定</option>
-                    <option value="AL">温度检测</option>
-                    <option value="DZ">温湿校验</option>
-                    <option value="AS">气压检定</option>
-                    <option value="AD">辐射检测</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                制造商
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                制造商
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                返样单号
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                站点信息
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-    </div>
-    <div class="col-md-5 col-sm-12">
-        <div class="portlet light bordered" style="min-height:438px">
+﻿<div ng-controller="common.views.BD.reciveOrder.orderItems as vm"
+     novailated
+     name="ordItemdsForm"
+     role="form"
+     novalidate>
+    <!-- END   登记仪器 -->
+    <div class="col-md-6 col-sm-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light tasks-widget bordered" style="min-height:500px">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-share font-dark hide"></i>
-                    <span class="caption-subject font-dark bold uppercase">接收单号：123456</span>
+                    <span class="caption-subject font-dark bold uppercase">仪器列表 INSTRUMENT LIST</span>
                 </div>
-                
+                <div class="actions">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success" ng-click="vm.getAllInstruments()">刷新列表</button>
+                        <button type="button"
+                                class="btn btn-success"
+                                data-toggle="dropdown"
+                                data-hover="dropdown"
+                                drop-delay="1000"
+                                data-close-others="true">
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu pull-right hold-on-click" role="menu">
+                            <li>
+                                <a href="javascript:;"> 按状态排序 </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"> 按要素 </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"> 按时间 </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="javascript:;"> 跟踪标记 </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn btn-sm blue btn-outline" href="javascript:;"
+                           data-toggle="dropdown"
+                           data-hover="dropdown"
+                           data-close-others="true">
+                            按要素
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 全部
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 温度
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" checked="" /> 湿度
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 温湿度
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" checked="" /> 气压
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 雨量
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn btn-sm blue btn-outline" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            按状态
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 全部
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 待接收
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" checked="" /> 移交中
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 检测中
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 已完成
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" /> 异常结束
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="portlet-body">
-                <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
-                    <ul class="feeds">
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc">
-                                            You have 4 pending tasks.
-                                            <span class="label label-sm label-warning ">
-                                                Take action
-                                                <i class="fa fa-share"></i>
-                                            </span>
-                                        </div>
+                <div class="task-content">
+                    <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible1="1">
+                        <!-- START TASK LIST -->
+                        <ul class="task-list">
+                            <li ng-repeat="item in vm.instruments">
+                                @*<div class="task-checkbox">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                            <span></span>
+                                        </label>
+                                    </div>*@
+                                <div class="task-title">
+                                    <span class="task-title-sp"> {{item.name}}  {{item.model}}-{{item.scope}}</span>
+                                    <span class="label label-sm label-info">{{item.sn}}</span>
+                                    <span class="task-bell">
+                                        <i class="fa fa-bell-o"></i>
+                                    </span>
+                                </div>
+                                <div class="task-config">
+                                    <div class="task-config-btn btn-group">
+                                        <button class="btn btn-sm btn-info" ng-click="vm.addInstrumentToReceive(item)">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> Just now </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm bg-blue">
-                                                <i class="fa fa-bar-chart-o"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> Finance Report for year 2013 has been released. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 20 mins </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm bg-blue">
-                                                <i class="fa fa-bar-chart-o"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> Finance Report for year 2013 has been released. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 20 mins </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm label-danger">
-                                            <i class="icon-ban"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 24 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc">
-                                            New order received with
-                                            <span class="label label-sm label-success"> Reference Number: DR23923 </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 30 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 24 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-bell-o"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc">
-                                            Web server hardware needs to be upgraded.
-                                            <span class="label label-sm label-default "> Overdue </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 2 hours </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-default">
-                                                <i class="fa fa-briefcase"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> IPO Report for year 2013 has been released. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 20 mins </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc">
-                                            You have 4 pending tasks.
-                                            <span class="label label-sm label-warning ">
-                                                Take action
-                                                <i class="fa fa-share"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> Just now </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-danger">
-                                                <i class="icon-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> Finance Report for year 2013 has been released. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 20 mins </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 24 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc">
-                                            New order received with
-                                            <span class="label label-sm label-success"> Reference Number: DR23923 </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 30 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 24 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm bg-blue">
-                                            <i class="fa fa-bell-o"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc">
-                                            Web server hardware needs to be upgraded.
-                                            <span class="label label-sm label-default "> Overdue </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 2 hours </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm bg-blue">
-                                                <i class="fa fa-briefcase"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> IPO Report for year 2013 has been released. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 20 mins </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                        <!-- END START TASK LIST -->
+                    </div>
                 </div>
                 <div class="scroller-footer">
                     <div class="btn-arrow-link pull-right">
@@ -421,25 +147,59 @@
                 </div>
             </div>
         </div>
+        <!-- END PORTLET-->
     </div>
-</form>
-
-<div class="form-actions">
-    <div class="row">
-        <div class="col-md-offset-3 col-md-9">
-            <a href="#" class="btn default button-previous">
-                <i class="fa fa-angle-left"></i> 上一步
-            </a>
-            <a href="javascript:;" class="btn btn-outline green button-next">
-                下一步
-                <i class="fa fa-angle-right"></i>
-            </a>
-            <a href="javascript:;" class="btn green button-submit">
-                提交
-                <i class="fa fa-check"></i>
-            </a>
+    <!-- END   检测项目 -->
+    <div class="col-md-6 col-sm-12">
+        <div class="portlet light tasks-widget bordered" style="min-height:500px">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-share font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">接收单号：{{vm.receive.number}} {{vm.receive.unitName}}</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="task-content">
+                    <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible1="1">
+                        <!-- START TASK LIST -->
+                        <ul class="task-list">
+                            <li ng-repeat="item in vm.receive.registedInstruments">
+                                <div class="task-title">
+                                    <span class="task-title-sp"> {{item.name}}  {{item.model}}-{{item.scope}}</span>
+                                    <span class="label label-sm label-info">{{item.sn}}</span>
+                                    <span class="task-bell">
+                                        <i class="fa fa-bell-o"></i>
+                                    </span>
+                                </div>
+                                <div class="task-config">
+                                    <div class="task-config-btn btn-group">
+                                        <button class="btn btn-sm btn-danger" ng-click="vm.removeInstrumentFromReceive(item)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- END START TASK LIST -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    @*<pre>vm.receive:{{vm.receive}}{{vm.result}}{{vm.test}}</pre>*@
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button ng-disabled="vm.saving" type="button" class="btn btn-default" button-busy="vm.saving" ng-click="vm.goOrder()">
+                    <i class="fa fa-arrow-left"></i> <span>上一步</span>
+                </button>
+                <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")"
+                        class="btn btn-primary green" ng-click=""
+                        ng-disabled="ordItemdsForm.$invalid">
+                    <span>下一步</span><i class="fa fa-arrow-right" style="margin-left:10px;"></i>
+                </button>
 
+            </div>
+        </div>
+    </div>
 </div>
-

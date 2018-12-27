@@ -59,6 +59,9 @@ namespace ZOGLAB.MMMS.BD
         public async Task<long> CreateOrUpdateReveice(ReceiveEditDto input)
         {
             BD_Receive item = input.MapTo<BD_Receive>();
+            //BD_Receive src = _receiveRepository.Get(input.Id.Value).Attach();
+
+            //context.Entry(model).State = System.Data.Entity.EntityState.Modified;
             return await _receiveRepository.InsertOrUpdateAndGetIdAsync(item);
         }
 
@@ -78,19 +81,20 @@ namespace ZOGLAB.MMMS.BD
         //1.获取已经登记的仪器列表
         public async Task<ReceiveWithItemsDto> GetReceiveWithItems(NullableIdDto<long> input)
         {
-            Debug.Assert(input.Id != null, "此查询送检单ID不得为空！");
-
             ReceiveWithItemsDto receiveWithItemsDto = new ReceiveWithItemsDto { };
+            if (input.Id.HasValue)
+            {
+                Debug.Assert(input.Id != null, "此查询送检单ID不得为空！");
 
-            var receive = await _receiveRepository.GetAsync(input.Id.Value);
+                var receive = await _receiveRepository.GetAsync(input.Id.Value);
 
-            receiveWithItemsDto.ReceiveId = receive.Id;
-            receiveWithItemsDto.UnitName = receive.Unit.UnitName;
-            receiveWithItemsDto.Number = receive.Number;
+                receiveWithItemsDto.ReceiveId = receive.Id;
+                receiveWithItemsDto.UnitName = receive.Unit.UnitName;
+                receiveWithItemsDto.Number = receive.Number;
 
-            receiveWithItemsDto.RegistedInstruments =
-                 _instrumentManager.GetRegistedInstrumentsAsync(receive).MapTo<List<InstrumentFReadDto>>();
-
+                var query = _instrumentManager.GetRegistedInstruments(receive);
+                receiveWithItemsDto.RegistedInstruments = query.MapTo<List<InstrumentFReadDto>>();
+            }
             return receiveWithItemsDto;
         }
 

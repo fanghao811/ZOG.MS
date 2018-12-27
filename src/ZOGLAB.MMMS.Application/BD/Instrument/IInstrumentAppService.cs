@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ZOGLAB.MMMS.BD
 {
-    public interface IInstrumenttAppService : IApplicationService
+    public interface IInstrumentAppService : IApplicationService
     {
         //Task<PagedResultDto<InstrumentListDto>> GetInstruments(GetUnitsInput input);
-        Task<List<BD_Instrument>> GetAll();
+        List<InstrumentFReadDto> GetAll();
     }
 }

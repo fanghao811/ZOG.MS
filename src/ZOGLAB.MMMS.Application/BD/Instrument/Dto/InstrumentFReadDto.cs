@@ -5,8 +5,10 @@ using Abp.AutoMapper;
 namespace ZOGLAB.MMMS.BD
 {
     [AutoMapFrom(typeof(BD_Instrument))]
-    public class InstrumentFReadDto : EntityDto<long>
+    public class InstrumentFReadDto 
     {
+        public long Id { get; set; }
+
         //2.仪器出厂编号
         public string SN { get; set; }
 

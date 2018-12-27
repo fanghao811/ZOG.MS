@@ -12,26 +12,7 @@ using System.Threading.Tasks;
 
 namespace ZOGLAB.MMMS.BD
 {
-    /*  
-     *  public virtual async Task AddToOrganizationUnitAsync(TUser user, OrganizationUnit ou)
-        {
-            var currentOus = await GetOrganizationUnitsAsync(user);
-
-            if (currentOus.Any(cou => cou.Id == ou.Id))
-            {
-                return;
-            }
-
-            await CheckMaxUserOrganizationUnitMembershipCountAsync(user.TenantId, currentOus.Count + 1);
-
-            await _userOrganizationUnitRepository.InsertAsync(new UserOrganizationUnit(user.TenantId, user.Id, ou.Id));
-        }
-     * 
-     */
-    /// <summary>
-    /// 思路：仪器添加到主表，方法写在仪器这边
-    /// </summary>
-    public class InstrumentAppService : MMMSAppServiceBase, IInstrumenttAppService
+    public class InstrumentAppService : MMMSAppServiceBase, IInstrumentAppService
     {
         private readonly IRepository<BD_Instrument, long> _instrumentRepository;
 
@@ -41,12 +22,10 @@ namespace ZOGLAB.MMMS.BD
 
         }
 
-        public async Task<List<BD_Instrument>> GetAll()
+        public List<InstrumentFReadDto> GetAll()
         {
-            var query = await _instrumentRepository.GetAll().ToListAsync();
+            var query = _instrumentRepository.GetAll().ToList().MapTo<List<InstrumentFReadDto>>();
             return query;
         }
-
-
     }
 }

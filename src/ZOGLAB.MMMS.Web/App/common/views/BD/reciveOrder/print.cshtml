@@ -1,90 +1,93 @@
-﻿<form>
-    <h3 class="block">Confirm your account</h3>
-    <h4 class="form-section">Account</h4>
-    <div class="form-group">
-        <label class="control-label col-md-3">Username:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="username"> </p>
+﻿<div class="invoice-content-2 bordered">
+    <div class="row invoice-head">
+        <div class="col-md-7 col-xs-6">
+            <div class="invoice-logo">
+                <img src="~/metronic/assets/admin/layout/img/logo5.jpg" class="img-responsive" alt="logo"/>
+                <h1 class="uppercase">仪器送检单</h1>
+            </div>
+        </div>
+        <div class="col-md-5 col-xs-6">
+            <div class="company-address">
+                <span class="bold uppercase">辽宁省气象计量检定所</span>
+                <br />
+                <br />
+                <span class="bold">TEL</span> +86-019957950811
+                <br />
+                <span class="bold">FAX</span> +86-571-87176992
+                <br />
+                <span class="bold">E-mail</span> ZOGLAB@Gmail.com
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Email:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="email"> </p>
+    <div class="row invoice-cust-add">
+        <div class="col-xs-3">
+            <h2 class="invoice-title uppercase">送检单位</h2>
+            <p class="invoice-desc">杭州气象局</p>
+        </div>
+        <div class="col-xs-3">
+            <h2 class="invoice-title uppercase">送检日期</h2>
+            <p class="invoice-desc">12-27, 2018</p>
+        </div>
+        <div class="col-xs-6">
+            <h2 class="invoice-title uppercase">单位地址</h2>
+            <p class="invoice-desc inv-address">25, Lorem Lis Street, Orange C, California, US</p>
         </div>
     </div>
-    <h4 class="form-section">Profile</h4>
-    <div class="form-group">
-        <label class="control-label col-md-3">Fullname:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="fullname"> </p>
+    <div class="row invoice-body">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="invoice-title  text-center">仪器名称</th>
+                        <th class="invoice-title  text-center">仪器编号</th>
+                        <th class="invoice-title  text-center">型号</th>
+                        <th class="invoice-title  text-center">生产厂家</th>
+                        <th class="invoice-title  text-center">数量</th>
+                        <th class="invoice-title  text-center">预完工日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h3>温湿度表</h3>
+                            <p> 备注： consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet et dolore siat magna aliquam erat volutpat. </p>
+                        </td>
+                        <td class="text-center sbold">200</td>
+                        <td class="text-center sbold">80$</td>
+                        <td class="text-center sbold">16,000$</td>
+                        <td class="text-center sbold">16,000$</td>
+                        <td class="text-center sbold">16,000$</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Branding</h3>
+                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. </p>
+                        </td>
+                        <td class="text-center sbold">130</td>
+                        <td class="text-center sbold">60$</td>
+                        <td class="text-center sbold">7,800$</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Gender:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="gender"> </p>
+    <div class="row invoice-subtotal">
+        <div class="col-xs-3">
+            <h2 class="invoice-title uppercase">Subtotal</h2>
+            <p class="invoice-desc">23,800$</p>
+        </div>
+        <div class="col-xs-3">
+            <h2 class="invoice-title uppercase">Tax (0%)</h2>
+            <p class="invoice-desc">0$</p>
+        </div>
+        <div class="col-xs-6">
+            <h2 class="invoice-title uppercase">Total</h2>
+            <p class="invoice-desc grand-total">23,800$</p>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Phone:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="phone"> </p>
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-lg green-haze hidden-print uppercase print-btn" onclick="javascript:window.print();">Print</a>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Address:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="address"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">City/Town:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="city"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Country:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="country"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Remarks:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="remarks"> </p>
-        </div>
-    </div>
-    <h4 class="form-section">Billing</h4>
-    <div class="form-group">
-        <label class="control-label col-md-3">Card Holder Name:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="card_name"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Card Number:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="card_number"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">CVC:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="card_cvc"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Expiration:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="card_expiry_date"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-3">Payment Options:</label>
-        <div class="col-md-4">
-            <p class="form-control-static" data-display="payment[]"> </p>
-        </div>
-    </div>
-</form>
+</div>

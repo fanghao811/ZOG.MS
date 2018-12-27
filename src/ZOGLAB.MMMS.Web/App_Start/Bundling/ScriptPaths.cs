@@ -61,13 +61,14 @@ namespace ZOGLAB.MMMS.Web.Bundling
         public const string Angular_Ui_Utils = "~/Scripts/angular-ui/ui-utils.min.js";//SPA!
         public const string Angular_Ui_Bootstrap_Tpls = "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js";//SPA!
         public const string Angular_Ui_Grid = "~/libs/angular-ui-grid/ui-grid.min.js";//SPA!
+        public const string Angular_Ui_Select = "~/libs/aaa/ui-select.js";//SPA!
         public const string Angular_OcLazyLoad = "~/libs/angular-ocLazyLoad/ocLazyLoad.min.js";//SPA!
         public const string Angular_BreadCrumb = "~/libs/angular-breadcrumb/angular-breadcrumb.min.js";//SPA!
         public const string Angular_File_Upload = "~/libs/angular-file-upload/angular-file-upload.min.js";//SPA!
         public const string Angular_DateRangePicker = "~/libs/angular-daterangepicker/angular-daterangepicker.min.js";//SPA!
         public const string Angular_Moment = "~/libs/angular-moment/angular-moment.min.js";//SPA!
         public const string Angular_Bootstrap_Switch = "~/libs/angular-bootstrap-switch/angular-bootstrap-switch.min.js";//SPA!
-        public const string Angular_NgSelect= "~/Scripts/ngSelect.min.js";//SPA!
+        //public const string Angular_NgSelect= "~/Scripts/ngSelect.min.js";//SPA!
 
         public const string Abp = "~/Abp/Framework/scripts/abp.js";
         public const string Abp_JQuery = "~/Abp/Framework/scripts/libs/abp.jquery.js";

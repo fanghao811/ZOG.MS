@@ -51,14 +51,14 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         ScriptPaths.Angular_Ui_Utils,
                         ScriptPaths.Angular_Ui_Bootstrap_Tpls,
                         ScriptPaths.Angular_Ui_Grid,
+                        ScriptPaths.Angular_Ui_Select,
                         ScriptPaths.Angular_OcLazyLoad,
                         ScriptPaths.Angular_BreadCrumb,
                         ScriptPaths.Angular_File_Upload,
                         ScriptPaths.Angular_DateRangePicker,
                         ScriptPaths.Angular_Moment,
                         ScriptPaths.Angular_Bootstrap_Switch,
-                        ScriptPaths.Angular_NgSelect,
-
+                        //ScriptPaths.Angular_NgSelect,
                         ScriptPaths.Abp,
                         ScriptPaths.Abp_JQuery,
                         ScriptPaths.Abp_Toastr,
@@ -78,7 +78,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                 new ScriptBundle("~/Bundles/App/metronic/js")
                     .Include(
                         "~/metronic/assets/global/scripts/app.js",
-                        "~/metronic/assets/admin/layout/scripts/layout.js",        //"~/metronic/assets/admin/layout4/scripts/layout.js",
+                        "~/metronic/assets/admin/layout/scripts/layout.js",      
                         "~/metronic/assets/layouts/global/scripts/quick-sidebar.js"
                     ).ForceOrdered()
                 );
@@ -112,7 +112,8 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     .Include(StylePaths.SweetAlert)
                     .Include(StylePaths.Toastr)
                     .Include(StylePaths.Angular_Ui_Grid, new CssRewriteUrlWithVirtualDirectoryTransform())
-                    .Include(StylePaths.Angular_Select2)
+                    .Include(StylePaths.Angular_Ui_Select)
+                    //.Include(StylePaths.Angular_Select2)
                     .Include(StylePaths.Bootstrap_DateRangePicker)
                     .Include(StylePaths.Bootstrap_Select)
                     .Include(StylePaths.Bootstrap_Switch)       //4
@@ -126,8 +127,9 @@ namespace ZOGLAB.MMMS.Web.App.Startup
             isRTL = false;
 
             bundles.Add(        //12/20 切换 Metronic 4.X
-                new StyleBundle("~/Bundles/App/metronic/css" + (isRTL ? "RTL" : ""))
+                new StyleBundle("~/Bundles/App/metronic/css" + (isRTL ? "RTL" : ""))        
                     .Include("~/metronic/assets/global/css/components.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include("~/metronic/assets/global/css/invoice-2.min.css")
                     .Include("~/metronic/assets/global/css/plugins.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
                     .Include("~/metronic/assets/admin/layout/css/layout.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())
                     .Include("~/metronic/assets/admin/layout/css/themes/darkblue.min" + (isRTL ? "-rtl" : "") + ".css", new CssRewriteUrlWithVirtualDirectoryTransform())

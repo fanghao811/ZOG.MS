@@ -16,8 +16,8 @@ namespace ZOGLAB.MMMS.BD
     {
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
-        [Column("InstrumentId")]
-        public override long Id { get; set; }
+        //[Column("InstrumentId")]
+        //public override long Id { get; set; }
 
         //1.站点信息ID   foreignKey site
         public long? Site_ID { get; set; }

@@ -459,7 +459,12 @@
     <Content Include="App\common\views\auditLogs\detailModal.min.css">
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\BD\reciveOrder\checkItems.js" />
+    <Content Include="metronic\assets\admin\layout\img\logo5.jpg" />
+    <Content Include="metronic\assets\global\css\invoice-2.min.css" />
+    <Content Include="App\common\views\BD\reciveOrder\print.js" />
     <Content Include="App\common\views\BD\reciveOrder\order.js" />
+    <Content Include="App\common\views\BD\reciveOrder\orderItems.js" />
     <Content Include="App\common\views\BD\reciveOrder\print.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\ordItems.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\checkItems.cshtml" />
@@ -1753,6 +1758,7 @@
     <Content Include="metronic\assets\global\css\plugins-md.css" />
     <Content Include="metronic\assets\global\css\plugins-rtl.css" />
     <Content Include="metronic\assets\global\css\plugins.css" />
+    <Content Include="libs\aaa\ui-select.css" />
     <Content Include="metronic\assets\global\img\accordion-plusminus.png" />
     <Content Include="metronic\assets\global\img\ajax-loading.gif" />
     <Content Include="metronic\assets\global\img\ajax-modal-loading.gif" />
@@ -2067,6 +2073,7 @@
     <Content Include="metronic\assets\global\scripts\datatable.min.js" />
     <Content Include="App\web.config" />
     <Content Include="log4net.config" />
+    <Content Include="libs\aaa\ui-select.js" />
     <Content Include="metronic\assets\layouts\global\scripts\quick-sidebar.js" />
     <Content Include="metronic\assets\layouts\global\scripts\quick-sidebar.min.js" />
     <Content Include="RecaptchaNet.Readme.txt" />
