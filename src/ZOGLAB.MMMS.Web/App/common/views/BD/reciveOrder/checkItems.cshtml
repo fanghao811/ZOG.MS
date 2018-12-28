@@ -1,8 +1,8 @@
 ﻿<div ng-controller="common.views.BD.reciveOrder.checkItems as vm"
-      novailated 
-      name="orderForm" 
-      role="form" 
-      novalidate class="form-validation">
+     novailated
+     name="orderForm"
+     role="form"
+     novalidate class="form-validation">
 
     <div class="row">
         <div class="portlet light bordered col-md-8 col-sm-12">
@@ -12,281 +12,377 @@
                     <span class="caption-subject bold font-red uppercase">待检仪器登记</span>
                 </div>
                 <div class="actions">
+                    <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.goPrint()">
+                        <i class="fa fa-ban"></i> <span>@L("Cancel")</span>
+                    </button>
+                    <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")"
+                            class="btn btn-primary green" ng-click="vm.save()"
+                            ng-disabled="orderForm.$invalid">
+                        <i class="fa fa-save"></i> <span>@L("Save")</span>
+                    </button>
                     <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"> </a>
                 </div>
             </div>
             <div class="portlet-body form">
-                <form role="form"  class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Product name</label>
-                        <div class="col-md-9">
-                            <input type="text" placeholder="A Can of Tuna" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Product Description</label>
-                        <div class="col-md-9">
-                            <textarea class="form-control" rows="3" placeholder="It's delicious!!"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Product Variation</label>
-                        <div class="col-md-9">
-                            <div class="mt-repeater">
-                                <div data-repeater-list="group-b">
-                                    <div data-repeater-item class="row">
-                                        <div class="col-md-7">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" placeholder="Salted Tuna" class="form-control" />
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label class="control-label">Qty</label>
-                                            <input type="text" placeholder="3" class="form-control" />
-                                        </div>
-                                        <div class="col-md-1">
-                                            <label class="control-label">&nbsp;</label>
-                                            <a href="javascript:;" data-repeater-delete class="btn btn-danger">
-                                                <i class="fa fa-close"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                <form role="form" class="form-horizontal ">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">物质编码</label>
+                                <div class="col-md-9">
+                                    <input type="text" placeholder="物质编码" class="form-control" />
                                 </div>
-                                <hr>
-                                <a href="javascript:;" data-repeater-create class="btn btn-info mt-repeater-add">
-                                    <i class="fa fa-plus"></i> Add Variation
-                                </a>
-                                <br>
-                                <br>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">检测地点</label>
+                                <div class="col-md-9">
+                                    <input type="text" placeholder="A Can of Tuna" class="form-control" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Price</label>
-                        <div class="col-md-9">
-                            <input type="text" placeholder="$3.99" class="form-control" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">不确定度</label>
+                                <div class="col-md-9">
+                                    <input type="text" placeholder="A Can of Tuna" class="form-control" />
+                                </div>
+                            </div>
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                    </div>
-                    <div class="form-actions">
-                        <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.goPrint()">
-                                    <i class="fa fa-ban"></i> <span>@L("Cancel")</span>
-                                </button>
-                                <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")"
-                                        class="btn btn-primary green" ng-click="vm.save()"
-                                        ng-disabled="orderForm.$invalid">
-                                    <i class="fa fa-save"></i> <span>@L("Save")</span>
-                                </button>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">有效日期</label>
+                                <div class="col-md-9">
+                                    <input type="text" placeholder="A Can of Tuna" class="form-control" />
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">检测要素</label>
+                                <div class="col-md-9">
+                                    <select class="form-control"  size="8"><option>Category 1</option><option>Category 2</option><option>Category 3</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">检测项目</label>
+                                <div class="col-md-9">
+                                    <select multiple="" class="form-control" size="8">
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                        <option>Option 4</option>
+                                        <option>Option 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="row col-md-offset-1">
+                        <div class="table-scrollable table-scrollable-borderless">
+                            <table class="table table-hover table-light ">
+                                <thead>
+                                    <tr class="uppercase">
+                                        <th>
+                                            检测项目
+                                        </th>
+                                        <th>
+                                            物质编码
+                                        </th>
+                                        <th>
+                                            检测地点
+                                        </th>
+                                        <th>
+                                            不确定度
+                                        </th>
+                                        <th>
+                                            有效日期
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:;" class="primary-link">Brain</a>
+                                    </td>
+                                    <td>
+                                        $345
+                                    </td>
+                                    <td>
+                                        45
+                                    </td>
+                                    <td>
+                                        124
+                                    </td>
+                                    <td>
+                                        <span class="bold font-green-haze">80%</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:;" class="primary-link">Nick</a>
+                                    </td>
+                                    <td>
+                                        $560
+                                    </td>
+                                    <td>
+                                        12
+                                    </td>
+                                    <td>
+                                        24
+                                    </td>
+                                    <td>
+                                        <span class="bold font-green-haze">67%</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:;" class="primary-link">Tim</a>
+                                    </td>
+                                    <td>
+                                        $1,345
+                                    </td>
+                                    <td>
+                                        450
+                                    </td>
+                                    <td>
+                                        46
+                                    </td>
+                                    <td>
+                                        <span class="bold font-green-haze">98%</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:;" class="primary-link">Tom</a>
+                                    </td>
+                                    <td>
+                                        $645
+                                    </td>
+                                    <td>
+                                        50
+                                    </td>
+                                    <td>
+                                        89
+                                    </td>
+                                    <td>
+                                        <span class="bold font-green-haze">58%</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>                  
                 </form>
             </div>
         </div>
-        
+
         <div class="col-md-4">
-            <div class="portlet light portlet-fit bordered">
-                <div class="portlet-body">
-                    <div class="mt-element-list">
-                        <div class="mt-list-head list-simple ext-1 font-white bg-blue-chambray">
-                            <div class="list-head-title-container">
-                                <div class="list-date">12/27, 2018</div>
-                                <h3 class="list-title">登记列表</h3>
-                            </div>
+            <div class="mt-element-list">
+                <div class="mt-list-head list-simple ext-1 font-white bg-blue-chambray">
+                    <div class="list-head-title-container">
+                        <div class="list-date">12/27, 2018</div>
+                        <h3 class="list-title">仪器列表</h3>
+                    </div>
+                </div>
+                <div class="mt-list-container list-simple ext-1 group">
+                    <a class="list-toggle-container" data-toggle="collapse" href="!#completed-simple" aria-expanded="false">
+                        <div class="list-toggle done">
+                            已分配检测项目
+                            <span class="badge badge-default pull-right bg-white font-green bold">2</span>
                         </div>
-                        <div class="mt-list-container list-simple ext-1 group">
-                            <a class="list-toggle-container" data-toggle="collapse" href="!#completed-simple" aria-expanded="false">
-                                <div class="list-toggle done">
-                                    温度
-                                    <span class="badge badge-default pull-right bg-white font-green bold">2</span>
+                    </a>
+                    <div class="panel-collapse collapse in" id="completed-simple">
+                        <ul>
+                            <li class="mt-list-item done">
+                                <div class="list-icon-container">
+                                    <i class="icon-check"></i>
                                 </div>
-                            </a>
-                            <div class="panel-collapse collapse in" id="completed-simple">
-                                <ul>
-                                    <li class="mt-list-item done">
-                                        <div class="list-icon-container">
-                                            <i class="icon-check"></i>
-                                        </div>
-                                        <div class="list-datetime"> 8 Nov </div>
-                                        <div class="list-item-content">
-                                            <h3 class="uppercase">
-                                                <a href="javascript:;">Concept Proof</a>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                    <li class="mt-list-item done">
-                                        <div class="list-icon-container">
-                                            <i class="icon-check"></i>
-                                        </div>
-                                        <div class="list-datetime"> 8 Nov </div>
-                                        <div class="list-item-content">
-                                            <h3 class="uppercase">
-                                                <a href="javascript:;">Listings Feature</a>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a class="list-toggle-container" data-toggle="collapse"  href="!#pending-simple" aria-expanded="true">
-                                <div class="list-toggle uppercase">
-                                    气压
-                                    <span class="badge badge-default pull-right bg-white font-dark bold">3</span>
+                                <div class="list-datetime"> TW-ZOG </div>
+                                <div class="list-item-content">
+                                    <h3 class="uppercase">
+                                        <a href="javascript:;">地温传感器</a>
+                                    </h3>
                                 </div>
-                            </a>
-                            <div class="panel-collapse collapse" id="pending-simple">
-                                <ul>
-                                    <li class="mt-list-item">
-                                        <div class="list-icon-container">
-                                            <i class="icon-close"></i>
-                                        </div>
-                                        <div class="list-datetime"> 8 Nov </div>
-                                        <div class="list-item-content">
-                                            <h3 class="uppercase">
-                                                <a href="javascript:;">Listings Feature</a>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                    <li class="mt-list-item">
-                                        <div class="list-icon-container">
-                                            <i class="icon-close"></i>
-                                        </div>
-                                        <div class="list-datetime"> 8 Nov </div>
-                                        <div class="list-item-content">
-                                            <h3 class="uppercase">
-                                                <a href="javascript:;">Listings Feature</a>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                    <li class="mt-list-item">
-                                        <div class="list-icon-container">
-                                            <i class="icon-close"></i>
-                                        </div>
-                                        <div class="list-datetime"> 8 Nov </div>
-                                        <div class="list-item-content">
-                                            <h3 class="uppercase">
-                                                <a href="javascript:;">Listings Feature</a>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            </li>
+                            <li class="mt-list-item done">
+                                <div class="list-icon-container">
+                                    <i class="icon-check"></i>
+                                </div>
+                                <div class="list-datetime"> ZQZ-TW</div>
+                                <div class="list-item-content">
+                                    <h3 class="uppercase">
+                                        <a href="javascript:;">温湿度传感器</a>
+                                    </h3>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="list-toggle-container" data-toggle="collapse" href="!#pending-simple" aria-expanded="true">
+                        <div class="list-toggle uppercase">
+                            未分配
+                            <span class="badge badge-default pull-right bg-white font-dark bold">3</span>
                         </div>
+                    </a>
+                    <div class="panel-collapse collapse" id="pending-simple">
+                        <ul>
+                            <li class="mt-list-item">
+                                <div class="list-icon-container">
+                                    <i class="icon-close"></i>
+                                </div>
+                                <div class="list-datetime"> ZQZ-TW</div>
+                                <div class="list-item-content">
+                                    <h3 class="uppercase">
+                                        <a href="javascript:;">风速仪</a>
+                                    </h3>
+                                </div>
+                            </li>
+                            <li class="mt-list-item">
+                                <div class="list-icon-container">
+                                    <i class="icon-close"></i>
+                                </div>
+                                <div class="list-datetime"> ZQZ-TW</div>
+                                <div class="list-item-content">
+                                    <h3 class="uppercase">
+                                        <a href="javascript:;">空盒气压表</a>
+                                    </h3>
+                                </div>
+                            </li>
+                            <li class="mt-list-item">
+                                <div class="list-icon-container">
+                                    <i class="icon-close"></i>
+                                </div>
+                                <div class="list-datetime"> Nov</div>
+                                <div class="list-item-content">
+                                    <h3 class="uppercase">
+                                        <a href="javascript:;">Listings Feature</a>
+                                    </h3>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            @*<div class="portlet light portlet-fit bordered">
+            <div class="portlet-body">
+
+            </div>
+        </div>*@
         </div>
     </div>
 </div>
 @*<div class="col-md-8 col-sm-12">
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            仪器出厂编号
-            <span class="required"> * </span>
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control input-lg" name="fullname" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                仪器出厂编号
+                <span class="required"> * </span>
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="fullname" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            仪器名称
-            <span class="required"> * </span>
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control input-lg" name="" ng-model="vm.receice.num" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                仪器名称
+                <span class="required"> * </span>
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="" ng-model="vm.receice.num" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            仪器型号
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control input-lg" name="address" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                仪器型号
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="address" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            准确度等级
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control input-lg" name="city" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                准确度等级
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control input-lg" name="city" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            测量范围
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control" name="city" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                测量范围
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            分辨力
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control" name="city" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                分辨力
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">检测要素</label>
-        <div class="col-md-7">
-            <select name="country" id="country_list" class="form-control">
-                <option value=""></option>
-                <option value="AF">湿</option>
-                <option value="AL">温</option>
-                <option value="DZ">温湿</option>
-                <option value="AS">气压</option>
-                <option value="AD">辐射</option>
-            </select>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">检测要素</label>
+            <div class="col-md-7">
+                <select name="country" id="country_list" class="form-control">
+                    <option value=""></option>
+                    <option value="AF">湿</option>
+                    <option value="AL">温</option>
+                    <option value="DZ">温湿</option>
+                    <option value="AS">气压</option>
+                    <option value="AD">辐射</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">检测类型</label>
-        <div class="col-md-7">
-            <select name="country" id="country_list" class="form-control">
-                <option value=""></option>
-                <option value="AF">湿度检定</option>
-                <option value="AL">温度检测</option>
-                <option value="DZ">温湿校验</option>
-                <option value="AS">气压检定</option>
-                <option value="AD">辐射检测</option>
-            </select>
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">检测类型</label>
+            <div class="col-md-7">
+                <select name="country" id="country_list" class="form-control">
+                    <option value=""></option>
+                    <option value="AF">湿度检定</option>
+                    <option value="AL">温度检测</option>
+                    <option value="DZ">温湿校验</option>
+                    <option value="AS">气压检定</option>
+                    <option value="AD">辐射检测</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            制造商
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control" name="city" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                制造商
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            制造商
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control" name="city" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                制造商
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            返样单号
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control" name="city" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                返样单号
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label class="control-label col-md-5">
-            站点信息
-        </label>
-        <div class="col-md-7">
-            <input type="text" class="form-control" name="city" />
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-5">
+                站点信息
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="city" />
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@

@@ -18,7 +18,7 @@
                 <span ng-bind="item.name"></span>
             </ui-select-choices>
         </ui-select>*@
-            <ui-select ng-model="vm.selectedUnit" ng-change="vm.changeUnit()">
+            <ui-select ng-model="vm.selectedUnit" ng-change="vm.changeUnit()" set-timeout>
                 <ui-select-match>
                     <span ng-bind="$select.selected.unitName"></span>
                 </ui-select-match>
@@ -33,7 +33,7 @@
             单位地址
         </label>
         <div class="col-md-4">
-            <input type="text" class="form-control" name="address" readonly
+            <input type="text" class="form-control" name="address" required
                    ng-model="vm.selectedUnit.address" />
             <span class="help-block">  </span>
         </div>
@@ -66,7 +66,7 @@
             <span class="required"> </span>
         </label>
         <div class="col-md-4">
-            <input type="text" class="form-control" name="expressDelivery" 
+            <input type="text" class="form-control" name="expressDelivery"
                    ng-model="vm.order.expressDelivery"/>
             <span class="help-block">  </span>
         </div>

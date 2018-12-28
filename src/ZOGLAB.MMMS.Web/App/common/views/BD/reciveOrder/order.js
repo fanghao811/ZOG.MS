@@ -86,13 +86,13 @@
                 unitService.getAll()    //TODO: ???
                     .then(function (result) {
                         $scope.units = result.data;
-                    });
-                receiveService.getReceiveById({ Id: $stateParams.orderId })    //TODO: ???
-                    .then(function (result) {
-                        vm.order = result.data;
-                        vm.selectedUnit = _.find($scope.units, function (unit) { return unit.id == vm.order.unit_ID });
-                    }).finally(function () {
-                        vm.loading = false;
+                        receiveService.getReceiveById({ Id: $stateParams.orderId })    //TODO: ???
+                            .then(function (result) {
+                                vm.order = result.data;
+                                vm.selectedUnit = _.find($scope.units, function (unit) { return unit.id == vm.order.unit_ID });
+                            }).finally(function () {
+                                vm.loading = false;
+                            });
                     });
             };
             vm.initial();
