@@ -16,8 +16,6 @@ namespace ZOGLAB.MMMS.BD
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
-        [Column("MeteorTypeId")]
-        public override long Id { get; set; }
         /// <summary>
         /// Name 要素名称:温度气压、湿度
         /// </summary>

@@ -17,7 +17,7 @@ namespace ZOGLAB.MMMS.BD
 
         //1.TestDevice_ID INT
         [ForeignKey("TestDevice_ID")]
-        public BD_TestDevice TestDevice { get; set; }
+        public BD_TestItem TestDevice { get; set; }
         public long TestDevice_ID { get; set; }
 
         //intDataID 读数序号    INT

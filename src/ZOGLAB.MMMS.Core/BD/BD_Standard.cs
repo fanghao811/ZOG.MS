@@ -21,7 +21,7 @@ namespace ZOGLAB.MMMS.BD
 
         //2.标准器名称   
         [MaxLength(MaxLength_50)]
-        public BD_DeviceItem DeviceItem { get; set; }
+        public BD_InstrumentTest DeviceItem { get; set; }
         public string StrName { get; set; }
 
         //3.标准器型号

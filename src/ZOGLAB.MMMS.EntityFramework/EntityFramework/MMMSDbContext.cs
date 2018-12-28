@@ -57,9 +57,9 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<BD_ReceiveInstrument> BD_ReceiveInstrument { get; set; }
 
         /* PartII */
-        public virtual IDbSet<BD_DeviceItem> BD_DeviceItems { get; set; }
+        public virtual IDbSet<BD_InstrumentTest> BD_InstrumentTests { get; set; }
         public virtual IDbSet<BD_Unit> BD_Units { get; set; }
-        public virtual IDbSet<BD_TestDevice> BD_TestDevices { get; set; }
+        public virtual IDbSet<BD_TestItem> BD_TestItems { get; set; }
         public virtual IDbSet<BD_Test> BD_Tests { get; set; }
         public virtual IDbSet<BD_Rules> BD_Rules { get; set; }
         public virtual IDbSet<BD_Installation> BD_Installations { get; set; }
@@ -77,6 +77,8 @@ namespace ZOGLAB.MMMS.EntityFramework
         public virtual IDbSet<BD_Remission> BD_Remission { get; set; }
         public virtual IDbSet<BD_MeteorType> BD_MeteorType { get; set; }
         public virtual IDbSet<BD_CheckType> BD_CheckType { get; set; }
+
+        //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<MMMSDbContext>());
 
         public MMMSDbContext()
             : base("Default")

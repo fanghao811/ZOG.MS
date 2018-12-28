@@ -10,18 +10,26 @@ namespace ZOGLAB.MMMS.BD
     /// <summary>
     /// 6,设备检测项目从表（BD_DeviceItem）
     /// </summary>
-    [Table("BD_DeviceItem")]
-    public class BD_DeviceItem : CreationAuditedEntity<long>,ISoftDelete
+    [Table("BD_InstrumentTest")]
+    public class BD_InstrumentTest : CreationAuditedEntity<long>,ISoftDelete
     {
+        public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
         //1.收发单主表ID   foreignKey
-        public BD_ReceiveInstrument ReceiveDevice { get; set; }
+        [ForeignKey("ReceiveInstrument_ID")]
+        public BD_ReceiveInstrument ReceiveInstrument { get; set; }
+        public long? ReceiveInstrument_ID { get; set; }
 
         //2.检测单表ID
         [ForeignKey("Test_ID")]
         public BD_Test Test { get; set; }
         public long? Test_ID { get; set; }
+
+        //2.1 检测项目ID
+        [ForeignKey("CheckType_ID")]
+        public BD_CheckType CheckType { get; set; }
+        public long? CheckType_ID { get; set; }
 
         //3.仪器交接状态
         public bool IntHandover { get; set; }
@@ -48,11 +56,12 @@ namespace ZOGLAB.MMMS.BD
         public string Number { get; set; }
 
         //10.有效日期
-        public DateTime CaliValidateDate { get; set; }
+        [MaxLength(MaxLength_20)]
+        public string CaliValidateDate { get; set; }
 
         //11.不确定度
-        [MaxLength(MaxLength_50)]
-        public string CaliU95 { get; set; }
+        [MaxLength(MaxLength_20)]
+        public string CaliU { get; set; }
 
         //12.原始记录修改原因
         [MaxLength(MaxLength_50)]

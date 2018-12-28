@@ -13,9 +13,9 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
 
         public void Create()
         {
+            new CheckTypeCreator(_context).Create();
             new InstrumentCreator(_context).Create();
             new InstallationAndStandardCreator(_context).Create();
-            new CheckTypeCreator(_context).Create();
             new UnitsCreator(_context).Create();
             _context.SaveChanges();
         }

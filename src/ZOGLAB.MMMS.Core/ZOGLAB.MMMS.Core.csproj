@@ -133,7 +133,7 @@
     <Compile Include="BD\BD_CalibrationResult.cs" />
     <Compile Include="BD\BD_MeteorType.cs" />
     <Compile Include="BD\BD_CheckType.cs" />
-    <Compile Include="BD\BD_DeviceItem.cs" />
+    <Compile Include="BD\BD_InstrumentTest.cs" />
     <Compile Include="BD\BD_Installation.cs" />
     <Compile Include="BD\Instrument\BD_Instrument.cs" />
     <Compile Include="BD\BD_Rainfall.cs" />
@@ -152,7 +152,7 @@
     <Compile Include="BD\BD_Site.cs" />
     <Compile Include="BD\BD_Standard.cs" />
     <Compile Include="BD\BD_Test.cs" />
-    <Compile Include="BD\BD_TestDevice.cs" />
+    <Compile Include="BD\BD_TestItem.cs" />
     <Compile Include="BD\BD_Unit.cs" />
     <Compile Include="BD\BD_Visibility.cs" />
     <Compile Include="BD\BD_Wind.cs" />

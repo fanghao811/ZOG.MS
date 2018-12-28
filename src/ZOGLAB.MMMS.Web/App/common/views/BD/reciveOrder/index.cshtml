@@ -15,51 +15,51 @@
     <!-- END PAGE BAR -->
     <div class="row">
         <div class="col-md-12">
-            <div class="portlet light bordered" id="form_wizard_1">               
-                <div class="portlet-body form">
-                    <div class="form-horizontal">
-                        <ul class="nav nav-pills nav-justified steps">
-                            <li>
-                                <a ui-sref-active="active" ui-sref=".order({orderId:5})" class="step">
-                                    <span class="number"> 1 </span>
-                                    <span class="desc">
-                                        <i class="fa fa-check"></i> 单位信息
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a ui-sref-active="active" ui-sref=".ordItems({orderId:1})"  class="step">
-                                    <span class="number"> 2 </span>
-                                    <span class="desc">
-                                        <i class="fa fa-check"></i> 仪器登记
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a ui-sref-active="active" ui-sref=".checkItems"  class="step active">
-                                    <span class="number"> 3 </span>
-                                    <span class="desc">
-                                        <i class="fa fa-check"></i> 设置检查项
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a ui-sref-active="active" ui-sref=".print"  class="step">
-                                    <span class="number"> 4 </span>
-                                    <span class="desc">
-                                        <i class="fa fa-check"></i> 挑选打印
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div id="bar" class="progress progress-striped" role="progressbar">
-                            <div class="progress-bar progress-bar-success"> </div>
-                        </div>
-                        <!--开始导航-->
-                        <ui-view></ui-view>
-                    </div>  <!--结束导航-->
-                </div>              
+            @*<div class="portlet light bordered" id="form_wizard_1">*@
+            @*<div class="portlet-body form">*@
+            <div class="form">
+                <div class="form-horizontal">
+                    <ul class="nav nav-pills nav-justified steps">
+                        <li>
+                            <a ui-sref-active="active" ui-sref=".order({orderId:5})" class="step">
+                                <span class="number"> 1 </span>
+                                <span class="desc">
+                                    <i class="fa fa-check"></i> 单位信息
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref-active="active" ui-sref=".ordItems({orderId:1})" class="step">
+                                <span class="number"> 2 </span>
+                                <span class="desc">
+                                    <i class="fa fa-check"></i> 仪器登记
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref-active="active" ui-sref=".checkItems" class="step active">
+                                <span class="number"> 3 </span>
+                                <span class="desc">
+                                    <i class="fa fa-check"></i> 设置检查项
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref-active="active" ui-sref=".print" class="step">
+                                <span class="number"> 4 </span>
+                                <span class="desc">
+                                    <i class="fa fa-check"></i> 挑选打印
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="bar" class="progress progress-striped" role="progressbar">
+                        <div class="progress-bar progress-bar-success"> </div>
+                    </div>
+                    <!--开始导航-->
+                    <ui-view></ui-view>
+                </div>  <!--结束导航-->
             </div>
+
         </div>
     </div>
-</div>

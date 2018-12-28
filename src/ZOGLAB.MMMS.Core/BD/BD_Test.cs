@@ -13,10 +13,10 @@ namespace ZOGLAB.MMMS.BD
     {
         public const int MaxLength_50 = 50;
 
-        //1.收发单号ID
-        [ForeignKey("Receive_ID")]
-        public BD_Receive BD_Receive { get; set; }
-        public long Receive_ID { get; set; }
+        //1.计量装置ID
+        [ForeignKey("Installation_ID")]
+        public BD_Installation BD_Installation { get; set; }
+        public long? Installation_ID { get; set; }
 
         //2.检测单号
         [MaxLength(MaxLength_50)]
@@ -24,13 +24,15 @@ namespace ZOGLAB.MMMS.BD
 
         //3.检测要素
         [MaxLength(MaxLength_50)]
-        public string Check_Type { get; set; }
+        [ForeignKey("MeteorType_ID")]
+        public BD_MeteorType MeteorType { get; set; }
+        public long? MeteorType_ID { get; set; }
 
         //4.检测开始时间
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         //5.结束时间
-        public DateTime FinishDate { get; set; }
+        public DateTime? FinishDate { get; set; }
 
         //6.站点ID
         public int Site_ID { get; set; }

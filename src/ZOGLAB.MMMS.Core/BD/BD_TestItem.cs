@@ -9,8 +9,8 @@ namespace ZOGLAB.MMMS.BD
     /// <summary>
     /// 12，标准器信息表（BD_Standard）
     /// </summary>
-    [Table("BD_TestDevice")]
-    public class BD_TestDevice : CreationAuditedEntity<long>,ISoftDelete
+    [Table("BD_TestItem")]
+    public class BD_TestItem : CreationAuditedEntity<long>,ISoftDelete
     {
         public const int MaxLength_50 = 50;
         public const int MaxLength_20 = 20;
@@ -21,14 +21,14 @@ namespace ZOGLAB.MMMS.BD
         public long Test_ID { get; set; }
 
         //2.设备检测项目从表ID   
-        [ForeignKey("DeviceItem_ID")]
-        public BD_DeviceItem DeviceItem { get; set; }
-        public long DeviceItem_ID { get; set; }
+        [ForeignKey("InstrumentTest_ID")]
+        public BD_InstrumentTest InstrumentTest { get; set; }
+        public long InstrumentTest_ID { get; set; }
 
         //3.被检仪器基本信息表ID
         [ForeignKey("Instrument_ID")]
         public BD_Instrument Instrument { get; set; }
-        public long Instrument_ID { get; set; }
+        public long? Instrument_ID { get; set; }
 
         //4.仪器交接状态
         [MaxLength(MaxLength_50)]

@@ -63,7 +63,7 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
                     new BD_Instrument
                     {
                         SN="TEST013A",Name="地温传感器",Model="PT100",Grade="2",Scope="(-30～500)℃",Power="0.1℃",
-                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkListR,MeteorTypes=meteorTypesR
+                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkLists,MeteorTypes=meteorTypesR
                     },
                     new BD_Instrument
                     {
@@ -83,7 +83,7 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
                     new BD_Instrument
                     {
                         SN="TEST017E",Name="地温传感器",Model="PT500",Grade="6",Scope="(-10～300)℃",Power="0.5℃",
-                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkListR,MeteorTypes=meteorTypesR
+                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkLists,MeteorTypes=meteorTypesR
                     }
                 };
 

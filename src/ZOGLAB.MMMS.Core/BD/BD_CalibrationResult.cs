@@ -17,7 +17,7 @@ namespace ZOGLAB.MMMS.BD
 
         //1.检测单信息主表ID 
         [ForeignKey("TestDevice_ID")]
-        public BD_TestDevice BD_TestDevice { get; set; }
+        public BD_TestItem BD_TestDevice { get; set; }
         public long TestDevice_ID { get; set; }
 
         //2.读数序号
