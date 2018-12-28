@@ -13,9 +13,12 @@ namespace ZOGLAB.MMMS.BD
         ReceiveEditDto GetReceiveById(NullableIdDto<long> input);
         Task<long> CreateOrUpdateReveice(ReceiveEditDto input);
         void DeleteItem(EntityDto<long> input);
-
         Task AddInstrumentToReceive(long instrumentId, long receiveId);
         Task RemoveInstrumentFromReceive(long instrumentId, long receiveId);
+
+        //TEST业务
+        Task CUInstrumentTestF(IntestCreatDto input);
+        List<InTstFRDto> GetInstrumentTestsByReInId(NullableIdDto<long> input);
 
     }
 }

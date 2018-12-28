@@ -145,6 +145,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD\CheckType\Dto\GetCheckTypesInput.cs" />
+    <Compile Include="BD\CheckType\Dto\CheckTypeFReadDto.cs" />
+    <Compile Include="BD\CheckType\ICheckTypeService.cs" />
+    <Compile Include="BD\CheckType\CheckTypeAppService.cs" />
     <Compile Include="BD\Installation\Dto\GetInstallationsInput.cs" />
     <Compile Include="BD\Installation\IInstallationAppService.cs" />
     <Compile Include="BD\Installation\InstallationAppService.cs" />
@@ -156,6 +160,9 @@
     <Compile Include="BD\ReceiveInstrument\Dto\ReceiveInstrumentListDto.cs" />
     <Compile Include="BD\ReceiveInstrument\IReceiveInstrumentAppService.cs" />
     <Compile Include="BD\ReceiveInstrument\ReceiveInstrumentAppService.cs" />
+    <Compile Include="BD\Rreceive\Dto\InstrumentTestEditDto.cs" />
+    <Compile Include="BD\Rreceive\Dto\InTstFRDto.cs" />
+    <Compile Include="BD\Rreceive\Dto\IntestCreatDto.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveEditDto.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveListDto.cs" />
     <Compile Include="BD\Rreceive\IReceiveAppService.cs" />

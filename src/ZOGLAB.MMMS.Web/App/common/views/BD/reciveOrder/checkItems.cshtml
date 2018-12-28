@@ -1,8 +1,4 @@
-﻿<div ng-controller="common.views.BD.reciveOrder.checkItems as vm"
-     novailated
-     name="orderForm"
-     role="form"
-     novalidate class="form-validation">
+﻿<div ng-controller="common.views.BD.reciveOrder.checkItems as vm">
 
     <div class="row">
         <div class="portlet light bordered col-md-8 col-sm-12">
@@ -12,10 +8,10 @@
                     <span class="caption-subject bold font-red uppercase">待检仪器登记</span>
                 </div>
                 <div class="actions">
-                    <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.goPrint()">
+                    <button ng-disabled="vm.loading" type="button" class="btn btn-default" ng-click="vm.goPrint()">
                         <i class="fa fa-ban"></i> <span>@L("Cancel")</span>
                     </button>
-                    <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")"
+                    <button type="submit" button-busy="vm.loading" busy-text="@L("SavingWithThreeDot")"
                             class="btn btn-primary green" ng-click="vm.save()"
                             ng-disabled="orderForm.$invalid">
                         <i class="fa fa-save"></i> <span>@L("Save")</span>
@@ -24,13 +20,17 @@
                 </div>
             </div>
             <div class="portlet-body form">
-                <form role="form" class="form-horizontal ">
+                <form role="form" class="form-horizontal " novailated
+                      name="orderForm"
+                      novalidate>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-md-3 control-label">物质编码</label>
                                 <div class="col-md-9">
-                                    <input type="text" placeholder="物质编码" class="form-control" />
+                                    <input type="text"
+                                           placeholder="number" class="form-control" required
+                                           ng-model="vm.order.number" />
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,8 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">检测地点</label>
                                 <div class="col-md-9">
-                                    <input type="text" placeholder="A Can of Tuna" class="form-control" />
+                                    <input type="text" placeholder="address" class="form-control"
+                                           ng-model="vm.order.address" />
                                 </div>
                             </div>
                         </div>
@@ -48,7 +49,8 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">不确定度</label>
                                 <div class="col-md-9">
-                                    <input type="text" placeholder="A Can of Tuna" class="form-control" />
+                                    <input type="text" placeholder="caliU" class="form-control"
+                                           ng-model="vm.order.caliU" />
                                 </div>
                             </div>
                         </div>
@@ -56,7 +58,8 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">有效日期</label>
                                 <div class="col-md-9">
-                                    <input type="text" placeholder="A Can of Tuna" class="form-control" />
+                                    <input type="text" placeholder="caliValidateDate" class="form-control" required
+                                           ng-model="vm.order.caliValidateDate" />
                                 </div>
                             </div>
                         </div>
@@ -66,7 +69,12 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">检测要素</label>
                                 <div class="col-md-9">
-                                    <select class="form-control"  size="8"><option>Category 1</option><option>Category 2</option><option>Category 3</option></select>
+                                    <select class="form-control" size="8"
+                                            ng-model="vm.selectedMeteor"
+                                            ng-options=" meteor as meteor for meteor in vm.meteors">
+                                        <option value="" select hidden>请选择要素</option>
+                                        <option ng-if="!vm.meterors">系统中尚无一个检测项！</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -74,24 +82,26 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">检测项目</label>
                                 <div class="col-md-9">
-                                    <select multiple="" class="form-control" size="8">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
-                                        <option>Option 5</option>
+                                    <select class="form-control" size="8" required
+                                            ng-model="vm.order.checkType_ID"
+                                            ng-options=" checkType.id as checkType.checkName for checkType in vm.checkTypes | filter:{ meteor:vm.selectedMeteor}">
+                                        <option value="" select hidden>请选择检测项目</option>
+                                        <option ng-if="!vm.checkTypes">无相关检测项！</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
+                    <pre>{{vm.order}}</pre>
+                    <pre>{{vm.checkTypes}}</pre>
+                    <!-- BEGIN 检测项目列表 -->
                     <div class="row col-md-offset-1">
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light ">
                                 <thead>
                                     <tr class="uppercase">
                                         <th>
-                                            检测项目
+                                            
                                         </th>
                                         <th>
                                             物质编码
@@ -105,83 +115,40 @@
                                         <th>
                                             有效日期
                                         </th>
+                                        <th>
+                                            检测项目
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tr>
+
+                                <tr ng-repeat="item in vm.instrumentTests">
                                     <td>
-                                        <a href="javascript:;" class="primary-link">Brain</a>
+                                        {{$index}}
                                     </td>
                                     <td>
-                                        $345
+                                        <a href="javascript:;" class="primary-link">{{item.number}}</a>
                                     </td>
                                     <td>
-                                        45
+                                        {{item.address}}
                                     </td>
                                     <td>
-                                        124
+                                        {{item.caliU}}
                                     </td>
                                     <td>
-                                        <span class="bold font-green-haze">80%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="primary-link">Nick</a>
+                                        {{item.caliValidateDate}}
                                     </td>
                                     <td>
-                                        $560
-                                    </td>
-                                    <td>
-                                        12
-                                    </td>
-                                    <td>
-                                        24
-                                    </td>
-                                    <td>
-                                        <span class="bold font-green-haze">67%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="primary-link">Tim</a>
-                                    </td>
-                                    <td>
-                                        $1,345
-                                    </td>
-                                    <td>
-                                        450
-                                    </td>
-                                    <td>
-                                        46
-                                    </td>
-                                    <td>
-                                        <span class="bold font-green-haze">98%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="primary-link">Tom</a>
-                                    </td>
-                                    <td>
-                                        $645
-                                    </td>
-                                    <td>
-                                        50
-                                    </td>
-                                    <td>
-                                        89
-                                    </td>
-                                    <td>
-                                        <span class="bold font-green-haze">58%</span>
+                                        <span class="bold font-green-haze">{{item.checkType}}</span>
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                    </div>                  
+                    </div>
+                    <!-- BEGIN 检测项目列表 -->
                 </form>
             </div>
         </div>
-
+        <!-- BEGIN 设备列表 -->
         <div class="col-md-4">
             <div class="mt-element-list">
                 <div class="mt-list-head list-simple ext-1 font-white bg-blue-chambray">
@@ -268,121 +235,7 @@
                     </div>
                 </div>
             </div>
-            @*<div class="portlet light portlet-fit bordered">
-            <div class="portlet-body">
-
-            </div>
-        </div>*@
         </div>
+        <!-- END 设备列表 -->
     </div>
 </div>
-@*<div class="col-md-8 col-sm-12">
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                仪器出厂编号
-                <span class="required"> * </span>
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="fullname" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                仪器名称
-                <span class="required"> * </span>
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="" ng-model="vm.receice.num" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                仪器型号
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="address" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                准确度等级
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control input-lg" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                测量范围
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                分辨力
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">检测要素</label>
-            <div class="col-md-7">
-                <select name="country" id="country_list" class="form-control">
-                    <option value=""></option>
-                    <option value="AF">湿</option>
-                    <option value="AL">温</option>
-                    <option value="DZ">温湿</option>
-                    <option value="AS">气压</option>
-                    <option value="AD">辐射</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">检测类型</label>
-            <div class="col-md-7">
-                <select name="country" id="country_list" class="form-control">
-                    <option value=""></option>
-                    <option value="AF">湿度检定</option>
-                    <option value="AL">温度检测</option>
-                    <option value="DZ">温湿校验</option>
-                    <option value="AS">气压检定</option>
-                    <option value="AD">辐射检测</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                制造商
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                制造商
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                返样单号
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="control-label col-md-5">
-                站点信息
-            </label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="city" />
-            </div>
-        </div>
-    </div>*@

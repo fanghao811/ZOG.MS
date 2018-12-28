@@ -12,7 +12,8 @@
 
             var Id_FromState = $stateParams.orderId; //从路由处获取current_receive_Id
             vm.instruments = [];    //左侧仪器列表，ALL
-            vm.receive = {};        //登记单，复合对象， ViewModal， **包含右侧已登记仪器 vm.receive.registedInstruments
+            vm.receive = {};        //登记单，复合对象， ViewModal， **包含右侧已登记
+            //vm.receive.registedInstruments
 
             // =========================================================================
             // getCureentReceive 获取表头，receive （orderHeader）
@@ -92,10 +93,10 @@
                 $state.go("reOrder.regist.order", { orderId: Id_FromState });
             }
 
-            var different = function (arrA, arrB) {//       TODO:实现基于ID的通用过滤方法
-                var idArr = _.pluck(arrB, 'id');
-                return _.filter(arrA, function (item) { return !_.contains(idArr, item.id) });
-            };
+            //var different = function (arrA, arrB) {//       TODO:实现基于ID的通用过滤方法
+            //    var idArr = _.pluck(arrB, 'id');
+            //    return _.filter(arrA, function (item) { return !_.contains(idArr, item.id) });
+            //};
 
             // =========================================================================
             // Page Initial Function

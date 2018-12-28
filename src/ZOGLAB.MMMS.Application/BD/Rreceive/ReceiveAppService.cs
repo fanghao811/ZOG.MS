@@ -19,20 +19,25 @@ namespace ZOGLAB.MMMS.BD
     /// </summary>
     public class ReceiveAppService : MMMSAppServiceBase, IReceiveAppService
     {
+
         private readonly IRepository<BD_Receive, long> _receiveRepository;
+        private readonly IRepository<BD_InstrumentTest, long> _instrumentTestRepository;
         private readonly IInstrumentManager _instrumentManager;
 
-        #region 服务注入
+        #region 1.服务注入
         public ReceiveAppService(
                IRepository<BD_Receive, long> receiveRepository,
+               IRepository<BD_InstrumentTest, long> instrumentTestRepository,
                IInstrumentManager instrumentManager)
         {
             _receiveRepository = receiveRepository;
+            _instrumentTestRepository = instrumentTestRepository;
             _instrumentManager = instrumentManager;
+
         }
         #endregion       
 
-        #region 登记单 OrderHeader
+        #region 2.登记单 OrderHeader
 
         //1.获取所有登记单
         public async Task<List<ReceiveEditDto>> GetAll()
@@ -77,7 +82,7 @@ namespace ZOGLAB.MMMS.BD
         }
         #endregion
 
-        #region 仪器列表 OrderDetail
+        #region 3.仪器列表 OrderDetail
         //1.获取已经登记的仪器列表
         public async Task<ReceiveWithItemsDto> GetReceiveWithItems(NullableIdDto<long> input)
         {
@@ -109,5 +114,46 @@ namespace ZOGLAB.MMMS.BD
         }
 
         #endregion
+
+        #region 4.检测业务 Test
+
+        //.获取所有 InstrumentTests By ReceiveInstrumentId TODO
+        public List<InTstFRDto> GetInstrumentTestsByReInId(NullableIdDto<long> input)
+        {
+            var result = new List<InTstFRDto> { };
+
+            if (input.Id.HasValue) //Editing existing role?
+            {
+                Debug.Assert(input.Id != null, "编辑时，ID不得为空！");
+
+                result = _instrumentTestRepository.GetAllIncluding(q => q.CheckType)
+                .Where(w => w.ReceiveInstrument_ID == input.Id.Value)
+                .Select(s => new InTstFRDto
+                {
+                    CheckType = s.CheckType.CheckName,
+                    Number = s.Number,
+                    CaliValidateDate = s.CaliValidateDate,
+                    CaliU = s.CaliU,
+                    Address = s.Address,
+                    StrFlag = s.StrFlag
+                }).ToList();
+            }
+
+            return result;
+        }
+
+        //2.增加 CreatInstrumentTest
+
+        /// <summary>
+        /// CreatOrUpdateInstrumentTestF F 代表 Fast 快速添加
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task CUInstrumentTestF(IntestCreatDto input)
+        {
+            await _instrumentTestRepository.InsertOrUpdateAsync(input.MapTo<BD_InstrumentTest>());
+        }
+
+        #endregion  
     }
 }

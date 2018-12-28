@@ -397,6 +397,10 @@
     <Compile Include="Migrations\201812280939100_initialSeeds.Designer.cs">
       <DependentUpon>201812280939100_initialSeeds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812281841415_12_29_Forget.cs" />
+    <Compile Include="Migrations\201812281841415_12_29_Forget.Designer.cs">
+      <DependentUpon>201812281841415_12_29_Forget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\CheckTypeCreator.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\InstrumentCreator.cs" />
@@ -609,6 +613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812280939100_initialSeeds.resx">
       <DependentUpon>201812280939100_initialSeeds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281841415_12_29_Forget.resx">
+      <DependentUpon>201812281841415_12_29_Forget.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

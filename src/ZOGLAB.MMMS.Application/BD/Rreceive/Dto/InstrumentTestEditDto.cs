@@ -1,42 +1,30 @@
-﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
-using System;
+﻿using Abp.AutoMapper;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using ZOGLAB.MMMS.Authorization.Users;
 
 namespace ZOGLAB.MMMS.BD
 {
-    /// <summary>
-    /// 6,设备检测项目从表（BD_DeviceItem）
-    /// </summary>
-    [Table("BD_InstrumentTest")]
-    public class BD_InstrumentTest : CreationAuditedEntity<long>,ISoftDelete
+    [AutoMapFrom(typeof(BD_InstrumentTest))]
+    public class InstrumentTestEditDto
     {
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
-        //1.收发单主表ID   foreignKey
-        [ForeignKey("ReceiveInstrument_ID")]
-        public BD_ReceiveInstrument ReceiveInstrument { get; set; }
+        //1.收发单从表ID
+        public string ReceiveInstrument { get; set; }
         public long? ReceiveInstrument_ID { get; set; }
 
         //2.检测单表ID
-        [ForeignKey("Test_ID")]
-        public BD_Test Test { get; set; }
         public long? Test_ID { get; set; }
 
         //2.1 检测项目ID
-        [ForeignKey("CheckType_ID")]
-        public BD_CheckType CheckType { get; set; }
+        public string CheckType { get; set; }
         public long? CheckType_ID { get; set; }
 
         //3.仪器交接状态
         public bool IntHandover { get; set; }
 
         //4.仪器接收者ID
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        public string User { get; set; }
         public long? UserId { get; set; }
 
         //5.仪器挑选状态
@@ -76,8 +64,6 @@ namespace ZOGLAB.MMMS.BD
 
         //15.流程结束
         public bool ProcessEnd { get; set; }
-
-        public bool IsDeleted { get; set; }
 
     }
 }
