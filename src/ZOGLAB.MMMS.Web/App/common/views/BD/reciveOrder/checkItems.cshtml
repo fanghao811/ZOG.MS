@@ -1,10 +1,14 @@
 ﻿<div ng-controller="common.views.BD.reciveOrder.checkItems as vm">
     <div class="row">
-        <div class="portlet light bordered col-md-8 col-sm-12">
+        <!-- BEGIN      左侧检测项目列表 -->
+        <form role="form" 
+              novailated
+              name="orderForm"
+              novalidate class="portlet light bordered col-md-8 col-sm-12">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-speech font-green"></i>
-                    <span class="caption-subject bold font-red uppercase">待检仪器登记</span>
+                    <span class="caption-subject bold font-red uppercase">{{vm.selectedInstrument}}</span>
                 </div>
                 <div class="actions">
                     <button @*ng-disabled="vm.loading"*@ type="button" class="btn btn-default" ng-click="vm.goPrint()">
@@ -12,16 +16,14 @@
                     </button>
                     <button type="submit" @*button-busy="vm.loading"*@ busy-text="@L("SavingWithThreeDot")"
                             class="btn btn-primary green" ng-click="vm.save()"
-                            ng-disabled="orderForm.$invalid">
+                            ng-disabled="orderForm.$invalid && vm.order.receiveInstrument_ID<=0">
                         <i class="fa fa-save"></i> <span>@L("Save")</span>
                     </button>
                     <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"> </a>
                 </div>
             </div>
             <div class="portlet-body form">
-                <form role="form" class="form-horizontal " novailated
-                      name="orderForm"
-                      novalidate>
+                <div class="form-horizontal " >
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -93,36 +95,46 @@
                     </div>
                     <pre>{{vm.order}}</pre>
                     <pre>{{vm.instrumentsWithTCount}}</pre>
+
                     <!-- BEGIN 检测项目列表 -->
                     <div class="row col-md-offset-1">
-                        <div class="table-scrollable table-scrollable-borderless">
+                        <div class="table-scrollable table-scrollable-borderless" style="max-height:300px;">
                             <table class="table table-hover table-light ">
                                 <thead>
                                     <tr class="uppercase">
-                                        <th> </th>
+                                        <th></th>
                                         <th>物质编码</th>
                                         <th>检测地点</th>
                                         <th>不确定度</th>
                                         <th>有效日期</th>
                                         <th>检测项目</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tr ng-repeat="item in vm.instrumentTests">
-                                    <td>{{$index+1}}</td>
+                                    <td>{{item.id}}</td>
                                     <td><span class="bold font-green-haze">{{item.number}}</span></td>
                                     <td>{{item.address}}</td>
                                     <td>{{item.caliU}}</td>
                                     <td>{{item.caliValidateDate}}</td>
-                                    <td><a href="javascript:;" class="primary-link">{{item.checkType}}</a></td>
+                                    <td><a href="javascript:;" class="primary-link" ng-click="vm.selectCheckItem(item);">{{item.checkName}}</a></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" ng-click="vm.delInstrumentTest(item);">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
+
                     <!-- BEGIN 检测项目列表 -->
-                </form>
+
+                </div>
             </div>
-        </div>
-        <!-- BEGIN 设备列表 -->
+        </form>
+        <!-- END        左侧检测项目列表 -->
+        <!-- BEGIN      右侧设备列表 -->
         <div class="col-md-4">
             <div class="mt-element-list">
                 <div class="mt-list-head list-simple ext-1 font-white bg-blue-chambray">
@@ -143,7 +155,7 @@
                             <li class="mt-list-item done"
                                 @*Exp:filter:{id: player_id, name:player_name} | filter:ageFilter*@
                                 ng-repeat="item in vm.instrumentsWithTCount| filter:countFilter"
-                                ng-click="vm.getInTsts(item.id)">
+                                ng-click="vm.selectInstrumentItem(item);">
                                 <div class="list-icon-container">
                                     <i class="icon-check"></i>
                                 </div>
@@ -151,7 +163,7 @@
                                 <div class="list-item-content">
                                     <h3 class="uppercase">
                                         <a href="javascript:;" style="text-decoration: none;">
-                                        {{item.name}}{{item.sn}}({{item.checkTypeCount}})
+                                            {{item.name}} {{item.sn}} ({{item.checkTypeCount}})
                                         </a>
                                     </h3>
                                 </div>
@@ -168,14 +180,20 @@
                         <ul>
                             <li class="mt-list-item done"
                                 ng-repeat="item in vm.instrumentsWithTCount | filter:{ checkTypeCount:0 }"
-                                ng-click="vm.order.receiveInstrument_ID=item.id;vm.instrumentTests = [];">
+                                ng-click="
+                                vm.order={};
+                                vm.order.receiveInstrument_ID=item.id;
+                                vm.instrumentTests = [];
+                                vm.selectedInstrument=item.name+item.sn;">
                                 <div class="list-icon-container">
                                     <i class="icon-ban"></i>
                                 </div>
                                 <div class="list-datetime"> {{item.model}} </div>
                                 <div class="list-item-content">
                                     <h3 class="uppercase">
-                                        {{item.name}} {{item.sn}} ({{item.checkTypeCount}})
+                                        <a href="javascript:;" style="text-decoration: none;">
+                                            {{item.name}} {{item.sn}} ({{item.checkTypeCount}})
+                                        </a>
                                     </h3>
                                 </div>
                             </li>
@@ -184,6 +202,6 @@
                 </div>
             </div>
         </div>
-        <!-- END 设备列表 -->
+        <!-- END        右侧设备列表 -->
     </div>
 </div>

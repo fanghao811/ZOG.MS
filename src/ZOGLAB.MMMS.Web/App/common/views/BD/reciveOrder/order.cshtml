@@ -1,6 +1,6 @@
 ﻿<form ng-controller="common.views.BD.reciveOrder.order as vm"
       novailated 
-      name="orderForm" 
+      name="orderHeaderForm" 
       role="form" 
       novalidate class="form-validation">
     <h3 class="block">填写单位信息</h3>
@@ -10,14 +10,6 @@
             <span class="required"> * </span>
         </label>
         <div class="col-md-4">
-            @*<ui-select ng-model="selected.value">
-            <ui-select-match>
-                <span ng-bind="$select.selected.name"></span>
-            </ui-select-match>
-            <ui-select-choices repeat="item in (itemArray | filter: $select.search) track by item.id">
-                <span ng-bind="item.name"></span>
-            </ui-select-choices>
-        </ui-select>*@
             <ui-select ng-model="vm.selectedUnit" ng-change="vm.changeUnit()" set-timeout>
                 <ui-select-match>
                     <span ng-bind="$select.selected.unitName"></span>
@@ -81,7 +73,7 @@
                             </button>
                 <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" 
                         class="btn btn-primary green" ng-click="vm.save()" 
-                        ng-disabled="orderForm.$invalid">
+                        ng-disabled="orderHeaderForm.$invalid">
                 <i class="fa fa-save"></i> <span>@L("Save")</span></button>
             </div>
         </div>

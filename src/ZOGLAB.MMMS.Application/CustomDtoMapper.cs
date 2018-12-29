@@ -51,7 +51,7 @@ namespace ZOGLAB.MMMS
                 .ReverseMap()
                 .ForMember(src => src.Unit, options => options.Ignore());
 
-            mapper.CreateMap<BD_InstrumentTest, IntestCreatDto>()
+            mapper.CreateMap<BD_InstrumentTest, IntestEditDto>()
                 //.ForMember(dto => dto.UnitName, opt => opt.MapFrom(src => src.Unit.UnitName))
                 .ReverseMap()
                 .ForMember(src => src.Test, options => options.Ignore())

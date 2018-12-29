@@ -162,7 +162,7 @@
     <Compile Include="BD\ReceiveInstrument\ReceiveInstrumentAppService.cs" />
     <Compile Include="BD\Rreceive\Dto\InstrumentTestEditDto.cs" />
     <Compile Include="BD\Rreceive\Dto\InTstFRDto.cs" />
-    <Compile Include="BD\Rreceive\Dto\IntestCreatDto.cs" />
+    <Compile Include="BD\Rreceive\Dto\IntestCreateDto.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveEditDto.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveListDto.cs" />
     <Compile Include="BD\Rreceive\Dto\InstrumentWithTCountDto.cs" />

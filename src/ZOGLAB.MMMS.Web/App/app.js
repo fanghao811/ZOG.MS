@@ -265,7 +265,9 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
         $stateProvider.state('reOrder.regist.ordItems', {
             url: '/ordItems/:orderId',
             views: {
-                '': {templateUrl: '~/App/common/views/BD/reciveOrder/ordItems.cshtml'}
+                '': {
+                    templateUrl: '~/App/common/views/BD/reciveOrder/ordItems.cshtml'
+                }
             },
             redirectTo: '/order/:orderId',
             params: { orderId: null },
@@ -275,7 +277,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
         });
 
         $stateProvider.state('reOrder.regist.checkItems', {
-            url: '/checkItems/:orderId ',
+            url: '/checkItems/:orderId',
             views: {
                 '': {
                     templateUrl: '~/App/common/views/BD/reciveOrder/checkItems.cshtml'

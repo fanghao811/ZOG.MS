@@ -401,6 +401,10 @@
     <Compile Include="Migrations\201812281841415_12_29_Forget.Designer.cs">
       <DependentUpon>201812281841415_12_29_Forget.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812290907586_added_IsofeDel.cs" />
+    <Compile Include="Migrations\201812290907586_added_IsofeDel.Designer.cs">
+      <DependentUpon>201812290907586_added_IsofeDel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\CheckTypeCreator.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\InstrumentCreator.cs" />
@@ -616,6 +620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812281841415_12_29_Forget.resx">
       <DependentUpon>201812281841415_12_29_Forget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812290907586_added_IsofeDel.resx">
+      <DependentUpon>201812290907586_added_IsofeDel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

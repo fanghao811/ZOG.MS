@@ -63,7 +63,7 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
 
             //Default BD_CheckType
 
-            var defaultCheckType = _context.BD_CheckType.FirstOrDefault(s => s.CheckName == "辐射检定");    //Step 01      
+            var defaultCheckType = _context.BD_CheckType.FirstOrDefault(s => s.CheckName == "温度检定");    //Step 01      
             if (defaultCheckType == null)    //Step 02
             {
                 var seedMeteorTypes = _context.BD_MeteorType.ToList();

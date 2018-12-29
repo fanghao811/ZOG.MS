@@ -16,10 +16,12 @@ namespace ZOGLAB.MMMS.BD
         Task AddInstrumentToReceive(long instrumentId, long receiveId);
         Task RemoveInstrumentFromReceive(long instrumentId, long receiveId);
 
-        //TEST业务
-        Task CUInstrumentTestF(IntestCreatDto input);
-        List<InTstFRDto> GetInstrumentTestsByReInId(NullableIdDto<long> input);
+        //InstrumentTEST 业务
+
+        List<IntestEditDto> GetInstrumentTestsByReInId(NullableIdDto<long> input);
         List<InstrumentWithTCountDto> GetInstrumentWithTCountByReId(NullableIdDto<long> input);
+        Task<long> CUInstrumentTestF(IntestEditDto input);
+        void DelInstrumentTest(NullableIdDto<long> input);
 
     }
 }

@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel.DataAnnotations;
 namespace ZOGLAB.MMMS.BD
 {
-    public class IntestCreatDto
+    public class IntestEditDto
     {
         public const int MaxLength_20 = 20;
         public const int MaxLength_50 = 50;
 
-        //1.收发单从表ID
+        public long? Id { get; set; }
+        //2.1收发单从表ID
         public long? ReceiveInstrument_ID { get; set; }
 
-        //2.检测单表ID
+        //2.2检测单表ID
         public long? CheckType_ID { get; set; }
+        public string CheckName { get; set; }
+
 
         //9.物质编码
         [MaxLength(MaxLength_50)]

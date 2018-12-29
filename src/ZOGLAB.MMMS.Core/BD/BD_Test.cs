@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@ namespace ZOGLAB.MMMS.BD
     /// 7，检测单信息主表(BD_Test)
     /// </summary>
     [Table("BD_Test")]
-    public class BD_Test : AuditedEntity<long>
+    public class BD_Test : AuditedEntity<long>, ISoftDelete
     {
         public const int MaxLength_50 = 50;
 
@@ -42,7 +43,9 @@ namespace ZOGLAB.MMMS.BD
 
         //8.备注
         public string Mark { get; set; }
-   
+
+        public bool IsDeleted { get; set; }
+
         public enum VMType {
             实验室检定=0,
             实验室校准=1,

@@ -30,24 +30,24 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
 
             var checkLists = _context.BD_CheckType.ToList();
             //var checkListR = checkLists.Where(c => new long[3] { 1, 2, 3 }.Contains(c.Id)).ToList();
-            var checkListR = new List<BD_CheckType>
-            {
-                new BD_CheckType{
-                    CalibrationType = Calibration_Type.检定,
-                    CheckName = "温度检定"
-                },
-                new BD_CheckType{
-                    CalibrationType = Calibration_Type.检定,
-                    CheckName = "湿度检定"
-                },
-                 new BD_CheckType{
-                     CalibrationType = Calibration_Type.检定,
-                     CheckName = "气压检定"
-                }
-            };
+            //var checkListR = new List<BD_CheckType>
+            //{
+            //    new BD_CheckType{
+            //        CalibrationType = Calibration_Type.检定,
+            //        CheckName = "温度检定"
+            //    },
+            //    new BD_CheckType{
+            //        CalibrationType = Calibration_Type.检定,
+            //        CheckName = "湿度检定"
+            //    },
+            //     new BD_CheckType{
+            //         CalibrationType = Calibration_Type.检定,
+            //         CheckName = "气压检定"
+            //    }
+            //};
 
 
-            var checkListB = checkLists.Where(c => new long[3] { 1, 2, 3 }.Contains(c.Id)).ToList();
+            //var checkListB = checkLists.Where(c => new long[3] { 1, 2, 3 }.Contains(c.Id)).ToList();
 
             var meteorTypes = _context.BD_MeteorType.ToList();
             var meteorTypesR = meteorTypes.Where(c => new long[3] { 1, 2, 3 }.Contains(c.Id)).ToList();
@@ -68,17 +68,17 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
                     new BD_Instrument
                     {
                         SN="TEST014B",Name="地温传感器",Model="PT200",Grade="3",Scope="(-50～600)℃",Power="0.2℃",
-                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkListR,MeteorTypes=meteorTypesW
+                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkLists,MeteorTypes=meteorTypesW
                     },
                     new BD_Instrument
                     {
                         SN="TEST015C",Name="地温传感器",Model="PT300",Grade="4",Scope="(-30～100)℃",Power="0.1℃",
-                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkListB,MeteorTypes=meteorTypesB
+                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkLists,MeteorTypes=meteorTypesB
                     },
                     new BD_Instrument
                     {
                         SN="TEST016D",Name="地温传感器",Model="PT400",Grade="5",Scope="(-20～200)℃",Power="0.3℃",
-                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkListB,MeteorTypes=meteorTypesB
+                        Manufacturer ="杭州仪器厂",Mark="测试时间：12/24/2018",CheckTypes=checkLists,MeteorTypes=meteorTypesB
                     },
                     new BD_Instrument
                     {

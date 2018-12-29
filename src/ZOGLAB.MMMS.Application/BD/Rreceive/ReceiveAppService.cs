@@ -4,6 +4,7 @@ using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -86,7 +87,7 @@ namespace ZOGLAB.MMMS.BD
         }
         #endregion
 
-        #region 3.仪器列表 OrderDetail
+        #region 3.仪器列表 ReceiveInstrument
         //1.获取已经登记的仪器列表
         public async Task<ReceiveWithItemsDto> GetReceiveWithItems(NullableIdDto<long> input)
         {
@@ -122,9 +123,9 @@ namespace ZOGLAB.MMMS.BD
         #region 4.检测业务 Test
 
         //1.获取所有 InstrumentTests By ReceiveInstrumentId TODO
-        public List<InTstFRDto> GetInstrumentTestsByReInId(NullableIdDto<long> input)
+        public List<IntestEditDto> GetInstrumentTestsByReInId(NullableIdDto<long> input)
         {
-            var result = new List<InTstFRDto> { };
+            var result = new List<IntestEditDto> { };
 
             if (input.Id.HasValue) //Editing existing role?
             {
@@ -132,9 +133,12 @@ namespace ZOGLAB.MMMS.BD
 
                 result = _instrumentTestRepository.GetAllIncluding(q => q.CheckType)
                 .Where(w => w.ReceiveInstrument_ID == input.Id.Value)
-                .Select(s => new InTstFRDto
+                .Select(s => new IntestEditDto
                 {
-                    CheckType = s.CheckType.CheckName,
+                    Id = s.Id,
+                    ReceiveInstrument_ID = s.ReceiveInstrument_ID,
+                    CheckType_ID = s.CheckType_ID,
+                    CheckName = s.CheckType.CheckName,
                     Number = s.Number,
                     CaliValidateDate = s.CaliValidateDate,
                     CaliU = s.CaliU,
@@ -145,16 +149,7 @@ namespace ZOGLAB.MMMS.BD
 
             return result;
         }
-        //-----> GroupJoin
-        //contacts.GroupJoin(orders,
-        //contact => contact.ContactID,
-        //order => order.Contact.ContactID,
-        //(contact, contactGroup) => new
-        //{
-        //    ContactID = contact.ContactID,
-        //    OrderCount = contactGroup.Count(),
-        //    Orders = contactGroup.Select(order => order)
-        //});
+
         //2.获取 viewModel RIWithITCount
         public List<InstrumentWithTCountDto> GetInstrumentWithTCountByReId(NullableIdDto<long> input)
         {
@@ -177,23 +172,50 @@ namespace ZOGLAB.MMMS.BD
                         Name = reInstrument.Instrument.Name,
                         Model = reInstrument.Instrument.Model,
                         CheckTypeCount = inTestGroup.Count(),
-                    }).OrderBy(q => q.Id).ToList();
+                    }).Distinct().OrderBy(q => q.Id).ToList();
             }
 
             return result;
         }
 
-        //2.增加 CreatInstrumentTest
+        //3.增加 CreatInstrumentTest
         /// <summary>
         /// CreatOrUpdateInstrumentTestF F 代表 Fast 快速添加 InstrumentTest
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">IntestEditDto </param>
         /// <returns></returns>
-        public async Task CUInstrumentTestF(IntestCreatDto input)
+        public async Task<long> CUInstrumentTestF(IntestEditDto input)
         {
-            await _instrumentTestRepository.InsertOrUpdateAsync(input.MapTo<BD_InstrumentTest>());
+            if (input.Id.HasValue) {
+                var query = await _instrumentTestRepository.FirstOrDefaultAsync(input.Id.Value);
+                if (query == null)
+                {
+                    throw new UserFriendlyException(L("CouldNotFoundTheTaskMessage"));
+                }                   
+            }
+
+            var item = input.MapTo<BD_InstrumentTest>();
+            return await _instrumentTestRepository.InsertAndGetIdAsync(item);
         }
 
+        public void DelInstrumentTest(NullableIdDto<long> input)
+        {
+            Debug.Assert(input.Id != null, "编辑时，ID不得为空！");
+            _instrumentTestRepository.Delete(input.Id.Value);
+        }
+        #endregion
+
+        #region 8.LinqExp
+        //-----> GroupJoin
+        //contacts.GroupJoin(orders,
+        //contact => contact.ContactID,
+        //order => order.Contact.ContactID,
+        //(contact, contactGroup) => new
+        //{
+        //    ContactID = contact.ContactID,
+        //    OrderCount = contactGroup.Count(),
+        //    Orders = contactGroup.Select(order => order)
+        //});
         #endregion
     }
 }

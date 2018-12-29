@@ -89,8 +89,11 @@
             // =========================================================================
             // goOrder 上一步... 返回修改 OrderHeader信息
             // =========================================================================
-            vm.goOrder = function () {
+            vm.orderHeader = function () {
                 $state.go("reOrder.regist.order", { orderId: Id_FromState });
+            }
+            vm.goCheckItems = function () {
+                $state.go("reOrder.regist.checkItems", { orderId: Id_FromState });
             }
 
             //var different = function (arrA, arrB) {//       TODO:实现基于ID的通用过滤方法

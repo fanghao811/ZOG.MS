@@ -190,11 +190,11 @@
     <div class="form-actions">
         <div class="row">
             <div class="col-md-offset-3 col-md-9">
-                <button ng-disabled="vm.saving" type="button" class="btn btn-default" button-busy="vm.saving" ng-click="vm.goOrder()">
+                <button ng-disabled="vm.saving" type="button" class="btn btn-default" button-busy="vm.saving" ng-click="vm.goOrderHeader()">
                     <i class="fa fa-arrow-left"></i> <span>上一步</span>
                 </button>
                 <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")"
-                        class="btn btn-primary green" ng-click=""
+                        class="btn btn-primary green" ng-click="vm.goCheckItems()"
                         ng-disabled="ordItemdsForm.$invalid">
                     <span>下一步</span><i class="fa fa-arrow-right" style="margin-left:10px;"></i>
                 </button>

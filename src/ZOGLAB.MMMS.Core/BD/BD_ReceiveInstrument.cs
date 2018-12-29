@@ -10,7 +10,7 @@ namespace ZOGLAB.MMMS.BD
     /// 5，收发设备从表（BD_ReceiveDevice）
     /// </summary>
     [Table("BD_ReceiveInstrument")]
-    public class BD_ReceiveInstrument : AuditedEntity<long>
+    public class BD_ReceiveInstrument : AuditedEntity<long>, ISoftDelete
     {
         public const int MaxLength_50 = 50;
 
@@ -33,6 +33,8 @@ namespace ZOGLAB.MMMS.BD
         public long? Back_ID { get; set; }
 
         public BD_ReceiveInstrument() { }
+
+        public bool IsDeleted { get; set; }
 
         public BD_ReceiveInstrument(long instrumentId, long receiveId)
         {
