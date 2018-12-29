@@ -1,5 +1,4 @@
 ﻿<div ng-controller="common.views.BD.reciveOrder.checkItems as vm">
-
     <div class="row">
         <div class="portlet light bordered col-md-8 col-sm-12">
             <div class="portlet-title">
@@ -8,10 +7,10 @@
                     <span class="caption-subject bold font-red uppercase">待检仪器登记</span>
                 </div>
                 <div class="actions">
-                    <button ng-disabled="vm.loading" type="button" class="btn btn-default" ng-click="vm.goPrint()">
+                    <button @*ng-disabled="vm.loading"*@ type="button" class="btn btn-default" ng-click="vm.goPrint()">
                         <i class="fa fa-ban"></i> <span>@L("Cancel")</span>
                     </button>
-                    <button type="submit" button-busy="vm.loading" busy-text="@L("SavingWithThreeDot")"
+                    <button type="submit" @*button-busy="vm.loading"*@ busy-text="@L("SavingWithThreeDot")"
                             class="btn btn-primary green" ng-click="vm.save()"
                             ng-disabled="orderForm.$invalid">
                         <i class="fa fa-save"></i> <span>@L("Save")</span>
@@ -93,53 +92,28 @@
                         </div>
                     </div>
                     <pre>{{vm.order}}</pre>
-                    <pre>{{vm.checkTypes}}</pre>
+                    <pre>{{vm.instrumentsWithTCount}}</pre>
                     <!-- BEGIN 检测项目列表 -->
                     <div class="row col-md-offset-1">
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light ">
                                 <thead>
                                     <tr class="uppercase">
-                                        <th>
-                                            
-                                        </th>
-                                        <th>
-                                            物质编码
-                                        </th>
-                                        <th>
-                                            检测地点
-                                        </th>
-                                        <th>
-                                            不确定度
-                                        </th>
-                                        <th>
-                                            有效日期
-                                        </th>
-                                        <th>
-                                            检测项目
-                                        </th>
+                                        <th> </th>
+                                        <th>物质编码</th>
+                                        <th>检测地点</th>
+                                        <th>不确定度</th>
+                                        <th>有效日期</th>
+                                        <th>检测项目</th>
                                     </tr>
                                 </thead>
-
                                 <tr ng-repeat="item in vm.instrumentTests">
-                                    <td>
-                                        {{$index}}
-                                    </td>
-                                    <td>
-                                        <a href="javascript:;" class="primary-link">{{item.number}}</a>
-                                    </td>
-                                    <td>
-                                        {{item.address}}
-                                    </td>
-                                    <td>
-                                        {{item.caliU}}
-                                    </td>
-                                    <td>
-                                        {{item.caliValidateDate}}
-                                    </td>
-                                    <td>
-                                        <span class="bold font-green-haze">{{item.checkType}}</span>
-                                    </td>
+                                    <td>{{$index+1}}</td>
+                                    <td><span class="bold font-green-haze">{{item.number}}</span></td>
+                                    <td>{{item.address}}</td>
+                                    <td>{{item.caliU}}</td>
+                                    <td>{{item.caliValidateDate}}</td>
+                                    <td><a href="javascript:;" class="primary-link">{{item.checkType}}</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -154,37 +128,31 @@
                 <div class="mt-list-head list-simple ext-1 font-white bg-blue-chambray">
                     <div class="list-head-title-container">
                         <div class="list-date">12/27, 2018</div>
-                        <h3 class="list-title">仪器列表</h3>
+                        <h3 class="list-title">仪器列表-ReceiveId:{{vm.receiveId}}</h3>
                     </div>
                 </div>
                 <div class="mt-list-container list-simple ext-1 group">
                     <a class="list-toggle-container" data-toggle="collapse" href="!#completed-simple" aria-expanded="false">
                         <div class="list-toggle done">
                             已分配检测项目
-                            <span class="badge badge-default pull-right bg-white font-green bold">2</span>
+                            <span class="badge badge-default pull-right bg-white font-green bold">{{vm.tyCount_1}}</span>
                         </div>
                     </a>
                     <div class="panel-collapse collapse in" id="completed-simple">
                         <ul>
-                            <li class="mt-list-item done">
+                            <li class="mt-list-item done"
+                                @*Exp:filter:{id: player_id, name:player_name} | filter:ageFilter*@
+                                ng-repeat="item in vm.instrumentsWithTCount| filter:countFilter"
+                                ng-click="vm.getInTsts(item.id)">
                                 <div class="list-icon-container">
                                     <i class="icon-check"></i>
                                 </div>
-                                <div class="list-datetime"> TW-ZOG </div>
+                                <div class="list-datetime"> {{item.model}} </div>
                                 <div class="list-item-content">
                                     <h3 class="uppercase">
-                                        <a href="javascript:;">地温传感器</a>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="mt-list-item done">
-                                <div class="list-icon-container">
-                                    <i class="icon-check"></i>
-                                </div>
-                                <div class="list-datetime"> ZQZ-TW</div>
-                                <div class="list-item-content">
-                                    <h3 class="uppercase">
-                                        <a href="javascript:;">温湿度传感器</a>
+                                        <a href="javascript:;" style="text-decoration: none;">
+                                        {{item.name}}{{item.sn}}({{item.checkTypeCount}})
+                                        </a>
                                     </h3>
                                 </div>
                             </li>
@@ -193,41 +161,21 @@
                     <a class="list-toggle-container" data-toggle="collapse" href="!#pending-simple" aria-expanded="true">
                         <div class="list-toggle uppercase">
                             未分配
-                            <span class="badge badge-default pull-right bg-white font-dark bold">3</span>
+                            <span class="badge badge-default pull-right bg-white font-dark bold">{{vm.tyCount_0}}</span>
                         </div>
                     </a>
                     <div class="panel-collapse collapse" id="pending-simple">
                         <ul>
-                            <li class="mt-list-item">
+                            <li class="mt-list-item done"
+                                ng-repeat="item in vm.instrumentsWithTCount | filter:{ checkTypeCount:0 }"
+                                ng-click="vm.order.receiveInstrument_ID=item.id;vm.instrumentTests = [];">
                                 <div class="list-icon-container">
-                                    <i class="icon-close"></i>
+                                    <i class="icon-ban"></i>
                                 </div>
-                                <div class="list-datetime"> ZQZ-TW</div>
+                                <div class="list-datetime"> {{item.model}} </div>
                                 <div class="list-item-content">
                                     <h3 class="uppercase">
-                                        <a href="javascript:;">风速仪</a>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="mt-list-item">
-                                <div class="list-icon-container">
-                                    <i class="icon-close"></i>
-                                </div>
-                                <div class="list-datetime"> ZQZ-TW</div>
-                                <div class="list-item-content">
-                                    <h3 class="uppercase">
-                                        <a href="javascript:;">空盒气压表</a>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="mt-list-item">
-                                <div class="list-icon-container">
-                                    <i class="icon-close"></i>
-                                </div>
-                                <div class="list-datetime"> Nov</div>
-                                <div class="list-item-content">
-                                    <h3 class="uppercase">
-                                        <a href="javascript:;">Listings Feature</a>
+                                        {{item.name}} {{item.sn}} ({{item.checkTypeCount}})
                                     </h3>
                                 </div>
                             </li>

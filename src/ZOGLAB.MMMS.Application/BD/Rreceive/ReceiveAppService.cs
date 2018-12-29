@@ -20,22 +20,26 @@ namespace ZOGLAB.MMMS.BD
     public class ReceiveAppService : MMMSAppServiceBase, IReceiveAppService
     {
 
+
         private readonly IRepository<BD_Receive, long> _receiveRepository;
         private readonly IRepository<BD_InstrumentTest, long> _instrumentTestRepository;
+        private readonly IRepository<BD_ReceiveInstrument, long> _receiveInstrumentRepository;
         private readonly IInstrumentManager _instrumentManager;
 
         #region 1.服务注入
         public ReceiveAppService(
                IRepository<BD_Receive, long> receiveRepository,
                IRepository<BD_InstrumentTest, long> instrumentTestRepository,
+               IRepository<BD_ReceiveInstrument, long> receiveInstrumentRepository,
                IInstrumentManager instrumentManager)
         {
             _receiveRepository = receiveRepository;
             _instrumentTestRepository = instrumentTestRepository;
+            _receiveInstrumentRepository = receiveInstrumentRepository;
             _instrumentManager = instrumentManager;
 
         }
-        #endregion       
+        #endregion
 
         #region 2.登记单 OrderHeader
 
@@ -117,7 +121,7 @@ namespace ZOGLAB.MMMS.BD
 
         #region 4.检测业务 Test
 
-        //.获取所有 InstrumentTests By ReceiveInstrumentId TODO
+        //1.获取所有 InstrumentTests By ReceiveInstrumentId TODO
         public List<InTstFRDto> GetInstrumentTestsByReInId(NullableIdDto<long> input)
         {
             var result = new List<InTstFRDto> { };
@@ -141,11 +145,47 @@ namespace ZOGLAB.MMMS.BD
 
             return result;
         }
+        //-----> GroupJoin
+        //contacts.GroupJoin(orders,
+        //contact => contact.ContactID,
+        //order => order.Contact.ContactID,
+        //(contact, contactGroup) => new
+        //{
+        //    ContactID = contact.ContactID,
+        //    OrderCount = contactGroup.Count(),
+        //    Orders = contactGroup.Select(order => order)
+        //});
+        //2.获取 viewModel RIWithITCount
+        public List<InstrumentWithTCountDto> GetInstrumentWithTCountByReId(NullableIdDto<long> input)
+        {
+            var result = new List<InstrumentWithTCountDto> { };
+
+            if (input.Id.HasValue) //Editing existing role?
+            {
+                Debug.Assert(input.Id != null, "编辑时，ID不得为空！");
+                var reInstruments = _receiveInstrumentRepository.GetAllIncluding(q => q.Instrument)
+                    .Where(q => q.Receive_ID == input.Id.Value);
+                var inTests = _instrumentTestRepository.GetAll();
+
+                result = reInstruments.GroupJoin(inTests,
+                    reInstrument => reInstrument.Id,
+                    inTest => inTest.ReceiveInstrument_ID,
+                    (reInstrument, inTestGroup) => new InstrumentWithTCountDto
+                    {
+                        Id = reInstrument.Id,
+                        SN = reInstrument.Instrument.SN,
+                        Name = reInstrument.Instrument.Name,
+                        Model = reInstrument.Instrument.Model,
+                        CheckTypeCount = inTestGroup.Count(),
+                    }).OrderBy(q => q.Id).ToList();
+            }
+
+            return result;
+        }
 
         //2.增加 CreatInstrumentTest
-
         /// <summary>
-        /// CreatOrUpdateInstrumentTestF F 代表 Fast 快速添加
+        /// CreatOrUpdateInstrumentTestF F 代表 Fast 快速添加 InstrumentTest
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -154,6 +194,6 @@ namespace ZOGLAB.MMMS.BD
             await _instrumentTestRepository.InsertOrUpdateAsync(input.MapTo<BD_InstrumentTest>());
         }
 
-        #endregion  
+        #endregion
     }
 }

@@ -19,6 +19,7 @@ namespace ZOGLAB.MMMS.BD
         //TEST业务
         Task CUInstrumentTestF(IntestCreatDto input);
         List<InTstFRDto> GetInstrumentTestsByReInId(NullableIdDto<long> input);
+        List<InstrumentWithTCountDto> GetInstrumentWithTCountByReId(NullableIdDto<long> input);
 
     }
 }

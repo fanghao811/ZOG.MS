@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li>
-                            <a ui-sref-active="active" ui-sref=".checkItems" class="step active">
+                            <a ui-sref-active="active" ui-sref=".checkItems({orderId:1})" class="step">
                                 <span class="number"> 3 </span>
                                 <span class="desc">
                                     <i class="fa fa-check"></i> 设置检查项
@@ -60,6 +60,6 @@
                     <ui-view></ui-view>
                 </div>  <!--结束导航-->
             </div>
-
         </div>
     </div>
+</div>

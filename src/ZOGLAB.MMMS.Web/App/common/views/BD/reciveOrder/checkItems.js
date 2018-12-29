@@ -8,25 +8,27 @@
             });
 
             // =========================================================================
-            // Begin.定义变量
+            // Begin.初始化变量
             // =========================================================================
 
-            //var Id_FromState = $stateParams.orderId;        //从路由处获取current_receive_Id
+            vm.receiveId = $stateParams.orderId;        //从路由处获取current_receive_Id
 
             vm.order = {        //InstrumentTest_order
-                receiveInstrument_ID: 1,
+                receiveInstrument_ID: 0,
                 checkType_ID: 0,
-                number: "0811",
-                caliValidateDate: "11",
-                caliU: "08",
-                address: "ZOGLAB 实验室",
+                number: "",
+                caliValidateDate: "",
+                caliU: "",
+                address: "",
                 strFlag: true
             }
-
+            vm.tyCount_1 = 0;
+            vm.tyCount_0 = 0;
             vm.selectedMeteor = {};
             vm.meteors = [];
             vm.checkTypes = [];
             vm.instrumentTests = [];
+            vm.instrumentsWithTCount = [];
 
             vm.receive = {};
 
@@ -44,18 +46,24 @@
             };
 
             // =========================================================================
-            // getCureentReceive 获取表头，右侧 receive.registedInstruments
+            // getInstrumentsWithCount 右侧仪器列表(数据源)
             // =========================================================================
-            vm.getCureentReceive = function (orderId) {     //获取 ViewModal
-                if (!angular.equals(orderId, '')) {
-                    vm.loading = true;
-                    receiveService.getReceiveWithItems({ Id: orderId })
-                        .then(function (result) {
-                            vm.receive = result.data;
-                        }).finally(function () {
-                            vm.loading = false;
-                        });
+            vm.getInstrumentsWithCount = function (receiveId) {     //获取 ViewModal
+                if (angular.equals(receiveId, '')) {
+                    return
                 }
+                vm.loading = true;
+                receiveService.getInstrumentWithTCountByReId({ Id: receiveId })
+                    .then(function (result) {
+                        vm.instrumentsWithTCount = result.data;
+                        if (null != vm.instrumentsWithTCount) {
+                            vm.tyCount_1 = _.filter(result.data, function (item) { return item.checkTypeCount > 0 }).length;
+                            vm.tyCount_0 = vm.instrumentsWithTCount.length - vm.tyCount_1;
+                        }
+
+                    }).finally(function () {
+                        vm.loading = false;
+                    });
             };
 
             // =========================================================================
@@ -66,7 +74,7 @@
                 receiveService.getInstrumentTestsByReInId({ id: reInId })
                     .then(function (result) {
                         vm.instrumentTests = result.data;
-                        abp.notify.success("成功获得：" + vm.instrumentTests.length + "条检测项目！");
+                        vm.order.receiveInstrument_ID = reInId;
                     }).finally(function () {
                         vm.loading = false;
                     });
@@ -79,12 +87,19 @@
                 vm.loading = true;
                 receiveService.cUInstrumentTestF(vm.order)
                     .then(function () {
-                        abp.notify.info("检测项目：" + vm.order.number + "新增成功");                       
+                        abp.notify.info("检测项目：" + vm.order.number + "新增成功"); 
                     }).finally(function () {
-                        vm.getInTsts(1);
+                        vm.getInTsts(vm.order.receiveInstrument_ID);
+                        vm.getInstrumentsWithCount(vm.receiveId);
                     });
             };
 
+            // =========================================================================
+            // Page Filter Function
+            // =========================================================================
+            $scope.countFilter = function (item) {
+                return (item.checkTypeCount > 0);
+            }
 
             // =========================================================================
             // Page Initial Function
@@ -100,7 +115,7 @@
                         vm.loading = false;
                     });
 
-                vm.getInTsts(1);
+                vm.getInstrumentsWithCount(vm.receiveId);
             };
 
             //Begin

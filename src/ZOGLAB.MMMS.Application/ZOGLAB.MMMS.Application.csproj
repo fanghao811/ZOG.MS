@@ -165,6 +165,7 @@
     <Compile Include="BD\Rreceive\Dto\IntestCreatDto.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveEditDto.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveListDto.cs" />
+    <Compile Include="BD\Rreceive\Dto\InstrumentWithTCountDto.cs" />
     <Compile Include="BD\Rreceive\IReceiveAppService.cs" />
     <Compile Include="BD\Rreceive\ReceiveAppService.cs" />
     <Compile Include="BD\Rreceive\Dto\ReceiveWithItemsDto.cs" />

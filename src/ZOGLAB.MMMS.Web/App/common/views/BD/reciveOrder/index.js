@@ -6,7 +6,7 @@
                 App.initAjax();
             });
 
-            vm.orderId = $stateParams.orderId;
+            //vm.orderId = $stateParams.orderId;
             console.log("vm.orderId:" + vm.orderId);
         }
     ]);
