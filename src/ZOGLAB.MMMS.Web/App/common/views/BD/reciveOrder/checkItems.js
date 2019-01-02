@@ -39,7 +39,6 @@
             // getCheckTypes 获取检测项目列表，左侧
             // =========================================================================
             vm.getCheckTypes = function () {     //获取 ViewModal
-
                 checkTypeService.getAll()
                     .then(function (result) {
                         vm.checkTypes = result.data;
@@ -60,7 +59,6 @@
                             vm.tyCount_1 = _.filter(result.data, function (item) { return item.checkTypeCount > 0 }).length;
                             vm.tyCount_0 = vm.instrumentsWithTCount.length - vm.tyCount_1;
                         }
-
                     });
             };
 

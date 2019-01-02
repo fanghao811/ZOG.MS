@@ -70,92 +70,92 @@ namespace ZOGLAB.MMMS.Migrations.Seed.BD
                 var checkTypes = new List<BD_CheckType>
                 {
                     new BD_CheckType{
-                        MeteorTypeId =seedMeteorTypes[1].Id,
+                        MeteorTypeId =seedMeteorTypes[0].Id,
                         CalibrationType =Calibration_Type.检定,
                         CheckName="温度检定"
                     },
                     new BD_CheckType{
-                        MeteorTypeId=seedMeteorTypes[1].Id,
+                        MeteorTypeId=seedMeteorTypes[0].Id,
                         CalibrationType =Calibration_Type.校准,
                         CheckName="温度校准"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[1],
+                        MeteorType=seedMeteorTypes[0],
                         CalibrationType =Calibration_Type.核查,
                         CheckName="温度核查"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[2],
+                        MeteorType=seedMeteorTypes[1],
                         CalibrationType =Calibration_Type.检定,
                         CheckName="湿度检定"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[2],
+                        MeteorType=seedMeteorTypes[1],
                         CalibrationType =Calibration_Type.校准,
                         CheckName="湿度校准"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[2],
+                        MeteorType=seedMeteorTypes[1],
                         CalibrationType =Calibration_Type.核查,
                         CheckName="湿度核查"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[3],
+                        MeteorType=seedMeteorTypes[2],
                         CalibrationType =Calibration_Type.检定,
                         CheckName="温湿度检定"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[3],
+                        MeteorType=seedMeteorTypes[2],
                         CalibrationType =Calibration_Type.校准,
                         CheckName="温湿度校准"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[3],
+                        MeteorType=seedMeteorTypes[2],
                         CalibrationType =Calibration_Type.核查,
                         CheckName="温湿度核查"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[4],
+                        MeteorType=seedMeteorTypes[3],
                         CalibrationType =Calibration_Type.检定,
                         CheckName="气压检定"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[4],
+                        MeteorType=seedMeteorTypes[3],
                         CalibrationType =Calibration_Type.校准,
                         CheckName="气压校准"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[4],
+                        MeteorType=seedMeteorTypes[3],
                         CalibrationType =Calibration_Type.核查,
                         CheckName="气压核查"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[5],
+                        MeteorType=seedMeteorTypes[4],
                         CalibrationType =Calibration_Type.检定,
                         CheckName="风速检定"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[5],
+                        MeteorType=seedMeteorTypes[4],
                         CalibrationType =Calibration_Type.校准,
                         CheckName="风速校准"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[5],
+                        MeteorType=seedMeteorTypes[4],
                         CalibrationType =Calibration_Type.核查,
                         CheckName="风速核查"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[6],
+                        MeteorType=seedMeteorTypes[5],
                         CalibrationType =Calibration_Type.检定,
                         CheckName="雨量检定"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[6],
+                        MeteorType=seedMeteorTypes[5],
                         CalibrationType =Calibration_Type.校准,
                         CheckName="雨量校准"
                     },
                     new BD_CheckType{
-                        MeteorType=seedMeteorTypes[6],
+                        MeteorType=seedMeteorTypes[5],
                         CalibrationType =Calibration_Type.核查,
                         CheckName="雨量核查"
                     }

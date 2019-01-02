@@ -186,16 +186,18 @@ namespace ZOGLAB.MMMS.BD
         /// <returns></returns>
         public async Task<long> CUInstrumentTestF(IntestEditDto input)
         {
-            if (input.Id.HasValue) {
-                var query = await _instrumentTestRepository.FirstOrDefaultAsync(input.Id.Value);
-                if (query == null)
-                {
-                    throw new UserFriendlyException(L("CouldNotFoundTheTaskMessage"));
-                }                   
-            }
+            //if (input.Id.HasValue) {
+            //    var query = await _instrumentTestRepository.FirstOrDefaultAsync(input.Id.Value);
+            //    if (query == null)
+            //    {
+            //        throw new UserFriendlyException(L("CouldNotFoundTheTaskMessage"));
+            //    }                   
+            //}
 
             var item = input.MapTo<BD_InstrumentTest>();
-            return await _instrumentTestRepository.InsertAndGetIdAsync(item);
+
+            
+            return await _instrumentTestRepository.InsertOrUpdateAndGetIdAsync(item);
         }
 
         public void DelInstrumentTest(NullableIdDto<long> input)
