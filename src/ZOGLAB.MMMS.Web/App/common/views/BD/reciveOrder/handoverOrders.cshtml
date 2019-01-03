@@ -66,14 +66,14 @@
                         <div class="col-sm-6 text-right">
                             @*<button class="btn btn-default" ng-if="vm.permissions.edit" g-click="vm.exportToExcel()"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>
                             <button class="btn green" ng-if="!vm.permissions.create" ng-click="vm.getStandards()"><i class="icon-settings"></i> @L("Edit")</button>*@
-                            <button class="btn blue" ng-click="vm.getStandards()"><i class="fa fa-refresh"></i> @L("Search")</button>
+                            <button class="btn blue" ng-click="vm.getInstrumentTests()"><i class="fa fa-refresh"></i> @L("Search")</button>
                         </div>
                     </div>
                 </form>
             </div>
             <!-- END   Search Form  -->
             <div busy-if="vm.loading">
-                <div ui-grid="vm.getInstrumentTests()" ui-grid-pagination ui-grid-resize-columns></div>
+                <div ui-grid="vm.gridOptions" ui-grid-selection ui-grid-pagination ui-grid-resize-columns></div>
             </div>
         </div>
     </div>

@@ -35,17 +35,43 @@
                 paginationPageSize: app.consts.grid.defaultPageSize,
                 useExternalPagination: true,
                 useExternalSorting: true,
+
+                enableRowSelection: true,
+                enableSelectAll: true,
+                selectionRowHeaderWidth: 35,
+                rowHeight: 35,
+                
                 appScopeProvider: vm,
                 columnDefs: [       //TODO: 4.1  设置列参数 done
+                    {
+                        name: '是否交接',
+                        field: 'intHandover',
+                        minWidth: 30
+                    },
+                    {
+                        name: '仪器编码',
+                        field: 'number',
+                        minWidth: 50
+                    },
                     {
                         name: '仪器名称',
                         field: 'instrumentName',
                         minWidth: 50
                     },
                     {
-                        name: '仪器类型',
+                        name: '检测项目',
                         field: 'checkType',
                         minWidth: 30
+                    },
+                    {
+                        name: '领样人',
+                        field: 'user',
+                        minWidth: 50
+                    },
+                    {
+                        name: '实验室',
+                        field: 'address',
+                        minWidth: 50
                     },
                     {
                         name: '修改',
