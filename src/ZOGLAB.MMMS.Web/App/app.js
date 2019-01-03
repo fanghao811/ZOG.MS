@@ -231,7 +231,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
 
         //BD routes
         //reciveOrder
-        $stateProvider.state('reOrder', {
+        $stateProvider.state('reOrder', {       //3.0 仪器
             'abstract': true,
             url: '/reOrder',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -240,7 +240,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             }
         });
 
-        $stateProvider.state('reOrder.regist', {
+        $stateProvider.state('reOrder.regist', {        //3.1 仪器登记
             url: '/regist',
             templateUrl: '~/App/common/views/BD/reciveOrder/index.cshtml',
             ncyBreadcrumb: {
@@ -276,7 +276,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             }
         });
 
-        $stateProvider.state('reOrder.regist.checkItems', {
+        $stateProvider.state('reOrder.regist.checkItems', {     //检测项目
             url: '/checkItems/:orderId',
             views: {
                 '': {
@@ -290,7 +290,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             }
         });
 
-        $stateProvider.state('reOrder.regist.print', {
+        $stateProvider.state('reOrder.regist.print', {      //打印       
             url: '/print',
             views: {
                 '': {
@@ -299,6 +299,18 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             },
             ncyBreadcrumb: {
                 label: '送检登记'
+            }
+        });
+
+        $stateProvider.state('reOrder.handover', {      //3.2 仪器交接      
+            url: '/handover',
+            views: {
+                '': {
+                    templateUrl: '~/App/common/views/BD/reciveOrder/handoverOrders.cshtml'
+                }
+            },
+            ncyBreadcrumb: {
+                label: '仪器交接'
             }
         });
 

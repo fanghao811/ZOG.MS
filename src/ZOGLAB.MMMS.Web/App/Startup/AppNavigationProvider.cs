@@ -54,17 +54,18 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     )
                 ).AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
-                    L("InstrumentSR"),
-                    icon: "icon-ban"
+                    L("InstrumentSR"),      //仪器 2019/1/3
+                    icon: "fa fa-copy"
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("InspectionRegistration"),
+                        L("InspectionRegistration"), //仪器登记
                         url: "reOrder.regist.order",
-                        icon: "icon-ban"
+                        icon: "icon-check"
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
-                        L("InstrumentHandover"),
+                        L("InstrumentHandover"), //仪器交接
+                        url: "reOrder.handover",
                         icon: "icon-ban"
                         )
                     ).AddItem(new MenuItemDefinition(

@@ -45,7 +45,7 @@ namespace ZOGLAB.MMMS.BD
 
         //10.有效日期
         [MaxLength(MaxLength_20)]
-        public string CaliValidateDate { get; set; }
+        public string CaliValidate { get; set; }
 
         //11.不确定度
         [MaxLength(MaxLength_20)]

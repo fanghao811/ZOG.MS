@@ -145,8 +145,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BD\BinaryObject\IBinaryAppService.cs" />
-    <Compile Include="BD\BinaryObject\BinaryAppService.cs" />
+    <Compile Include="BD\Binary\IBinaryAppService.cs" />
+    <Compile Include="BD\Binary\BinaryAppService.cs" />
     <Compile Include="BD\CheckType\Dto\GetCheckTypesInput.cs" />
     <Compile Include="BD\CheckType\Dto\CheckTypeFReadDto.cs" />
     <Compile Include="BD\CheckType\ICheckTypeService.cs" />
@@ -163,11 +163,13 @@
     <Compile Include="BD\ReceiveInstrument\IReceiveInstrumentAppService.cs" />
     <Compile Include="BD\ReceiveInstrument\ReceiveInstrumentAppService.cs" />
     <Compile Include="BD\Receive\Dto\InstrumentTestEditDto.cs" />
+    <Compile Include="BD\Receive\Dto\InTstListDto.cs" />
     <Compile Include="BD\Receive\Dto\InTstFRDto.cs" />
     <Compile Include="BD\Receive\Dto\IntestCreateDto.cs" />
     <Compile Include="BD\Receive\Dto\ReceiveEditDto.cs" />
     <Compile Include="BD\Receive\Dto\ReceiveListDto.cs" />
     <Compile Include="BD\Receive\Dto\InstrumentWithTCountDto.cs" />
+    <Compile Include="BD\Receive\Dto\GetInstrumentTestsInput.cs" />
     <Compile Include="BD\Receive\IReceiveAppService.cs" />
     <Compile Include="BD\Receive\ReceiveAppService.cs" />
     <Compile Include="BD\Receive\Dto\ReceiveWithItemsDto.cs" />

@@ -1,0 +1,81 @@
+﻿@using ZOGLAB.MMMS.Localization
+<div ng-controller="common.views.BD.handoverOrder.index as vm">
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="/tenant/dashboard">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <span>仪器交接</span>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE BAR -->
+    <div class="portlet light margin-bottom-0">
+        <div class="portlet-body">
+            <!-- BEGIN Search Form -->
+            <div class="form">
+                <form class="horizontal-form">
+                    <div class="form-body" enter-key="vm.getStandards()">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">仪器编码</label>
+                                    <input type="text" class="form-control" ng-model="vm.requestParams.number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">实验室地址</label>
+                                    <input type="text" class="form-control" ng-model="vm.requestParams.address">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-if="vm.advancedFiltersAreShown">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">要素类型</label>
+                                    <select class="form-control" ng-model="vm.requestParams.strType">
+                                        <option value="">@L("All")</option>
+                                        <option value="false">标准器</option>
+                                        <option value="true">辅助设备</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">检测项目</label>
+                                    <select class="form-control" ng-model="vm.requestParams.strType">
+                                        <option value="">@L("All")</option>
+                                        <option value="false">标准器</option>
+                                        <option value="true">辅助设备</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-bottom-10">
+                        <div class="col-sm-6">
+                            <span class="clickable-item text-muted" ng-if="!vm.advancedFiltersAreShown" ng-click="vm.advancedFiltersAreShown=!vm.advancedFiltersAreShown"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+                            <span class="clickable-item text-muted" ng-if="vm.advancedFiltersAreShown" ng-click="vm.advancedFiltersAreShown=!vm.advancedFiltersAreShown"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            @*<button class="btn btn-default" ng-if="vm.permissions.edit" g-click="vm.exportToExcel()"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>
+                            <button class="btn green" ng-if="!vm.permissions.create" ng-click="vm.getStandards()"><i class="icon-settings"></i> @L("Edit")</button>*@
+                            <button class="btn blue" ng-click="vm.getStandards()"><i class="fa fa-refresh"></i> @L("Search")</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- END   Search Form  -->
+            <div busy-if="vm.loading">
+                <div ui-grid="vm.getInstrumentTests()" ui-grid-pagination ui-grid-resize-columns></div>
+            </div>
+        </div>
+    </div>
+    <pre>{{}}</pre>
+</div>

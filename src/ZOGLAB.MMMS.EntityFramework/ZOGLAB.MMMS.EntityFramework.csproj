@@ -405,6 +405,10 @@
     <Compile Include="Migrations\201812290907586_added_IsofeDel.Designer.cs">
       <DependentUpon>201812290907586_added_IsofeDel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901030701306_modify_instrument.cs" />
+    <Compile Include="Migrations\201901030701306_modify_instrument.Designer.cs">
+      <DependentUpon>201901030701306_modify_instrument.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\CheckTypeCreator.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\InstrumentCreator.cs" />
@@ -623,6 +627,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812290907586_added_IsofeDel.resx">
       <DependentUpon>201812290907586_added_IsofeDel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901030701306_modify_instrument.resx">
+      <DependentUpon>201901030701306_modify_instrument.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -42,7 +42,7 @@ namespace ZOGLAB.MMMS.BD
         }
         #endregion
 
-        #region 2.登记单 OrderHeader
+        #region 2.登记单   3# Receive OrderHeader
 
         //1.获取所有登记单
         public async Task<List<ReceiveEditDto>> GetAll()
@@ -87,7 +87,7 @@ namespace ZOGLAB.MMMS.BD
         }
         #endregion
 
-        #region 3.仪器列表 ReceiveInstrument
+        #region 3.仪器列表 5# ReceiveInstrument
         //1.获取已经登记的仪器列表
         public async Task<ReceiveWithItemsDto> GetReceiveWithItems(NullableIdDto<long> input)
         {
@@ -120,7 +120,7 @@ namespace ZOGLAB.MMMS.BD
 
         #endregion
 
-        #region 4.检测业务 Test
+        #region 4.检测业务 6# InstrumentTest
 
         //1.获取所有 InstrumentTests By ReceiveInstrumentId TODO
         public List<IntestEditDto> GetInstrumentTestsByReInId(NullableIdDto<long> input)
@@ -140,7 +140,7 @@ namespace ZOGLAB.MMMS.BD
                     CheckType_ID = s.CheckType_ID,
                     CheckName = s.CheckType.CheckName,
                     Number = s.Number,
-                    CaliValidateDate = s.CaliValidateDate,
+                    CaliValidate = s.CaliValidate,
                     CaliU = s.CaliU,
                     Address = s.Address,
                     StrFlag = s.StrFlag
@@ -196,7 +196,7 @@ namespace ZOGLAB.MMMS.BD
 
             var item = input.MapTo<BD_InstrumentTest>();
 
-            
+
             return await _instrumentTestRepository.InsertOrUpdateAndGetIdAsync(item);
         }
 
@@ -204,6 +204,61 @@ namespace ZOGLAB.MMMS.BD
         {
             Debug.Assert(input.Id != null, "编辑时，ID不得为空！");
             _instrumentTestRepository.Delete(input.Id.Value);
+        }
+        #endregion
+
+        #region 5.交接业务 7# Test
+        //1.获取已经登记的仪器列表 用于交接挑选，带分页
+        //Task<PagedResultDto<StandardListDto>>
+        public async Task<PagedResultDto<InTstListDto>> GetInstrumentTestsForHandOver(GetInstrumentTestsInput input)
+        {
+            var query = CreateInTstsQuery(input);    //Step 01
+
+            var resultCount = await query.CountAsync(); //Step 02
+
+            var inTstListDtos = await query
+                                .AsNoTracking()
+                                .OrderBy(input.Sorting) /*Exp: using System.Linq.Dynamic;*/
+                                .PageBy(input)
+                                .ToListAsync();
+
+            return new PagedResultDto<InTstListDto>(resultCount, inTstListDtos);  //Step 03
+
+        }
+
+        private IQueryable<InTstListDto> CreateInTstsQuery(GetInstrumentTestsInput input)
+        {
+            var reInstruments = _receiveInstrumentRepository.GetAllIncluding(q => q.Instrument);
+            var inTsts = _instrumentTestRepository.GetAll().Include(q => q.ReceiveInstrument).Include(q => q.User);
+
+            var query = from re in reInstruments
+                        join inTst in inTsts
+                        on re.Id equals inTst.ReceiveInstrument_ID
+                        select new InTstListDto
+                        {
+                            Id = inTst.Id,
+                            InstrumentName = re.Instrument.Name,
+                            Number = inTst.Number,
+                            CheckType = inTst.CheckType.CheckName,
+                            CheckTypeId = inTst.CheckType.Id,
+                            CaliValidate = inTst.CaliValidate,
+                            IntHandover = inTst.IntHandover,
+                            User = inTst.UserId == null ? "暂无" : inTst.User.UserName,
+                            UserId = inTst.UserId,
+                            Calibration = inTst.Calibration,
+                            CaliU = inTst.CaliU,
+                            Address = inTst.Address,
+                            StrFlag = inTst.StrFlag
+                        };
+
+            query = query      //--查询过滤 Begin
+                    .Where(q => q.IntHandover == input.IntHandover)     //是否交接？
+                    .WhereIf(input.CheckTypeId > 0, item => item.CheckTypeId == input.CheckTypeId)        //检测类型
+                    .WhereIf(input.UserId > 0, item => item.UserId == input.UserId)         //接收用户
+                    .WhereIf(!input.Number.IsNullOrWhiteSpace(), item => item.Number.Contains(input.Number))    //仪器编号
+                    .WhereIf(!input.Address.IsNullOrWhiteSpace(), item => item.Address.Contains(input.Address));    //实验地址                                                                                                             
+
+            return query;
         }
         #endregion
 

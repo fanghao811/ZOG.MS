@@ -460,12 +460,14 @@
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
     <Content Include="App\common\views\BD\reciveOrder\checkItems.js" />
+    <Content Include="App\common\views\BD\reciveOrder\handoverOrders.js" />
     <Content Include="metronic\assets\admin\layout\img\logo5.jpg" />
     <Content Include="metronic\assets\global\css\invoice-2.min.css" />
     <Content Include="App\common\views\BD\reciveOrder\print.js" />
     <Content Include="App\common\views\BD\reciveOrder\order.js" />
     <Content Include="App\common\views\BD\reciveOrder\orderItems.js" />
     <Content Include="App\common\views\BD\reciveOrder\print.cshtml" />
+    <Content Include="App\common\views\BD\reciveOrder\handoverOrders.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\ordItems.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\checkItems.cshtml" />
     <Content Include="App\common\views\BD\reciveOrder\index.js" />
