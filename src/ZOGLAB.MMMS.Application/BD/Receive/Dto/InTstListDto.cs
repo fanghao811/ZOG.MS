@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ZOGLAB.MMMS.BD
@@ -45,5 +46,9 @@ namespace ZOGLAB.MMMS.BD
 
         //12.是否为自动检测
         public bool StrFlag { get; set; }
+
+        //12.是否为自动检测
+        public DateTime? CreationTime { get; set; }
+
     }
 }

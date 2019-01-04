@@ -8,6 +8,7 @@
                 App.initAjax();
             });
 
+            vm.items = {};
             vm.loading = false;
             vm.advancedFiltersAreShown = false;
 
@@ -37,11 +38,11 @@
                 useExternalSorting: true,
 
                 enableRowSelection: true,
-                enableFullRowSelection:true,
+                enableFullRowSelection: true,
                 enableSelectAll: true,
                 selectionRowHeaderWidth: 35,
                 rowHeight: 35,
-                
+
                 appScopeProvider: vm,
                 columnDefs: [       //TODO: 4.1  设置列参数 done
                     {
@@ -72,6 +73,12 @@
                     {
                         name: '实验室',
                         field: 'address',
+                        minWidth: 50
+                    },
+                    {
+                        name: '登记时间',
+                        field: 'creationTime',
+                        cellFilter: 'momentFormat: \'YYYY-MM-DD HH:mm:ss\'',
                         minWidth: 50
                     },
                     {
@@ -116,9 +123,20 @@
                     .then(function (result) {
                         vm.gridOptions.totalItems = result.data.totalCount;
                         vm.gridOptions.data = result.data.items;
+                        vm.items = result.data.items;
                     }).finally(function () {
                         vm.loading = false;
                     });
+            };
+
+            vm.createTest = function () {
+                var selectedIds = _.pluck($scope.gridApi.selection.getSelectedRows(), 'id');
+                if (selectedIds.length > 0) {
+                    abp.notify.info(selectedIds);
+                }
+                else {
+                    abp.notify.error("请选择仪器！");
+                };
             };
 
             vm.exportToExcel = function () {      //TODO:     Excel 导出功能

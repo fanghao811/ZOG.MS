@@ -351,7 +351,8 @@ namespace ZOGLAB.MMMS.BD
                             Calibration = inTst.Calibration,
                             CaliU = inTst.CaliU,
                             Address = inTst.Address,
-                            StrFlag = inTst.StrFlag
+                            StrFlag = inTst.StrFlag,
+                            CreationTime = inTst.CreationTime
                         };
 
             query = query      //--查询过滤 Begin
