@@ -62,6 +62,12 @@ namespace ZOGLAB.MMMS
                 .ReverseMap()
                 .ForMember(instrument => instrument.CheckTypes, options => options.Ignore())
                 .ForMember(instrument => instrument.MeteorTypes, options => options.Ignore());
+
+            mapper.CreateMap<BD_Test, TestEditDto>()
+                .ReverseMap()
+                .ForMember(test => test.Installation, options => options.Ignore())
+                .ForMember(test => test.MeteorType, options => options.Ignore())
+                .ForMember(test => test.InstrumentTests, options => options.Ignore());
         }
     }
 }

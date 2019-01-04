@@ -24,6 +24,7 @@ namespace ZOGLAB.MMMS.BD
 
         //5.交接业务 7# Test
         Task<PagedResultDto<InTstListDto>> GetInstrumentTestsForHandOver(GetInstrumentTestsInput input);
-
+        Task CreateOrUpdateTest(TestEditDto input);
+        Task SetInstrumentTestsAsync(long testId, params long[] instrumentTestIds);
     }
 }

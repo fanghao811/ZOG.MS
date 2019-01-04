@@ -60,7 +60,7 @@
                                 <label class="col-md-3 control-label">有效日期</label>
                                 <div class="col-md-9">
                                     <input type="text" placeholder="caliValidateDate" class="form-control" required
-                                           ng-model="vm.order.caliValidateDate" />
+                                           ng-model="vm.order.caliValidate" />
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                     <td><span class="bold font-green-haze">{{item.number}}</span></td>
                                     <td>{{item.address}}</td>
                                     <td>{{item.caliU}}</td>
-                                    <td>{{item.caliValidateDate}}</td>
+                                    <td>{{item.caliValidate}}</td>
                                     <td><a href="javascript:;" class="primary-link" ng-click="vm.selectCheckItem(item);">{{item.checkName}}</a></td>
                                     <td>
                                         <button class="btn btn-sm btn-danger" ng-click="vm.delInstrumentTest(item);">

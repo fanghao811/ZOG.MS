@@ -409,6 +409,10 @@
     <Compile Include="Migrations\201901030701306_modify_instrument.Designer.cs">
       <DependentUpon>201901030701306_modify_instrument.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901040614528_test_SiteID.cs" />
+    <Compile Include="Migrations\201901040614528_test_SiteID.Designer.cs">
+      <DependentUpon>201901040614528_test_SiteID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\CheckTypeCreator.cs" />
     <Compile Include="Migrations\Seed\BD\Creater\InstrumentCreator.cs" />
@@ -630,6 +634,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901030701306_modify_instrument.resx">
       <DependentUpon>201901030701306_modify_instrument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901040614528_test_SiteID.resx">
+      <DependentUpon>201901040614528_test_SiteID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

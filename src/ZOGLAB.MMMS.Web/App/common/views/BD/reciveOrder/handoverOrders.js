@@ -37,6 +37,7 @@
                 useExternalSorting: true,
 
                 enableRowSelection: true,
+                enableFullRowSelection:true,
                 enableSelectAll: true,
                 selectionRowHeaderWidth: 35,
                 rowHeight: 35,
@@ -49,7 +50,7 @@
                         minWidth: 30
                     },
                     {
-                        name: '仪器编码',
+                        name: '物质编码',
                         field: 'number',
                         minWidth: 50
                     },

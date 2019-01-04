@@ -1,23 +1,20 @@
-﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.Extensions;
+using Abp.Runtime.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using static ZOGLAB.MMMS.BD.BD_Test;
 
 namespace ZOGLAB.MMMS.BD
 {
-    /// <summary>
-    /// 7，检测单信息主表(BD_Test)
-    /// </summary>
-    [Table("BD_Test")]
-    public class BD_Test : AuditedEntity<long>, ISoftDelete
+    public class TestEditDto: IShouldNormalize
     {
         public const int MaxLength_50 = 50;
 
+        public long? Id { get; set; }
+
         //1.计量装置ID
-        [ForeignKey("Installation_ID")]
-        public BD_Installation Installation { get; set; }
+        public string Installation { get; set; }
         public long? Installation_ID { get; set; }
 
         //2.检测单号
@@ -26,8 +23,7 @@ namespace ZOGLAB.MMMS.BD
 
         //3.检测要素
         [MaxLength(MaxLength_50)]
-        [ForeignKey("MeteorType_ID")]
-        public BD_MeteorType MeteorType { get; set; }
+        public string MeteorType { get; set; }
         public long? MeteorType_ID { get; set; }
 
         //4.检测开始时间
@@ -45,15 +41,15 @@ namespace ZOGLAB.MMMS.BD
         //8.备注
         public string Mark { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public long[] InstrumentTestIds { get; set; }
 
-        public virtual ICollection<BD_InstrumentTest> InstrumentTests { get; set; }
-
-        public enum VMType {
-            实验室检定=0,
-            实验室校准=1,
-            现场校准=2,
-            现场核查=3
+        public void Normalize()
+        {
+            StartDate = DateTime.Now;
+            VocationalWorkType = VMType.实验室校准;
+            if (Check_Num.IsNullOrWhiteSpace()) {
+                Check_Num = DateTime.Now.ToLongDateString();
+            }           
         }
     }
 }

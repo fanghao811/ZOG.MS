@@ -19,7 +19,7 @@
                 checkName: '',
                 checkType_ID: 0,
                 number: "",
-                caliValidateDate: "",
+                caliValidate: "",
                 caliU: "",
                 address: "",
                 strFlag: true

@@ -173,6 +173,7 @@
     <Compile Include="BD\Receive\IReceiveAppService.cs" />
     <Compile Include="BD\Receive\ReceiveAppService.cs" />
     <Compile Include="BD\Receive\Dto\ReceiveWithItemsDto.cs" />
+    <Compile Include="BD\Receive\Dto\TestEditDto.cs" />
     <Compile Include="BD\Standards\Dto\StandardEditDto.cs" />
     <Compile Include="BD\Standards\Dto\GetStandardForEditOutput.cs" />
     <Compile Include="BD\Standards\Dto\GetStandardsInput.cs" />

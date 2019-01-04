@@ -139,6 +139,11 @@ namespace ZOGLAB.MMMS.EntityFramework
                     m.MapRightKey("CheckTypeId");
                     m.ToTable("InstrumentCheckType");
                 });
+
+            //modelBuilder.Entity<BD_InstrumentTest>()
+            //            .HasOptional(i => i.Test)
+            //            .WithMany(t=>t.InstrumentTests);
+
         }
     }
 }

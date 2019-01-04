@@ -2,6 +2,7 @@
 using Abp.AutoMapper;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.UI;
@@ -25,6 +26,7 @@ namespace ZOGLAB.MMMS.BD
         private readonly IRepository<BD_Receive, long> _receiveRepository;
         private readonly IRepository<BD_InstrumentTest, long> _instrumentTestRepository;
         private readonly IRepository<BD_ReceiveInstrument, long> _receiveInstrumentRepository;
+        private readonly IRepository<BD_Test, long> _testRepository;
         private readonly IInstrumentManager _instrumentManager;
 
         #region 1.服务注入
@@ -32,11 +34,13 @@ namespace ZOGLAB.MMMS.BD
                IRepository<BD_Receive, long> receiveRepository,
                IRepository<BD_InstrumentTest, long> instrumentTestRepository,
                IRepository<BD_ReceiveInstrument, long> receiveInstrumentRepository,
-               IInstrumentManager instrumentManager)
+               IRepository<BD_Test, long> testRepository,
+        IInstrumentManager instrumentManager)
         {
             _receiveRepository = receiveRepository;
             _instrumentTestRepository = instrumentTestRepository;
             _receiveInstrumentRepository = receiveInstrumentRepository;
+            _testRepository = testRepository;
             _instrumentManager = instrumentManager;
 
         }
@@ -208,8 +212,7 @@ namespace ZOGLAB.MMMS.BD
         #endregion
 
         #region 5.交接业务 7# Test
-        //1.获取已经登记的仪器列表 用于交接挑选，带分页
-        //Task<PagedResultDto<StandardListDto>>
+        //5.1 获取已经登记的仪器列表 用于交接挑选，带分页        
         public async Task<PagedResultDto<InTstListDto>> GetInstrumentTestsForHandOver(GetInstrumentTestsInput input)
         {
             var query = CreateInTstsQuery(input);    //Step 01
@@ -225,6 +228,106 @@ namespace ZOGLAB.MMMS.BD
             return new PagedResultDto<InTstListDto>(resultCount, inTstListDtos);  //Step 03
 
         }
+
+        //5.2 生成或者更新 test单据
+        public async Task CreateOrUpdateTest(TestEditDto input)
+        {
+            if (input.Id.HasValue)
+            {
+                await UpdateTest(input);
+            }
+            else
+            {
+                await CreateTest(input);
+            }
+        }
+
+        //5.2.1 生成test单据，指定user
+        public async Task<long> CreateTest(TestEditDto input)
+        {
+            BD_Test test = input.MapTo<BD_Test>();
+
+            foreach (var id in input.InstrumentTestIds)
+            {
+                var item = _instrumentTestRepository.FirstOrDefault(i => i.Id == id);
+                if (item != null)
+                {
+                    if (item.Test_ID != null)
+                    {
+                        string body = String.Format("InstrumentTest编号：{0},检测项目：{1},已经在任务{2}中！", item.Id, item.CheckType.CheckName, item.Test_ID);
+                        throw new UserFriendlyException("检测单生成失败", body);
+                    }
+                    test.InstrumentTests.Add(item);
+                }
+            }
+
+            return await _testRepository.InsertAndGetIdAsync(test);
+        }
+
+        //5.2.2 
+        public async Task UpdateTest(TestEditDto input)
+        {
+            BD_Test test = input.MapTo<BD_Test>();
+
+            await SetInstrumentTestsAsync(test.Id, input.InstrumentTestIds);
+
+            await _testRepository.UpdateAsync(test);
+        }
+
+        //更新 Test.InstrumentTests
+        [UnitOfWork]
+        public async Task SetInstrumentTestsAsync(long testId, params long[] instrumentTestIds)
+        {
+            if (instrumentTestIds == null)
+            {
+                instrumentTestIds = new long[0];
+            }
+
+            var currentIts = _instrumentTestRepository.GetAll().Where(it=>it.Test_ID== testId).ToList();
+
+            //Remove from removed Its
+            foreach (var currentIt in currentIts)
+            {
+                if (!instrumentTestIds.Contains(currentIt.Id))
+                {
+                    await RemoveFromTest(currentIt.Id);
+                }
+            }
+
+            //Add to added Its
+            foreach (var instrumentTestId in instrumentTestIds)
+            {
+                if (currentIts.All(it => it.Id != instrumentTestId))
+                {
+                    await AddToTest(testId, instrumentTestId);
+                }
+            }
+        }
+
+        //删除 instrumentTest.testId-->null
+        [UnitOfWork]
+        public async Task RemoveFromTest(long instrumentTestId)
+        {
+            var item = _instrumentTestRepository.FirstOrDefault(i => i.Id == instrumentTestId);
+            if (item == null)
+                return;
+            item.Test_ID = null;
+            item.IntHandover = false;
+            await _instrumentTestRepository.UpdateAsync(item);
+        }
+
+        //增加 instrumentTest
+        [UnitOfWork]
+        public async Task AddToTest(long testId,long instrumentTestId)
+        {
+            var item = _instrumentTestRepository.FirstOrDefault(i => i.Id == instrumentTestId);
+            if (item == null)
+                return;
+            item.Test_ID = testId;
+            item.IntHandover = true;
+            await _instrumentTestRepository.UpdateAsync(item);
+        }
+
 
         private IQueryable<InTstListDto> CreateInTstsQuery(GetInstrumentTestsInput input)
         {
