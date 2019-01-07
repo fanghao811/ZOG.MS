@@ -13,11 +13,11 @@
             vm.advancedFiltersAreShown = false;
 
             vm.requestParams = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
-                "checkTypeId": 0,
-                "intHandover": false,
-                "userId": 0,
-                "number": "", 
-                "address": "",
+                "check_Num": "",
+                "meteorType_ID": null,
+                "startDate": "1900-01-07",
+                "finishDate": "2900-02-07",
+                "vocationalWorkType": 1,
                 "skipCount": 0,
                 "maxResultCount": app.consts.grid.defaultPageSize,
                 "sorting": null
@@ -46,24 +46,19 @@
                 appScopeProvider: vm,
                 columnDefs: [       //TODO: 4.1  设置列参数 done
                     {
-                        name: '是否交接',
-                        field: 'intHandover',
-                        minWidth: 30
-                    },
-                    {
-                        name: '物质编码',
-                        field: 'number',
+                        name: '检测单号',
+                        field: 'check_Num',
                         minWidth: 50
                     },
                     {
-                        name: '仪器名称',
-                        field: 'instrumentName',
+                        name: '要素类型',
+                        field: 'meteorType',
                         minWidth: 50
                     },
                     {
-                        name: '检测项目',
-                        field: 'checkType',
-                        minWidth: 30
+                        name: '业务类型',
+                        field: 'vocationalWorkType',
+                        minWidth: 50
                     },
                     {
                         name: '领样人',
@@ -71,14 +66,15 @@
                         minWidth: 50
                     },
                     {
-                        name: '实验室',
-                        field: 'address',
+                        name: '开始时间',
+                        field: 'startDate',
+                        cellFilter: 'momentFormat: \'YYYY-MM-DD HH:mm:ss\'',
                         minWidth: 50
                     },
                     {
-                        name: '登记时间',
-                        field: 'creationTime',
-                        cellFilter: 'momentFormat: \'YYYY-MM-DD HH:mm:ss\'',
+                        name: '结束时间',
+                        field: 'finishDate',
+                        cellFilter: 'momentFormat: \'YYYY-MM-DD\'',
                         minWidth: 50
                     },
                     {
@@ -104,22 +100,22 @@
                             vm.requestParams.sorting = sortColumns[0].field + ' ' + sortColumns[0].sort.direction;
                         }
 
-                        vm.getInstrumentTests();      //TODO:    4.3.1    use 4.4.1
+                        vm.getTests();      //TODO:    4.3.1    use 4.4.1
                     });
 
                     gridApi.pagination.on.paginationChanged($scope, function (pageNumber, pageSize) {//TODO:  #通用，无特需不改动
                         vm.requestParams.skipCount = (pageNumber - 1) * pageSize;
                         vm.requestParams.maxResultCount = pageSize;
 
-                        vm.getInstrumentTests();      //TODO:    4.3.2    use 4.4.2
+                        vm.getTests();      //TODO:    4.3.2    use 4.4.2
                     });
                 },
                 data: []
             };
 
-            vm.getInstrumentTests = function () {     //TODO:     4.4.1 WebAPI查询方法
+            vm.getTests = function () {     //TODO:     4.4.1 WebAPI查询方法
                 vm.loading = true;
-                receiveService.getInstrumentTestsForHandOver(vm.requestParams) //TODO: ???
+                receiveService.getTests(vm.requestParams) //TODO: ???
                     .then(function (result) {
                         vm.gridOptions.totalItems = result.data.totalCount;
                         vm.gridOptions.data = result.data.items;
@@ -129,22 +125,23 @@
                     });
             };
 
-            function openCreateModal(selectedInstruments) {
+            vm.openCreateModal = function () {
                 var modalInstance = $uibModal.open({
                     templateUrl: '~/App/common/views/BD/receiveOrder/handoverModal.cshtml',
-                    controller: 'common.views.handover.createOrEditModal as vm',
+                    controller: 'common.views.handover.createModal as vm',
                     backdrop: 'static',
-                    resolve: {
-                        instruments: function () {
-                            return selectedInstruments;
-                        }
-                    }
+                    size: 'lg'
+                    //resolve: {
+                    //    instruments: function () {
+                    //        return $scope.gridApi.selection.getSelectedRows();
+                    //    }
+                    //}
                 });
 
-                modalInstance.result.then(function (result) {
-                    vm.getInstrumentTests();
+                modalInstance.result.then(function () {
+                    vm.getTests();
                 });
-            }
+            };
 
             vm.createTest = function () {
                 var selectedIds = _.pluck($scope.gridApi.selection.getSelectedRows(), 'id');
@@ -156,39 +153,7 @@
                 };
             };
 
-            vm.exportToExcel = function () {      //TODO:     Excel 导出功能
-                standardService.getStandardsToExcel(vm.requestParams)
-                    .then(function (result) {
-                        app.downloadTempFile(result.data.items);
-                    });
-            };
-
-            vm.editStandard = function (standard) {
-                openCreateOrEditModal(standard.id);
-            };
-
-            vm.createStandard = function () {
-                openCreateOrEditModal(null);
-            };
-
-
-            //vm.deleteStandard = function (standard) {
-            //    abp.message.confirm(
-            //        app.localize('UserDeleteWarningMessage', standard.strName),
-            //        function (isConfirmed) {
-            //            if (isConfirmed) {
-            //                standardService.deleteStandard({
-            //                    id: standard.id
-            //                }).then(function () {
-            //                    vm.getStandards();
-            //                    abp.notify.success(app.localize('SuccessfullyDeleted'));
-            //                });
-            //            }
-            //        }
-            //    );
-            //};
-
-            vm.getInstrumentTests();
+            vm.getTests();
         }
     ]);
 })();

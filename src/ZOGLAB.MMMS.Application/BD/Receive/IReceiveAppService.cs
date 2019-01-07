@@ -23,6 +23,7 @@ namespace ZOGLAB.MMMS.BD
         void DelInstrumentTest(NullableIdDto<long> input);
 
         //5.交接业务 7# Test
+        Task<PagedResultDto<TestListDto>> GetTests(GetTestsInput input);
         Task<PagedResultDto<InTstListDto>> GetInstrumentTestsForHandOver(GetInstrumentTestsInput input);
         Task CreateOrUpdateTest(TestEditDto input);
         Task SetInstrumentTestsAsync(long testId, params long[] instrumentTestIds);

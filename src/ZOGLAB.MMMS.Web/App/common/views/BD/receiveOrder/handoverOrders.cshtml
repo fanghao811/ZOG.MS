@@ -64,7 +64,8 @@
                             <span class="clickable-item text-muted" ng-if="vm.advancedFiltersAreShown" ng-click="vm.advancedFiltersAreShown=!vm.advancedFiltersAreShown"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
                         </div>
                         <div class="col-sm-6 text-right">
-                            <button class="btn green" ng-click="vm.createTest()"><i class="icon-plus"></i> 新建交接单</button>                            
+                            <button class="btn danger" ng-click="vm.createTest()"><i class="icon-action-undo"></i> 测试按钮</button>
+                            <button class="btn green" ng-click="vm.openCreateModal()"><i class="icon-plus"></i> 新建检测单</button>
                             <button class="btn blue" ng-click="vm.getInstrumentTests()"><i class="fa fa-refresh"></i> @L("Search")</button>
                         </div>
                     </div>

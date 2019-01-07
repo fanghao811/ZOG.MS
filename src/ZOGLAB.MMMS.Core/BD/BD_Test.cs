@@ -40,7 +40,7 @@ namespace ZOGLAB.MMMS.BD
         public int? Site_ID { get; set; }
 
         //7.业务类型
-        public VMType VocationalWorkType { get; set; }
+        public VWType VocationalWorkType { get; set; }
 
         //8.备注
         public string Mark { get; set; }
@@ -49,7 +49,7 @@ namespace ZOGLAB.MMMS.BD
 
         public virtual ICollection<BD_InstrumentTest> InstrumentTests { get; set; }
 
-        public enum VMType {
+        public enum VWType {
             实验室检定=0,
             实验室校准=1,
             现场校准=2,

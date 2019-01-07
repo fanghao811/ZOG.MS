@@ -1,4 +1,4 @@
-﻿<form name="handoverCreateOrEditForm" role="form" novalidate class="form-validation">
+﻿<form name="handoverCreateForm" role="form" novalidate class="form-validation">
     <div class="modal-header">
         <h4 class="modal-title">
             <span>新建检测单</span>
@@ -21,9 +21,9 @@
                         </div>
                     </div>
                 </div>
-                <pre>{{vm.instruments}}</pre>
+                <pre>{{vm.vMTypes}}</pre>
             </uib-tab>
-            <uib-tab heading="厂家信息">
+            <uib-tab heading="选中的仪器">
                 <b class="badge badge-primary"></b>
                 <div class="form-group form-md-line-input form-md-floating-label no-hint">
                     <input type="text" name="manufactor" class="form-control" ng-class="{'edited':vm.standard.manufactor}" ng-model="vm.standard.manufactor">
@@ -32,12 +32,14 @@
                 <div class="form-group form-md-line-input form-md-floating-label no-hint">
                     <input type="text" name="manufactorTel" class="form-control" ng-class="{'edited':vm.standard.manufactorTel}" ng-model="vm.standard.manufactorTel">
                     <label>厂家电话</label>
-                </div>                            
+                </div>
             </uib-tab>
         </uib-tabset>
     </div>
     <div class="modal-footer">
         <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
-        <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="handoverCreateOrEditForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="handoverCreateForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
     </div>
 </form>
+
+

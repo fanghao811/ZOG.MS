@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Threading.Tasks;
+using ZOGLAB.MMMS.Authorization.Users;
 
 namespace ZOGLAB.MMMS.BD
 {
@@ -21,12 +22,11 @@ namespace ZOGLAB.MMMS.BD
     /// </summary>
     public class ReceiveAppService : MMMSAppServiceBase, IReceiveAppService
     {
-
-
         private readonly IRepository<BD_Receive, long> _receiveRepository;
         private readonly IRepository<BD_InstrumentTest, long> _instrumentTestRepository;
         private readonly IRepository<BD_ReceiveInstrument, long> _receiveInstrumentRepository;
         private readonly IRepository<BD_Test, long> _testRepository;
+        private readonly UserManager _userManager;
         private readonly IInstrumentManager _instrumentManager;
 
         #region 1.服务注入
@@ -35,14 +35,15 @@ namespace ZOGLAB.MMMS.BD
                IRepository<BD_InstrumentTest, long> instrumentTestRepository,
                IRepository<BD_ReceiveInstrument, long> receiveInstrumentRepository,
                IRepository<BD_Test, long> testRepository,
+               UserManager userManager,
         IInstrumentManager instrumentManager)
         {
             _receiveRepository = receiveRepository;
             _instrumentTestRepository = instrumentTestRepository;
             _receiveInstrumentRepository = receiveInstrumentRepository;
             _testRepository = testRepository;
+            _userManager = userManager;
             _instrumentManager = instrumentManager;
-
         }
         #endregion
 
@@ -212,7 +213,43 @@ namespace ZOGLAB.MMMS.BD
         #endregion
 
         #region 5.交接业务 7# Test
-        //5.1 获取已经登记的仪器列表 用于交接挑选，带分页        
+        //5.1 获取GetTests
+        public async Task<PagedResultDto<TestListDto>> GetTests(GetTestsInput input)
+        {
+            var tests = _testRepository.GetAll().Include("MeteorType").Include("Installation").Include("User") //Step 01
+                .Where(q => q.StartDate >= input.StartDate && q.FinishDate <= input.FinishDate)
+                .WhereIf(input.MeteorType_ID > 0, q => q.MeteorType_ID == input.MeteorType_ID)
+                .WhereIf(input.VocationalWorkType > 0, q => q.VocationalWorkType == input.VocationalWorkType)
+                .WhereIf(!input.Check_Num.IsNullOrWhiteSpace(), item => item.Check_Num.Contains(input.Check_Num));
+
+            var query = from t in tests
+                        join u in _userManager.Users
+                        on t.CreatorUserId equals u.Id
+                        select new TestListDto
+                        {
+                            Id = t.Id,
+                            Check_Num = t.Check_Num,
+                            MeteorType = t.MeteorType.Name,
+                            StartDate = t.StartDate,
+                            FinishDate = t.FinishDate,
+                            User=u.Name,
+                            VocationalWorkType = t.VocationalWorkType.ToString()
+                        };
+
+            var resultCount = await query.CountAsync();     //Step 02
+
+            var resultList = await query
+                    .AsNoTracking()
+                    .OrderBy(input.Sorting) /*Exp: using System.Linq.Dynamic;*/
+                    .PageBy(input)
+                    .ToListAsync();
+
+            var testListDtos = resultList.MapTo<List<TestListDto>>();
+
+            return new PagedResultDto<TestListDto>(resultCount, testListDtos);  //Step 03
+        }
+
+        //5.2 获取已经登记的仪器列表 用于交接挑选，带分页         
         public async Task<PagedResultDto<InTstListDto>> GetInstrumentTestsForHandOver(GetInstrumentTestsInput input)
         {
             var query = CreateInTstsQuery(input);    //Step 01
@@ -229,7 +266,7 @@ namespace ZOGLAB.MMMS.BD
 
         }
 
-        //5.2 生成或者更新 test单据
+        //5.3 生成或者更新 test单据
         public async Task CreateOrUpdateTest(TestEditDto input)
         {
             if (input.Id.HasValue)
@@ -242,7 +279,7 @@ namespace ZOGLAB.MMMS.BD
             }
         }
 
-        //5.2.1 生成test单据，指定user
+        //5.3.1 生成test单据，指定user
         public async Task<long> CreateTest(TestEditDto input)
         {
             BD_Test test = input.MapTo<BD_Test>();
@@ -264,7 +301,7 @@ namespace ZOGLAB.MMMS.BD
             return await _testRepository.InsertAndGetIdAsync(test);
         }
 
-        //5.2.2 
+        //5.3.2 
         public async Task UpdateTest(TestEditDto input)
         {
             BD_Test test = input.MapTo<BD_Test>();
@@ -283,7 +320,7 @@ namespace ZOGLAB.MMMS.BD
                 instrumentTestIds = new long[0];
             }
 
-            var currentIts = _instrumentTestRepository.GetAll().Where(it=>it.Test_ID== testId).ToList();
+            var currentIts = _instrumentTestRepository.GetAll().Where(it => it.Test_ID == testId).ToList();
 
             //Remove from removed Its
             foreach (var currentIt in currentIts)
@@ -318,7 +355,7 @@ namespace ZOGLAB.MMMS.BD
 
         //增加 instrumentTest
         [UnitOfWork]
-        public async Task AddToTest(long testId,long instrumentTestId)
+        public async Task AddToTest(long testId, long instrumentTestId)
         {
             var item = _instrumentTestRepository.FirstOrDefault(i => i.Id == instrumentTestId);
             if (item == null)

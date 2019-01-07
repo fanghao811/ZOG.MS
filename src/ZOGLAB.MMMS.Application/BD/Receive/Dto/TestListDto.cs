@@ -1,13 +1,9 @@
-﻿using Abp.Extensions;
-using Abp.Runtime.Validation;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using static ZOGLAB.MMMS.BD.BD_Test;
 
 namespace ZOGLAB.MMMS.BD
 {
-    public class TestEditDto: IShouldNormalize
+    public class TestListDto
     {
         public const int MaxLength_50 = 50;
 
@@ -30,24 +26,13 @@ namespace ZOGLAB.MMMS.BD
         //5.结束时间
         public DateTime? FinishDate { get; set; }
 
-        //6.站点ID
-        public string Site { get; set; }
+        //6.接收人
+        public string User { get; set; }
 
         //7.业务类型
-        public VWType VocationalWorkType { get; set; }
+        public string VocationalWorkType { get; set; }
 
         //8.备注
         public string Mark { get; set; }
-
-        public long[] InstrumentTestIds { get; set; }
-
-        public void Normalize()
-        {
-            StartDate = DateTime.Now;
-            VocationalWorkType = VWType.实验室校准;
-            if (Check_Num.IsNullOrWhiteSpace()) {
-                Check_Num = DateTime.Now.ToLongDateString();
-            }           
-        }
     }
 }
