@@ -129,6 +129,23 @@
                     });
             };
 
+            function openCreateModal(selectedInstruments) {
+                var modalInstance = $uibModal.open({
+                    templateUrl: '~/App/common/views/BD/receiveOrder/handoverModal.cshtml',
+                    controller: 'common.views.handover.createOrEditModal as vm',
+                    backdrop: 'static',
+                    resolve: {
+                        instruments: function () {
+                            return selectedInstruments;
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (result) {
+                    vm.getInstrumentTests();
+                });
+            }
+
             vm.createTest = function () {
                 var selectedIds = _.pluck($scope.gridApi.selection.getSelectedRows(), 'id');
                 if (selectedIds.length > 0) {
@@ -146,30 +163,13 @@
                     });
             };
 
-            //vm.editStandard = function (standard) {
-            //    openCreateOrEditModal(standard.id);
-            //};
+            vm.editStandard = function (standard) {
+                openCreateOrEditModal(standard.id);
+            };
 
-            //vm.createStandard = function () {
-            //    openCreateOrEditModal(null);
-            //};
-
-            //function openCreateOrEditModal(id) {
-            //    var modalInstance = $uibModal.open({
-            //        templateUrl: '~/App/common/views/BD/standard/createOrEditModal.cshtml',
-            //        controller: 'common.views.standard.createOrEditModal as vm',
-            //        backdrop: 'static',
-            //        resolve: {
-            //            standardId: function () {
-            //                return id;
-            //            }
-            //        }
-            //    });
-
-            //    modalInstance.result.then(function (result) {
-            //        vm.getStandards();
-            //    });
-            //}
+            vm.createStandard = function () {
+                openCreateOrEditModal(null);
+            };
 
 
             //vm.deleteStandard = function (standard) {

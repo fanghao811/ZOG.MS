@@ -451,6 +451,7 @@
     <Content Include="App\common\directives\permissionCombo.js" />
     <Content Include="App\common\directives\roleCombo.js" />
     <Content Include="App\common\directives\timezoneCombo.js" />
+    <Content Include="App\common\services\appEnums.js" />
     <Content Include="App\common\services\appUserNotificationHelper.js" />
     <Content Include="App\common\views\auditLogs\detailModal.css">
       <DependentUpon>detailModal.less</DependentUpon>
@@ -460,6 +461,7 @@
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
     <Content Include="App\common\views\BD\reciveOrder\checkItems.js" />
+    <Content Include="App\common\views\BD\reciveOrder\handoverModal.js" />
     <Content Include="App\common\views\BD\reciveOrder\handoverOrders.js" />
     <Content Include="metronic\assets\admin\layout\img\logo5.jpg" />
     <Content Include="metronic\assets\global\css\invoice-2.min.css" />
@@ -468,6 +470,7 @@
     <Content Include="App\common\views\BD\reciveOrder\orderItems.js" />
     <Content Include="App\common\views\BD\reciveOrder\print.cshtml" />
     <Content Include="App\common\views\BD\reciveOrder\handoverOrders.cshtml" />
+    <Content Include="App\common\views\BD\reciveOrder\handoverModal.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\ordItems.cshtml" />
     <None Include="App\common\views\BD\reciveOrder\checkItems.cshtml" />
     <Content Include="App\common\views\BD\reciveOrder\index.js" />

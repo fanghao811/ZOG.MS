@@ -1,0 +1,43 @@
+﻿<form name="handoverCreateOrEditForm" role="form" novalidate class="form-validation">
+    <div class="modal-header">
+        <h4 class="modal-title">
+            <span>新建检测单</span>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <uib-tabset class="tab-container tabbable-line">
+            <uib-tab heading="基本信息">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                            <input type="text" name="strName" class="form-control" ng-class="{'edited':vm.standard.strName}" ng-model="vm.standard.strName" required>
+                            <label>标准器名称</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                            <input class="form-control" type="text" name="factoryNum" ng-class="{'edited':vm.standard.factoryNum}" ng-model="vm.standard.factoryNum" required>
+                            <label>出厂编号</label>
+                        </div>
+                    </div>
+                </div>
+                <pre>{{vm.instruments}}</pre>
+            </uib-tab>
+            <uib-tab heading="厂家信息">
+                <b class="badge badge-primary"></b>
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <input type="text" name="manufactor" class="form-control" ng-class="{'edited':vm.standard.manufactor}" ng-model="vm.standard.manufactor">
+                    <label>制造商</label>
+                </div>
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <input type="text" name="manufactorTel" class="form-control" ng-class="{'edited':vm.standard.manufactorTel}" ng-model="vm.standard.manufactorTel">
+                    <label>厂家电话</label>
+                </div>                            
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+        <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="handoverCreateOrEditForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+    </div>
+</form>

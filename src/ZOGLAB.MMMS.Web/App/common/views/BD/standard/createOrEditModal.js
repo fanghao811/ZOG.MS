@@ -8,7 +8,6 @@
             vm.standard = null;
 
             vm.save = function () {
-
                 vm.saving = true;
                 standardService.createOrUpdateStandard(vm.standar)
                     .then(function () {
