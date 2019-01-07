@@ -460,20 +460,20 @@
     <Content Include="App\common\views\auditLogs\detailModal.min.css">
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
-    <Content Include="App\common\views\BD\reciveOrder\checkItems.js" />
-    <Content Include="App\common\views\BD\reciveOrder\handoverModal.js" />
-    <Content Include="App\common\views\BD\reciveOrder\handoverOrders.js" />
+    <Content Include="App\common\views\BD\receiveOrder\checkItems.js" />
+    <Content Include="App\common\views\BD\receiveOrder\handoverModal.js" />
+    <Content Include="App\common\views\BD\receiveOrder\handoverOrders.js" />
     <Content Include="metronic\assets\admin\layout\img\logo5.jpg" />
     <Content Include="metronic\assets\global\css\invoice-2.min.css" />
-    <Content Include="App\common\views\BD\reciveOrder\print.js" />
-    <Content Include="App\common\views\BD\reciveOrder\order.js" />
-    <Content Include="App\common\views\BD\reciveOrder\orderItems.js" />
-    <Content Include="App\common\views\BD\reciveOrder\print.cshtml" />
-    <Content Include="App\common\views\BD\reciveOrder\handoverOrders.cshtml" />
-    <Content Include="App\common\views\BD\reciveOrder\handoverModal.cshtml" />
-    <None Include="App\common\views\BD\reciveOrder\ordItems.cshtml" />
-    <None Include="App\common\views\BD\reciveOrder\checkItems.cshtml" />
-    <Content Include="App\common\views\BD\reciveOrder\index.js" />
+    <Content Include="App\common\views\BD\receiveOrder\print.js" />
+    <Content Include="App\common\views\BD\receiveOrder\order.js" />
+    <Content Include="App\common\views\BD\receiveOrder\orderItems.js" />
+    <Content Include="App\common\views\BD\receiveOrder\print.cshtml" />
+    <Content Include="App\common\views\BD\receiveOrder\handoverOrders.cshtml" />
+    <Content Include="App\common\views\BD\receiveOrder\handoverModal.cshtml" />
+    <None Include="App\common\views\BD\receiveOrder\ordItems.cshtml" />
+    <None Include="App\common\views\BD\receiveOrder\checkItems.cshtml" />
+    <Content Include="App\common\views\BD\receiveOrder\index.js" />
     <Content Include="App\common\views\BD\workload\index.js" />
     <Content Include="App\common\views\BD\standard\createOrEditModal.js" />
     <Content Include="App\common\views\BD\standard\index.js" />
@@ -2356,12 +2356,12 @@
     <Content Include="App\common\views\BD\standard\createOrEditModal.cshtml" />
     <Content Include="App\common\views\layout\备份\layout.cshtml" />
     <Content Include="App\common\views\BD\workload\index.cshtml" />
-    <Content Include="App\common\views\BD\reciveOrder\index.cshtml" />
+    <Content Include="App\common\views\BD\receiveOrder\index.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App\common\views\BD\reciveOrder\order.cshtml" />
+    <Content Include="App\common\views\BD\receiveOrder\order.cshtml" />
     <None Include="Properties\PublishProfiles\aspnetzero - Web Deploy.pubxml" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

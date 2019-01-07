@@ -16,7 +16,7 @@
                 "checkTypeId": 0,
                 "intHandover": false,
                 "userId": 0,
-                "number": "",
+                "number": "", 
                 "address": "",
                 "skipCount": 0,
                 "maxResultCount": app.consts.grid.defaultPageSize,

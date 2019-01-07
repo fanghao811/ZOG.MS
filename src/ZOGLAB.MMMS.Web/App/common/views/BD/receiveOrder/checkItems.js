@@ -1,5 +1,5 @@
 ﻿(function () {
-    appModule.controller('common.views.BD.reciveOrder.checkItems', ['$scope', '$state', '$stateParams',
+    appModule.controller('common.views.BD.receiveOrder.checkItems', ['$scope', '$state', '$stateParams',
         'abp.services.app.checkType', 'abp.services.app.receive',
         function ($scope, $state, $stateParams, checkTypeService, receiveService) {        //TODO 1.0 更改服务名 done
             var vm = this;

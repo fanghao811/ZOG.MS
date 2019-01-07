@@ -235,7 +235,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
         }
 
         //BD routes
-        //reciveOrder
+        //receiveOrder
         $stateProvider.state('reOrder', {       //3.0 仪器
             'abstract': true,
             url: '/reOrder',
@@ -247,7 +247,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
 
         $stateProvider.state('reOrder.regist', {        //3.1 仪器登记
             url: '/regist',
-            templateUrl: '~/App/common/views/BD/reciveOrder/index.cshtml',
+            templateUrl: '~/App/common/views/BD/receiveOrder/index.cshtml',
             ncyBreadcrumb: {
                 label: '送检登记'
             }
@@ -257,7 +257,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             url: '/order/:orderId',
             views: {
                 '': {
-                    templateUrl: '~/App/common/views/BD/reciveOrder/order.cshtml'
+                    templateUrl: '~/App/common/views/BD/receiveOrder/order.cshtml'
                 }               
             },
             //cache: false,
@@ -271,7 +271,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             url: '/ordItems/:orderId',
             views: {
                 '': {
-                    templateUrl: '~/App/common/views/BD/reciveOrder/ordItems.cshtml'
+                    templateUrl: '~/App/common/views/BD/receiveOrder/ordItems.cshtml'
                 }
             },
             redirectTo: '/order/:orderId',
@@ -285,7 +285,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             url: '/checkItems/:orderId',
             views: {
                 '': {
-                    templateUrl: '~/App/common/views/BD/reciveOrder/checkItems.cshtml'
+                    templateUrl: '~/App/common/views/BD/receiveOrder/checkItems.cshtml'
                 }
             },
             redirectTo: '/order/:orderId',
@@ -299,7 +299,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             url: '/print',
             views: {
                 '': {
-                    templateUrl: '~/App/common/views/BD/reciveOrder/print.cshtml'
+                    templateUrl: '~/App/common/views/BD/receiveOrder/print.cshtml'
                 }
             },
             ncyBreadcrumb: {
@@ -311,7 +311,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             url: '/handover',
             views: {
                 '': {
-                    templateUrl: '~/App/common/views/BD/reciveOrder/handoverOrders.cshtml'
+                    templateUrl: '~/App/common/views/BD/receiveOrder/handoverOrders.cshtml'
                 }
             },
             ncyBreadcrumb: {

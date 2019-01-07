@@ -1,5 +1,5 @@
 ﻿(function () {
-    appModule.controller('common.views.BD.reciveOrder.orderItems', [        //TODO：  在app.js 中添加路由 done
+    appModule.controller('common.views.BD.receiveOrder.orderItems', [        //TODO：  在app.js 中添加路由 done
         '$scope', '$state', '$stateParams', 'abp.services.app.receive', 'abp.services.app.instrument',
         function ($scope, $state, $stateParams, receiveService, instrumentService) {        //TODO 1.0 更改服务名 done
             var vm = this;
