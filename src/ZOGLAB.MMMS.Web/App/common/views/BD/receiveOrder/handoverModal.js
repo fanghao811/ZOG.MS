@@ -8,8 +8,6 @@
             vm.saving = false;
             vm.handoverOrder = null;
 
-            vm.dateRangeOptions = app.createDateRangePickerOptions();
-
             vm.dateRangeOptions = {
                 locale: {
                     format: 'L',
@@ -33,15 +31,13 @@
                 endDate: moment().endOf('day')
             };
 
-            vm.requestParams = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
+
+            vm.test = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
                 "checkTypeId": 0,
                 "intHandover": false,
                 "userId": 0,
                 "number": "",
-                "address": "",
-                "skipCount": 0,
-                "maxResultCount": app.consts.grid.defaultPageSize,
-                "sorting": null
+                "vocationalWorkType": 0
             };
 
             vm.getInstrumentTests = function () {     //TODO:     4.4.1 WebAPI查询方法
@@ -56,12 +52,23 @@
                     });
             };
 
-            //vm.instrumentTests = instrumentTests;       //被选中的仪器列表
+
             vm.vMTypes = enumService.test_VMType;       // VocationalWork_Type 业务类型 ==> 7# BD_Test 
+
+            //vm.getUnits = function () {     //TODO:     4.4.1 WebAPI查询方法
+            //    vm.loading = true;
+            //    unitService.getAll() //TODO: ???
+            //        .then(function (result) {
+            //            $scope.units = result.data;
+            //        }).finally(function () {
+            //            vm.loading = false;
+            //        });
+            //};
 
             vm.save = function () {
                 vm.saving = true;
             };
+
 
             vm.cancel = function () {
                 $uibModalInstance.dismiss();

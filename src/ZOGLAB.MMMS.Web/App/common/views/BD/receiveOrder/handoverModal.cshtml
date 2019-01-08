@@ -18,11 +18,13 @@
                                    ng-model="vm.dateRangeModel" />
                         </div>
                     </div>
-
                     <div class="col-sm-6">
-                        <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                            <input class="form-control" type="text" name="factoryNum" ng-class="{'edited':vm.standard.factoryNum}" ng-model="vm.standard.factoryNum" required>
-                            <label>出厂编号</label>
+                        <div class="form-group">
+                            <label class="control-label">业务类型</label>
+                            <select class="form-control" 
+                                    ng-options="x.value as x.name for x in vm.vMTypes"
+                                    ng-model="vm.test.vocationalWorkType">
+                            </select>
                         </div>
                     </div>
                 </div>
