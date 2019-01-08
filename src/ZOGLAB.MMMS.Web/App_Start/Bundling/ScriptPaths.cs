@@ -33,6 +33,7 @@ namespace ZOGLAB.MMMS.Web.Bundling
         public const string Bootstrap_DateRangePicker = "~/libs/bootstrap-daterangepicker/daterangepicker.js";
         public const string Bootstrap_Select = "~/libs/bootstrap-select/bootstrap-select.min.js";
         public const string Bootstrap_Switch = "~/libs/bootstrap-switch/js/bootstrap-switch.min.js";
+        public const string Bootstrap_DatePicker= "~/libs/aaa/bootstrap-datepicker.min.js";
 
         public const string SignalR = "~/Scripts/jquery.signalR-2.2.1.min.js";
         public const string LocalForage = "~/Scripts/localforage/localforage.min.js";
@@ -68,7 +69,6 @@ namespace ZOGLAB.MMMS.Web.Bundling
         public const string Angular_DateRangePicker = "~/libs/angular-daterangepicker/angular-daterangepicker.min.js";//SPA!
         public const string Angular_Moment = "~/libs/angular-moment/angular-moment.min.js";//SPA!
         public const string Angular_Bootstrap_Switch = "~/libs/angular-bootstrap-switch/angular-bootstrap-switch.min.js";//SPA!
-        //public const string Angular_NgSelect= "~/Scripts/ngSelect.min.js";//SPA!
 
         public const string Abp = "~/Abp/Framework/scripts/abp.js";
         public const string Abp_JQuery = "~/Abp/Framework/scripts/libs/abp.jquery.js";

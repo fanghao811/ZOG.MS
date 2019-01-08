@@ -7,7 +7,31 @@
             vm.loading = true;
             vm.saving = false;
             vm.handoverOrder = null;
-            //vm.instruments = instruments;
+
+            vm.dateRangeOptions = app.createDateRangePickerOptions();
+
+            vm.dateRangeOptions = {
+                locale: {
+                    format: 'L',
+                    applyLabel: app.localize('Apply'),
+                    cancelLabel: app.localize('Cancel'),
+                    customRangeLabel: app.localize('CustomRange')
+                },
+                min: moment('2019-01-01'),
+                minDate: moment('2019-01-01'),
+                max: moment('2022-05-01'),
+                maxDate: moment('2022-05-01'),
+                ranges: {}
+            };
+
+            vm.dateRangeOptions.ranges[app.localize('Last7Days')] = [moment().startOf('day'), moment().add(6, 'days').endOf('day')];
+            vm.dateRangeOptions.ranges[app.localize('Last30Days')] = [moment().startOf('day'), moment().add(29, 'days').endOf('day')];
+            vm.dateRangeOptions.ranges[app.localize('ThisMonth')] = [moment().startOf('day'), moment().endOf('month')];
+
+            vm.dateRangeModel = {
+                startDate: moment().startOf('day'),
+                endDate: moment().endOf('day')
+            };
 
             vm.requestParams = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
                 "checkTypeId": 0,

@@ -23,12 +23,6 @@
                 "sorting": null
             };
 
-            vm.dateRangeOptions = app.createDateRangePickerOptions();       //TODO: 3.0  设置日期范围对 done
-            vm.dateRangeModel = {
-                startDate: moment().startOf('day'),
-                endDate: moment().endOf('day')
-            };
-
             vm.gridOptions = {      //TODO: 4.0  设置表格参数 
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.WHEN_NEEDED,
                 enableVerticalScrollbar: uiGridConstants.scrollbars.WHEN_NEEDED,

@@ -20,6 +20,8 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         ScriptPaths.JQuery_Migrate,
                         ScriptPaths.Bootstrap,
                         ScriptPaths.Bootstrap_Hover_Dropdown,
+                        ScriptPaths.Bootstrap_DatePicker,
+
                         ScriptPaths.JQuery_Slimscroll,
                         ScriptPaths.JQuery_BlockUi,
                         ScriptPaths.Js_Cookie,
@@ -43,6 +45,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         ScriptPaths.MomentTimezoneJs,
                         ScriptPaths.Bootstrap_DateRangePicker,
                         ScriptPaths.Bootstrap_Select,
+                        ScriptPaths.Bootstrap_DatePicker,   //20190108
                         ScriptPaths.Underscore,
                         ScriptPaths.Angular,
                         ScriptPaths.Angular_Sanitize,
@@ -58,7 +61,6 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         ScriptPaths.Angular_DateRangePicker,
                         ScriptPaths.Angular_Moment,
                         ScriptPaths.Angular_Bootstrap_Switch,
-                        //ScriptPaths.Angular_NgSelect,
                         ScriptPaths.Abp,
                         ScriptPaths.Abp_JQuery,
                         ScriptPaths.Abp_Toastr,
@@ -113,10 +115,11 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     .Include(StylePaths.Toastr)
                     .Include(StylePaths.Angular_Ui_Grid, new CssRewriteUrlWithVirtualDirectoryTransform())
                     .Include(StylePaths.Angular_Ui_Select)
-                    //.Include(StylePaths.Angular_Select2)
+
                     .Include(StylePaths.Bootstrap_DateRangePicker)
                     .Include(StylePaths.Bootstrap_Select)
                     .Include(StylePaths.Bootstrap_Switch)       //4
+                    .Include(StylePaths.Bootstrap_DatePicker)   //20190108
                     .Include(StylePaths.JQuery_Jcrop)
                     .ForceOrdered()
                 );

@@ -8,12 +8,17 @@
         <uib-tabset class="tab-container tabbable-line">
             <uib-tab heading="基本信息">
                 <div class="row">
-                    <div class="col-sm-6 ">
-                        <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                            <input type="text" name="strName" class="form-control" ng-class="{'edited':vm.standard.strName}" ng-model="vm.standard.strName" required>
-                            <label>标准器名称</label>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">开始日期  --  完成日期</label>
+                            <input date-range-picker type="text" options="vm.dateRangeOptions"
+                                   min="vm.dateRangeOptions.min"
+                                   max="vm.dateRangeOptions.max"
+                                   class="form-control date-picker"
+                                   ng-model="vm.dateRangeModel" />
                         </div>
                     </div>
+
                     <div class="col-sm-6">
                         <div class="form-group form-md-line-input form-md-floating-label no-hint">
                             <input class="form-control" type="text" name="factoryNum" ng-class="{'edited':vm.standard.factoryNum}" ng-model="vm.standard.factoryNum" required>
@@ -25,14 +30,38 @@
             </uib-tab>
             <uib-tab heading="选中的仪器">
                 <b class="badge badge-primary"></b>
-                <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                    <input type="text" name="manufactor" class="form-control" ng-class="{'edited':vm.standard.manufactor}" ng-model="vm.standard.manufactor">
-                    <label>制造商</label>
+                <div class="form-group last">
+                    <label class="control-label col-md-3">Grouped Options</label>
+                    <div class="col-md-9">
+                        <select multiple="multiple" class="multi-select" id="my_multi_select2" name="my_multi_select2[]">
+                            <optgroup label="NFC EAST">
+                                <option>Dallas Cowboys</option>
+                                <option>New York Giants</option>
+                                <option>Philadelphia Eagles</option>
+                                <option>Washington Redskins</option>
+                            </optgroup>
+                            <optgroup label="NFC NORTH">
+                                <option>Chicago Bears</option>
+                                <option>Detroit Lions</option>
+                                <option>Green Bay Packers</option>
+                                <option>Minnesota Vikings</option>
+                            </optgroup>
+                            <optgroup label="NFC SOUTH">
+                                <option>Atlanta Falcons</option>
+                                <option>Carolina Panthers</option>
+                                <option>New Orleans Saints</option>
+                                <option>Tampa Bay Buccaneers</option>
+                            </optgroup>
+                            <optgroup label="NFC WEST">
+                                <option>Arizona Cardinals</option>
+                                <option>St. Louis Rams</option>
+                                <option>San Francisco 49ers</option>
+                                <option>Seattle Seahawks</option>
+                            </optgroup>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                    <input type="text" name="manufactorTel" class="form-control" ng-class="{'edited':vm.standard.manufactorTel}" ng-model="vm.standard.manufactorTel">
-                    <label>厂家电话</label>
-                </div>
+                
             </uib-tab>
         </uib-tabset>
     </div>
