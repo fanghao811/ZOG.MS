@@ -15,6 +15,7 @@ namespace ZOGLAB.MMMS.BD
 
         //1.计量装置ID
         public string Installation { get; set; }
+        public long? Installation_ID { get; set; }
 
         //2.检测单号
         [MaxLength(MaxLength_50)]
@@ -23,6 +24,7 @@ namespace ZOGLAB.MMMS.BD
         //3.检测要素
         [MaxLength(MaxLength_50)]
         public string MeteorType { get; set; }
+        public long? MeteorType_ID { get; set; }
 
         //4.检测开始时间
         public DateTime? StartDate { get; set; }

@@ -23,36 +23,40 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">仪器编码</label>
-                                    <input type="text" class="form-control" ng-model="vm.requestParams.number">
+                                    <label class="control-label">检测单号</label>
+                                    <input type="text" class="form-control" ng-model="vm.requestParams.check_Num">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">实验室地址</label>
-                                    <input type="text" class="form-control" ng-model="vm.requestParams.address">
+                                    <label class="control-label">@L("DateRange")</label>
+                                    <input date-range-picker type="text"
+                                           options="vm.dRangeOptions"
+                                           min="vm.dRangeOptions.min"
+                                           max="vm.dRangeOptions.max"
+                                           class="form-control date-picker"
+                                           ng-model="vm.dRangeModel" />
                                 </div>
                             </div>
                         </div>
-
                         <div class="row" ng-if="vm.advancedFiltersAreShown">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">要素类型</label>
-                                    <select class="form-control" ng-model="vm.requestParams.strType">
-                                        <option value="">@L("All")</option>
-                                        <option value="false">标准器</option>
-                                        <option value="true">辅助设备</option>
+                                    <label class="control-label">检测要素</label>
+                                    <select class="form-control"
+                                            ng-model="vm.selectedMeteor"
+                                            ng-options=" item.id as item.meteor for item in vm.meteors">
+                                        <option value="" select hidden>请选择要素</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">检测项目</label>
-                                    <select class="form-control" ng-model="vm.requestParams.strType">
-                                        <option value="">@L("All")</option>
-                                        <option value="false">标准器</option>
-                                        <option value="true">辅助设备</option>
+                                    <select class="form-control"  required
+                                            ng-model="vm.order.checkType_ID"
+                                            ng-options=" checkType.id as checkType.checkName for checkType in vm.checkTypes | filter:{ meteor:vm.selectedMeteor}">
+                                        <option value="" select hidden>请选择检测项目</option>
                                     </select>
                                 </div>
                             </div>
@@ -77,5 +81,6 @@
             </div>
         </div>
     </div>
-    <pre>{{vm.items}}</pre>
+    <pre>{{vm.meteors}}</pre>
+    <pre></pre>
 </div>

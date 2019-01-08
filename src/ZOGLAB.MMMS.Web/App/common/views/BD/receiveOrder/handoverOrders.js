@@ -1,26 +1,35 @@
 ﻿(function () {
     appModule.controller('common.views.BD.handoverOrder.index', [        //TODO：  在app.js 中添加路由 done
-        '$scope', '$uibModal', 'uiGridConstants', 'abp.services.app.receive',
-        function ($scope, $uibModal, uiGridConstants, receiveService) {        //TODO 1.0 更改服务名 done
+        '$scope', '$uibModal', 'uiGridConstants',
+        'abp.services.app.receive',
+        'abp.services.app.meteorType',        
+        function ($scope, $uibModal, uiGridConstants,receiveService,meteorService) {          //TODO 1.0 更改服务名 done
             var vm = this;
-
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
             });
 
             vm.items = {};
+            vm.meteors = [];
+            vm.checkTypes = [];
             vm.loading = false;
             vm.advancedFiltersAreShown = false;
 
             vm.requestParams = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
                 "check_Num": "",
                 "meteorType_ID": null,
-                "startDate": "1900-01-07",
-                "finishDate": "2900-02-07",
+                "startDate": moment(),
+                "finishDate": moment(),
                 "vocationalWorkType": 1,
                 "skipCount": 0,
                 "maxResultCount": app.consts.grid.defaultPageSize,
                 "sorting": null
+            };
+
+            vm.dRangeOptions = app.createDateRangePickerOptions();
+            vm.dRangeModel = {
+                startDate: moment().startOf('day'),
+                endDate: moment().endOf('day')
             };
 
             vm.gridOptions = {      //TODO: 4.0  设置表格参数 
@@ -107,6 +116,13 @@
                 data: []
             };
 
+            vm.getMeteors = function () {     //TODO:     4.4.1 WebAPI查询方法
+                meteorService.getAll() //TODO: ???
+                    .then(function (result) {
+                        vm.meteors = result.data;
+                    });
+            };
+
             vm.getTests = function () {     //TODO:     4.4.1 WebAPI查询方法
                 vm.loading = true;
                 receiveService.getTests(vm.requestParams) //TODO: ???
@@ -147,7 +163,16 @@
                 };
             };
 
-            vm.getTests();
+            // =========================================================================
+            // Page Initial Function
+            // =========================================================================
+            vm.initial = function () {
+                vm.getMeteors();
+                vm.getTests();
+            };
+
+            vm.initial();
+
         }
     ]);
 })();
