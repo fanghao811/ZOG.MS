@@ -154,6 +154,7 @@
     <Compile Include="BD\Installation\Dto\GetInstallationsInput.cs" />
     <Compile Include="BD\Installation\IInstallationAppService.cs" />
     <Compile Include="BD\Installation\InstallationAppService.cs" />
+    <Compile Include="BD\Installation\Dto\InstallatonListDto.cs" />
     <Compile Include="BD\Instrument\Dto\InstrumentEditDto.cs" />
     <Compile Include="BD\Instrument\Dto\InstrumentFReadDto.cs" />
     <Compile Include="BD\Instrument\IInstrumentAppService.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="BD\Receive\Dto\InstrumentWithTCountDto.cs" />
     <Compile Include="BD\Receive\Dto\GetInstrumentTestsInput.cs" />
     <Compile Include="BD\Receive\Dto\GetTestsInput.cs" />
+    <Compile Include="BD\Receive\Dto\InTstSelectionDto.cs" />
     <Compile Include="BD\Receive\IReceiveAppService.cs" />
     <Compile Include="BD\Receive\ReceiveAppService.cs" />
     <Compile Include="BD\Receive\Dto\ReceiveWithItemsDto.cs" />

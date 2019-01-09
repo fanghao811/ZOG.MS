@@ -447,6 +447,7 @@
     <Content Include="Abp\Framework\styles\utils\ie10fix.css" />
     <Content Include="App\common\directives\enterKey.js" />
     <Content Include="App\common\directives\focusIf.js" />
+    <Content Include="App\common\directives\jqueryDirectives.js" />
     <Content Include="App\common\directives\passwordComplexity.js" />
     <Content Include="App\common\directives\permissionCombo.js" />
     <Content Include="App\common\directives\roleCombo.js" />
@@ -465,6 +466,8 @@
     <Content Include="App\common\views\BD\receiveOrder\handoverOrders.js" />
     <Content Include="libs\aaa\bootstrap-datepicker.min.css" />
     <Content Include="libs\aaa\bootstrap-datepicker.min.js" />
+    <Content Include="libs\aaa\jquery.multi-select.js" />
+    <Content Include="libs\aaa\multi-select.dist.css" />
     <Content Include="metronic\assets\admin\layout\img\logo5.jpg" />
     <Content Include="metronic\assets\global\css\invoice-2.min.css" />
     <Content Include="App\common\views\BD\receiveOrder\print.js" />
@@ -2364,6 +2367,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="App\common\views\BD\receiveOrder\order.cshtml" />
+    <Content Include="libs\aaa\multi-select.dev.css.map" />
     <None Include="Properties\PublishProfiles\aspnetzero - Web Deploy.pubxml" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
@@ -3128,6 +3132,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\webFormTest.cs" />
     <Compile Include="Models\Layout\TenantCustomCssViewModel.cs" />
     <Compile Include="Areas\Mpa\Startup\UserMenuItemExtensions.cs" />
     <Compile Include="App_Start\Bundling\CssRewriteUrlWithVirtualDirectoryTransform.cs" />

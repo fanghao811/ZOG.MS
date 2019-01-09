@@ -1,13 +1,35 @@
 ﻿(function () {
     appModule.controller('common.views.handover.createModal', [
-        '$scope', '$uibModalInstance', 'abp.services.app.receive', 'enumService',
-        function ($scope, $uibModalInstance, receiveService, enumService) {
-            var vm = this;
+        '$scope', '$uibModalInstance',
+        'abp.services.app.receive',
+        'abp.services.app.meteorType',
+        'abp.services.app.installation',
+        'enumService',
+        function ($scope, $uibModalInstance, receiveService, meteorService, installationService,enumService) {
 
+            // =========================================================================
+            // 变量初始化
+            // =========================================================================
+            var vm = this;
             vm.loading = true;
             vm.saving = false;
             vm.handoverOrder = null;
+            vm.meteors = [];
+            $scope.installations = [];
+            vm.instrumentTests = [];
 
+            vm.test = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
+                "check_Num": moment().format("YYYYMMDDHHmm"),
+                "mark": "",
+                "vocationalWorkType": 0,
+                "installation_ID": 0,
+                "meteorType_ID": 0,
+                "instrumentTestIds": []
+            };
+
+            // =========================================================================
+            // 日期范围设置
+            // =========================================================================
             vm.dateRangeOptions = {
                 locale: {
                     format: 'L',
@@ -31,40 +53,40 @@
                 endDate: moment().endOf('day')
             };
 
-
-            vm.test = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
-                "check_Num": "",
-                "mark": "",
-                "vocationalWorkType": 0,
-                "installation_ID": 0,
-                "meteorType_ID": 0,
-                "instrumentTestIds":[]
-            };
-
-            vm.getInstrumentTests = function () {     //TODO:     4.4.1 WebAPI查询方法
-                vm.loading = true;
-                receiveService.getInstrumentTestsForHandOver(vm.requestParams) //TODO: ???
+            // =========================================================================
+            // 获取 InstrumentTests ==> 6# BD_InstrumentTest
+            // =========================================================================
+            vm.getInstrumentTests = function () {     
+                receiveService.getInstrumentTestsForSelection() 
                     .then(function (result) {
-                        vm.gridOptions.totalItems = result.data.totalCount;
-                        vm.gridOptions.data = result.data.items;
-                        vm.items = result.data.items;
-                    }).finally(function () {
-                        vm.loading = false;
+                        vm.instrumentTests = result.data;
                     });
             };
 
+            // =========================================================================
+            // 获取 VocationalWork_Type 业务类型 ==> 7# BD_Test
+            // =========================================================================
+            vm.vMTypes = enumService.test_VMType;    
 
-            vm.vMTypes = enumService.test_VMType;       // VocationalWork_Type 业务类型 ==> 7# BD_Test 
+            // =========================================================================
+            // 获取 MeteorTypes
+            // =========================================================================
+            vm.getInstallations = function () {
+                installationService.getList()
+                    .then(function (result) {
+                        $scope.installations = result.data;
+                    });
+            }
 
-            //vm.getUnits = function () {     //TODO:     4.4.1 WebAPI查询方法
-            //    vm.loading = true;
-            //    unitService.getAll() //TODO: ???
-            //        .then(function (result) {
-            //            $scope.units = result.data;
-            //        }).finally(function () {
-            //            vm.loading = false;
-            //        });
-            //};
+            // =========================================================================
+            // 获取 MeteorTypes
+            // =========================================================================
+            vm.getMeteors = function () {     
+                meteorService.getAll() 
+                    .then(function (result) {
+                        vm.meteors = result.data;
+                    });
+            };
 
             vm.save = function () {
                 vm.saving = true;
@@ -75,6 +97,16 @@
                 $uibModalInstance.dismiss();
             };
 
+            // =========================================================================
+            // Page Initial Function
+            // =========================================================================
+            vm.initial = function () {
+                vm.getMeteors();
+                vm.getInstallations();
+                vm.getInstrumentTests();
+            };
+
+            vm.initial();
         }
     ]);
 })();

@@ -18,9 +18,9 @@
             vm.requestParams = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
                 "check_Num": "",
                 "meteorType_ID": null,
-                "startDate": moment(),
-                "finishDate": moment(),
-                "vocationalWorkType": 1,
+                "startDate": "1900-01-01",
+                "finishDate": "2021-01-01",
+                "vocationalWorkType": 0,
                 "skipCount": 0,
                 "maxResultCount": app.consts.grid.defaultPageSize,
                 "sorting": null

@@ -21,49 +21,55 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="control-label">业务类型</label>
-                            <select class="form-control" 
+                            <select class="form-control"
                                     ng-options="x.value as x.name for x in vm.vMTypes"
-                                    ng-model="vm.test.vocationalWorkType">
+                                    ng-model="vm.test.vocationalWorkType"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">检测要素</label>
+                            <select class="form-control"
+                                    ng-model="vm.test.meteorType_ID"
+                                    ng-options=" item.id as item.meteor for item in vm.meteors">
+                                <option value="" select>- 请选择 -</option>
                             </select>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">标准器</label>
+                            <ui-select ng-model="vm.test.installation_ID" set-timeout>
+                                <ui-select-match placeholder="搜索:名称、等级">
+                                    <span ng-bind="$select.selected.installation"></span>
+                                </ui-select-match>
+                                <ui-select-choices repeat="item.id as item in (installations | filter: $select.search) track by item.id">
+                                    <span ng-bind="item.installation"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="control-label">备注</label>
+                                <textarea class="form-control" rows="3"
+                                          ng-model="vm.test.mark"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 <pre>{{vm.test}}</pre>
+                <pre>vm.instrumentTests:{{vm.instrumentTests}}</pre>
             </uib-tab>
             <uib-tab heading="选中的仪器">
-                <b class="badge badge-primary"></b>
-                <div class="form-group last">
-                    <label class="control-label col-md-3">Grouped Options</label>
-                    <div class="col-md-9">
-                        <select multiple="multiple" class="multi-select" id="my_multi_select2" name="my_multi_select2[]">
-                            <optgroup label="NFC EAST">
-                                <option>Dallas Cowboys</option>
-                                <option>New York Giants</option>
-                                <option>Philadelphia Eagles</option>
-                                <option>Washington Redskins</option>
-                            </optgroup>
-                            <optgroup label="NFC NORTH">
-                                <option>Chicago Bears</option>
-                                <option>Detroit Lions</option>
-                                <option>Green Bay Packers</option>
-                                <option>Minnesota Vikings</option>
-                            </optgroup>
-                            <optgroup label="NFC SOUTH">
-                                <option>Atlanta Falcons</option>
-                                <option>Carolina Panthers</option>
-                                <option>New Orleans Saints</option>
-                                <option>Tampa Bay Buccaneers</option>
-                            </optgroup>
-                            <optgroup label="NFC WEST">
-                                <option>Arizona Cardinals</option>
-                                <option>St. Louis Rams</option>
-                                <option>San Francisco 49ers</option>
-                                <option>Seattle Seahawks</option>
-                            </optgroup>
-                        </select>
+                <div class="row">
+                    <b class="badge badge-primary"></b>
+                    <div class="form-group last">
+                        <select id='optgroup'
+                                multiple='multiple'
+                                class="multi-select"
+                                multi-select></select>
                     </div>
                 </div>
-                
             </uib-tab>
         </uib-tabset>
     </div>

@@ -47,7 +47,7 @@ namespace ZOGLAB.MMMS.BD
         //12.是否为自动检测
         public bool StrFlag { get; set; }
 
-        //12.是否为自动检测
+        //12.生成时间
         public DateTime? CreationTime { get; set; }
 
     }

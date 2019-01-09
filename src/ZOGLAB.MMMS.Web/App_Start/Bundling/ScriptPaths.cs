@@ -27,6 +27,7 @@ namespace ZOGLAB.MMMS.Web.Bundling
         public const string JQuery_Color = "~/libs/jcrop/js/jquery.color.js";
         public const string JQuery_Jcrop = "~/libs/jcrop/js/jquery.Jcrop.min.js";
         public const string JQuery_Timeago = "~/libs/jquery-timeago/jquery.timeago.js";
+        public const string JQuery_MultiSelect = "~/libs/aaa/jquery.multi-select.js";   //20190109
 
         public const string Bootstrap = "~/libs/bootstrap/js/bootstrap.min.js";
         public const string Bootstrap_Hover_Dropdown = "~/libs/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js";

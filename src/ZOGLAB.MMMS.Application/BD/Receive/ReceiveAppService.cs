@@ -212,6 +212,8 @@ namespace ZOGLAB.MMMS.BD
         }
         #endregion
 
+
+
         #region 5.交接业务 7# Test
         //5.1 获取GetTests
         public async Task<PagedResultDto<TestListDto>> GetTests(GetTestsInput input)
@@ -232,7 +234,7 @@ namespace ZOGLAB.MMMS.BD
                             MeteorType = t.MeteorType.Name,
                             StartDate = t.StartDate,
                             FinishDate = t.FinishDate,
-                            User=u.Name,
+                            User = u.Name,
                             VocationalWorkType = t.VocationalWorkType.ToString()
                         };
 
@@ -263,8 +265,27 @@ namespace ZOGLAB.MMMS.BD
                                 .ToListAsync();
 
             return new PagedResultDto<InTstListDto>(resultCount, inTstListDtos);  //Step 03
-
         }
+
+        //5.2.1
+        public async Task<List<InTstSelectionDto>> GetInstrumentTestsForSelection()
+        {
+            var reInstruments = _receiveInstrumentRepository.GetAllIncluding(q => q.Instrument);
+            var inTsts = _instrumentTestRepository.GetAll().Include(q => q.ReceiveInstrument);
+
+            var query = from re in reInstruments
+                        join inTst in inTsts
+                        on re.Id equals inTst.ReceiveInstrument_ID
+                        where inTst.IntHandover == false && inTst.Test_ID == null
+                        select new InTstSelectionDto
+                        {
+                            Id = inTst.Id,
+                            InstrumentTest = inTst.Number + " " + re.Instrument.Name + " " + inTst.CheckType.CheckName,
+                            Number = inTst.Number
+                        };
+            return await query.ToListAsync();
+        }
+
 
         //5.3 生成或者更新 test单据
         public async Task CreateOrUpdateTest(TestEditDto input)

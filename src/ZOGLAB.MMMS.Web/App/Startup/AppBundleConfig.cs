@@ -21,7 +21,6 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         ScriptPaths.Bootstrap,
                         ScriptPaths.Bootstrap_Hover_Dropdown,
                         ScriptPaths.Bootstrap_DatePicker,
-
                         ScriptPaths.JQuery_Slimscroll,
                         ScriptPaths.JQuery_BlockUi,
                         ScriptPaths.Js_Cookie,
@@ -35,6 +34,7 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                         ScriptPaths.JQuery_Jcrop,
                         ScriptPaths.JQuery_Timeago,
                         ScriptPaths.JsTree,
+                        ScriptPaths.JQuery_MultiSelect,
                         ScriptPaths.Bootstrap_Switch,
                         ScriptPaths.SpinJs,
                         ScriptPaths.SpinJs_JQuery,
@@ -111,11 +111,11 @@ namespace ZOGLAB.MMMS.Web.App.Startup
                     .Include(StylePaths.JQuery_Uniform, new CssRewriteUrlWithVirtualDirectoryTransform())
                     .Include(StylePaths.Morris)
                     .Include(StylePaths.JsTree, new CssRewriteUrlWithVirtualDirectoryTransform())
+                    .Include(StylePaths.MultiSelect)
                     .Include(StylePaths.SweetAlert)
                     .Include(StylePaths.Toastr)
                     .Include(StylePaths.Angular_Ui_Grid, new CssRewriteUrlWithVirtualDirectoryTransform())
                     .Include(StylePaths.Angular_Ui_Select)
-
                     .Include(StylePaths.Bootstrap_DateRangePicker)
                     .Include(StylePaths.Bootstrap_Select)
                     .Include(StylePaths.Bootstrap_Switch)       //4

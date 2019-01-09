@@ -13,6 +13,7 @@
         public const string JQuery_Uniform = "~/libs/jquery-uniform/css/uniform.default.css";
         public const string Morris = "~/libs/morris/morris.css";
         public const string JsTree = "~/libs/jstree/themes/default/style.css";
+        public const string MultiSelect = "~/libs/aaa/multi-select.dist.css"; //20190109
         public const string Angular_Ui_Grid = "~/libs/angular-ui-grid/ui-grid.min.css";//SPA!
         public const string Angular_Ui_Select = "~/libs/aaa/ui-select.css";//SPA!
         public const string Bootstrap_DateRangePicker = "~/libs/bootstrap-daterangepicker/daterangepicker.css";

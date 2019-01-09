@@ -28,14 +28,14 @@ namespace ZOGLAB.MMMS.BD
         public async Task<List<MeteorTypeListDto>> GetAll()
         {
             var query = await _meteorTypeRepository.GetAll()
-                .Select(p => 
+                .Select(p =>
                 new MeteorTypeListDto
                 {
                     Id = p.Id,
-                    Meteor=p.Name
+                    Meteor = p.Name
                 })
                 .ToListAsync();
-            return query.MapTo<List<MeteorTypeListDto>>();
+            return query;
         }
 
     }

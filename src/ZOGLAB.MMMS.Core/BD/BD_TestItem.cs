@@ -50,16 +50,13 @@ namespace ZOGLAB.MMMS.BD
         public string Appearance { get; set; }
 
         //9.环境温度
-        [MaxLength(MaxLength_20)]
-        public string EnvirTemp { get; set; }
+        public decimal EnvirTemp { get; set; }
 
         //10.环境湿度
-        [MaxLength(MaxLength_20)]
-        public string EnvirHumidity { get; set; }
+        public decimal EnvirHumidity { get; set; }
 
         //11.环境气压
-        [MaxLength(MaxLength_20)]
-        public string EnvirPressure { get; set; }
+        public decimal EnvirPressure { get; set; }
 
         //12.审核状态
         public bool ForCheck { get; set; }
