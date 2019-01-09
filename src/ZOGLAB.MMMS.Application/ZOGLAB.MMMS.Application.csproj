@@ -158,6 +158,9 @@
     <Compile Include="BD\Instrument\Dto\InstrumentFReadDto.cs" />
     <Compile Include="BD\Instrument\IInstrumentAppService.cs" />
     <Compile Include="BD\Instrument\InstrumentAppService.cs" />
+    <Compile Include="BD\MeteorType\MeteorTypeAppService.cs" />
+    <Compile Include="BD\MeteorType\IMeteorTypeService.cs" />
+    <Compile Include="BD\MeteorType\Dto\MeteorTypeListDto.cs" />
     <Compile Include="BD\ReceiveInstrument\Dto\ReceiveInstrumentEditDto.cs" />
     <Compile Include="BD\ReceiveInstrument\Dto\ReceiveInstrumentListDto.cs" />
     <Compile Include="BD\ReceiveInstrument\IReceiveInstrumentAppService.cs" />

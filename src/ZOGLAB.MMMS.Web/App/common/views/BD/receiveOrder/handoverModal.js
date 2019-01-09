@@ -33,11 +33,12 @@
 
 
             vm.test = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
-                "checkTypeId": 0,
-                "intHandover": false,
-                "userId": 0,
-                "number": "",
-                "vocationalWorkType": 0
+                "check_Num": "",
+                "mark": "",
+                "vocationalWorkType": 0,
+                "installation_ID": 0,
+                "meteorType_ID": 0,
+                "instrumentTestIds":[]
             };
 
             vm.getInstrumentTests = function () {     //TODO:     4.4.1 WebAPI查询方法
