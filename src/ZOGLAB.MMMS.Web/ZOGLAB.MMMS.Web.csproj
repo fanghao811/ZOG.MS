@@ -448,6 +448,7 @@
     <Content Include="App\common\directives\enterKey.js" />
     <Content Include="App\common\directives\focusIf.js" />
     <Content Include="App\common\directives\jqueryDirectives.js" />
+    <Content Include="App\common\directives\learnJs.js" />
     <Content Include="App\common\directives\passwordComplexity.js" />
     <Content Include="App\common\directives\permissionCombo.js" />
     <Content Include="App\common\directives\roleCombo.js" />

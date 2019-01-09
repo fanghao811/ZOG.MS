@@ -219,7 +219,7 @@ namespace ZOGLAB.MMMS.BD
         public async Task<PagedResultDto<TestListDto>> GetTests(GetTestsInput input)
         {
             var tests = _testRepository.GetAll().Include("MeteorType").Include("Installation").Include("User") //Step 01
-                .Where(q => q.StartDate >= input.StartDate && q.FinishDate <= input.FinishDate)
+                .Where(q => q.StartDate >= input.StartDate && q.StartDate <= input.FinishDate)
                 .WhereIf(input.MeteorType_ID > 0, q => q.MeteorType_ID == input.MeteorType_ID)
                 .WhereIf(input.VocationalWorkType > 0, q => q.VocationalWorkType == input.VocationalWorkType)
                 .WhereIf(!input.Check_Num.IsNullOrWhiteSpace(), item => item.Check_Num.Contains(input.Check_Num));
@@ -305,21 +305,28 @@ namespace ZOGLAB.MMMS.BD
         {
             BD_Test test = input.MapTo<BD_Test>();
 
-            foreach (var id in input.InstrumentTestIds)
-            {
-                var item = _instrumentTestRepository.FirstOrDefault(i => i.Id == id);
-                if (item != null)
-                {
-                    if (item.Test_ID != null)
-                    {
-                        string body = String.Format("InstrumentTest编号：{0},检测项目：{1},已经在任务{2}中！", item.Id, item.CheckType.CheckName, item.Test_ID);
-                        throw new UserFriendlyException("检测单生成失败", body);
-                    }
-                    test.InstrumentTests.Add(item);
-                }
-            }
+            long newTask_Id = await _testRepository.InsertAndGetIdAsync(test);
 
-            return await _testRepository.InsertAndGetIdAsync(test);
+            await CurrentUnitOfWork.SaveChangesAsync();
+
+            await SetInstrumentTestsAsync(test.Id, input.InstrumentTestIds);
+
+            //foreach (var id in input.InstrumentTestIds)
+            //{
+            //    var item = new BD_InstrumentTest { };
+            //    item = _instrumentTestRepository.FirstOrDefault(i => i.Id == id);
+            //    if (item != null)
+            //    {
+            //        if (item.Test_ID != null)
+            //        {
+            //            string body = String.Format("InstrumentTest编号：{0},检测项目：{1},已经在任务{2}中！", item.Id, item.CheckType.CheckName, item.Test_ID);
+            //            throw new UserFriendlyException("检测单生成失败", body);
+            //        }
+            //        test.InstrumentTests.Add(item);
+            //    }
+            //}
+
+            return newTask_Id;
         }
 
         //5.3.2 

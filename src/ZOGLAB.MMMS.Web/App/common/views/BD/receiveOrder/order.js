@@ -67,10 +67,9 @@
                 //vm.order.address = vm.selectedUnit.address;
                 receiveService.createOrUpdateReveice(vm.order) //TODO: ???
                     .then(function (result) {
+                        vm.loading = false;
                         abp.notify.info("登记单：" + app.localize('SavedSuccessfully'));
                         $state.go("reOrder.regist.ordItems", { orderId: result.data });
-                    }).finally(function () {
-                        vm.loading = false;
                     });
             };
 
