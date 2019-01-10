@@ -140,9 +140,9 @@ namespace ZOGLAB.MMMS.EntityFramework
                     m.ToTable("InstrumentCheckType");
                 });
 
-            //modelBuilder.Entity<BD_InstrumentTest>()
-            //            .HasOptional(i => i.Test)
-            //            .WithMany(t=>t.InstrumentTests);
+            modelBuilder.Entity<BD_InstrumentTest>()
+                        .HasOptional(i => i.Test)
+                        .WithMany(t => t.InstrumentTests);
 
         }
     }
