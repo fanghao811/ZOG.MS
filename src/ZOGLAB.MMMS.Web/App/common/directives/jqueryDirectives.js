@@ -1,36 +1,24 @@
 ﻿(function () {
-    appModule.directive('multiSelect', ['$timeout','abp.services.app.receive',
-        function ($timeout,receiveService) {
+    appModule.directive('multiSelect', ['$timeout', 'abp.services.app.receive',
+        function ($timeout, receiveService) {
             return {
                 restrict: 'A',
+                scope: true,
                 link: function ($scope, element, attrs) {
-                    $scope.intsts = [];
-
-                    //获取属性设置字段
-                    $(element).multiSelect($scope.$eval(attrs.multiSelect));
-
-                    receiveService.getInstrumentTestsForSelection()
+                    receiveService.getInstrumentTestsForSelection({ id: $scope.test_Id })
                         .then(function (result) {
-                            $scope.intsts = result.data;
-                            angular.forEach($scope.intsts, function (intst, _index) {
-                                $(element).multiSelect('addOption', { value: intst.id, text: intst.instrumentTest, index: _index });
+                            var unCheckedItems = result.data.unCheckedItems;
+                            var checkedItems = result.data.checkedItems;
+                            var items = _.union(unCheckedItems, checkedItems);
+                            angular.forEach(items, function (item, _index) {
+                                $(element).multiSelect('addOption', { value: item.id, text: item.instrumentTest, index: _index });
                             });
-
+                            var checkedIds = _.pluck(checkedItems, 'id');
+                            $(element).val(checkedIds);
                             $timeout(function () {
                                 $(element).multiSelect('refresh');
-                            });
+                            });                           
                         });
-
-                    //设置事件
-                    $(element).multiSelect({
-                        afterSelect: function (values) {
-                            alert("Select value: " + values);
-                        },
-                        afterDeselect: function (values) {
-                            alert("Deselect value: " + values);
-                        }
-                    }
-                    );
                 }
             };
         }

@@ -1,7 +1,8 @@
 ﻿<form name="handoverCreateForm" role="form" novalidate class="form-validation">
     <div class="modal-header">
         <h4 class="modal-title">
-            <span>新建检测单</span>
+            <span ng-if="test_Id">编辑标准器  {{vm.test.check_Num}}</span>
+            <span ng-if="!test_Id">新建检测单</span>
         </h4>
     </div>
     <div class="modal-body">
@@ -11,7 +12,9 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">开始日期  --  完成日期</label>
-                            <input date-range-picker type="text" options="vm.dateRangeOptions"
+                            <input id="dRDate"
+                                   date-range-picker type="text"
+                                   options="vm.dateRangeOptions"
                                    min="vm.dateRangeOptions.min"
                                    max="vm.dateRangeOptions.max"
                                    class="form-control date-picker"
@@ -50,15 +53,15 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                            <div class="form-group">
-                                <label class="control-label">备注</label>
-                                <textarea class="form-control" rows="3"
-                                          ng-model="vm.test.mark"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label class="control-label">备注</label>
+                            <textarea class="form-control" rows="3"
+                                      ng-model="vm.test.mark"></textarea>
                         </div>
                     </div>
+                </div>
+                <pre>{{vm.dateRangeModel}}</pre>
                 <pre>{{vm.test}}</pre>
-                <pre>vm.instrumentTests:{{vm.instrumentTests}}</pre>
             </uib-tab>
             <uib-tab heading="选中的仪器">
                 <div class="row">
@@ -67,7 +70,8 @@
                         <select id='optgroup'
                                 multiple='multiple'
                                 class="multi-select"
-                                multi-select></select>
+                                multi-select>
+                        </select>
                     </div>                   
                 </div>
             </uib-tab>
@@ -75,7 +79,13 @@
     </div>
     <div class="modal-footer">
         <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
-        <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="handoverCreateForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        <button type="submit" button-busy="vm.saving"
+                @*ng-disabled="handoverCreateForm.$invalid"*@
+                busy-text="@L("SavingWithThreeDot")" 
+                class="btn btn-primary blue" 
+                ng-click="vm.save()">
+        <i class="fa fa-save"></i> <span>@L("Save")</span>
+        </button>
     </div>
 </form>
 

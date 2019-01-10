@@ -176,6 +176,7 @@
     <Compile Include="BD\Receive\Dto\GetInstrumentTestsInput.cs" />
     <Compile Include="BD\Receive\Dto\GetTestsInput.cs" />
     <Compile Include="BD\Receive\Dto\InTstSelectionDto.cs" />
+    <Compile Include="BD\Receive\Dto\InTstsOutputDto.cs" />
     <Compile Include="BD\Receive\IReceiveAppService.cs" />
     <Compile Include="BD\Receive\ReceiveAppService.cs" />
     <Compile Include="BD\Receive\Dto\ReceiveWithItemsDto.cs" />

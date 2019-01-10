@@ -44,19 +44,19 @@
                                 <div class="form-group">
                                     <label class="control-label">检测要素</label>
                                     <select class="form-control"
-                                            ng-model="vm.selectedMeteor"
+                                            ng-model="vm.requestParams.meteorType_ID"
                                             ng-options=" item.id as item.meteor for item in vm.meteors">
-                                        <option value="" select hidden>请选择要素</option>
+                                        <option value="" selected>全部</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label">检测项目</label>
-                                    <select class="form-control"  required
-                                            ng-model="vm.order.checkType_ID"
-                                            ng-options=" checkType.id as checkType.checkName for checkType in vm.checkTypes | filter:{ meteor:vm.selectedMeteor}">
-                                        <option value="" select hidden>请选择检测项目</option>
+                                    <label class="control-label">业务类型</label>
+                                    <select class="form-control"
+                                            ng-options="x.value as x.name for x in vm.vMTypes"
+                                            ng-model="vm.requestParams.vocationalWorkType">
+                                        <option value="" selected>全部</option>
                                     </select>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-sm-6 text-right">
                             <button class="btn danger" ng-click="vm.createTest()"><i class="icon-action-undo"></i> 测试按钮</button>
-                            <button class="btn green" ng-click="vm.openCreateModal()"><i class="icon-plus"></i> 新建检测单</button>
+                            <button class="btn green" ng-click="vm.openCreateOrUpdateModal()"><i class="icon-plus"></i> 新建检测单</button>
                             <button class="btn blue" ng-click="vm.getTests()"><i class="fa fa-refresh"></i> @L("Search")</button>
                         </div>
                     </div>
@@ -77,10 +77,10 @@
             </div>
             <!-- END   Search Form  -->
             <div busy-if="vm.loading">
-                <div ui-grid="vm.gridOptions" ui-grid-selection ui-grid-pagination ui-grid-resize-columns></div>
+                <div ui-grid="vm.gridOptions" ui-grid-pagination ui-grid-resize-columns></div>
             </div>
         </div>
     </div>
-    <pre>{{vm.meteors}}</pre>
+    <pre>{{vm.requestParams}}</pre>
     <pre></pre>
 </div>

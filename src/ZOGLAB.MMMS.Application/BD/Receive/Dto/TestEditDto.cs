@@ -7,7 +7,7 @@ using static ZOGLAB.MMMS.BD.BD_Test;
 
 namespace ZOGLAB.MMMS.BD
 {
-    public class TestEditDto: IShouldNormalize
+    public class TestEditDto
     {
         public const int MaxLength_50 = 50;
 
@@ -41,15 +41,9 @@ namespace ZOGLAB.MMMS.BD
         //8.备注
         public string Mark { get; set; }
 
+        public long? CreatorUserId { get; set; }
+
         public long[] InstrumentTestIds { get; set; }
 
-        public void Normalize()
-        {
-            StartDate = DateTime.Now;
-            VocationalWorkType = VWType.实验室校准;
-            if (Check_Num.IsNullOrWhiteSpace()) {
-                Check_Num = DateTime.Now.ToLongDateString();
-            }           
-        }
     }
 }

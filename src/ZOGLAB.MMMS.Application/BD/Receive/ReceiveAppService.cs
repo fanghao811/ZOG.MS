@@ -216,10 +216,10 @@ namespace ZOGLAB.MMMS.BD
         //5.1 获取GetTests
         public async Task<PagedResultDto<TestListDto>> GetTests(GetTestsInput input)
         {
-            var tests = _testRepository.GetAll().Include("MeteorType").Include("Installation").Include("User") //Step 01
-                .Where(q => q.StartDate >= input.StartDate && q.StartDate <= input.FinishDate)
+            var tests = _testRepository.GetAll().Include("MeteorType").Include("Installation")//Step 01
+                .Where(q => q.CreationTime >= input.StartDate && q.CreationTime <= input.EndDate)
                 .WhereIf(input.MeteorType_ID > 0, q => q.MeteorType_ID == input.MeteorType_ID)
-                .WhereIf(input.VocationalWorkType > 0, q => q.VocationalWorkType == input.VocationalWorkType)
+                .WhereIf(input.VocationalWorkType != null, q => q.VocationalWorkType == input.VocationalWorkType)
                 .WhereIf(!input.Check_Num.IsNullOrWhiteSpace(), item => item.Check_Num.Contains(input.Check_Num));
 
             var query = from t in tests
@@ -266,26 +266,64 @@ namespace ZOGLAB.MMMS.BD
         }
 
         //5.2.1
-        public async Task<List<InTstSelectionDto>> GetInstrumentTestsForSelection()
+        //input.id ==> test.id
+        public async Task<InTstsOutputDto> GetInstrumentTestsForSelection(NullableIdDto<long> input)
         {
             var reInstruments = _receiveInstrumentRepository.GetAllIncluding(q => q.Instrument);
-            var inTsts = _instrumentTestRepository.GetAll().Include(q => q.ReceiveInstrument);
+            var inTsts = _instrumentTestRepository.GetAllIncluding(q => q.CheckType);
+            var result = new InTstsOutputDto();
 
-            var query = from re in reInstruments
-                        join inTst in inTsts
-                        on re.Id equals inTst.ReceiveInstrument_ID
-                        where inTst.IntHandover == false && inTst.Test_ID == null
-                        select new InTstSelectionDto
-                        {
-                            Id = inTst.Id,
-                            InstrumentTest = inTst.Number + " " + re.Instrument.Name + " " + inTst.CheckType.CheckName,
-                            Number = inTst.Number
-                        };
-            return await query.ToListAsync();
+            result.UnCheckedItems = await (from re in reInstruments
+                                           join inTst in inTsts
+                                           on re.Id equals inTst.ReceiveInstrument_ID
+                                           where inTst.IntHandover == false && inTst.Test_ID == null
+                                           select new InTstSelectionDto
+                                           {
+                                               Id = inTst.Id,
+                                               InstrumentTest = inTst.Number + " " + re.Instrument.Name + " " + inTst.CheckType.CheckName,
+                                               Meteor = inTst.CheckType.MeteorType.Name
+                                           }).ToListAsync();
+
+            if (input.Id.HasValue)
+            {
+                result.CheckedItems = await (from re in reInstruments
+                                             join inTst in inTsts
+                                             on re.Id equals inTst.ReceiveInstrument_ID
+                                             where inTst.Test_ID == input.Id.Value
+                                             select new InTstSelectionDto
+                                             {
+                                                 Id = inTst.Id,
+                                                 InstrumentTest = inTst.Number + " " + re.Instrument.Name + " " + inTst.CheckType.CheckName,
+                                                 Meteor = inTst.CheckType.MeteorType.Name
+                                             }).ToListAsync();
+            }
+
+            return result;
+        }
+
+        //5.3.1 
+        public TestEditDto GetTestForEdit(NullableIdDto<long> input)
+        {
+            //Standard   standard
+            var testEditDto = new TestEditDto();
+
+            if (input.Id.HasValue) //Editing existing role?
+            {
+                Debug.Assert(input.Id != null, "修改时ID不得为空.");
+                var test = _testRepository.Get(input.Id.Value);
+                testEditDto = test.MapTo<TestEditDto>();
+
+                testEditDto.InstrumentTestIds = _instrumentTestRepository.GetAll()
+                                                .Where(q => q.Test_ID == test.Id)
+                                                .Select(q => q.Id).ToArray();
+
+            }
+
+            return testEditDto;
         }
 
 
-        //5.3 生成或者更新 test单据
+        //5.3.2 生成或者更新 test单据
         public async Task CreateOrUpdateTest(TestEditDto input)
         {
             if (input.Id.HasValue)
@@ -375,7 +413,6 @@ namespace ZOGLAB.MMMS.BD
             item.IntHandover = true;
             await _instrumentTestRepository.UpdateAsync(item);
         }
-
 
         private IQueryable<InTstListDto> CreateInTstsQuery(GetInstrumentTestsInput input)
         {

@@ -22,7 +22,7 @@ namespace ZOGLAB.MMMS.BD
         public DateTime StartDate { get; set; }
 
         //5.结束时间
-        public DateTime FinishDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         //7.业务类型
         public VWType? VocationalWorkType { get; set; }

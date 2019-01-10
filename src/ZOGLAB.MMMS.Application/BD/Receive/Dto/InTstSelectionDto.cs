@@ -7,6 +7,6 @@
         public string InstrumentTest { get; set; }
 
         //3.物质编码
-        public string Number { get; set; }
+        public string Meteor { get; set; }
     }
 }

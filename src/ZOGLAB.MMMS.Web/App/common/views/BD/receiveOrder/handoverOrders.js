@@ -2,8 +2,9 @@
     appModule.controller('common.views.BD.handoverOrder.index', [        //TODO：  在app.js 中添加路由 done
         '$scope', '$uibModal', 'uiGridConstants',
         'abp.services.app.receive',
-        'abp.services.app.meteorType',        
-        function ($scope, $uibModal, uiGridConstants,receiveService,meteorService) {          //TODO 1.0 更改服务名 done
+        'abp.services.app.meteorType',
+        'enumService',
+        function ($scope, $uibModal, uiGridConstants, receiveService, meteorService, enumService) {          //TODO 1.0 更改服务名 done
             var vm = this;
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -18,9 +19,7 @@
             vm.requestParams = {        //TODO: 2.0  配置查询对象 GetStandardsInput done
                 "check_Num": "",
                 "meteorType_ID": null,
-                "startDate": "1900-01-01",
-                "finishDate": "2021-01-01",
-                "vocationalWorkType": 0,
+                "vocationalWorkType": null,
                 "skipCount": 0,
                 "maxResultCount": app.consts.grid.defaultPageSize,
                 "sorting": null
@@ -28,8 +27,8 @@
 
             vm.dRangeOptions = app.createDateRangePickerOptions();
             vm.dRangeModel = {
-                startDate: moment().startOf('day'),
-                endDate: moment().endOf('day')
+                startDate: moment().subtract(30, 'days').startOf('day'),
+                endDate: moment().add(2,'days').endOf('day')
             };
 
             vm.gridOptions = {      //TODO: 4.0  设置表格参数 
@@ -40,14 +39,20 @@
                 useExternalPagination: true,
                 useExternalSorting: true,
 
-                enableRowSelection: true,
-                enableFullRowSelection: true,
-                enableSelectAll: true,
-                selectionRowHeaderWidth: 35,
-                rowHeight: 35,
+                //enableRowSelection: false,
+                //enableFullRowSelection: true,
+                //enableSelectAll: true,
+                //selectionRowHeaderWidth: 35,
+                rowHeight: 30,
 
                 appScopeProvider: vm,
-                columnDefs: [       //TODO: 4.1  设置列参数 done
+                columnDefs: [       //TODO: 4.1  设置列参数 done                  
+                    {
+                        name: '序号 ',
+                        enableSorting: false,
+                        maxWidth: 50,
+                        cellTemplate: '<div style="text-align:center">{{rowRenderIndex + 1}}</div>'
+                    },
                     {
                         name: '检测单号',
                         field: 'check_Num',
@@ -81,15 +86,14 @@
                         minWidth: 50
                     },
                     {
-                        name: '修改',
+                        name: '编辑',
                         enableSorting: false,
                         minWidth: 80,
-                        //headerCellTemplate: '<span></span>',
                         cellTemplate:
                             '<div class=\"ui-grid-cell-contents text-center\">' +
-                            '  <button class="btn btn-default btn-xs" ng-click="grid.appScope.editStandard(row.entity)"><i class="fa fa-search"></i></button>' +
-                            '  <button class="btn btn-default green btn-xs" ng-if="!vm.permissions.edit" ng-click="grid.appScope.editStandard(row.entity)"><i class="icon-settings"></i></button>' +
-                            '  <button class="btn btn-default  red btn-xs " ng-click="grid.appScope.deleteStandard(row.entity)"><i class="fa fa-trash"></i></button>' +
+                            '  <button class="btn btn-default btn-xs" ng-click="grid.appScope.showDetails(row.entity)">查看详情</button>' +
+                            '  <button class="btn btn-default green btn-xs" ng-click="grid.appScope.openCreateOrUpdateModal(row.entity.id)"><i class="icon-settings"></i> 修改</button>' +
+                            '  <button class="btn btn-default  red btn-xs " ng-click="grid.appScope.deleteTest(row.entity)"><i class="fa fa-trash"></i> 删除</button>' +
                             '</div>'
                     }
                 ],
@@ -116,16 +120,64 @@
                 data: []
             };
 
-            vm.getMeteors = function () {     //TODO:     4.4.1 WebAPI查询方法
-                meteorService.getAll() //TODO: ???
+            // =========================================================================
+            // Tests CRUD ==> 7# BD_Test
+            // =========================================================================
+            vm.openCreateOrUpdateModal = function (entityId) {
+                var modalInstance = $uibModal.open({
+                    templateUrl: '~/App/common/views/BD/receiveOrder/handoverModal.cshtml',
+                    controller: 'common.views.handover.createModal as vm',
+                    backdrop: 'static',
+                    resolve: {
+                        testId: function () {
+                            return entityId;
+                        }
+                    },
+                    size: 'lg'
+                });
+
+                modalInstance.result.then(function () {
+                    vm.getTests();
+                });
+            };
+
+            vm.showDetails = function (test) {
+                alert('rowEntity:' + test.id);
+                //$uibModal.open({
+                //    templateUrl: '~/App/common/views/auditLogs/detailModal.cshtml',
+                //    controller: 'common.views.auditLogs.detailModal as vm',
+                //    backdrop: 'static',
+                //    resolve: {
+                //        test: function () {
+                //            return test;
+                //        }
+                //    }
+                //});
+            };
+
+
+
+            // =========================================================================
+            // 获取 MeteorTypes  ==> 7# BD_Test
+            // =========================================================================
+            vm.getMeteors = function () {
+                meteorService.getAll()
                     .then(function (result) {
                         vm.meteors = result.data;
                     });
             };
 
-            vm.getTests = function () {     //TODO:     4.4.1 WebAPI查询方法
+            // =========================================================================
+            // 获取 VocationalWork_Type 业务类型 ==> 7# BD_Test
+            // =========================================================================
+            vm.vMTypes = enumService.test_VMType;
+
+            // =========================================================================
+            // 获取 Tests  ==> 7# BD_Test
+            // =========================================================================
+            vm.getTests = function () {
                 vm.loading = true;
-                receiveService.getTests(vm.requestParams) //TODO: ???
+                receiveService.getTests($.extend({}, vm.requestParams, vm.dRangeModel))
                     .then(function (result) {
                         vm.gridOptions.totalItems = result.data.totalCount;
                         vm.gridOptions.data = result.data.items;
@@ -135,33 +187,6 @@
                     });
             };
 
-            vm.openCreateModal = function () {
-                var modalInstance = $uibModal.open({
-                    templateUrl: '~/App/common/views/BD/receiveOrder/handoverModal.cshtml',
-                    controller: 'common.views.handover.createModal as vm',
-                    backdrop: 'static',
-                    size: 'lg'
-                    //resolve: {
-                    //    instruments: function () {
-                    //        return $scope.gridApi.selection.getSelectedRows();
-                    //    }
-                    //}
-                });
-
-                modalInstance.result.then(function () {
-                    vm.getTests();
-                });
-            };
-
-            vm.createTest = function () {
-                var selectedIds = _.pluck($scope.gridApi.selection.getSelectedRows(), 'id');
-                if (selectedIds.length > 0) {
-                    abp.notify.info(selectedIds);
-                }
-                else {
-                    abp.notify.error("请选择仪器！");
-                };
-            };
 
             // =========================================================================
             // Page Initial Function
