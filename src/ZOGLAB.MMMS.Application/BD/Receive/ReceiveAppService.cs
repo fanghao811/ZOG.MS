@@ -212,8 +212,6 @@ namespace ZOGLAB.MMMS.BD
         }
         #endregion
 
-
-
         #region 5.交接业务 7# Test
         //5.1 获取GetTests
         public async Task<PagedResultDto<TestListDto>> GetTests(GetTestsInput input)
@@ -310,21 +308,6 @@ namespace ZOGLAB.MMMS.BD
             await CurrentUnitOfWork.SaveChangesAsync();
 
             await SetInstrumentTestsAsync(test.Id, input.InstrumentTestIds);
-
-            //foreach (var id in input.InstrumentTestIds)
-            //{
-            //    var item = new BD_InstrumentTest { };
-            //    item = _instrumentTestRepository.FirstOrDefault(i => i.Id == id);
-            //    if (item != null)
-            //    {
-            //        if (item.Test_ID != null)
-            //        {
-            //            string body = String.Format("InstrumentTest编号：{0},检测项目：{1},已经在任务{2}中！", item.Id, item.CheckType.CheckName, item.Test_ID);
-            //            throw new UserFriendlyException("检测单生成失败", body);
-            //        }
-            //        test.InstrumentTests.Add(item);
-            //    }
-            //}
 
             return newTask_Id;
         }

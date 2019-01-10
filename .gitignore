@@ -199,7 +199,7 @@ FakesAssemblies/
 Logs/
 /src/MyCompanyName.AbpZeroTemplate.Web/Logs
 /src/.svn
-/src/Web.config
+/src/ZOGLAB.MMMS.Web/Web.config
 
 # Log file
 *.log
